@@ -1,0 +1,121 @@
+﻿@model Tata.Models.tblreportholder
+@{
+    ViewBag.Title = "Edit";
+}
+<link href="~/Content1/bootstrap/css/datepicker.css" rel="stylesheet" />
+<link href="~/Content1/bootstrap/css/jquery.timeentry.css" rel="stylesheet" />
+<script src="~/Content1/bootstrap/js/jquery.js"></script>
+<script src="~/Content1/bootstrap/js/jquery-ui-1.10.3.js"></script>
+<script src="~/Content1/bootstrap/js/bootstrap-datepicker.js"></script>
+<script src="~/Content1/bootstrap/js/bootstrap.js"></script>
+<script src="~/Content1/bootstrap/js/jquery.plugin.js"></script>
+<link rel="stylesheet" href="styles/kendo.common.min.css" />
+<link rel="stylesheet" href="styles/kendo.default.min.css" />
+<link rel="stylesheet" href="styles/kendo.dataviz.min.css" />
+<link rel="stylesheet" href="styles/kendo.dataviz.default.min.css" />
+
+<link rel="stylesheet" href="styles/kendo.common.min.css" />
+<link rel="stylesheet" href="styles/kendo.default.min.css" />
+<link rel="stylesheet" href="styles/kendo.dataviz.min.css" />
+<link rel="stylesheet" href="styles/kendo.dataviz.default.min.css" />
+
+<script src="~/Content1/bootstrap/js/jquery.min.js"></script>
+<script src="~/Content1/bootstrap/js/kendo.all.min.js"></script>
+
+<script src="js/jquery.min.js"></script>
+<script src="js/kendo.all.min.js"></script>
+
+<script src="~/Content1/jquery.datetimepicker.js" type="text/javascript"></script>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)  
+<div class="wrp clearfix" >@*style="background-color:red" box outside create role*@
+    <div class="fluid">
+        <div class="widget col-md- grid12">
+            <div class="widget-header">
+                <div class="widget-title"  >
+                    <div style="font-size:1.5vw">Alarm Report</div>
+                </div>
+            </div>
+            <!-- /widget-header -->
+
+            <!-- /widget-header -->
+                <div class="widget-content pad20f">
+                    <div id="DateRange" class="container" style="font-family: Calibri; font-size: 20px">
+                        <div class="row">
+                            <div class='col-xs-3'>
+                                <div class='form-group'>
+                                    <label class="control-label">Start Date</label>
+                                    <div class="editor-field" style="align-items: center">
+                                        @Html.TextBoxFor(model => model.FromDate, new { @id = "FPYLossProdStartDate", @name = "FPYLossProdStartDate", @placeholder = "FromDate", @class = "form-control fdate" , @required = "required"})
+                                        @Html.HiddenFor(model => model.FromDate)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class='col-xs-3'>
+                                <div class='form-group'>
+                                    <label class="control-label">End Date</label>
+                                    <div class="editor-field" style="align-items: center">
+                                        @Html.TextBoxFor(model => model.ToDate, new { @id = "FPYLossProdStartDate", @name = "FPYLossProdStartDate", @placeholder = "To Date", @class = "form-control fdate", @required = "required" })
+                                        @Html.HiddenFor(model => model.ToDate)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                       <div style="width: 3%; display: inline-block; height: inherit"></div>
+@Html.ActionLink(" Back ", "Index", "Dashboard",new { }, new { @class = "btn stacked-input fa fa-reply fa-1x", @style = "text-decoration:none;display:inline-block;color:black" })
+<div style="width: 10%; display: inline-block; height: inherit"></div>
+<input type="submit" value="Generate" class="btn btn-lavender inverse" style="width: 30%; display: inline-block; height: inherit;margin-top:2%;color:white;background-color:grey;font-size:1.1vw"/>
+  </div>
+                </div>
+            <!-- /widget-content -->
+        </div>
+        <!-- /widget -->
+    </div> <!-- /Class-fluid-->
+</div>
+  
+}
+
+<style>
+    input {
+        font-style:oblique;
+        color:blue;
+    }
+</style>
+<script type="text/javascript">
+    var j = jQuery.noConflict();
+    var date = new Date();
+    var currentMonth = date.getMonth();
+    var currentDate = date.getDate();
+    var currentYear = date.getFullYear();
+    j(document).ready(function () {
+        j(".fdate").datetimepicker({
+            maxDate: new Date(currentYear, currentMonth, currentDate),
+            datepicker: true,
+            timepicker: false,
+            format: 'd-M-Y'
+        });
+    });
+</script>
+<script type="text/javascript">
+    var j = jQuery.noConflict();
+    j(document).ready(function () {
+        j(".tttt").datetimepicker({
+            datepicker: false,
+            format: 'H:i'
+        });
+    });
+</script>
+<script type="text/javascript">
+    var j = jQuery.noConflict();
+    j(document).ready(function () {
+        j(".mmmm").datetimepicker({
+            datepicker: false,
+            format: 'H:i'
+        });
+
+    });
+</script>

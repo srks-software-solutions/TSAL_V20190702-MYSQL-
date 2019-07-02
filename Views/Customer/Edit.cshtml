@@ -1,0 +1,180 @@
+﻿@model Tata.Models.tblcustomer
+@{
+    ViewBag.Title = "Edit";
+    var base64 = Convert.ToBase64String(Model.Logo);
+    var inputimg = String.Format("data:image/gif;base64,{0}", base64);
+    
+}
+<style>
+    .fields {
+        width: 79.5%;
+        white-space: nowrap;
+    }
+
+    .first {
+        display: inline-block;
+        width: 10%;
+        float: none;
+        padding-left: 0px;
+        padding-right: -2px;
+        margin-right: -2px;
+        white-space: nowrap;
+    }
+
+    .second {
+        display: inline-block;
+        padding-right: 0px;
+        white-space: normal;
+    }
+    .pad {
+        padding-left:9%;
+    }
+</style>
+
+<link href="~/css/fileinput.css" rel="stylesheet" />
+<link href="~/css/fileinput.min.css" rel="stylesheet" />
+<script src="~/js/jquery-2.1.4.min.js"></script>
+<script src="~/js/fileinput.js"></script>
+<script src="~/js/fileinput.min.js"></script>
+
+@using (Html.BeginForm("Edit", "customer", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+        <div class="wrp clearfix" >@*style="background-color:red" box outside create role*@
+    <div class="fluid">
+        <div class="widget col-md- grid12">
+            <div class="widget-header" style="background-color:red">
+                <div class="widget-title">
+                        Editing Customer
+                    </div>
+            </div>
+            <!-- /widget-header -->
+
+            <div class="widget-content pad20f">
+                <div class="fields">
+                    <label for="input-1" class="stacked-label first" style="resize: horizontal; width: 25%; color:blue;font-style:oblique">CustomerName</label>
+                            <span></span>
+                            @Html.TextBoxFor(model => model.CustomerName, new { @class = "second", @style = "font-size:75%;width:25%", @placeholder = "Customer Name" })
+                            @Html.ValidationMessageFor(model => model.CustomerName)
+                          &nbsp&nbsp&nbsp&nbsp 
+                      <label for="input-1" class="first stacked-label" style="resize: horizontal; width: 25%; color:blue;font-style:oblique">Customer ShortName</label>
+                            <span></span>
+                            @Html.TextBoxFor(model => model.CustomerShortName, new { @class = "second pad", @style = "font-size:75%;width:25%", @placeholder = "Customer Short Name" })
+                            @Html.ValidationMessageFor(model => model.CustomerShortName)
+                        </div>
+                 <div class="fields">
+                            <label for="input-1" class="first stacked-label"style="resize: horizontal; width: 25%; color:blue;font-style:oblique">AddressLine1</label>
+                            <span></span>
+                            @Html.TextBoxFor(model => model.AddressLine1, new { @class = "second", @style = "font-size:75%;width:25%", @placeholder = "Address Line1" })
+                            @Html.ValidationMessageFor(model => model.AddressLine1)
+                         &nbsp&nbsp&nbsp&nbsp  
+                       <label for="input-1" class="first stacked-label"style="resize: horizontal; width: 25%; color:blue;font-style:oblique">AddressLine2</label>
+                            <span></span>
+                            @Html.TextBoxFor(model => model.AddressLine2, new { @class = "second", @style = "font-size:75%;width:25%", @placeholder = "Address Line2" })
+                            @Html.ValidationMessageFor(model => model.AddressLine2)
+                  </div>
+                <div class="fields">
+                            <label for="input-1" class="first stacked-label"style="resize: horizontal; width: 25%; color:blue;font-style:oblique">Landline1</label>
+                            <span></span>
+                            @Html.TextBoxFor(model => model.Landline1, new { @class = "second", @style = "font-size:75%;width:25%", @placeholder = "Landline1" })
+                            @Html.ValidationMessageFor(model => model.Landline1)
+                          
+                     &nbsp&nbsp&nbsp&nbsp  <label for="input-1" class="first stacked-label"style="resize: horizontal; width: 25%; color:blue;font-style:oblique">Landline2</label>
+                            <span></span>
+                            @Html.TextBoxFor(model => model.Landline2, new { @class = "second", @style = "font-size:75%;width:25%", @placeholder = "Landline2" })
+                            @Html.ValidationMessageFor(model => model.Landline2)
+                        </div>
+                <div class="fields">
+                            <label for="input-1" class="first stacked-label" style="resize: horizontal; width: 25%; color:blue;font-style:oblique">EmailID1</label>
+                            <span></span>
+                            @Html.TextBoxFor(model => model.EmailID1, new { @class = "second", @style = "font-size:75%;width:25%", @placeholder = "EmailID1" })
+                            @Html.ValidationMessageFor(model => model.EmailID1)
+                         &nbsp&nbsp&nbsp&nbsp    <label for="input-1" class="first stacked-label"style="resize: horizontal; width: 25%; color:blue;font-style:oblique">EmailID2</label>
+                            <span></span>
+                            @Html.TextBoxFor(model => model.EmailID2, new { @class = "second", @style = "font-size:75%;width:25%", @placeholder = "EmailID2" })
+                            @Html.ValidationMessageFor(model => model.EmailID2)
+                        </div>
+                <div class="fields">
+                            <label for="input-1" class="first stacked-label"style="resize: horizontal; width: 25%; color:blue;font-style:oblique">Fax</label>
+                            <span></span>
+                            @Html.TextBoxFor(model => model.Fax, new { @class = "second", @style = "font-size:75%;width:25%", @placeholder = "Fax" })
+                            @Html.ValidationMessageFor(model => model.Fax)
+                        &nbsp&nbsp&nbsp&nbsp     <label for="input-1" class="first stacked-label"style="resize: horizontal; width: 25%; color:blue;font-style:oblique">Website</label>
+                            <span></span>
+                            @Html.TextBoxFor(model => model.Website, new { @class = "second", @style = "font-size:75%;width:25%", @placeholder = "Website" })
+                            @Html.ValidationMessageFor(model => model.Website)
+                        </div>
+                <div class="fields">
+                            <label for="input-1" class="first stacked-label"style="resize: horizontal; width: 25%; color:blue;font-style:oblique">Contact Person Name</label>
+                            <span></span>
+                            @Html.TextBoxFor(model => model.CPName, new { @class = "second", @style = "font-size:75%;width:25%", @placeholder = "Contact Person Name" })
+                            @Html.ValidationMessageFor(model => model.CPName)
+                        &nbsp&nbsp&nbsp&nbsp     <label for="input-1" class="first stacked-label"style="resize: horizontal; width: 25%; color:blue;font-style:oblique">Contact Person Designation</label>
+                            <span></span>
+                            @Html.TextBoxFor(model => model.CPDesignation, new { @class = "second", @style = "font-size:75%;width:25%", @placeholder = "Contact Person Designation" })
+                            @Html.ValidationMessageFor(model => model.CPDesignation)
+                        </div>
+                <div class="fields">
+                            <label for="input-1" class="first stacked-label"style="resize: horizontal; width: 25%; color:blue;font-style:oblique">Contact Person MobileNo.</label>
+                            <span></span>
+                            @Html.TextBoxFor(model => model.CPMobileNO, new { @class = "second", @style = "font-size:75%;width:25%", @placeholder = "Contact Person MobileNo." })
+                            @Html.ValidationMessageFor(model => model.CPMobileNO)
+                            <span></span>
+                        </div>
+                <div class="background btns sd-btns">
+                            <input id="inputimg" name="inputimg" type="file" accept="image/*" data-show-upload="false" data-show-remove="false">
+                            @*<button class="btn blue inverse"><a href="~/Views/Customer/Index.cshtml">Back</a></button>*@
+                    @Html.ActionLink(" Back ", "Index", new { }, new { @class = " btn blue  ", @style = "text-decoration:none;display:inline-block ;margin-top:1%;width:10%" })
+                            <div style="width: 35%; display: inline-block; height: inherit">
+                            </div>
+                            <input type="submit" value="Update" class="btn blue inverse btn-lg  btn-success stacked-input" style="display: inline-block; margin-top: 1%; width: 20%" />
+                        </div>
+                </div>
+            <!-- /widget-content -->
+        </div>
+        <!-- /widget -->
+    </div> <!-- /Class-fluid-->
+</div>
+  
+    @Html.HiddenFor(model => Model.CreatedBy)
+    @Html.HiddenFor(model => Model.CreatedOn)
+    @Html.HiddenFor(model => Model.IsDeleted)
+    @Html.HiddenFor(model => Model.CID)    
+}
+
+
+
+<script>
+    /* Initialize your widget via javascript as follows */
+    @*var rc = "@inputimg";
+    var path =  "~/img/logo.png";
+    alert(path);*@
+
+
+    $("#inputimg").fileinput({
+        src: "@inputimg",
+        @*var rc = "@inputimg",*@
+        initialPreview: "<img src='@inputimg' class='file-preview-image'>",
+        previewFileType: "image",
+        allowedFileExtensions: ["jpg", "gif", "png", "jpeg"],          //validate
+        maxFileSize: 4000,                                              //maxFileSize in KB's
+        browseClass: "btn btn-primary blue inverse btn-md",
+        browseLabel: " Select Logo",
+        browseIcon: '<i class="glyphicon glyphicon-picture"></i>',
+        previewClass: "bg-warning",
+        msgInvalidFileExtension: "Select Only (gif,jpg,png,jpeg) Formats."
+    });
+</script>
+<script>
+    $('.text').keypress(function (e) {
+        var regex = new RegExp("^[a-zA-Z]+$");
+        var str = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+        if (!regex.test(str)) {
+            e.preventDefault();
+            $(event.target).next("span").html("Alphabets Only").show().fadeOut(2000);
+            return false;
+        }
+        return true;
+    });
+</script>

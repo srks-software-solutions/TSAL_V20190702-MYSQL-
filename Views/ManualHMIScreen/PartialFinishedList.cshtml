@@ -1,0 +1,275 @@
+﻿
+@model IEnumerable<Tata.Models.tbllivehmiscreen>
+@{
+    ViewBag.Title = "UnitWorks - PartialFinished List";
+
+    var slno = 1;
+    if (ViewBag.roleid == 3)
+    {
+        Layout = "~/Views/Shared/_SuperTable.cshtml";
+    }
+    int mcid = Convert.ToInt32(ViewBag.mcnid);
+    int opid = Convert.ToInt32(ViewBag.opid);
+    int roleid = Convert.ToInt32(Session["RoleID"]);
+    string date = ViewBag.coretddt;
+
+}
+<style type="text/css">
+    [hidden] {
+        display: none;
+    }
+
+    /*.visuallyhidden { 
+        position: absolute; 
+        overflow: hidden; 
+        clip: rect(0 0 0 0); 
+        height: 1px; width: 1px; 
+        margin: -1px; padding: 0; border: 0; 
+    }*/
+</style>
+
+<style type="text/css">
+        th {
+                background-color: orange;
+           }
+    </style>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)  
+
+    <div class="wrp clearfix">
+        <div class="fluid">
+            <div class="wrapper">
+                <section class="content">
+
+                    <div class="row" style="padding-top: .1%">
+                        <div style="width: 100%">
+                            @Html.ActionLink("Back To DDLList", "DDLList", new { id = Convert.ToInt32(Session["MachineID"]) }, new { @class = "btn orange btn-lg ", @style = "margin-left:2%;color:black;width:15vw;height:70%;backgroundcolor:red;font-size:1vw" })
+                            <div style="margin-left: 15vw; display: inline"></div>
+                            <span style="font-size: 1.9vw; color: orange; margin-left: 10%">@Session["macDispName"]</span>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-2" style="float: left; margin-left: .1%">
+                            <article class="widget widget__form">
+                                <div class="widget__content" style="text-align: center;">
+                                    <div style="width: 100%; margin-top: 2%; height: auto">
+                                        @*<button class="btn blue inverse" onclick="ClearlyToHMI(event)" style="font-size: 1.2vw;">Manual/Scan Entry</button>*@
+                                        <span class="btn blue inverse" style="font-size: 1.2vw; margin-top: 1em" id="Multiwo">Multi-WorkOrder</span>
+                                        <span style="font-size: .2vw; margin-top: .5em;display:block" id="SelectMultipleWOButtonINverser">&nbsp</span>
+                                        <span class="btn blue inverse" style="font-size: 1.2vw;" id="SelectMultipleWOButton" hidden>Select WO</span>
+                                        <input type="hidden" id="HiddenMultiWOValue" name="HiddenMultiWOValue" value='@ViewBag.MacINV' hidden />
+                                        <input type="hidden" id="ToHMI" name="ToHMI" hidden />
+                                        <input type="hidden" id="data" name="data" hidden />
+                                    </div>
+                                    <hr />
+                                    @* <span style="font-weight: 900; font-size: large">WorkCenter List</span>
+                                    <div id="WorkCenterList" style="height: auto; overflow: hidden; margin-top: 1%; -webkit-align-content: center">
+                                        <input type="hidden" id="MacInvNo" name="MacInvNo" hidden />
+                                        <br />
+                                        @foreach (var row in ViewBag.machineData)
+                                        {
+                                            <button class='BringWO btn btn-lg orange inverse' style="width: inherit; width: 94%">
+                                                @row
+                                            </button>
+                                            <hr />
+                                        }
+                                    </div>*@
+
+                                </div>
+                            </article>
+                        </div>
+
+                        <div class="widget-content pad20f" style="float: left; width: 80%">
+                            <article class="widget widget__form">
+                                <div class="widget-header">
+                                    <div class="widget-title" style="font-size: 125%">
+                                        DDL List for <span style="font-size: 1.2vw; font-weight: 700; color: black;">@ViewBag.MacINV </span>
+                                    </div>
+                                </div>
+                                <!-- /widget-header -->
+
+                                <div class="widget-content pad20f">
+                                    <div class="widget__content table-responsive">
+                                        <table class="table table-striped">
+                                            <thead>
+                                                <tr class="text-centre" style="background-color: orange">
+                                                    <th style="text-align: center; font-size: 95%">Sl.No.</th>
+                                                    <th style="text-align: center; font-size: 95%; display: none" class="cp">CB</th>
+                                                    <th style="text-align: center; font-size: 95%">Project</th>
+                                                    <th style="text-align: center; font-size: 95%">WO No.</th>
+                                                    <th style="text-align: center; font-size: 95%">PartNo</th>
+                                                    <th style="text-align: center; font-size: 95%">OP No.</th>
+                                                    <th style="text-align: center; font-size: 95%">Target Qty</th>
+                                                    <th style="text-align: center; font-size: 95%">DDL WorkCenter</th>
+                                                    @if (roleid != 2)
+                                                    {
+                                                        <th style="text-align: center; font-size: 95%" class="StartButtons">Start</th>
+                                                    }
+
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr class="spacer"></tr>
+                                                <tr class="spacer"></tr>
+                                                @if(Model != null){
+                                                foreach (var item in Model)
+                                                {
+                                                    <tr>
+                                                        @*<td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                                   <span class="slno" id= '@slno'> @Html.Label(slno.ToString()) </span> <span class="HiddenDDLID" id= '@item.DDLID'></span> 
+                                                    @Html.TextBoxFor(modelItem => item.DDLID, new { @style="display:none", @class="HiddenDDLID"})
+                                                    </td>*@
+
+                                                        <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                                            @slno
+                                                        </td>
+                                                        <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%; display: none" class="HiddenDDLIDtd">
+                                                            <input type="checkbox" , class="HiddenDDLID" id= '@item.HMIID' />
+                                                        </td>
+                                                        <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                                            @Html.DisplayFor(modelItem => item.Project)
+                                                        </td>
+                                                        <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                                            @Html.DisplayFor(modelItem => item.Work_Order_No)
+                                                        </td>
+                                                        <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                                            @Html.DisplayFor(modelItem => item.PartNo)
+                                                        </td>
+                                                        <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                                            @Html.DisplayFor(modelItem => item.OperationNo)
+                                                        </td>
+                                                        <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                                            @Html.DisplayFor(modelItem => item.Target_Qty)
+                                                        </td>
+                                                       
+                                                        <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                                            @Html.DisplayFor(modelItem => item.DDLWokrCentre)
+                                                        </td>
+                                                       
+                                                        @if (roleid != 2)
+                                                        {
+                                                            <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%" class="StartButtons">
+                                                                @Html.ActionLink(" ", "PartialFinishList", new { HMIID = item.HMIID }, new { @class = " red btn-lg fa fa-arrow-circle-right fa-2x ", @style = "float:left;color:white;text-decoration:none" })
+                                                            </td>
+                                                        }
+                                                    </tr>
+                                                    @*<tr><td>&nbsp</td></tr>*@
+                                                        slno = slno + 1;
+                                                }
+                                                }else{
+                                                    <tr><td style="color:red;font-weight:bolder"> No Partial Finished WorkOrder's are Available. </td></tr>
+                                                }
+                                                <tr class="spacer"></tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                </div>
+                                <!-- /widget-content -->
+                            </article>
+                        </div>
+                    </div>
+                    <!-- /widget -->
+                </section>
+            </div>
+        </div>
+    </div>
+}
+<script src="~/js/jquery-2.1.4.min.js"></script>
+
+@*On clicking SelectMultipleWOButton go to post method if there are checked checkboxes.*@
+<script>
+    $("#SelectMultipleWOButton").on("click", function (e) {
+        var arr = $('.HiddenDDLID').filter(':checked').map(function () {
+            return this.id;
+        }).get();
+        //alert(arr);
+        //location.href('@Url.Action("Action", "Controller", new { })');
+        if (arr != "") {
+            //alert(arr);
+            $.post('/ManualHMIScreen/PartialFinishedList', $.param({ data: arr }, true), function (retVal) {
+                var url = '/ManualHMIScreen/Index/';
+                window.location.href = url;
+            });
+        }
+        else {
+            alert("Select atleast 1 WorkOrder");
+        }
+
+    });
+</script>
+
+@*This one is to go back to HMI with textboxes enabled*@
+<script>
+    function ClearlyToHMI(e) {
+        e.preventDefault();
+        $("#ToHMI").val(1);
+        // alert($("#ToHMI").val())
+        window.location.href = '@Url.Action("Index", "ManualHMIScreen", new { ToHMI = 1 })';
+    }
+</script>
+
+@*This one is to Display WO of particular Work Center*@
+<script>
+    $(".BringWO").on("click", function (e) {
+        //alert($(this).text())
+        e.preventDefault();
+        var mcval = $(this).text();
+        //alert($.trim(mcval.replace(/[\t\n]+/g, ' ')));
+        mcval = $.trim(mcval.replace(/[\t\n]+/g, ' '));
+        $("#MacInvNo").val(mcval);
+        // window.location.href = '@Url.Action("DDLList", "ManualHMIScreen") + "&MacInvNo=" + encodeURIComponent(mcval)';
+        window.location.href = '@Url.Action("DDLList", "ManualHMIScreen", new {MacInvNo = "mcval" })'.replace("mcval", mcval);
+    });
+</script>
+
+@*Check if MultiWO is allowable*@
+<script>
+    $("#Multiwo").click(function (e) {
+        e.preventDefault();
+        var MyMultiwoValue = $("#HiddenMultiWOValue").val();
+        //alert(MyMultiwoValue)
+        if (parseInt(MyMultiwoValue) == 0) {
+            var selectedID = '@ViewBag.MacINV';
+            // var selectedID = 1;
+            //alert(selectedID)
+            $.getJSON("/HMIScree/IsMultiWOAllowable", { id: selectedID }, function (data) {
+                if (data == "yes") {
+                    $(".cp").show();
+                    $(".HiddenDDLIDtd").show();
+                    $("#HiddenMultiWOValue").val(1);
+                    //$("#SelectMultipleWOButton").removeClass("visuallyhidden");
+                    $("#SelectMultipleWOButton").show();
+                    $(".StartTitle").hide();
+                    $(".StartButtons").hide();
+                    $(".HiddenDDLID").prop("checked", false);
+                }
+                else {
+                    alert("Multi WorkOrder for this Machine is not Enabled");
+                }
+            });
+        }
+        else {
+            $(".cp").hide();
+            $(".HiddenDDLIDtd").hide();
+            //$("#SelectMultipleWOButton").addClass("visuallyhidden");
+            $("#SelectMultipleWOButton").hide();
+            $(".StartTitle").show();
+            $(".StartButtons").show();
+            $("#HiddenMultiWOValue").val(0);
+            $(".HiddenDDLID").prop("checked", false);
+        }
+    });
+</script>
+
+@*<script>
+    //$(".HiddenDDLID").attr("checked", "checked");
+    var arr = $('.HiddenDDLID').filter(':checked').map(function () {
+        return this.id;
+    }).get();
+    alert(arr);
+</script>*@

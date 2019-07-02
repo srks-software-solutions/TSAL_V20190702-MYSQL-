@@ -1,0 +1,904 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="mazakdaqModelStoreContainer" CdmEntityContainer="mazakdaqEntities">
+    <EntitySetMapping Name="alarm_history_master">
+      <EntityTypeMapping TypeName="mazakdaqModel.alarm_history_master">
+        <MappingFragment StoreEntitySet="alarm_history_master">
+          <ScalarProperty Name="AlarmID" ColumnName="AlarmID" />
+          <ScalarProperty Name="AlarmMessage" ColumnName="AlarmMessage" />
+          <ScalarProperty Name="AlarmDate" ColumnName="AlarmDate" />
+          <ScalarProperty Name="AlarmTime" ColumnName="AlarmTime" />
+          <ScalarProperty Name="AlarmDateTime" ColumnName="AlarmDateTime" />
+          <ScalarProperty Name="InsertedOn" ColumnName="InsertedOn" />
+          <ScalarProperty Name="MachineID" ColumnName="MachineID" />
+          <ScalarProperty Name="Shift" ColumnName="Shift" />
+          <ScalarProperty Name="CorrectedDate" ColumnName="CorrectedDate" />
+          <ScalarProperty Name="ErrorNum" ColumnName="ErrorNum" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="DetailCode1" ColumnName="DetailCode1" />
+          <ScalarProperty Name="DetailCode2" ColumnName="DetailCode2" />
+          <ScalarProperty Name="DetailCode3" ColumnName="DetailCode3" />
+          <ScalarProperty Name="InterferedPart" ColumnName="InterferedPart" />
+          <ScalarProperty Name="SystemHead" ColumnName="SystemHead" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="alarm_master">
+      <EntityTypeMapping TypeName="mazakdaqModel.alarm_master">
+        <MappingFragment StoreEntitySet="alarm_master">
+          <ScalarProperty Name="AlarmID" ColumnName="AlarmID" />
+          <ScalarProperty Name="AlarmNo" ColumnName="AlarmNo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="alarm_report">
+      <EntityTypeMapping TypeName="mazakdaqModel.alarm_report">
+        <MappingFragment StoreEntitySet="alarm_report">
+          <ScalarProperty Name="reportid" ColumnName="reportid" />
+          <ScalarProperty Name="slno" ColumnName="slno" />
+          <ScalarProperty Name="alarmno" ColumnName="alarmno" />
+          <ScalarProperty Name="alarmdescn" ColumnName="alarmdescn" />
+          <ScalarProperty Name="alarmdatetime" ColumnName="alarmdatetime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="automaticjobcards">
+      <EntityTypeMapping TypeName="mazakdaqModel.automaticjobcard">
+        <MappingFragment StoreEntitySet="automaticjobcard">
+          <ScalarProperty Name="JobcardID" ColumnName="JobcardID" />
+          <ScalarProperty Name="slno" ColumnName="slno" />
+          <ScalarProperty Name="EmpNo" ColumnName="EmpNo" />
+          <ScalarProperty Name="OpnIdleCode" ColumnName="OpnIdleCode" />
+          <ScalarProperty Name="Workorderno" ColumnName="Workorderno" />
+          <ScalarProperty Name="Compcode" ColumnName="Compcode" />
+          <ScalarProperty Name="Qtyprod" ColumnName="Qtyprod" />
+          <ScalarProperty Name="QtyAccp" ColumnName="QtyAccp" />
+          <ScalarProperty Name="QtyRej" ColumnName="QtyRej" />
+          <ScalarProperty Name="Fromtime" ColumnName="Fromtime" />
+          <ScalarProperty Name="Totime" ColumnName="Totime" />
+          <ScalarProperty Name="Totalhours" ColumnName="Totalhours" />
+          <ScalarProperty Name="MachineInvNumber" ColumnName="MachineInvNumber" />
+          <ScalarProperty Name="Shift" ColumnName="Shift" />
+          <ScalarProperty Name="JobCardDate" ColumnName="JobCardDate" />
+          <ScalarProperty Name="Fromdatetime" ColumnName="Fromdatetime" />
+          <ScalarProperty Name="MachineId" ColumnName="MachineId" />
+          <ScalarProperty Name="MessageType" ColumnName="MessageType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="code_master">
+      <EntityTypeMapping TypeName="mazakdaqModel.code_master">
+        <MappingFragment StoreEntitySet="code_master">
+          <ScalarProperty Name="CodeID" ColumnName="CodeID" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="MCode" ColumnName="MCode" />
+          <ScalarProperty Name="CodeDescription" ColumnName="CodeDescription" />
+          <ScalarProperty Name="CodeType" ColumnName="CodeType" />
+          <ScalarProperty Name="InsertedOn" ColumnName="InsertedOn" />
+          <ScalarProperty Name="InsertedBy" ColumnName="InsertedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="cutting_time_report">
+      <EntityTypeMapping TypeName="mazakdaqModel.cutting_time_report">
+        <MappingFragment StoreEntitySet="cutting_time_report">
+          <ScalarProperty Name="CuttingID" ColumnName="CuttingID" />
+          <ScalarProperty Name="Cuttingtimes" ColumnName="Cuttingtimes" />
+          <ScalarProperty Name="Cuttingtimeinserted" ColumnName="Cuttingtimeinserted" />
+          <ScalarProperty Name="CuttingShift" ColumnName="CuttingShift" />
+          <ScalarProperty Name="CuttingDate" ColumnName="CuttingDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="cutting_time_report_pdf">
+      <EntityTypeMapping TypeName="mazakdaqModel.cutting_time_report_pdf">
+        <MappingFragment StoreEntitySet="cutting_time_report_pdf">
+          <ScalarProperty Name="CuttingID" ColumnName="CuttingID" />
+          <ScalarProperty Name="Cuttingtimes" ColumnName="Cuttingtimes" />
+          <ScalarProperty Name="Cuttingtimeinserted" ColumnName="Cuttingtimeinserted" />
+          <ScalarProperty Name="CuttingShift" ColumnName="CuttingShift" />
+          <ScalarProperty Name="CuttingDate" ColumnName="CuttingDate" />
+          <ScalarProperty Name="MachineID" ColumnName="MachineID" />
+          <ScalarProperty Name="MonthNum" ColumnName="MonthNum" />
+          <ScalarProperty Name="WeekNum" ColumnName="WeekNum" />
+          <ScalarProperty Name="YearNum" ColumnName="YearNum" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="day_st_end_time">
+      <EntityTypeMapping TypeName="mazakdaqModel.day_st_end_time">
+        <MappingFragment StoreEntitySet="day_st_end_time">
+          <ScalarProperty Name="DayID" ColumnName="DayID" />
+          <ScalarProperty Name="DayStart" ColumnName="DayStart" />
+          <ScalarProperty Name="DayEnd" ColumnName="DayEnd" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="frommails">
+      <EntityTypeMapping TypeName="mazakdaqModel.frommail">
+        <MappingFragment StoreEntitySet="frommail">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="FromEmailAdd" ColumnName="FromEmailAdd" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="domain" ColumnName="domain" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="jobcard_details">
+      <EntityTypeMapping TypeName="mazakdaqModel.jobcard_details">
+        <MappingFragment StoreEntitySet="jobcard_details">
+          <ScalarProperty Name="JobcardID" ColumnName="JobcardID" />
+          <ScalarProperty Name="slno" ColumnName="slno" />
+          <ScalarProperty Name="EmpNo" ColumnName="EmpNo" />
+          <ScalarProperty Name="OpnIdleCode" ColumnName="OpnIdleCode" />
+          <ScalarProperty Name="Workorderno" ColumnName="Workorderno" />
+          <ScalarProperty Name="Compcode" ColumnName="Compcode" />
+          <ScalarProperty Name="Qtyprod" ColumnName="Qtyprod" />
+          <ScalarProperty Name="QtyAccp" ColumnName="QtyAccp" />
+          <ScalarProperty Name="QtyRej" ColumnName="QtyRej" />
+          <ScalarProperty Name="Fromtime" ColumnName="Fromtime" />
+          <ScalarProperty Name="Totime" ColumnName="Totime" />
+          <ScalarProperty Name="Totalhours" ColumnName="Totalhours" />
+          <ScalarProperty Name="MachineInvNumber" ColumnName="MachineInvNumber" />
+          <ScalarProperty Name="Shift" ColumnName="Shift" />
+          <ScalarProperty Name="JobCardDate" ColumnName="JobCardDate" />
+          <ScalarProperty Name="Fromdatetime" ColumnName="Fromdatetime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="machine_master">
+      <EntityTypeMapping TypeName="mazakdaqModel.machine_master">
+        <MappingFragment StoreEntitySet="machine_master">
+          <ScalarProperty Name="MachineID" ColumnName="MachineID" />
+          <ScalarProperty Name="MachineInvNo" ColumnName="MachineInvNo" />
+          <ScalarProperty Name="IPAddress" ColumnName="IPAddress" />
+          <ScalarProperty Name="MachineType" ColumnName="MachineType" />
+          <ScalarProperty Name="ControllerType" ColumnName="ControllerType" />
+          <ScalarProperty Name="InsertedOn" ColumnName="InsertedOn" />
+          <ScalarProperty Name="InsertedBy" ColumnName="InsertedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="MachineModel" ColumnName="MachineModel" />
+          <ScalarProperty Name="MachineMake" ColumnName="MachineMake" />
+          <ScalarProperty Name="ModelType" ColumnName="ModelType" />
+          <ScalarProperty Name="MachineDispName" ColumnName="MachineDispName" />
+          <ScalarProperty Name="ProgramNum" ColumnName="ProgramNum" />
+          <ScalarProperty Name="IsParameters" ColumnName="IsParameters" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="mailmasters">
+      <EntityTypeMapping TypeName="mazakdaqModel.mailmaster">
+        <MappingFragment StoreEntitySet="mailmaster">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="EmailID" ColumnName="EmailID" />
+          <ScalarProperty Name="TOAdd" ColumnName="TOAdd" />
+          <ScalarProperty Name="CCAdd" ColumnName="CCAdd" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="BCCAdd" ColumnName="BCCAdd" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="mailmasterprogescs">
+      <EntityTypeMapping TypeName="mazakdaqModel.mailmasterprogesc">
+        <MappingFragment StoreEntitySet="mailmasterprogesc">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="EmailID" ColumnName="EmailID" />
+          <ScalarProperty Name="TOAdd" ColumnName="TOAdd" />
+          <ScalarProperty Name="CCAdd" ColumnName="CCAdd" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="BCCAdd" ColumnName="BCCAdd" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="main_time_rep">
+      <EntityTypeMapping TypeName="mazakdaqModel.main_time_rep">
+        <MappingFragment StoreEntitySet="main_time_rep">
+          <ScalarProperty Name="MainTimeRepID" ColumnName="MainTimeRepID" />
+          <ScalarProperty Name="CuttingTime" ColumnName="CuttingTime" />
+          <ScalarProperty Name="OperatingTime" ColumnName="OperatingTime" />
+          <ScalarProperty Name="PowerOnTime" ColumnName="PowerOnTime" />
+          <ScalarProperty Name="CorrectedDate" ColumnName="CorrectedDate" />
+          <ScalarProperty Name="Shift" ColumnName="Shift" />
+          <ScalarProperty Name="MachineID" ColumnName="MachineID" />
+          <ScalarProperty Name="MonthNum" ColumnName="MonthNum" />
+          <ScalarProperty Name="WeekNum" ColumnName="WeekNum" />
+          <ScalarProperty Name="YearNum" ColumnName="YearNum" />
+          <ScalarProperty Name="MonthName" ColumnName="MonthName" />
+          <ScalarProperty Name="WeekRange" ColumnName="WeekRange" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="message_code_master">
+      <EntityTypeMapping TypeName="mazakdaqModel.message_code_master">
+        <MappingFragment StoreEntitySet="message_code_master">
+          <ScalarProperty Name="MessageCodeID" ColumnName="MessageCodeID" />
+          <ScalarProperty Name="MessageCode" ColumnName="MessageCode" />
+          <ScalarProperty Name="MessageMCode" ColumnName="MessageMCode" />
+          <ScalarProperty Name="MessageDescription" ColumnName="MessageDescription" />
+          <ScalarProperty Name="MessageType" ColumnName="MessageType" />
+          <ScalarProperty Name="InsertedOn" ColumnName="InsertedOn" />
+          <ScalarProperty Name="InsertedBy" ColumnName="InsertedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="ReportDispName" ColumnName="ReportDispName" />
+          <ScalarProperty Name="ColourCode" ColumnName="ColourCode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="message_history_master">
+      <EntityTypeMapping TypeName="mazakdaqModel.message_history_master">
+        <MappingFragment StoreEntitySet="message_history_master">
+          <ScalarProperty Name="MessageID" ColumnName="MessageID" />
+          <ScalarProperty Name="Meassage" ColumnName="Meassage" />
+          <ScalarProperty Name="MessageDate" ColumnName="MessageDate" />
+          <ScalarProperty Name="MessageTime" ColumnName="MessageTime" />
+          <ScalarProperty Name="MessageDateTime" ColumnName="MessageDateTime" />
+          <ScalarProperty Name="MessageNo" ColumnName="MessageNo" />
+          <ScalarProperty Name="MessageCode" ColumnName="MessageCode" />
+          <ScalarProperty Name="MessageType" ColumnName="MessageType" />
+          <ScalarProperty Name="MessageShift" ColumnName="MessageShift" />
+          <ScalarProperty Name="MachineID" ColumnName="MachineID" />
+          <ScalarProperty Name="InsertedOn" ColumnName="InsertedOn" />
+          <ScalarProperty Name="CorrectedDate" ColumnName="CorrectedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="opcuttimereports">
+      <EntityTypeMapping TypeName="mazakdaqModel.opcuttimereport">
+        <MappingFragment StoreEntitySet="opcuttimereport">
+          <ScalarProperty Name="idOpCutTimeReport" ColumnName="idOpCutTimeReport" />
+          <ScalarProperty Name="Operatingtimes" ColumnName="Operatingtimes" />
+          <ScalarProperty Name="Cuttingtimes" ColumnName="Cuttingtimes" />
+          <ScalarProperty Name="PowerOnTime" ColumnName="PowerOnTime" />
+          <ScalarProperty Name="Timeinserted" ColumnName="Timeinserted" />
+          <ScalarProperty Name="Shift" ColumnName="Shift" />
+          <ScalarProperty Name="ReportDate" ColumnName="ReportDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="opcuttimereport_pdf">
+      <EntityTypeMapping TypeName="mazakdaqModel.opcuttimereport_pdf">
+        <MappingFragment StoreEntitySet="opcuttimereport_pdf">
+          <ScalarProperty Name="idOpCutTimeReport_pdf" ColumnName="idOpCutTimeReport_pdf" />
+          <ScalarProperty Name="Operatingtimes" ColumnName="Operatingtimes" />
+          <ScalarProperty Name="Cuttingtimes" ColumnName="Cuttingtimes" />
+          <ScalarProperty Name="Shift" ColumnName="Shift" />
+          <ScalarProperty Name="ReportDate" ColumnName="ReportDate" />
+          <ScalarProperty Name="PowerOnTime" ColumnName="PowerOnTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="operating_time_report">
+      <EntityTypeMapping TypeName="mazakdaqModel.operating_time_report">
+        <MappingFragment StoreEntitySet="operating_time_report">
+          <ScalarProperty Name="OperatingID" ColumnName="OperatingID" />
+          <ScalarProperty Name="Operatingtimes" ColumnName="Operatingtimes" />
+          <ScalarProperty Name="Operatingtimeinserted" ColumnName="Operatingtimeinserted" />
+          <ScalarProperty Name="OperatingShift" ColumnName="OperatingShift" />
+          <ScalarProperty Name="OperatingDate" ColumnName="OperatingDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="operating_time_report_pdf">
+      <EntityTypeMapping TypeName="mazakdaqModel.operating_time_report_pdf">
+        <MappingFragment StoreEntitySet="operating_time_report_pdf">
+          <ScalarProperty Name="OperatingID" ColumnName="OperatingID" />
+          <ScalarProperty Name="Operatingtimes" ColumnName="Operatingtimes" />
+          <ScalarProperty Name="Operatingtimeinserted" ColumnName="Operatingtimeinserted" />
+          <ScalarProperty Name="OperatingShift" ColumnName="OperatingShift" />
+          <ScalarProperty Name="OperatingDate" ColumnName="OperatingDate" />
+          <ScalarProperty Name="MachineID" ColumnName="MachineID" />
+          <ScalarProperty Name="MonthNum" ColumnName="MonthNum" />
+          <ScalarProperty Name="WeekNum" ColumnName="WeekNum" />
+          <ScalarProperty Name="YearNum" ColumnName="YearNum" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="operationlogs">
+      <EntityTypeMapping TypeName="mazakdaqModel.operationlog">
+        <MappingFragment StoreEntitySet="operationlog">
+          <ScalarProperty Name="idoperationlog" ColumnName="idoperationlog" />
+          <ScalarProperty Name="OpMsg" ColumnName="OpMsg" />
+          <ScalarProperty Name="OpDate" ColumnName="OpDate" />
+          <ScalarProperty Name="OpTime" ColumnName="OpTime" />
+          <ScalarProperty Name="OpDateTime" ColumnName="OpDateTime" />
+          <ScalarProperty Name="OpReason" ColumnName="OpReason" />
+          <ScalarProperty Name="MachineID" ColumnName="MachineID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="parameters_master">
+      <EntityTypeMapping TypeName="mazakdaqModel.parameters_master">
+        <MappingFragment StoreEntitySet="parameters_master">
+          <ScalarProperty Name="ParameterID" ColumnName="ParameterID" />
+          <ScalarProperty Name="SetupTime" ColumnName="SetupTime" />
+          <ScalarProperty Name="OperatingTime" ColumnName="OperatingTime" />
+          <ScalarProperty Name="PowerOnTime" ColumnName="PowerOnTime" />
+          <ScalarProperty Name="PartsCount" ColumnName="PartsCount" />
+          <ScalarProperty Name="InsertedOn" ColumnName="InsertedOn" />
+          <ScalarProperty Name="MachineID" ColumnName="MachineID" />
+          <ScalarProperty Name="Shift" ColumnName="Shift" />
+          <ScalarProperty Name="CorrectedDate" ColumnName="CorrectedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="people">
+      <EntityTypeMapping TypeName="mazakdaqModel.person">
+        <MappingFragment StoreEntitySet="person">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="program_master">
+      <EntityTypeMapping TypeName="mazakdaqModel.program_master">
+        <MappingFragment StoreEntitySet="program_master">
+          <ScalarProperty Name="ProgramID" ColumnName="ProgramID" />
+          <ScalarProperty Name="EmployeeCode" ColumnName="EmployeeCode" />
+          <ScalarProperty Name="ComponentDescription" ColumnName="ComponentDescription" />
+          <ScalarProperty Name="ComponentCode" ColumnName="ComponentCode" />
+          <ScalarProperty Name="OperationDescription" ColumnName="OperationDescription" />
+          <ScalarProperty Name="WorkOrderNo1" ColumnName="WorkOrderNo1" />
+          <ScalarProperty Name="WorkOrderNo2" ColumnName="WorkOrderNo2" />
+          <ScalarProperty Name="WorkOrderNo3" ColumnName="WorkOrderNo3" />
+          <ScalarProperty Name="MachineID" ColumnName="MachineID" />
+          <ScalarProperty Name="InsertedOn" ColumnName="InsertedOn" />
+          <ScalarProperty Name="ProgramDate" ColumnName="ProgramDate" />
+          <ScalarProperty Name="ProgramTime" ColumnName="ProgramTime" />
+          <ScalarProperty Name="ProgramDateTime" ColumnName="ProgramDateTime" />
+          <ScalarProperty Name="OpnCode1" ColumnName="OpnCode1" />
+          <ScalarProperty Name="PartsProduced1" ColumnName="PartsProduced1" />
+          <ScalarProperty Name="PartsAccepted1" ColumnName="PartsAccepted1" />
+          <ScalarProperty Name="OpnCode2" ColumnName="OpnCode2" />
+          <ScalarProperty Name="PartsProduced2" ColumnName="PartsProduced2" />
+          <ScalarProperty Name="PartsAccepted2" ColumnName="PartsAccepted2" />
+          <ScalarProperty Name="OpnCode3" ColumnName="OpnCode3" />
+          <ScalarProperty Name="PartsProduced3" ColumnName="PartsProduced3" />
+          <ScalarProperty Name="PartsAccepted3" ColumnName="PartsAccepted3" />
+          <ScalarProperty Name="Shift" ColumnName="Shift" />
+          <ScalarProperty Name="PartsRejected1" ColumnName="PartsRejected1" />
+          <ScalarProperty Name="PartsRejected2" ColumnName="PartsRejected2" />
+          <ScalarProperty Name="PartsRejected3" ColumnName="PartsRejected3" />
+          <ScalarProperty Name="CorrectedDate" ColumnName="CorrectedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="program_temp">
+      <EntityTypeMapping TypeName="mazakdaqModel.program_temp">
+        <MappingFragment StoreEntitySet="program_temp">
+          <ScalarProperty Name="ProgramID" ColumnName="ProgramID" />
+          <ScalarProperty Name="ProgramData" ColumnName="ProgramData" />
+          <ScalarProperty Name="ProgramDateTime" ColumnName="ProgramDateTime" />
+          <ScalarProperty Name="MachineID" ColumnName="MachineID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="recipientmailids">
+      <EntityTypeMapping TypeName="mazakdaqModel.recipientmailid">
+        <MappingFragment StoreEntitySet="recipientmailid">
+          <ScalarProperty Name="RE_ID" ColumnName="RE_ID" />
+          <ScalarProperty Name="MailID" ColumnName="MailID" />
+          <ScalarProperty Name="AutoEmailType" ColumnName="AutoEmailType" />
+          <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+          <ScalarProperty Name="RecipientType" ColumnName="RecipientType" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="role_master">
+      <EntityTypeMapping TypeName="mazakdaqModel.role_master">
+        <MappingFragment StoreEntitySet="role_master">
+          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+          <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+          <ScalarProperty Name="RoleDescription" ColumnName="RoleDescription" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="shift_master">
+      <EntityTypeMapping TypeName="mazakdaqModel.shift_master">
+        <MappingFragment StoreEntitySet="shift_master">
+          <ScalarProperty Name="ShiftID" ColumnName="ShiftID" />
+          <ScalarProperty Name="ShiftName" ColumnName="ShiftName" />
+          <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+          <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+          <ScalarProperty Name="InsertedOn" ColumnName="InsertedOn" />
+          <ScalarProperty Name="InsertedBy" ColumnName="InsertedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="Duration" ColumnName="Duration" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblactivitylogs">
+      <EntityTypeMapping TypeName="mazakdaqModel.tblactivitylog">
+        <MappingFragment StoreEntitySet="tblactivitylog">
+          <ScalarProperty Name="TrackID" ColumnName="TrackID" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="IpAddress" ColumnName="IpAddress" />
+          <ScalarProperty Name="ClientSystemName" ColumnName="ClientSystemName" />
+          <ScalarProperty Name="CompleteModificationDetails" ColumnName="CompleteModificationDetails" />
+          <ScalarProperty Name="Controller" ColumnName="Controller" />
+          <ScalarProperty Name="Action" ColumnName="Action" />
+          <ScalarProperty Name="Idoperationlog" ColumnName="Idoperationlog" />
+          <ScalarProperty Name="OpTime" ColumnName="OpTime" />
+          <ScalarProperty Name="OpDate" ColumnName="OpDate" />
+          <ScalarProperty Name="OpDateTime" ColumnName="OpDateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblbreakdowns">
+      <EntityTypeMapping TypeName="mazakdaqModel.tblbreakdown">
+        <MappingFragment StoreEntitySet="tblbreakdown">
+          <ScalarProperty Name="BreakdownID" ColumnName="BreakdownID" />
+          <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+          <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+          <ScalarProperty Name="BreakDownCode" ColumnName="BreakDownCode" />
+          <ScalarProperty Name="MachineID" ColumnName="MachineID" />
+          <ScalarProperty Name="CorrectedDate" ColumnName="CorrectedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbldailyprodstatus">
+      <EntityTypeMapping TypeName="mazakdaqModel.tbldailyprodstatu">
+        <MappingFragment StoreEntitySet="tbldailyprodstatus">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="MachineID" ColumnName="MachineID" />
+          <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+          <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+          <ScalarProperty Name="Duration" ColumnName="Duration" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="InsertedOn" ColumnName="InsertedOn" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="CorrectedDate" ColumnName="CorrectedDate" />
+          <ScalarProperty Name="ColorCode" ColumnName="ColorCode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbldailyprodstatushis">
+      <EntityTypeMapping TypeName="mazakdaqModel.tbldailyprodstatushi">
+        <MappingFragment StoreEntitySet="tbldailyprodstatushis">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="MachineID" ColumnName="MachineID" />
+          <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+          <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+          <ScalarProperty Name="Duration" ColumnName="Duration" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="InsertedOn" ColumnName="InsertedOn" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="CorrectedDate" ColumnName="CorrectedDate" />
+          <ScalarProperty Name="ColorCode" ColumnName="ColorCode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbldaytimings">
+      <EntityTypeMapping TypeName="mazakdaqModel.tbldaytiming">
+        <MappingFragment StoreEntitySet="tbldaytiming">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+          <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbldowntimecategories">
+      <EntityTypeMapping TypeName="mazakdaqModel.tbldowntimecategory">
+        <MappingFragment StoreEntitySet="tbldowntimecategory">
+          <ScalarProperty Name="DTC_ID" ColumnName="DTC_ID" />
+          <ScalarProperty Name="DTCategory" ColumnName="DTCategory" />
+          <ScalarProperty Name="DTCategoryDesc" ColumnName="DTCategoryDesc" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbldowntimedetails">
+      <EntityTypeMapping TypeName="mazakdaqModel.tbldowntimedetail">
+        <MappingFragment StoreEntitySet="tbldowntimedetails">
+          <ScalarProperty Name="DT_ID" ColumnName="DT_ID" />
+          <ScalarProperty Name="DTCategoryID" ColumnName="DTCategoryID" />
+          <ScalarProperty Name="DTReason" ColumnName="DTReason" />
+          <ScalarProperty Name="DTDesc" ColumnName="DTDesc" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblemailreporttypes">
+      <EntityTypeMapping TypeName="mazakdaqModel.tblemailreporttype">
+        <MappingFragment StoreEntitySet="tblemailreporttype">
+          <ScalarProperty Name="ERTID" ColumnName="ERTID" />
+          <ScalarProperty Name="ReportType" ColumnName="ReportType" />
+          <ScalarProperty Name="ReportDesc" ColumnName="ReportDesc" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblhmiscreens">
+      <EntityTypeMapping TypeName="mazakdaqModel.tblhmiscreen">
+        <MappingFragment StoreEntitySet="tblhmiscreen">
+          <ScalarProperty Name="HMIID" ColumnName="HMIID" />
+          <ScalarProperty Name="MachineID" ColumnName="MachineID" />
+          <ScalarProperty Name="OperatiorID" ColumnName="OperatiorID" />
+          <ScalarProperty Name="Shift" ColumnName="Shift" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Time" ColumnName="Time" />
+          <ScalarProperty Name="Project" ColumnName="Project" />
+          <ScalarProperty Name="PartNo" ColumnName="PartNo" />
+          <ScalarProperty Name="OperationNo" ColumnName="OperationNo" />
+          <ScalarProperty Name="Rej_Qty" ColumnName="Rej_Qty" />
+          <ScalarProperty Name="Work_Order_No" ColumnName="Work_Order_No" />
+          <ScalarProperty Name="Target_Qty" ColumnName="Target_Qty" />
+          <ScalarProperty Name="Delivered_Qty" ColumnName="Delivered_Qty" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="CorrectedDate" ColumnName="CorrectedDate" />
+          <ScalarProperty Name="Prod_FAI" ColumnName="Prod_FAI" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbllossofentries">
+      <EntityTypeMapping TypeName="mazakdaqModel.tbllossofentry">
+        <MappingFragment StoreEntitySet="tbllossofentry">
+          <ScalarProperty Name="LossID" ColumnName="LossID" />
+          <ScalarProperty Name="MessageCode" ColumnName="MessageCode" />
+          <ScalarProperty Name="StartDateTime" ColumnName="StartDateTime" />
+          <ScalarProperty Name="EndDateTime" ColumnName="EndDateTime" />
+          <ScalarProperty Name="EntryTime" ColumnName="EntryTime" />
+          <ScalarProperty Name="CorrectedDate" ColumnName="CorrectedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblmachine_master">
+      <EntityTypeMapping TypeName="mazakdaqModel.tblmachine_master">
+        <MappingFragment StoreEntitySet="tblmachine_master">
+          <ScalarProperty Name="MachineID" ColumnName="MachineID" />
+          <ScalarProperty Name="MachineInvNo" ColumnName="MachineInvNo" />
+          <ScalarProperty Name="IPAddress" ColumnName="IPAddress" />
+          <ScalarProperty Name="MachineType" ColumnName="MachineType" />
+          <ScalarProperty Name="ControllerType" ColumnName="ControllerType" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblmachinedetails">
+      <EntityTypeMapping TypeName="mazakdaqModel.tblmachinedetail">
+        <MappingFragment StoreEntitySet="tblmachinedetails">
+          <ScalarProperty Name="MachineID" ColumnName="MachineID" />
+          <ScalarProperty Name="MachineInvNo" ColumnName="MachineInvNo" />
+          <ScalarProperty Name="IPAddress" ColumnName="IPAddress" />
+          <ScalarProperty Name="MachineType" ColumnName="MachineType" />
+          <ScalarProperty Name="ControllerType" ColumnName="ControllerType" />
+          <ScalarProperty Name="InsertedOn" ColumnName="InsertedOn" />
+          <ScalarProperty Name="InsertedBy" ColumnName="InsertedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="MachineModel" ColumnName="MachineModel" />
+          <ScalarProperty Name="MachineMake" ColumnName="MachineMake" />
+          <ScalarProperty Name="ModelType" ColumnName="ModelType" />
+          <ScalarProperty Name="MachineDispName" ColumnName="MachineDispName" />
+          <ScalarProperty Name="IsParameters" ColumnName="IsParameters" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblmodulehelpers">
+      <EntityTypeMapping TypeName="mazakdaqModel.tblmodulehelper">
+        <MappingFragment StoreEntitySet="tblmodulehelper">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ModuleID" ColumnName="ModuleID" />
+          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+          <ScalarProperty Name="IsAll" ColumnName="IsAll" />
+          <ScalarProperty Name="IsAdded" ColumnName="IsAdded" />
+          <ScalarProperty Name="IsEdited" ColumnName="IsEdited" />
+          <ScalarProperty Name="IsRemoved" ColumnName="IsRemoved" />
+          <ScalarProperty Name="IsReadonly" ColumnName="IsReadonly" />
+          <ScalarProperty Name="IsHidden" ColumnName="IsHidden" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblmodulemasters">
+      <EntityTypeMapping TypeName="mazakdaqModel.tblmodulemaster">
+        <MappingFragment StoreEntitySet="tblmodulemaster">
+          <ScalarProperty Name="ModuleID" ColumnName="ModuleID" />
+          <ScalarProperty Name="ModuleName" ColumnName="ModuleName" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblparts">
+      <EntityTypeMapping TypeName="mazakdaqModel.tblpart">
+        <MappingFragment StoreEntitySet="tblparts">
+          <ScalarProperty Name="PartID" ColumnName="PartID" />
+          <ScalarProperty Name="PartNo" ColumnName="PartNo" />
+          <ScalarProperty Name="PartDesc" ColumnName="PartDesc" />
+          <ScalarProperty Name="PartName" ColumnName="PartName" />
+          <ScalarProperty Name="IdleCycleTime" ColumnName="IdleCycleTime" />
+          <ScalarProperty Name="UnitDesc" ColumnName="UnitDesc" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblplannedbreaks">
+      <EntityTypeMapping TypeName="mazakdaqModel.tblplannedbreak">
+        <MappingFragment StoreEntitySet="tblplannedbreak">
+          <ScalarProperty Name="BreakID" ColumnName="BreakID" />
+          <ScalarProperty Name="BreakReason" ColumnName="BreakReason" />
+          <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+          <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+          <ScalarProperty Name="BreakDuration" ColumnName="BreakDuration" />
+          <ScalarProperty Name="ShiftID" ColumnName="ShiftID" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblpriorityalarms">
+      <EntityTypeMapping TypeName="mazakdaqModel.tblpriorityalarm">
+        <MappingFragment StoreEntitySet="tblpriorityalarms">
+          <ScalarProperty Name="AlarmID" ColumnName="AlarmID" />
+          <ScalarProperty Name="AlarmNumber" ColumnName="AlarmNumber" />
+          <ScalarProperty Name="AlarmDesc" ColumnName="AlarmDesc" />
+          <ScalarProperty Name="AxisNo" ColumnName="AxisNo" />
+          <ScalarProperty Name="AlarmGroup" ColumnName="AlarmGroup" />
+          <ScalarProperty Name="PriorityNumber" ColumnName="PriorityNumber" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblroleplaymasters">
+      <EntityTypeMapping TypeName="mazakdaqModel.tblroleplaymaster">
+        <MappingFragment StoreEntitySet="tblroleplaymaster">
+          <ScalarProperty Name="RolePlayID" ColumnName="RolePlayID" />
+          <ScalarProperty Name="ModuleID" ColumnName="ModuleID" />
+          <ScalarProperty Name="IsAdded" ColumnName="IsAdded" />
+          <ScalarProperty Name="IsEdited" ColumnName="IsEdited" />
+          <ScalarProperty Name="IsRemoved" ColumnName="IsRemoved" />
+          <ScalarProperty Name="IsHidden" ColumnName="IsHidden" />
+          <ScalarProperty Name="IsReadOnly" ColumnName="IsReadOnly" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblroles">
+      <EntityTypeMapping TypeName="mazakdaqModel.tblrole">
+        <MappingFragment StoreEntitySet="tblroles">
+          <ScalarProperty Name="Role_ID" ColumnName="Role_ID" />
+          <ScalarProperty Name="RoleDesc" ColumnName="RoleDesc" />
+          <ScalarProperty Name="RoleType" ColumnName="RoleType" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblrparamappings">
+      <EntityTypeMapping TypeName="mazakdaqModel.tblrparamapping">
+        <MappingFragment StoreEntitySet="tblrparamapping">
+          <ScalarProperty Name="RPID" ColumnName="RPID" />
+          <ScalarProperty Name="ParameterNo" ColumnName="ParameterNo" />
+          <ScalarProperty Name="ParameterDetails" ColumnName="ParameterDetails" />
+          <ScalarProperty Name="ParameterDesc" ColumnName="ParameterDesc" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblsendermailids">
+      <EntityTypeMapping TypeName="mazakdaqModel.tblsendermailid">
+        <MappingFragment StoreEntitySet="tblsendermailid">
+          <ScalarProperty Name="SE_ID" ColumnName="SE_ID" />
+          <ScalarProperty Name="PrimaryMailID" ColumnName="PrimaryMailID" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+          <ScalarProperty Name="AutoEmailType" ColumnName="AutoEmailType" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblshift_breaks">
+      <EntityTypeMapping TypeName="mazakdaqModel.tblshift_breaks">
+        <MappingFragment StoreEntitySet="tblshift_breaks">
+          <ScalarProperty Name="BreakID" ColumnName="BreakID" />
+          <ScalarProperty Name="BreakReason" ColumnName="BreakReason" />
+          <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+          <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+          <ScalarProperty Name="BreakDuration" ColumnName="BreakDuration" />
+          <ScalarProperty Name="ShiftID" ColumnName="ShiftID" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblshift_mstr">
+      <EntityTypeMapping TypeName="mazakdaqModel.tblshift_mstr">
+        <MappingFragment StoreEntitySet="tblshift_mstr">
+          <ScalarProperty Name="ShiftID" ColumnName="ShiftID" />
+          <ScalarProperty Name="ShiftName" ColumnName="ShiftName" />
+          <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+          <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="Duration" ColumnName="Duration" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblunits">
+      <EntityTypeMapping TypeName="mazakdaqModel.tblunit">
+        <MappingFragment StoreEntitySet="tblunit">
+          <ScalarProperty Name="U_ID" ColumnName="U_ID" />
+          <ScalarProperty Name="Unit" ColumnName="Unit" />
+          <ScalarProperty Name="UnitDesc" ColumnName="UnitDesc" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblusers">
+      <EntityTypeMapping TypeName="mazakdaqModel.tbluser">
+        <MappingFragment StoreEntitySet="tblusers">
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="PrimaryRole" ColumnName="PrimaryRole" />
+          <ScalarProperty Name="SecondaryRole" ColumnName="SecondaryRole" />
+          <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="user_master">
+      <EntityTypeMapping TypeName="mazakdaqModel.user_master">
+        <MappingFragment StoreEntitySet="user_master">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="InsertedOn" ColumnName="InsertedOn" />
+          <ScalarProperty Name="InsertedBy" ColumnName="InsertedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="EmailID" ColumnName="EmailID" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="parametermaster_view">
+      <EntityTypeMapping TypeName="mazakdaqModel.parametermaster_view">
+        <MappingFragment StoreEntitySet="parametermaster_view">
+          <ScalarProperty Name="ParameterID" ColumnName="ParameterID" />
+          <ScalarProperty Name="SetupTime" ColumnName="SetupTime" />
+          <ScalarProperty Name="OperatingTime" ColumnName="OperatingTime" />
+          <ScalarProperty Name="PowerOnTime" ColumnName="PowerOnTime" />
+          <ScalarProperty Name="PartsCount" ColumnName="PartsCount" />
+          <ScalarProperty Name="InsertedOn" ColumnName="InsertedOn" />
+          <ScalarProperty Name="MachineID" ColumnName="MachineID" />
+          <ScalarProperty Name="Shift" ColumnName="Shift" />
+          <ScalarProperty Name="CorrectedDate" ColumnName="CorrectedDate" />
+          <ScalarProperty Name="InsertedOnTime" ColumnName="InsertedOnTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="query1">
+      <EntityTypeMapping TypeName="mazakdaqModel.query1">
+        <MappingFragment StoreEntitySet="query1">
+          <ScalarProperty Name="CuttingTimeCol" ColumnName="CuttingTimeCol" />
+          <ScalarProperty Name="OperatingTimeCol" ColumnName="OperatingTimeCol" />
+          <ScalarProperty Name="PowerOnTimeCol" ColumnName="PowerOnTimeCol" />
+          <ScalarProperty Name="ParameterID" ColumnName="ParameterID" />
+          <ScalarProperty Name="CorrectedDate" ColumnName="CorrectedDate" />
+          <ScalarProperty Name="Shift" ColumnName="Shift" />
+          <ScalarProperty Name="MachineID" ColumnName="MachineID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="query2">
+      <EntityTypeMapping TypeName="mazakdaqModel.query2">
+        <MappingFragment StoreEntitySet="query2">
+          <ScalarProperty Name="CuttingTimeCol" ColumnName="CuttingTimeCol" />
+          <ScalarProperty Name="OperatingTimeCol" ColumnName="OperatingTimeCol" />
+          <ScalarProperty Name="PowerOnTimeCol" ColumnName="PowerOnTimeCol" />
+          <ScalarProperty Name="ParameterID" ColumnName="ParameterID" />
+          <ScalarProperty Name="CorrectedDate" ColumnName="CorrectedDate" />
+          <ScalarProperty Name="Shift" ColumnName="Shift" />
+          <ScalarProperty Name="MachineID" ColumnName="MachineID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="view1">
+      <EntityTypeMapping TypeName="mazakdaqModel.view1">
+        <MappingFragment StoreEntitySet="view1">
+          <ScalarProperty Name="ParameterID" ColumnName="ParameterID" />
+          <ScalarProperty Name="SetupTime" ColumnName="SetupTime" />
+          <ScalarProperty Name="OperatingTime" ColumnName="OperatingTime" />
+          <ScalarProperty Name="PowerOnTime" ColumnName="PowerOnTime" />
+          <ScalarProperty Name="PartsCount" ColumnName="PartsCount" />
+          <ScalarProperty Name="InsertedOn" ColumnName="InsertedOn" />
+          <ScalarProperty Name="MachineID" ColumnName="MachineID" />
+          <ScalarProperty Name="Shift" ColumnName="Shift" />
+          <ScalarProperty Name="InsertedOnDate" ColumnName="InsertedOnDate" />
+          <ScalarProperty Name="InsertedOnTime" ColumnName="InsertedOnTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

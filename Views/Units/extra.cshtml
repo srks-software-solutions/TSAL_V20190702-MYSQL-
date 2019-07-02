@@ -1,0 +1,34 @@
+﻿@{
+    ViewBag.Title = "extra";
+}
+
+<h2>extra</h2>
+
+<style>
+body{background: gray}
+li{float:left; margin: 15px; display:block; position:relative} 
+.hover{ 
+  position:absolute; background: RGBA(255, 255, 255, 0.2); top:0; right:0; 
+  font:12px arial; text-decoration:none; color: gray; text-align:center; 
+  line-height:50px; width:150px; height:150px; display:none;
+}
+</style>
+<script>
+$("li a").hover(
+  function () {
+    $(this).append($("<div class='hover'>"+$(this).find('img').attr('alt')+"</div>"));
+    $(this).find(".hover").fadeIn();
+  }, 
+  function () {    
+    $(this).find(".hover").fadeOut(function() { $(this).remove(); })
+  }
+);
+
+</script>
+
+<ul>
+  <li><a href="#"><img src="http://placehold.it/100x100" alt="Imagem 1"></a></li>
+  <li><a href="#"><img src="http://placehold.it/100x100" alt="Imagem 2"></a></li>
+  <li><a href="#"><img src="http://placehold.it/100x100" alt="Imagem 3"></a></li>
+  <li><a href="#"><img src="http://placehold.it/100x100" alt="Imagem 4"></a></li>
+</ul>

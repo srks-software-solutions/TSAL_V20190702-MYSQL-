@@ -1,0 +1,57 @@
+﻿@model Tata.Models.recipientmailid
+@{
+    ViewBag.Title = "Edit";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)  
+    <div class="wrp clearfix">
+        <div class="fluid">
+            <div class="widget grid12">
+                <div class="widget-header">
+                    <div class="widget-title">
+                        Editing recipientmailid
+                    </div>
+                </div>
+                <!-- /widget-header -->
+
+                <div class="widget-content pad20f">
+
+                    <label for="input-1" class="stacked-label" style="resize: horizontal; width: 20%">Enter PrimaryMailID</label>
+                    @Html.TextBoxFor(model => model.MailID, new { @id = "PrimaryMailID", @class = "form-control", @name = "PrimaryMailID", style = "width:89.7%", @placeholder = "Enter Primary MailID", @required = "required" })
+                    @Html.ValidationMessageFor(model => model.MailID)
+
+
+
+                    <label for="input-2" class="stacked-label" style="resize: horizontal; width: 20%">Display Name</label>
+                    @Html.TextBoxFor(model => model.DisplayName, new { @id = "DisplayName", @class = "form-control", @name = "DisplayName", style = "width:89.7%", @placeholder = "Enter Display Name", @required = "required" })
+                    @Html.ValidationMessageFor(model => model.DisplayName)
+
+                    <label for="input-2" class="stacked-label" style="resize: horizontal; width: 20%">Auto EmailReportType</label>
+                    @Html.DropDownList("AutoEmailType", null, "--Select Report Type--", new { @id = "AutoEmailType", @class = "form-control", @name = "AutoEmailType", @required = "required", @style = "aria-expanded:false;width:89.7%" })
+                    @Html.ValidationMessageFor(model => model.AutoEmailType)
+                    <p></p>
+                    <label for="input-2" class="stacked-label" style="resize: horizontal; width: 20%">Recipient Type</label>
+                    @Html.DropDownList("RecipientType", new List<SelectListItem>() { new SelectListItem { Text = "--Select Recipient Type--", Value = "--Select Recipient Type--" }, new SelectListItem { Text = "TO", Value = "TO" }, new SelectListItem { Text = "CC", Value = "CC" }, new SelectListItem { Text = "BCC", Value = "BCC" } }, new { @id = "RecipientType", @class = "form-control", @style = "width:89.7%", @name = "RecipientType", })
+                    @Html.ValidationMessageFor(model => model.RecipientType)
+                    <p></p>
+
+                    <div style="width: 3%; display: inline-block; height: inherit"></div>
+                    @Html.ActionLink(" Back ", "Index", new { }, new { @class = "btn stacked-input fa fa-reply fa-1x", @style = "text-decoration:none;display:inline-block;color:black" })
+                    <div style="width: 20%; display: inline-block; height: inherit"></div>
+                    <input type="submit" value="Update" class="btn btn-lavender inverse" style="width: 30%; display: inline-block; height: inherit; margin-top: 2%; color: white; background-color: grey; font-size: 1.1vw" />
+
+                </div>
+                <!-- /widget-content -->
+            </div>
+            <!-- /widget -->
+        </div>
+    </div>
+  
+    @Html.HiddenFor(Model => Model.CreatedBy)
+    @Html.HiddenFor(Model => Model.CreatedOn)
+    @Html.HiddenFor(Model => Model.IsDeleted)
+    @Html.HiddenFor(Model => Model.RE_ID)    
+}

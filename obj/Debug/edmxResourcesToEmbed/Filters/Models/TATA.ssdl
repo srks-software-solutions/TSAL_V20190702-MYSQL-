@@ -1,0 +1,166 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MachineStatusModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="MachineStatusModelStoreContainer">
+    <EntitySet Name="Employee" EntityType="MachineStatusModel.Store.Employee" store:Type="Tables" store:Schema="dbo" store:Name="Employee">
+      <DefiningQuery>SELECT 
+      [Employee].[EmployeeId] AS [EmployeeId], 
+      [Employee].[EmployeeName] AS [EmployeeName]
+      FROM [dbo].[Employee] AS [Employee]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="tblDayTiming" EntityType="MachineStatusModel.Store.tblDayTiming" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="tblHMIScreen" EntityType="MachineStatusModel.Store.tblHMIScreen" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="tblPlannedBreak" EntityType="MachineStatusModel.Store.tblPlannedBreak" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="tblProductionStatus" EntityType="MachineStatusModel.Store.tblProductionStatus" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="tblShift_Breaks" EntityType="MachineStatusModel.Store.tblShift_Breaks" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="tblShift_Mstr" EntityType="MachineStatusModel.Store.tblShift_Mstr" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="tblUsers" EntityType="MachineStatusModel.Store.tblUsers" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Timesheet" EntityType="MachineStatusModel.Store.Timesheet" store:Type="Tables" store:Schema="dbo" store:Name="Timesheet">
+      <DefiningQuery>SELECT 
+      [Timesheet].[TimesheetId] AS [TimesheetId], 
+      [Timesheet].[TimesheetIn] AS [TimesheetIn], 
+      [Timesheet].[TimesheetOut] AS [TimesheetOut], 
+      [Timesheet].[EmployeeId] AS [EmployeeId], 
+      [Timesheet].[TimesheetText] AS [TimesheetText]
+      FROM [dbo].[Timesheet] AS [Timesheet]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view 'MachineStatus.dbo.Employee' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="EmployeeId" />
+      <PropertyRef Name="EmployeeName" />
+    </Key>
+    <Property Name="EmployeeId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="EmployeeName" Type="nvarchar" Nullable="false" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="tblDayTiming">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="StartTime" Type="time" Nullable="false" />
+    <Property Name="EndTime" Type="time" Nullable="false" />
+    <Property Name="IsDeleted" Type="smallint" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="ModifiedOn" Type="datetime" />
+    <Property Name="ModifiedBy" Type="int" />
+    <Property Name="LineID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblHMIScreen">
+    <Key>
+      <PropertyRef Name="HMIID" />
+    </Key>
+    <Property Name="HMIID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="OperatiorID" Type="int" />
+    <Property Name="Shift" Type="varchar" MaxLength="10" />
+    <Property Name="Date" Type="date" />
+    <Property Name="Time" Type="time" />
+    <Property Name="Project" Type="varchar" MaxLength="50" />
+    <Property Name="PartNo" Type="varchar" MaxLength="50" />
+    <Property Name="OperationNo" Type="varchar" MaxLength="50" />
+    <Property Name="Rej_Qty" Type="int" />
+    <Property Name="Prod_FAI" Type="varchar" MaxLength="50" />
+    <Property Name="Work_Order_No" Type="varchar" MaxLength="50" />
+    <Property Name="Target_Qty" Type="int" />
+    <Property Name="Delivered_Qty" Type="int" />
+    <Property Name="Status" Type="int" />
+  </EntityType>
+  <EntityType Name="tblPlannedBreak">
+    <Key>
+      <PropertyRef Name="BreakID" />
+    </Key>
+    <Property Name="BreakID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="BreakReason" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="StartTime" Type="time" Nullable="false" />
+    <Property Name="EndTime" Type="time" Nullable="false" />
+    <Property Name="BreakDuration" Type="int" Nullable="false" />
+    <Property Name="ShiftID" Type="int" Nullable="false" />
+    <Property Name="IsDeleted" Type="smallint" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="ModifiedOn" Type="datetime" />
+    <Property Name="ModifiedBy" Type="int" />
+    <Property Name="LineID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblProductionStatus">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="MachineID" Type="int" Nullable="false" />
+    <Property Name="StartTime" Type="time" Nullable="false" />
+    <Property Name="EndTime" Type="time" Nullable="false" />
+    <Property Name="Duration" Type="int" Nullable="false" />
+    <Property Name="Status" Type="varchar" MaxLength="50" />
+    <Property Name="IsDeleted" Type="smallint" Nullable="false" />
+    <Property Name="InsertedOn" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedOn" Type="datetime" />
+    <Property Name="CorrectedDate" Type="varchar" MaxLength="50" />
+    <Property Name="ColorCode" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="tblShift_Breaks">
+    <Key>
+      <PropertyRef Name="BreakID" />
+    </Key>
+    <Property Name="BreakID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="BreakReason" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="StartTime" Type="time" Nullable="false" />
+    <Property Name="EndTime" Type="time" Nullable="false" />
+    <Property Name="BreakDuration" Type="int" Nullable="false" />
+    <Property Name="ShiftID" Type="int" Nullable="false" />
+    <Property Name="IsDeleted" Type="smallint" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="ModifiedOn" Type="datetime" />
+    <Property Name="ModifiedBy" Type="int" />
+    <Property Name="LineID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblShift_Mstr">
+    <Key>
+      <PropertyRef Name="ShiftID" />
+    </Key>
+    <Property Name="ShiftID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="ShiftName" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="StartTime" Type="time" Nullable="false" />
+    <Property Name="EndTime" Type="time" Nullable="false" />
+    <Property Name="IsDeleted" Type="smallint" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="ModifiedOn" Type="datetime" />
+    <Property Name="ModifiedBy" Type="int" />
+    <Property Name="LineID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblUsers">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="Password" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="PrimaryRole" Type="int" Nullable="false" />
+    <Property Name="SecondaryRole" Type="int" />
+    <Property Name="DisplayName" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="IsDeleted" Type="int" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="ModifiedOn" Type="datetime" />
+    <Property Name="ModifiedBy" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view 'MachineStatus.dbo.Timesheet' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="Timesheet">
+    <Key>
+      <PropertyRef Name="TimesheetId" />
+      <PropertyRef Name="EmployeeId" />
+    </Key>
+    <Property Name="TimesheetId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="TimesheetIn" Type="datetime" />
+    <Property Name="TimesheetOut" Type="datetime" />
+    <Property Name="EmployeeId" Type="int" Nullable="false" />
+    <Property Name="TimesheetText" Type="nvarchar" MaxLength="2000" />
+  </EntityType>
+</Schema>

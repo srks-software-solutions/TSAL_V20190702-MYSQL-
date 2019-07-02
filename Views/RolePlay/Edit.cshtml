@@ -1,0 +1,109 @@
+﻿@model IList<Tata.Models.tblroleplaymaster>
+@{
+    ViewBag.Title = "Enter Role Play";
+    int slno = 1;
+    int Count = 0;
+}
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    <h2></h2>@* induces gap between button and container top*@
+        
+    <div class="wrp clearfix">
+        <div class="fluid">
+            <div class="widget grid12">
+                <div class="widget-header">
+                    <div class="widget-title" style="font-size: 125%">
+                        <i class="fa fa-pencil"></i>
+                        Update RolePlay
+                    </div>
+                </div>
+                <!-- /widget-header -->
+
+                <div class="widget-content pad20f">
+                    <div class="widget__content table-responsive table-hover">
+                        <table class="table">
+
+                            @for (int i = 0; i < Model.Count; i++)
+                            {
+                                Count = Model.Count;
+
+                                if (i == 0)
+                                {
+                                <tr>
+                                    <td style="text-align: center; font-size: 95%">Sl.No.</td>
+                                    <th style="text-align: center; font-size: 95%">Role</th>
+                                    <th style="text-align: center; font-size: 95%">Module</th>
+                                    <th style="text-align: center; font-size: 95%">IsAll</th>
+                                    <th style="text-align: center; font-size: 95%">IsAdd</th>
+                                    <th style="text-align: center; font-size: 95%">IsEdit</th>
+                                    <th style="text-align: center; font-size: 95%">IsRead</th>
+                                    <th style="text-align: center; font-size: 95%">IsHide</th>
+                                    <th style="text-align: center; font-size: 95%">IsRemoved</th>
+                                    <th></th>
+                                </tr>
+                            }
+                                <tr>
+
+                                    <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                        @slno
+                                    </td>
+
+                                    <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                        @Html.DisplayFor(item => item[i].tblrole.RoleType, new { @class = "form-control", @readonly = "readonly" })
+                                    </td>
+                                    <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                        @Html.DisplayFor(item => item[i].tblmodulemaster.ModuleName, new { @class = "form-control", @readonly = "readonly" })
+                                    </td>
+                                    <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 6px">
+                                        @Html.CheckBoxFor(item => item[i].IsAll, new { @checked = "checked" })
+                                    </td>
+                                    <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 6px">
+                                        @Html.CheckBoxFor(item => item[i].IsAdded, false)
+                                    </td>
+                                    <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 6px">
+                                        @Html.CheckBoxFor(item => item[i].IsEdited, false)
+                                    </td>
+                                    <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 6px">
+                                        @Html.CheckBoxFor(item => item[i].IsReadOnly, true)
+                                    </td>
+                                    <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 6px">
+                                        @Html.CheckBoxFor(item => item[i].IsHidden, false)
+                                    </td>
+                                    <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 6px">
+                                        @Html.CheckBoxFor(item => item[i].IsRemoved, false)
+                                    </td>
+                                    @Html.HiddenFor(item => item[i].RoleID, false)
+                                    @Html.HiddenFor(item => item[i].ModuleID, false)
+                                    @Html.HiddenFor(item => item[i].RolePlayID, false)
+                                    @Html.HiddenFor(item => item[i].CreatedBy, false)
+                                    @Html.HiddenFor(item => item[i].CreatedOn, false)
+                                    @Html.HiddenFor(item => item[i].IsDeleted, false)
+                                </tr>
+                                slno++;
+                            }
+                        </table>
+                    </div>
+                    @Html.ActionLink("Back", "Index", new { }, new { @class = " btn btn primary ", @style = "text-decoration:none;display:inline-block ;margin-top:1%" })
+                    @*<input type="submit" value="Update" class="btn btn-primary btn-lg"/>*@
+                    <div style="width: 35%; display: inline-block; height: inherit">
+                    </div>
+                    <input type="submit" value="Update" class="btn green inverse btn-lg  btn-success stacked-input" style="display: inline-block; margin-top: 2px; width: 20%" />
+
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@*<form action="/RolePlay/Index">
+    <button type="submit" class="btn btn-primary" id="sit">Back To List</button>
+
+</form>*@
+<style>
+    input[type=checkbox] {
+        transform: scale(0.5);
+        -webkit-transform: scale(0.5);
+    }
+</style>

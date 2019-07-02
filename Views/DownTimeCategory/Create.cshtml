@@ -1,0 +1,40 @@
+﻿@model Tata.Models.tbldowntimecategory
+
+@{
+    ViewBag.Title = "Create";
+}
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)  
+    <div class="wrp clearfix">
+        <div class="fluid">
+            <div class="widget grid12">
+                <div class="widget-header">
+                    <div class="widget-title">
+                       Create DownTime Category
+                    </div>
+                </div>
+                <!-- /widget-header -->
+
+                <div class="widget-content pad20f">
+                    <label for="input-1" class="stacked-label" style="resize: horizontal; width: 40%">DownTime Category</label>
+                    @Html.TextBoxFor(model => model.DTCategory, new { @id = "DTCategory", @class = "form-control", @name = "DownTime Category", style = "width:89.7%", @placeholder = "Enter DownTime Category", @required = "required" })
+                    @Html.ValidationMessageFor(model => model.DTCategory)
+
+                    <label for="input-2" class="stacked-label" style="resize: horizontal; width: 40%">DownTime Category Description</label>
+                    @Html.TextBoxFor(model => model.DTCategoryDesc, new { @id = "DTCategoryDesc", @class = "form-control", @name = "DownTime Category Description", style = "width:89.7%", @placeholder = "Enter DownTime Category Description", @required = "required" })
+                    @Html.ValidationMessageFor(model => model.DTCategoryDesc)
+                   
+                   <div style="width: 3%; display: inline-block; height: inherit"></div>
+                    @Html.ActionLink(" Back ", "Index", new { }, new { @class = "btn stacked-input fa fa-reply fa-1x", @style = "text-decoration:none;display:inline-block;color:black" })
+                    <div style="width: 20%; display: inline-block; height: inherit"></div>
+                    <input type="submit" value="Create" class="btn orange btn-lg" style="width: 30%; display: inline-block; height: inherit;margin-top:2%;background-color:orange;color:black;font-size:95%"/>
+
+                </div>
+                <!-- /widget-content -->
+            </div>
+            <!-- /widget -->
+        </div>
+    </div>
+}

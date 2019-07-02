@@ -1,0 +1,228 @@
+﻿@model IList<Tata.Models.tbllivedailyprodstatu>
+@{
+    ViewBag.Title = "Index";
+    int count = Model.Count();
+    Layout = "~/Views/Shared/Layout1.cshtml";
+    int jd1 = 1;
+    
+    int[,] colorval = new int[ViewBag.macCount, 5];
+    colorval = (int[,])Session["colordata"];
+
+    int[] machineids = new int[ViewBag.macCount];
+    // machineids = Session["macid"];
+
+
+    int[] machids = new int[ViewBag.macCount];
+    machids = (int[])Session["macid"];
+    int maclopper = 0;
+    foreach (var item in machids)
+    {
+        machineids[maclopper++] = Convert.ToInt32(item);
+    }
+    
+}
+<style>
+    div.parent3 {
+        border: 1px solid red;
+        width: 100%;
+        color: blue;
+    }
+
+    div.child {
+        width: 4%;
+        float: left;
+        -webkit-text-size-adjust: 100%;
+        font-size: 1.2vw;
+        color: white;
+    }
+
+    div.child1 {
+        width: 2.03%;
+        float: left;
+        -webkit-text-size-adjust: 100%;
+        font-size: 0.8vw;
+        color: white;
+    }
+
+    div.child2 {
+        width: 2.03%;
+        float: left;
+        -webkit-text-size-adjust: 100%;
+        font-size: 0.8vw;
+        color: blue;
+    }
+
+    div.childMDetails {
+        width: 20%;
+        float: left;
+        -webkit-text-size-adjust: 100%;
+        font-size: 1.2vw;
+        color: blue;
+    }
+</style>
+
+<style>
+    div.parent {
+        border: 2px solid red;
+        width: 100%;
+        color: blue;
+        border: none;
+        height: 3vh;
+    }
+
+    div.childcolor {
+        width: 5%;
+        height: 90%;
+        float: right;
+        -webkit-text-size-adjust: 100%;
+        display: inline;
+        margin-left: 1vw;
+        text-align: right;
+        border-radius: 10px;
+    }
+
+    div.childtext {
+        width: auto;
+        height: 90%;
+        float: right;
+        -webkit-text-size-adjust: 100%;
+        font-size: 1vw;
+        color: black;
+        display: inline;
+        text-align: left;
+        /*margin-right: 1vw;
+        border-radius: 10px;*/
+        font-family: Calibri;
+        font-style: oblique;
+        font-weight: bold;
+    }
+</style>
+
+<script>setTimeout(function () { window.location.reload(); }, 60000 * 1)</script>@* Every One menuts it will update*@
+<!-- /parent container -->
+<div class="widget-content pad20f" style="background-color: white;padding-top:12%;height:70%;padding-left:1% "> @*;padding-top:12%*@
+
+    @for (var n = 1; n <= ViewBag.macCount; n++)
+    {
+        jd1 = 1;
+        <!-- /child container Machine Details-->
+        for (var j = 1; j < count; j++)
+        {
+            if (Model[j].MachineID == machineids[n - 1])
+            {
+                if (jd1 == 1)
+                {
+        <div class="parent3" style="padding-left: 1%; border: none; background-color: orange;">
+            <div class="childMDetails">
+                <span style="color: brown">WC Code : </span>@Model[j].tblmachinedetail.MachineInvNo
+            </div>
+
+            <div class="childMDetails">
+                <span style="color: brown">WC Description : </span>@Model[j].tblmachinedetail.MachineModel
+            </div>
+
+            <div class="childMDetails" style="padding-left: 5%; width: 30%">
+                <span style="color: brown">Shop No. : </span>@Model[j].tblmachinedetail.ShopNo
+            </div>
+        </div>
+                    jd1++;
+                }
+            }
+        }
+
+        @*to display the TimeLine*@
+        <hr />@*
+        var a = 10;
+        <span style="background-color: green; color: green; float: left; height: initial; width:@a%; padding-bottom: 10px">.</span>*@    
+        @*Endof to display the TimeLine*@
+
+        <div style="padding-left: 1%">
+            @for (var j = 1; j < count; j++)
+            {
+                if (Model[j].MachineID == machineids[n - 1])
+                {
+
+                    if (Model[j].ColorCode == "green")
+                    {
+                <span style="background-color: green; color: green; float: left; height: initial; width:0.069%; padding-bottom: 10px">.</span>
+                    }
+                    else if (Model[j].ColorCode == "yellow")
+                    {
+                <span style="background-color: yellow; color: yellow; float: left; height: initial; width: 0.069%; padding-bottom: 10px">.</span>
+                    }
+                    else if (Model[j].ColorCode == "red")
+                    {
+                <span style="background-color: red; color: red; float: left; height: initial; width: 0.069%; padding-bottom: 10px">.</span>
+                    }
+                    else if (Model[j].ColorCode == "blue")
+                    {
+                <span style="background-color: blue; color: blue; float: left; height: initial; width: 0.069%; padding-bottom: 10px">.</span>
+                    }
+                    else if (Model[j].ColorCode == "brown")
+                    {
+                <span style="background-color: brown; color: brown; float: left; height: initial; width: 0.069%; padding-bottom: 10px">.</span>
+                    }
+                    else
+                    {
+                <span style="background-color: black; color: black; float: left; height: initial; width: 0.069%; padding-bottom: 10px">.</span>
+                    }
+                }
+            }
+        </div>
+        <hr style="border: double; color: black" />
+            //color with count
+        <div class="parent">
+           @* <div class="childtext">
+                @colorval[n - 1, 5]
+            </div>
+            <div class="childtext" style="margin-left: .1vw;">
+                Maintenance :
+            </div>
+            <div class="childcolor" style="background-color: brown; color: white">
+            </div>*@
+            <div class="childtext">
+                @colorval[n - 1, 4]
+            </div>
+            <div class="childtext" style="margin-left: .1vw;">
+                Breakdown :
+            </div>
+            <div class="childcolor" style="background-color: red; color: white">
+            </div>
+            <div class="childtext">
+                @colorval[n - 1, 3]
+            </div>
+            <div class="childtext" style="margin-left: .1vw;">
+                Loss :
+            </div>
+            <div class="childcolor" style="background-color: yellow; color: white">
+            </div>
+            <div class="childtext">
+                @colorval[n - 1, 2]
+            </div>
+            <div class="childtext" style="margin-left: .1vw;">
+                Operating :
+            </div>
+            <div class="childcolor" style="background-color: green; color: white">
+            </div>
+            <div class="childtext">
+                @colorval[n - 1, 1]
+            </div>
+            <div class="childtext" style="margin-left: .1vw;">
+                PowerOff :
+            </div>
+            <div class="childcolor" style="background-color: blue; color: white">
+            </div>
+        </div>
+       
+         <br />
+    }
+    <hr />
+</div>
+
+<!-- /widget -->
+
+<style>
+    table {
+        border-spacing: 0;
+    }
+</style>

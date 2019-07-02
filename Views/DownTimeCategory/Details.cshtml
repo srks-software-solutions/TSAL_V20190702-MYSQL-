@@ -1,0 +1,71 @@
+﻿@model Tata.Models.tbldowntimecategory
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>tbldowntimecategory</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DTC_ID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DTC_ID)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DTCategory)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DTCategory)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DTCategoryDesc)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DTCategoryDesc)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.IsDeleted)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.IsDeleted)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.CreatedOn)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CreatedOn)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.CreatedBy)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CreatedBy)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ModifiedOn)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ModifiedOn)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ModifiedBy)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ModifiedBy)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

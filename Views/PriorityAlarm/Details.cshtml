@@ -1,0 +1,92 @@
+﻿@model Tata.Models.tblpriorityalarm
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>tblpriorityalarm</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.AlarmID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.AlarmID)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.AlarmNumber)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.AlarmNumber)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.AlarmDesc)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.AlarmDesc)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.AxisNo)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.AxisNo)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.AlarmGroup)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.AlarmGroup)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PriorityNumber)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PriorityNumber)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.IsDeleted)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.IsDeleted)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.CreatedOn)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CreatedOn)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.CreatedBy)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CreatedBy)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ModifiedOn)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ModifiedOn)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ModifiedBy)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ModifiedBy)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

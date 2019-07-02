@@ -1,0 +1,134 @@
+﻿@model IEnumerable<Tata.Models.tblshop>
+@{
+    ViewBag.Title = "Index";
+    var slno = 1;
+}
+
+<script src="~/js/jquery-2.1.4.min.js"></script>
+
+        <h2></h2>@* induces gap between button and container top*@
+            <div style="width: 2%; display: inline-block; height: inherit"></div>
+     @if (ViewBag.roleid == 1 || ViewBag.roleid == 2)
+     {
+            @Html.ActionLink("Create Shop Details", "Create", new { }, new { @class = "btn orange btn-lg ", @style = "color:black;width:30%;height:70%;backgroundcolor:red;font-size:90%" })
+     }
+<div class="wrp clearfix">
+    <div class="fluid">
+        <div class="widget grid12">
+            <div class="widget-header">
+                <div class="widget-title" style="font-size:125%">
+                    Shop Details
+                </div>
+            </div>
+            <!-- /widget-header -->
+
+            <div class="widget-content pad20f">
+                <div class="widget__content table-responsive table-hover">
+                    <div id="ErrorBlock">
+                        @if (Session["Error"] != null)
+                        {
+                            <pre>
+<span style="font-family:Calibri">@Session["Error"]</span>
+                    </pre>
+                        }
+                        @{
+                            Session["Error"] = null;
+                        }
+                    </div>
+                <table class="table">
+                    <thead>
+                        <tr class="text-centre" style="background-color:orange">
+                            <th style="text-align:center;font-size:95%">Sl.No.</th>
+                            <th style="text-align:center;font-size:95%"">Plant Name</th>
+                            <th style="text-align:center;font-size:95%"">Shop Name</th>
+                            <th style="text-align:center;font-size:95%"">Shop Description</th>
+                            
+                                  @if (ViewBag.roleid == 1 || ViewBag.roleid == 2)
+                                  {
+                            <th style="text-align:center;font-size:95%"">Edit</th>
+                            <th style="text-align:center;font-size:95%"">Delete</th>
+                                  }
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="spacer"></tr>
+                        <tr class="spacer"></tr>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                    @slno
+                                </td>
+                                <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                    @Html.DisplayFor(modelItem => item.tblplant.PlantName)
+                                </td>
+                                <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                    @Html.DisplayFor(modelItem => item.ShopName)
+                                </td>
+                                <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                    @Html.DisplayFor(modelItem => item.ShopDesc)
+                                </td>
+                                
+
+                                   @if (ViewBag.roleid == 1 || ViewBag.roleid == 2)
+                                   {
+                                <td style="width: auto; text-align: center; font-family: Helvetica" data-toggle="tooltip" title="Edit">
+                                    @Html.ActionLink(" ", "Edit", new { id = item.ShopID }, new { @class = " blue  btn-lg fa fa-edit", @style = "color:white;text-decoration:none" })
+                                </td>
+                                <td style="width: auto; text-align: center; font-family: Helvetica" data-toggle="tooltip" title="Delete">
+                                      @{
+                                       var id = item.ShopID;
+                                    @Html.ActionLink(" ", "Delete", new { id = item.ShopID }, new { @id = id, @class = " red btn-lg fa fa-trash DeleteModel", @style = "color:white;text-decoration:none" })
+                                      }
+                                </td>
+                                   }
+                            </tr>
+                                   slno = slno + 1;
+                        }
+                        <tr class="spacer"></tr>
+                    </tbody>
+                </table>
+            </div>
+              
+
+            </div>
+            <!-- /widget-content -->
+
+        </div>
+        <!-- /widget -->
+    </div>
+     <div id="dialog-confirm" title=" Delete Confirmation ?" style="height: 5%;">
+        <p>
+        </p>
+    </div>
+</div>
+
+<script src="~/js/jquery-2.1.4.min.js"></script>
+<script>
+    setTimeout(function () {
+        $('#ErrorBlock').fadeOut('slow');
+    }, 30000); // <-- time in milliseconds
+</script>
+
+
+
+<script>
+    //This model window is from https://jqueryui.com/dialog/#modal-confirmation 
+    $(".DeleteModel").on("click", (function (e) {
+        var MyHref = $(this).prop('href');
+        e.preventDefault();
+        $("#dialog-confirm").dialog({
+            resizable: true,
+            height: 50,
+            modal: true,
+            buttons: {
+                "Delete Shop": function () {
+                    window.location.href = MyHref;
+                },
+                Cancel: function () {
+                    $(this).dialog("close");
+                }
+            }
+        });
+    }));
+</script>

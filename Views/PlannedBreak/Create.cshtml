@@ -1,0 +1,72 @@
+﻿@model Tata.Models.tblplannedbreak
+
+@{
+    ViewBag.Title = "Create";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)  
+    <div class="wrp clearfix">
+        <div class="fluid">
+            <div class="widget grid12">
+                <div class="widget-header">
+                    <div class="widget-title">
+                        Create New Planned Break
+                    </div>
+                </div>
+                <!-- /widget-header -->
+
+                <div class="widget-content pad20f">
+                    <label for="input-1" class="stacked-label" style="resize: horizontal; width: 20%">Break Reason</label>
+                    @Html.TextBoxFor(model => model.BreakReason, new { @id = "BreakReason", @class = "form-control", @name = "BreakReason", style = "width:89.7%", @placeholder = "Enter Break Reason", @required = "required" })
+                    @Html.ValidationMessageFor(model => model.BreakReason)
+
+                    <label for="input-1" class="stacked-label" style="resize: horizontal; width: 20%">Start Time</label>
+                    @Html.TextBoxFor(model => model.StartTime, new { @id = "from", @class = "form-control", @name = "StartTime", style = "width:89.7%", @placeholder = "Enter Start Time", @required = "required"})
+                    @Html.ValidationMessageFor(model => model.StartTime)
+
+                    <label for="input-1" class="stacked-label" style="resize: horizontal; width: 20%">End Time</label>
+                    @Html.TextBoxFor(model => model.EndTime, new { @id = "to", @class = "form-control", @name = "EndTime", style = "width:89.7%", @placeholder = "Enter End Time", @required = "required" })
+                    @Html.ValidationMessageFor(model => model.EndTime)
+
+                    <label for="input-1" class="stacked-label" style="resize: horizontal; width: 20%">Break Duration</label>
+                    @Html.LabelFor(model => model.BreakDuration, new { @id = "BreakDuration", @class = "form-control", @name = "BreakDuration", style = "width:89.7%", @placeholder = "Enter Break Duration", @required = "required" })
+                    @Html.ValidationMessageFor(model => model.BreakDuration)
+
+                    <div style="width: 3%; display: inline-block; height: inherit"></div>
+                    @Html.ActionLink(" Back ", "Index", new { }, new { @class = "btn stacked-input fa fa-reply fa-1x", @style = "text-decoration:none;display:inline-block;color:black" })
+                    <div style="width: 20%; display: inline-block; height: inherit"></div>
+                    <input type="submit" value="Create" class="btn orange btn-lg" style="width: 30%; display: inline-block; height: inherit;margin-top:2%;background-color:orange;color:black;font-size:95%"/>
+
+                </div>
+                <!-- /widget-content -->
+            </div>
+            <!-- /widget -->
+        </div>
+    </div>
+  
+    @Html.HiddenFor(Model => Model.CreatedBy)
+    @Html.HiddenFor(Model => Model.CreatedOn)
+    @Html.HiddenFor(Model => Model.IsDeleted)
+    @Html.HiddenFor(Model => Model.BreakID)   
+} 
+
+<link rel="stylesheet" href="~/css/jquery-ui.css" />
+<link href="~/Content/jquery.datetimepicker.css" rel="stylesheet" />
+<script src="~/js/jquery-2.1.4.min.js"></script>
+<script type="text/javascript" src="~/js/jquery-ui.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.8.1/jquery.timepicker.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#to').datepicker({
+                showOptions: { speed: 'fast' },
+                changeMonth: false,
+                changeYear: false,
+                dateFormat: 'dd/mm/yy',
+                gotoCurrent: true
+            });
+            $('#from').timepicker();
+        });
+    </script>

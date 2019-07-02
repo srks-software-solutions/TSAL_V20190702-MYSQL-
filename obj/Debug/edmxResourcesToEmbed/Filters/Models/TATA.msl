@@ -1,0 +1,145 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="MachineStatusModelStoreContainer" CdmEntityContainer="MachineStatusEntities">
+    <EntitySetMapping Name="Employees">
+      <EntityTypeMapping TypeName="MachineStatusModel.Employee">
+        <MappingFragment StoreEntitySet="Employee">
+          <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+          <ScalarProperty Name="EmployeeName" ColumnName="EmployeeName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblDayTimings">
+      <EntityTypeMapping TypeName="MachineStatusModel.tblDayTiming">
+        <MappingFragment StoreEntitySet="tblDayTiming">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+          <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="LineID" ColumnName="LineID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblHMIScreens">
+      <EntityTypeMapping TypeName="MachineStatusModel.tblHMIScreen">
+        <MappingFragment StoreEntitySet="tblHMIScreen">
+          <ScalarProperty Name="HMIID" ColumnName="HMIID" />
+          <ScalarProperty Name="OperatiorID" ColumnName="OperatiorID" />
+          <ScalarProperty Name="Shift" ColumnName="Shift" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Time" ColumnName="Time" />
+          <ScalarProperty Name="Project" ColumnName="Project" />
+          <ScalarProperty Name="PartNo" ColumnName="PartNo" />
+          <ScalarProperty Name="OperationNo" ColumnName="OperationNo" />
+          <ScalarProperty Name="Rej_Qty" ColumnName="Rej_Qty" />
+          <ScalarProperty Name="Prod_FAI" ColumnName="Prod_FAI" />
+          <ScalarProperty Name="Work_Order_No" ColumnName="Work_Order_No" />
+          <ScalarProperty Name="Target_Qty" ColumnName="Target_Qty" />
+          <ScalarProperty Name="Delivered_Qty" ColumnName="Delivered_Qty" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblProductionStatus">
+      <EntityTypeMapping TypeName="MachineStatusModel.tblProductionStatu">
+        <MappingFragment StoreEntitySet="tblProductionStatus">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="MachineID" ColumnName="MachineID" />
+          <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+          <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+          <ScalarProperty Name="Duration" ColumnName="Duration" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="InsertedOn" ColumnName="InsertedOn" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="CorrectedDate" ColumnName="CorrectedDate" />
+          <ScalarProperty Name="ColorCode" ColumnName="ColorCode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblShift_Breaks">
+      <EntityTypeMapping TypeName="MachineStatusModel.tblShift_Breaks">
+        <MappingFragment StoreEntitySet="tblShift_Breaks">
+          <ScalarProperty Name="BreakID" ColumnName="BreakID" />
+          <ScalarProperty Name="BreakReason" ColumnName="BreakReason" />
+          <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+          <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+          <ScalarProperty Name="BreakDuration" ColumnName="BreakDuration" />
+          <ScalarProperty Name="ShiftID" ColumnName="ShiftID" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="LineID" ColumnName="LineID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblShift_Mstr">
+      <EntityTypeMapping TypeName="MachineStatusModel.tblShift_Mstr">
+        <MappingFragment StoreEntitySet="tblShift_Mstr">
+          <ScalarProperty Name="ShiftID" ColumnName="ShiftID" />
+          <ScalarProperty Name="ShiftName" ColumnName="ShiftName" />
+          <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+          <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="LineID" ColumnName="LineID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblUsers">
+      <EntityTypeMapping TypeName="MachineStatusModel.tblUser">
+        <MappingFragment StoreEntitySet="tblUsers">
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="PrimaryRole" ColumnName="PrimaryRole" />
+          <ScalarProperty Name="SecondaryRole" ColumnName="SecondaryRole" />
+          <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Timesheets">
+      <EntityTypeMapping TypeName="MachineStatusModel.Timesheet">
+        <MappingFragment StoreEntitySet="Timesheet">
+          <ScalarProperty Name="TimesheetId" ColumnName="TimesheetId" />
+          <ScalarProperty Name="TimesheetIn" ColumnName="TimesheetIn" />
+          <ScalarProperty Name="TimesheetOut" ColumnName="TimesheetOut" />
+          <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+          <ScalarProperty Name="TimesheetText" ColumnName="TimesheetText" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblPlannedBreaks">
+      <EntityTypeMapping TypeName="MachineStatusModel.tblPlannedBreak">
+        <MappingFragment StoreEntitySet="tblPlannedBreak">
+          <ScalarProperty Name="LineID" ColumnName="LineID" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="ShiftID" ColumnName="ShiftID" />
+          <ScalarProperty Name="BreakDuration" ColumnName="BreakDuration" />
+          <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+          <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+          <ScalarProperty Name="BreakReason" ColumnName="BreakReason" />
+          <ScalarProperty Name="BreakID" ColumnName="BreakID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

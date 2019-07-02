@@ -1,0 +1,203 @@
+﻿@model IEnumerable<Tata.Models.tblshiftplanner>
+
+@{
+    ViewBag.Title = "Index";
+    var slno = 1;
+}
+
+
+<h2></h2>@* induces gap between button and container top*@
+<div style="width: 2%; display: inline-block; height: inherit"></div>
+@if (ViewBag.roleid == 1 || ViewBag.roleid == 2)
+{
+    @Html.ActionLink("Create ShiftPlanner Details", "Create", new { }, new { @class = "btn orange btn-lg ", @style = "color:black;width:30%;height:70%;backgroundcolor:red;font-size:90%" })
+}
+<div class="wrp clearfix">
+    <div class="fluid">
+        <div class="widget grid12">
+            <div class="widget-header">
+                <div class="widget-title" style="font-size: 125%">
+                    ShiftPlanner Details
+                </div>
+            </div>
+            <!-- /widget-header -->
+
+            <div class="widget-content pad20f">
+                <div class="widget__content table-responsive table-hover">
+                    <div id="ErrorBlock">
+                        @if (TempData["Error"] != null)
+                        {
+                            <pre>
+<span style="font-family:Calibri">@TempData["Error"]</span>
+                    </pre>
+                        }
+                    </div>
+                    <table class="table">
+                        <thead>
+                            <tr class="text-centre" style="background-color: orange">
+                                <th style="text-align: center; font-size: 95%">Sl. No.</th>
+                                <th style="text-align: center; font-size: 95%">ShiftPlanner Name</th>
+                                <th style="text-align: center; font-size: 95%">ShiftPlanner Description</th>
+                                <th style="text-align: center; font-size: 95%">ShiftMethod Name</th>
+                                <th style="text-align: center; font-size: 95%">Plant Name</th>
+                                <th style="text-align: center; font-size: 95%">Shop Name</th>
+                                <th style="text-align: center; font-size: 95%">Cell Name</th>
+                                <th style="text-align: center; font-size: 95%">Machine Name</th>
+                                <th style="text-align: center; font-size: 95%">Start Date</th>
+                                <th style="text-align: center; font-size: 95%">End Date</th>
+
+                                @if (ViewBag.roleid == 1 || ViewBag.roleid == 2)
+                                {
+                                    <th style="text-align: center; font-size: 95%">Edit</th>
+                                        @*<th style="text-align: center; font-size: 95%">Stop Plan</th>*@
+                                    <th style="text-align: center; font-size: 95%">Delete</th>
+                                }
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="spacer"></tr>
+                            <tr class="spacer"></tr>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                        @slno
+                                    </td>
+                                    <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                        @Html.DisplayFor(modelItem => item.ShiftPlannerName)
+                                    </td>
+                                    <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                        @Html.DisplayFor(modelItem => item.ShiftPlannerDesc)
+                                    </td>
+                                    @*To get shiftmethodname*@
+                                    @{
+                                var shiftmethodid = item.ShiftMethodID;
+                                using (Tata.Models.mazakdaqEntities db = new Tata.Models.mazakdaqEntities())
+                                {
+                                    var shiftmethoddata = db.tblshiftmethods.Where(m => m.IsDeleted == 0 && m.ShiftMethodID == shiftmethodid).FirstOrDefault();
+                                    if(shiftmethoddata != null){
+                                    var shiftmethodname = shiftmethoddata.ShiftMethodName.ToString();
+                                        
+                                        <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                            @shiftmethodname
+                                        </td>
+                                    }else
+                                    {
+                                        <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">-
+                                        </td>
+                                    }
+                                }
+                                    }
+                                    <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                        @Html.DisplayFor(modelItem => item.tblplant.PlantName)
+                                    </td>
+                                    <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                        @Html.DisplayFor(modelItem => item.tblshop.ShopName)
+                                    </td>
+                                    <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                        @Html.DisplayFor(modelItem => item.tblcell.CellName)
+                                    </td>
+                                    <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                        @Html.DisplayFor(modelItem => item.tblmachinedetail.MachineDispName)
+                                    </td>
+                                    <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                        @item.StartDate.ToShortDateString()
+                                    </td>
+                                    <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                        @item.EndDate.ToShortDateString()
+                                    </td>
+
+                                    @if (ViewBag.roleid == 1 || ViewBag.roleid == 2)
+                                    {
+                                        <td style="width: auto; text-align: center; font-family: Helvetica" data-toggle="tooltip" title="Edit">
+                                            @Html.ActionLink(" ", "Edit", new { id = item.ShiftPlannerID }, new { @class = " blue  btn-lg fa fa-edit shiftPlannerToEdit", @style = "color:white;text-decoration:none;" })
+                                            @* <div style="width: 5vw" id="reworkdiv">
+                                                <button id="Edit" class=" blue  btn-lg fa fa-edit" style="font-size: 1vw;"></button>
+                                            </div>*@
+                                            @Html.HiddenFor(modelItem => item.ShiftPlannerID, new { @id = "ShiftPlannerid" })
+                                        </td>
+                                            @*<td style="width: auto; text-align: center; font-family: Helvetica" data-toggle="tooltip" title="StopPlan">
+                                            @Html.ActionLink(" ", "Create", new { id = item.ShiftPlannerID }, new { @class = " red btn-lg fa fa-cog", @style = "color:white;text-decoration:none" })
+                                        </td>*@
+                                        <td style="width: auto; text-align: center; font-family: Helvetica" data-toggle="tooltip" title="Delete">
+                                          @{var id = item.ShiftPlannerID;
+                                              @Html.ActionLink(" ", "Delete", new { id = item.ShiftPlannerID }, new {@id = id, @class = "DeleteModel red btn-lg fa fa-trash", @style = "color:white;text-decoration:none" })
+                                          }</td>
+                                    }
+                                </tr>
+                                    slno = slno + 1;
+                            }
+                            <tr class="spacer"></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+            </div>
+            <!-- /widget-content -->
+
+        </div>
+        <!-- /widget -->
+    </div>
+     <div id="dialog-confirm" title=" Delete Confirmation ?" style="height: 5%;">
+        <p> 
+        </p>
+    </div>
+</div>
+
+<script src="~/js/jquery-2.1.4.min.js"></script>
+<script>
+    setTimeout(function () {
+        $('#ErrorBlock').fadeOut('slow');
+    }, 30000); // <-- time in milliseconds
+</script>
+
+
+<script>
+    @*
+    $("#reworkdiv").click(function (e) {
+        e.preventDefault;
+        alert("blah")
+        //var j = $(this).siblings(".jack");
+        //alert("j" + j);
+        //var k = $(this).children("#ShiftPlannerid").val();
+        //alert("k" + k);
+        debugger;
+        var path = ' @Url.Action("CheckIfThisPlanIsInAction", "ShiftPlanner")';
+            $.getJSON(path, { id: j }, function (data) {
+                var status = parseInt(data);
+                alert(status)
+                if (status == 0) {
+                    var $lat = $(".shiftPlannerToEdit").val();
+                    var shiftchangeurl = $(".shiftPlannerToEdit").attr("href") + "?id=" + $lat;
+                    window.location = shiftchangeurl;
+                }
+                else {
+                    return false;
+                }
+            });
+        });*@
+</script>
+
+
+<script>
+    //This model window is from https://jqueryui.com/dialog/#modal-confirmation 
+    $(".DeleteModel").on("click", (function (e) {
+        var MyHref = $(this).prop('href');
+        e.preventDefault();
+        $("#dialog-confirm").dialog({
+            resizable: true,
+            height: 50,
+            width: 400,
+            modal: true,
+            buttons: {
+                "Delete ShiftPlanner": function () {
+                    window.location.href = MyHref;
+                },
+                Cancel: function () {
+                    $(this).dialog("close");
+                }
+            }
+        });
+    }));
+</script>

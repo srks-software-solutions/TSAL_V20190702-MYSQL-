@@ -1,0 +1,288 @@
+﻿@model IList<Tata.Models.tblmodulehelper>
+@{
+    ViewBag.Title = "UnitWorks - Enter Role Play";
+    int slno = 1;
+    int Count = 0;
+}
+
+@using (Html.BeginForm())
+    {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+        
+    <h2></h2>@* induces gap between button and container top*@
+            
+<div class="wrp clearfix">
+    <div class="fluid">
+        <div class="widget grid12">
+            <div class="widget-header">
+                <div class="widget-title" style="font-size: 125%">
+                    <i class="fa fa-pencil"></i>
+                    New RolePlay
+                </div>
+            </div>
+            <!-- /widget-header -->
+
+
+            <div class="widget-content pad20f">
+                <div class="widget__content table-responsive table-hover">
+                    <table class="table">
+
+                        @for (int i = 0; i < Model.Count; i++)
+                         {
+                            Count = Model.Count;
+
+                             if (i == 0)
+                             {
+                            <tr>
+                                <td style="font-size: 150%" colspan="2">Select Role</td>
+                                <td colspan="2">
+                                    @Html.DropDownList("RoleID1", (SelectList)ViewData["RoleID1"], "--Select Role--", new { @id = "RoleID1", @class = "dropdown form-control red dropdown-toggle", @name = "RoleID1", @required = "required", @style = "data-toggle:dropdown; aria-expanded:false" })
+                                    @Html.ValidationMessageFor(item => item[i].RoleID)
+                                    @Html.TextBoxFor(item => item[i].RoleID, new { @id = "RoleID1", @style = "display:none", @name = "RoleID1" })
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: center; font-size: 95%">Sl.No.</td>
+                                <th style="text-align: center; font-size: 95%">Module</th>
+                                <th style="text-align: center; font-size: 95%">IsAll</th>
+                                <th style="text-align: center; font-size: 95%">IsAdd</th>
+                                <th style="text-align: center; font-size: 95%">IsEdit</th>
+                                <th style="text-align: center; font-size: 95%">IsRead</th>
+                                <th style="text-align: center; font-size: 95%">IsHide</th>
+                                <th style="text-align: center; font-size: 95%">IsRemoved</th>
+                            </tr>
+                             }
+                            <tr id="input">
+                                <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 16px">
+                                    @slno
+                                </td>
+                                <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 16px">
+                                    @Html.DisplayFor(item => item[i].ModuleID, new { @class = "form-control", @readonly = "readonly" })
+                                </td>
+                                <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 16px">
+                                    @Html.CheckBoxFor(item => item[i].IsAll, new { @checked = "checked", @id = "Test" + slno, @name = "Test" + slno, @class = "class-on-my-checkboxes checkAll" })
+                                </td>
+                                <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 16px">
+                                    @Html.CheckBoxFor(item => item[i].IsAdded, new { @checked = "checked", @class = "checkbox", @id = "Test" + slno, @name = "Test" + slno })
+                                </td>
+                                <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 16px">
+                                    @Html.CheckBoxFor(item => item[i].IsEdited, new { @checked = "checked", @class = "checkbox", @id = "Test" + slno, @name = "Test" + slno })
+                                </td>
+                                <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 16px">
+                                    @Html.CheckBoxFor(item => item[i].IsReadonly, new { @checked = "checked", @class = "checkbox", @id = "Test" + slno, @name = "Test" + slno })
+                                </td>
+                                <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 16px">
+                                    @Html.CheckBoxFor(item => item[i].IsHidden, new { @checked = "checked", @class = "checkbox", @id = "Test" + slno, @name = "Test" + slno })
+                                </td>
+                                <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 16px">
+                                    @Html.CheckBoxFor(item => item[i].IsRemoved, new { @checked = "checked", @class = "checkbox", @id = "Test" + slno, @name = "Test" + slno })
+                                </td>
+                            </tr>
+                            @Html.HiddenFor(item => item[i].ModuleID);
+                           slno = slno + 1;
+                        }
+                    </table>
+
+                    @Html.ActionLink("Back", "Index", new { }, new { @class = " btn blue btn primary", @style = "text-decoration:none;display:inline-block ;margin-top:1%;margin-left:3%" })
+                    <div style="width: 35%; display: inline-block; height: inherit"> </div>
+                    <input type="submit" value="Update" class="btn btn-primary" style="display: inline-block; margin-top: 2px; width: 20%" />
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>                    
+}
+            <style>
+                input[type=checkbox] {
+                    transform: scale(2);
+                    -webkit-transform: scale(2);
+                }
+            </style>
+            <script src="~/js/jquery-2.1.4.min.js"></script>
+
+            <script>
+                //Check all checkboxes when IsAll is checked.
+                $(".checkAll").on("change", function (e) {
+                    $(this).closest('tr').find(".checkbox").prop('checked', this.checked); 
+                });
+            </script>
+            <script>
+                //Based on dropdown show only modules that are new for selected user.
+                $("#RoleID1").on("change", function (e) {
+                    var SelectedUser = $(this).val();
+                    //alert(SelectedUser);
+                });
+              
+
+            </script>
+
+
+           <script>
+              @*   //function SetAllCheckBoxes(obj) {
+                //    var c = new Array();
+                //    c = document.getElementsByTagName('input');
+                //    for (var i = 0; i < c.length; i++) {
+                //        if (c[i].type == 'checkbox') {
+                //            c[i].checked = obj.checked;
+                //        }
+                //    }
+                //}
+                function SetAllCheckBoxes1(obj) {
+                    var c = new Array();
+                    c = document.getElementsByTagName('input');
+                    for (var i = 0; i < c.length; i++) {
+                        if (c[i].id == 'Test1') {
+                            c[i].checked = obj.checked;
+                        }
+                        else {
+                            c[i].unchecked = obj.unchecked;
+                        }
+                    }
+                }
+                function SetAllCheckBoxes2(obj) {
+                    var c = new Array();
+                    c = document.getElementsByTagName('input');
+                    for (var i = 0; i < c.length; i++) {
+                        if (c[i].id == 'Test2') {
+                            c[i].checked = obj.checked;
+                        }
+                        else {
+                            c[i].unchecked = obj.unchecked;
+                        }
+                    }
+                }
+                function SetAllCheckBoxes3(obj) {
+                    var c = new Array();
+                    c = document.getElementsByTagName('input');
+                    for (var i = 0; i < c.length; i++) {
+                        if (c[i].id == 'Test3') {
+                            c[i].checked = obj.checked;
+                        }
+                        else {
+                            c[i].unchecked = obj.unchecked;
+                        }
+                    }
+                }
+                function SetAllCheckBoxes4(obj) {
+                    var c = new Array();
+                    c = document.getElementsByTagName('input');
+                    for (var i = 0; i < c.length; i++) {
+                        if (c[i].id == 'Test4') {
+                            c[i].checked = obj.checked;
+                        }
+                        else {
+                            c[i].unchecked = obj.unchecked;
+                        }
+                    }
+                }
+                function SetAllCheckBoxes5(obj) {
+                    var c = new Array();
+                    c = document.getElementsByTagName('input');
+                    for (var i = 0; i < c.length; i++) {
+                        if (c[i].id == 'Test5') {
+                            c[i].checked = obj.checked;
+                        }
+                        else {
+                            c[i].unchecked = obj.unchecked;
+                        }
+                    }
+                }
+                function SetAllCheckBoxes6(obj) {
+                    var c = new Array();
+                    c = document.getElementsByTagName('input');
+                    for (var i = 0; i < c.length; i++) {
+                        if (c[i].id == 'Test6') {
+                            c[i].checked = obj.checked;
+                        }
+                        else {
+                            c[i].unchecked = obj.unchecked;
+                        }
+                    }
+                }
+                function SetAllCheckBoxes7(obj) {
+                    var c = new Array();
+                    c = document.getElementsByTagName('input');
+                    for (var i = 0; i < c.length; i++) {
+                        if (c[i].id == 'Test7') {
+                            c[i].checked = obj.checked;
+                        }
+                        else {
+                            c[i].unchecked = obj.unchecked;
+                        }
+                    }
+                }
+                function SetAllCheckBoxes8(obj) {
+                    var c = new Array();
+                    c = document.getElementsByTagName('input');
+                    for (var i = 0; i < c.length; i++) {
+                        if (c[i].id == 'Test8') {
+                            c[i].checked = obj.checked;
+                        }
+                        else {
+                            c[i].unchecked = obj.unchecked;
+                        }
+                    }
+                }
+                function SetAllCheckBoxes9(obj) {
+                    var c = new Array();
+                    c = document.getElementsByTagName('input');
+                    for (var i = 0; i < c.length; i++) {
+                        if (c[i].id == 'Test9') {
+                            c[i].checked = obj.checked;
+                        }
+                        else {
+                            c[i].unchecked = obj.unchecked;
+                        }
+                    }
+                }
+                function SetAllCheckBoxes10(obj) {
+                    var c = new Array();
+                    c = document.getElementsByTagName('input');
+                    for (var i = 0; i < c.length; i++) {
+                        if (c[i].id == 'Test10') {
+                            c[i].checked = obj.checked;
+                        }
+                        else {
+                            c[i].unchecked = obj.unchecked;
+                        }
+                    }
+                }
+                function SetAllCheckBoxes11(obj) {
+                    var c = new Array();
+                    c = document.getElementsByTagName('input');
+                    for (var i = 0; i < c.length; i++) {
+                        if (c[i].id == 'Test11') {
+                            c[i].checked = obj.checked;
+                        }
+                        else {
+                            c[i].unchecked = obj.unchecked;
+                        }
+                    }
+                }
+                function SetAllCheckBoxes12(obj) {
+                    var c = new Array();
+                    c = document.getElementsByTagName('input');
+                    for (var i = 0; i < c.length; i++) {
+                        if (c[i].id == 'Test12') {
+                            c[i].checked = obj.checked;
+                        }
+                        else {
+                            c[i].unchecked = obj.unchecked;
+                        }
+                    }
+                }
+*@
+
+            </script>
+
+            <style>
+                input[type=checkbox] {
+                    /* All browsers except webkit*/
+                    transform: scale(2);
+                    /* Webkit browsers*/
+                    -webkit-transform: scale(0.5);
+                    color: orange;
+                }
+            </style>

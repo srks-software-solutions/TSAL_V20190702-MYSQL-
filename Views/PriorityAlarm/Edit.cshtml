@@ -1,0 +1,62 @@
+﻿@model Tata.Models.tblpriorityalarm
+@{
+    ViewBag.Title = "Create";
+}
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)  
+    <div class="wrp clearfix">
+        <div class="fluid">
+            <div class="widget grid12">
+                <div class="widget-header">
+                    <div class="widget-title">
+                        Editing Priority Alarms
+                    </div>
+                </div>
+                <!-- /widget-header -->
+
+                <div class="widget-content pad20f">
+                    <label for="input-1" class="stacked-label" style="resize: horizontal; width: 40%">Alarm Number</label>
+                    @Html.TextBoxFor(model => model.AlarmNumber, new { @id = "AlarmNumber", @class = "form-control", @name = "AlarmNumber", style = "width:89.7%", @placeholder = "Enter Alarm Number", @required = "required" })
+                    @Html.ValidationMessageFor(model => model.AlarmNumber)
+
+                    <label for="input-2" class="stacked-label" style="resize: horizontal; width: 40%">Alarm Description</label>
+                    @Html.TextBoxFor(model => model.AlarmDesc, new { @id = "AlarmDesc", @class = "form-control", @name = "AlarmDesc", style = "width:89.7%", @placeholder = "Enter Alarm Description", @required = "required" })
+                    @Html.ValidationMessageFor(model => model.AlarmDesc)
+
+                    <label for="input-1" class="stacked-label" style="resize: horizontal; width: 40%">Axis Number</label>
+                    @Html.TextBoxFor(model => model.AxisNo, new { @id = "AxisNo", @class = "form-control", @name = "AxisNo", style = "width:89.7%", @placeholder = "Enter AxisNo", @required = "required" })
+                    @Html.ValidationMessageFor(model => model.AxisNo)
+
+                    <label for="input-1" class="stacked-label" style="resize: horizontal; width: 40%">Alarm Group</label>
+                    @Html.TextBoxFor(model => model.AlarmGroup, new { @id = "AlarmGroup", @class = "form-control", @name = "AlarmGroup", style = "width:89.7%", @placeholder = "Enter AlarmGroup", @required = "required" })
+                    @Html.ValidationMessageFor(model => model.AlarmGroup)
+
+                    <label for="input-1" class="stacked-label" style="resize: horizontal; width: 40%">Priority Number</label>
+                    @Html.TextBoxFor(model => model.PriorityNumber, new { @id = "PriorityNumber", @class = "form-control", @name = "PriorityNumber", style = "width:89.7%", @placeholder = "Enter Priority Number", @required = "required" })
+                    @Html.ValidationMessageFor(model => model.PriorityNumber)
+
+                    <label for="input-2" class="stacked-label" style="resize: horizontal; width: 20%">Select Machine</label>
+                    @Html.DropDownList("MachineID", null, "--Select Machine--", new { @id = "MachineID", @class = "form-control", @name = "MachineID", @required = "required", @style = "aria-expanded:false;width:89.7%" })
+                    @Html.ValidationMessageFor(model => model.MachineID)
+                    <p></p>
+                   
+                   <div style="width: 3%; display: inline-block; height: inherit"></div>
+@Html.ActionLink(" Back ", "Index", new { }, new { @class = "btn stacked-input fa fa-reply fa-1x", @style = "text-decoration:none;display:inline-block;color:black" })
+ <div style="width: 20%; display: inline-block; height: inherit"></div>
+<input type="submit" value="Update" class="btn btn-lavender inverse" style="width: 30%; display: inline-block; height: inherit;margin-top:2%;color:white;background-color:grey;font-size:1.1vw"/>
+
+                </div>
+                <!-- /widget-content -->
+            </div>
+            <!-- /widget -->
+        </div>
+    </div>
+    @Html.HiddenFor(Model => Model.AlarmID);
+    @Html.HiddenFor(Model => Model.CreatedOn)
+    @Html.HiddenFor(Model => Model.CreatedBy)
+    @Html.HiddenFor(Model => Model.IsDeleted)
+    @Html.HiddenFor(Model => Model.CorrectedDate)
+    @Html.HiddenFor(Model => Model.MachineID)
+}

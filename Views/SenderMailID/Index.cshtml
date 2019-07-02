@@ -1,0 +1,80 @@
+﻿@model IEnumerable<Tata.Models.tblsendermailid>
+@{
+    ViewBag.Title = "Index";
+    var slno = 1;
+}
+@*<link href="~/css/bootstrap.min.css" rel="stylesheet" />*@
+<script src="~/js/jquery-2.1.4.min.js"></script>
+
+        <h2></h2>@* induces gap between button and container top*@
+            <div style="width: 2%; display: inline-block; height: inherit"></div>
+     @if (ViewBag.roleid == 1 || ViewBag.roleid ==2){
+            @Html.ActionLink("Create SenderMailID", "Create", new { }, new { @class = "btn orange btn-lg ", @style = "color:black;width:20%;height:70%;backgroundcolor:red;font-size:90%" })
+     }
+<div class="wrp clearfix">
+    <div class="fluid">
+        <div class="widget grid12">
+            <div class="widget-header">
+                <div class="widget-title" style="font-size:125%">
+                   SenderMailID 
+                </div>
+            </div>
+            <!-- /widget-header -->
+
+            <div class="widget-content pad20f">
+                <div class="widget__content table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr class="text-centre" style="background-color:orange">
+                            <th style="text-align:center;font-size:95%">Sl.No.</th>
+                            <th style="text-align:center;font-size:95%"">Primary MailID</th>
+                            <th style="text-align:center;font-size:95%"">Display Name</th>
+                            <th style="text-align:center;font-size:95%"">AutoEmailType</th>
+                             @if (ViewBag.roleid == 1 || ViewBag.roleid ==2){
+                            <th style="text-align:center;font-size:95%"">Edit</th>
+                            <th style="text-align:center;font-size:95%"">Delete</th>
+                             }
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="spacer"></tr>
+                        <tr class="spacer"></tr>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                    @slno
+                                </td>
+                                <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                    @Html.DisplayFor(modelItem => item.PrimaryMailID)
+                                </td>
+                                <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                    @Html.DisplayFor(modelItem => item.DisplayName)
+                                </td>
+                                 <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                    @Html.DisplayFor(modelItem => item.tblemailreporttype.ReportType)
+                                </td>
+                                 @if (ViewBag.roleid == 1 || ViewBag.roleid ==2){
+                                <td style="width: auto; text-align: center; font-family: Helvetica" data-toggle="tooltip" title="Edit">
+                                    @Html.ActionLink(" ", "Edit", new { id = item.SE_ID }, new { @class = " blue  btn-lg fa fa-edit", @style = "color:white;text-decoration:none" })
+                                </td>
+                                <td style="width: auto; text-align: center; font-family: Helvetica" data-toggle="tooltip" title="Delete">
+                                    @Html.ActionLink(" ", "Delete", new { id = item.SE_ID }, new { @class = " red btn-lg fa fa-trash", @style = "color:white;text-decoration:none" })
+                                </td>
+                                 }
+                            </tr>
+                            slno = slno + 1;
+                        }
+                        <tr class="spacer"></tr>
+                    </tbody>
+                </table>
+            </div>
+              
+
+            </div>
+            <!-- /widget-content -->
+
+        </div>
+        <!-- /widget -->
+    </div>
+</div>

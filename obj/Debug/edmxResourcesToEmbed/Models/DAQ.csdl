@@ -1,0 +1,1072 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="mazakdaqModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="mazakdaqEntities" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="alarm_history_master" EntityType="mazakdaqModel.alarm_history_master" />
+    <EntitySet Name="alarm_master" EntityType="mazakdaqModel.alarm_master" />
+    <EntitySet Name="alarm_report" EntityType="mazakdaqModel.alarm_report" />
+    <EntitySet Name="automaticjobcards" EntityType="mazakdaqModel.automaticjobcard" />
+    <EntitySet Name="code_master" EntityType="mazakdaqModel.code_master" />
+    <EntitySet Name="cutting_time_report" EntityType="mazakdaqModel.cutting_time_report" />
+    <EntitySet Name="cutting_time_report_pdf" EntityType="mazakdaqModel.cutting_time_report_pdf" />
+    <EntitySet Name="day_st_end_time" EntityType="mazakdaqModel.day_st_end_time" />
+    <EntitySet Name="frommails" EntityType="mazakdaqModel.frommail" />
+    <EntitySet Name="jobcard_details" EntityType="mazakdaqModel.jobcard_details" />
+    <EntitySet Name="machine_master" EntityType="mazakdaqModel.machine_master" />
+    <EntitySet Name="mailmasters" EntityType="mazakdaqModel.mailmaster" />
+    <EntitySet Name="mailmasterprogescs" EntityType="mazakdaqModel.mailmasterprogesc" />
+    <EntitySet Name="main_time_rep" EntityType="mazakdaqModel.main_time_rep" />
+    <EntitySet Name="message_code_master" EntityType="mazakdaqModel.message_code_master" />
+    <EntitySet Name="message_history_master" EntityType="mazakdaqModel.message_history_master" />
+    <EntitySet Name="opcuttimereports" EntityType="mazakdaqModel.opcuttimereport" />
+    <EntitySet Name="opcuttimereport_pdf" EntityType="mazakdaqModel.opcuttimereport_pdf" />
+    <EntitySet Name="operating_time_report" EntityType="mazakdaqModel.operating_time_report" />
+    <EntitySet Name="operating_time_report_pdf" EntityType="mazakdaqModel.operating_time_report_pdf" />
+    <EntitySet Name="operationlogs" EntityType="mazakdaqModel.operationlog" />
+    <EntitySet Name="parameters_master" EntityType="mazakdaqModel.parameters_master" />
+    <EntitySet Name="people" EntityType="mazakdaqModel.person" />
+    <EntitySet Name="program_master" EntityType="mazakdaqModel.program_master" />
+    <EntitySet Name="program_temp" EntityType="mazakdaqModel.program_temp" />
+    <EntitySet Name="recipientmailids" EntityType="mazakdaqModel.recipientmailid" />
+    <EntitySet Name="role_master" EntityType="mazakdaqModel.role_master" />
+    <EntitySet Name="shift_master" EntityType="mazakdaqModel.shift_master" />
+    <EntitySet Name="tblactivitylogs" EntityType="mazakdaqModel.tblactivitylog" />
+    <EntitySet Name="tblbreakdowns" EntityType="mazakdaqModel.tblbreakdown" />
+    <EntitySet Name="tbldailyprodstatus" EntityType="mazakdaqModel.tbldailyprodstatu" />
+    <EntitySet Name="tbldailyprodstatushis" EntityType="mazakdaqModel.tbldailyprodstatushi" />
+    <EntitySet Name="tbldaytimings" EntityType="mazakdaqModel.tbldaytiming" />
+    <EntitySet Name="tbldowntimecategories" EntityType="mazakdaqModel.tbldowntimecategory" />
+    <EntitySet Name="tbldowntimedetails" EntityType="mazakdaqModel.tbldowntimedetail" />
+    <EntitySet Name="tblemailreporttypes" EntityType="mazakdaqModel.tblemailreporttype" />
+    <EntitySet Name="tblhmiscreens" EntityType="mazakdaqModel.tblhmiscreen" />
+    <EntitySet Name="tbllossofentries" EntityType="mazakdaqModel.tbllossofentry" />
+    <EntitySet Name="tblmachine_master" EntityType="mazakdaqModel.tblmachine_master" />
+    <EntitySet Name="tblmachinedetails" EntityType="mazakdaqModel.tblmachinedetail" />
+    <EntitySet Name="tblmodulehelpers" EntityType="mazakdaqModel.tblmodulehelper" />
+    <EntitySet Name="tblmodulemasters" EntityType="mazakdaqModel.tblmodulemaster" />
+    <EntitySet Name="tblparts" EntityType="mazakdaqModel.tblpart" />
+    <EntitySet Name="tblplannedbreaks" EntityType="mazakdaqModel.tblplannedbreak" />
+    <EntitySet Name="tblpriorityalarms" EntityType="mazakdaqModel.tblpriorityalarm" />
+    <EntitySet Name="tblroleplaymasters" EntityType="mazakdaqModel.tblroleplaymaster" />
+    <EntitySet Name="tblroles" EntityType="mazakdaqModel.tblrole" />
+    <EntitySet Name="tblrparamappings" EntityType="mazakdaqModel.tblrparamapping" />
+    <EntitySet Name="tblsendermailids" EntityType="mazakdaqModel.tblsendermailid" />
+    <EntitySet Name="tblshift_breaks" EntityType="mazakdaqModel.tblshift_breaks" />
+    <EntitySet Name="tblshift_mstr" EntityType="mazakdaqModel.tblshift_mstr" />
+    <EntitySet Name="tblunits" EntityType="mazakdaqModel.tblunit" />
+    <EntitySet Name="tblusers" EntityType="mazakdaqModel.tbluser" />
+    <EntitySet Name="user_master" EntityType="mazakdaqModel.user_master" />
+    <EntitySet Name="parametermaster_view" EntityType="mazakdaqModel.parametermaster_view" />
+    <EntitySet Name="query1" EntityType="mazakdaqModel.query1" />
+    <EntitySet Name="query2" EntityType="mazakdaqModel.query2" />
+    <EntitySet Name="view1" EntityType="mazakdaqModel.view1" />
+    <AssociationSet Name="AutoEmailType" Association="mazakdaqModel.AutoEmailType">
+      <End Role="tblemailreporttype" EntitySet="tblemailreporttypes" />
+      <End Role="recipientmailid" EntitySet="recipientmailids" />
+    </AssociationSet>
+    <AssociationSet Name="DTCategoryID" Association="mazakdaqModel.DTCategoryID">
+      <End Role="tbldowntimecategory" EntitySet="tbldowntimecategories" />
+      <End Role="tbldowntimedetails" EntitySet="tbldowntimedetails" />
+    </AssociationSet>
+    <AssociationSet Name="ERTID" Association="mazakdaqModel.ERTID">
+      <End Role="tblemailreporttype" EntitySet="tblemailreporttypes" />
+      <End Role="tblsendermailid" EntitySet="tblsendermailids" />
+    </AssociationSet>
+    <AssociationSet Name="ModuleID" Association="mazakdaqModel.ModuleID">
+      <End Role="tblmodulemaster" EntitySet="tblmodulemasters" />
+      <End Role="tblroleplaymaster" EntitySet="tblroleplaymasters" />
+    </AssociationSet>
+    <AssociationSet Name="U_ID" Association="mazakdaqModel.U_ID">
+      <End Role="tblunit" EntitySet="tblunits" />
+      <End Role="tblparts" EntitySet="tblparts" />
+    </AssociationSet>
+    <AssociationSet Name="PrimaryRole" Association="mazakdaqModel.PrimaryRole">
+      <End Role="tblroles" EntitySet="tblroles" />
+      <End Role="tblusers" EntitySet="tblusers" />
+    </AssociationSet>
+    <AssociationSet Name="SecondaryRole" Association="mazakdaqModel.SecondaryRole">
+      <End Role="tblroles" EntitySet="tblroles" />
+      <End Role="tblusers" EntitySet="tblusers" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="alarm_history_master">
+    <Key>
+      <PropertyRef Name="AlarmID" />
+    </Key>
+    <Property Name="AlarmID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="AlarmMessage" Type="String" Nullable="false" MaxLength="16777215" Unicode="false" FixedLength="false" />
+    <Property Name="AlarmDate" Type="DateTime" Nullable="false" />
+    <Property Name="AlarmTime" Type="Time" Nullable="false" />
+    <Property Name="AlarmDateTime" Type="DateTime" Nullable="false" />
+    <Property Name="InsertedOn" Type="DateTime" />
+    <Property Name="MachineID" Type="Int32" />
+    <Property Name="Shift" Type="String" MaxLength="4" Unicode="false" FixedLength="false" />
+    <Property Name="CorrectedDate" Type="DateTime" />
+    <Property Name="ErrorNum" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+    <Property Name="Status" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+    <Property Name="DetailCode1" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+    <Property Name="DetailCode2" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+    <Property Name="DetailCode3" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+    <Property Name="InterferedPart" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+    <Property Name="SystemHead" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="alarm_master">
+    <Key>
+      <PropertyRef Name="AlarmID" />
+    </Key>
+    <Property Name="AlarmID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="AlarmNo" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="alarm_report">
+    <Key>
+      <PropertyRef Name="reportid" />
+    </Key>
+    <Property Name="reportid" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="slno" Type="Int32" />
+    <Property Name="alarmno" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="alarmdescn" Type="String" MaxLength="16777215" Unicode="false" FixedLength="false" />
+    <Property Name="alarmdatetime" Type="DateTime" />
+  </EntityType>
+  <EntityType Name="automaticjobcard">
+    <Key>
+      <PropertyRef Name="JobcardID" />
+    </Key>
+    <Property Name="JobcardID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="slno" Type="Int32" />
+    <Property Name="EmpNo" Type="String" MaxLength="25" Unicode="false" FixedLength="false" />
+    <Property Name="OpnIdleCode" Type="String" MaxLength="25" Unicode="false" FixedLength="false" />
+    <Property Name="Workorderno" Type="String" MaxLength="25" Unicode="false" FixedLength="false" />
+    <Property Name="Compcode" Type="String" MaxLength="25" Unicode="false" FixedLength="false" />
+    <Property Name="Qtyprod" Type="Int32" />
+    <Property Name="QtyAccp" Type="Int32" />
+    <Property Name="QtyRej" Type="Int32" />
+    <Property Name="Fromtime" Type="Time" />
+    <Property Name="Totime" Type="Time" />
+    <Property Name="Totalhours" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+    <Property Name="MachineInvNumber" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+    <Property Name="Shift" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+    <Property Name="JobCardDate" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+    <Property Name="Fromdatetime" Type="DateTime" />
+    <Property Name="MachineId" Type="Int32" />
+    <Property Name="MessageType" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="code_master">
+    <Key>
+      <PropertyRef Name="CodeID" />
+    </Key>
+    <Property Name="CodeID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Code" Type="Int32" />
+    <Property Name="MCode" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="CodeDescription" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="CodeType" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="InsertedOn" Type="DateTime" />
+    <Property Name="InsertedBy" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+    <Property Name="ModifiedOn" Type="DateTime" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+    <Property Name="IsDeleted" Type="Int32" />
+  </EntityType>
+  <EntityType Name="cutting_time_report">
+    <Key>
+      <PropertyRef Name="CuttingID" />
+    </Key>
+    <Property Name="CuttingID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Cuttingtimes" Type="Double" Nullable="false" />
+    <Property Name="Cuttingtimeinserted" Type="Time" Nullable="false" />
+    <Property Name="CuttingShift" Type="Int32" Nullable="false" />
+    <Property Name="CuttingDate" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="cutting_time_report_pdf">
+    <Key>
+      <PropertyRef Name="CuttingID" />
+    </Key>
+    <Property Name="CuttingID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Cuttingtimes" Type="Double" Nullable="false" />
+    <Property Name="Cuttingtimeinserted" Type="Time" />
+    <Property Name="CuttingShift" Type="Int32" Nullable="false" />
+    <Property Name="CuttingDate" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="MachineID" Type="Int32" />
+    <Property Name="MonthNum" Type="Int32" />
+    <Property Name="WeekNum" Type="Int32" />
+    <Property Name="YearNum" Type="Int32" />
+  </EntityType>
+  <EntityType Name="day_st_end_time">
+    <Key>
+      <PropertyRef Name="DayID" />
+    </Key>
+    <Property Name="DayID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="DayStart" Type="Time" Nullable="false" />
+    <Property Name="DayEnd" Type="Time" Nullable="false" />
+  </EntityType>
+  <EntityType Name="frommail">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="FromEmailAdd" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
+    <Property Name="Password" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+    <Property Name="IsDeleted" Type="Int32" Nullable="false" />
+    <Property Name="username" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+    <Property Name="domain" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="jobcard_details">
+    <Key>
+      <PropertyRef Name="JobcardID" />
+    </Key>
+    <Property Name="JobcardID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="slno" Type="Int32" />
+    <Property Name="EmpNo" Type="String" MaxLength="25" Unicode="false" FixedLength="false" />
+    <Property Name="OpnIdleCode" Type="String" MaxLength="25" Unicode="false" FixedLength="false" />
+    <Property Name="Workorderno" Type="String" MaxLength="25" Unicode="false" FixedLength="false" />
+    <Property Name="Compcode" Type="String" MaxLength="25" Unicode="false" FixedLength="false" />
+    <Property Name="Qtyprod" Type="Int32" />
+    <Property Name="QtyAccp" Type="Int32" />
+    <Property Name="QtyRej" Type="Int32" />
+    <Property Name="Fromtime" Type="Time" />
+    <Property Name="Totime" Type="Time" />
+    <Property Name="Totalhours" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+    <Property Name="MachineInvNumber" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+    <Property Name="Shift" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+    <Property Name="JobCardDate" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+    <Property Name="Fromdatetime" Type="DateTime" />
+  </EntityType>
+  <EntityType Name="machine_master">
+    <Key>
+      <PropertyRef Name="MachineID" />
+    </Key>
+    <Property Name="MachineID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="MachineInvNo" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="IPAddress" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="MachineType" Type="Int32" />
+    <Property Name="ControllerType" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="InsertedOn" Type="DateTime" Nullable="false" />
+    <Property Name="InsertedBy" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="ModifiedOn" Type="DateTime" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="IsDeleted" Type="Int32" Nullable="false" />
+    <Property Name="MachineModel" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+    <Property Name="MachineMake" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+    <Property Name="ModelType" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+    <Property Name="MachineDispName" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+    <Property Name="ProgramNum" Type="Int32" />
+    <Property Name="IsParameters" Type="SByte" />
+  </EntityType>
+  <EntityType Name="mailmaster">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="EmailID" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
+    <Property Name="TOAdd" Type="Int32" Nullable="false" />
+    <Property Name="CCAdd" Type="Int32" Nullable="false" />
+    <Property Name="IsDeleted" Type="Int32" Nullable="false" />
+    <Property Name="BCCAdd" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="mailmasterprogesc">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="EmailID" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
+    <Property Name="TOAdd" Type="Int32" Nullable="false" />
+    <Property Name="CCAdd" Type="Int32" Nullable="false" />
+    <Property Name="IsDeleted" Type="Int32" Nullable="false" />
+    <Property Name="BCCAdd" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="main_time_rep">
+    <Key>
+      <PropertyRef Name="MainTimeRepID" />
+    </Key>
+    <Property Name="MainTimeRepID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="CuttingTime" Type="Double" Nullable="false" />
+    <Property Name="OperatingTime" Type="Double" Nullable="false" />
+    <Property Name="PowerOnTime" Type="Double" Nullable="false" />
+    <Property Name="CorrectedDate" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="Shift" Type="Int32" Nullable="false" />
+    <Property Name="MachineID" Type="Int32" Nullable="false" />
+    <Property Name="MonthNum" Type="Int32" />
+    <Property Name="WeekNum" Type="Int32" />
+    <Property Name="YearNum" Type="Int32" />
+    <Property Name="MonthName" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="WeekRange" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="message_code_master">
+    <Key>
+      <PropertyRef Name="MessageCodeID" />
+    </Key>
+    <Property Name="MessageCodeID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="MessageCode" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="MessageMCode" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="MessageDescription" Type="String" Nullable="false" MaxLength="128" Unicode="false" FixedLength="false" />
+    <Property Name="MessageType" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="InsertedOn" Type="DateTime" Nullable="false" />
+    <Property Name="InsertedBy" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="ModifiedOn" Type="DateTime" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="IsDeleted" Type="Int32" Nullable="false" />
+    <Property Name="ReportDispName" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="ColourCode" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="message_history_master">
+    <Key>
+      <PropertyRef Name="MessageID" />
+    </Key>
+    <Property Name="MessageID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Meassage" Type="String" Nullable="false" MaxLength="16777215" Unicode="false" FixedLength="false" />
+    <Property Name="MessageDate" Type="DateTime" Nullable="false" />
+    <Property Name="MessageTime" Type="Time" Nullable="false" />
+    <Property Name="MessageDateTime" Type="DateTime" Nullable="false" />
+    <Property Name="MessageNo" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="MessageCode" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="MessageType" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="MessageShift" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="MachineID" Type="Int32" />
+    <Property Name="InsertedOn" Type="DateTime" />
+    <Property Name="CorrectedDate" Type="DateTime" />
+  </EntityType>
+  <EntityType Name="opcuttimereport">
+    <Key>
+      <PropertyRef Name="idOpCutTimeReport" />
+    </Key>
+    <Property Name="idOpCutTimeReport" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Operatingtimes" Type="Double" Nullable="false" />
+    <Property Name="Cuttingtimes" Type="Double" Nullable="false" />
+    <Property Name="PowerOnTime" Type="Double" Nullable="false" />
+    <Property Name="Timeinserted" Type="Time" Nullable="false" />
+    <Property Name="Shift" Type="Int32" Nullable="false" />
+    <Property Name="ReportDate" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="opcuttimereport_pdf">
+    <Key>
+      <PropertyRef Name="idOpCutTimeReport_pdf" />
+    </Key>
+    <Property Name="idOpCutTimeReport_pdf" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Operatingtimes" Type="Double" Nullable="false" />
+    <Property Name="Cuttingtimes" Type="Double" Nullable="false" />
+    <Property Name="Shift" Type="Int32" Nullable="false" />
+    <Property Name="ReportDate" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="PowerOnTime" Type="Double" Nullable="false" />
+  </EntityType>
+  <EntityType Name="operating_time_report">
+    <Key>
+      <PropertyRef Name="OperatingID" />
+    </Key>
+    <Property Name="OperatingID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Operatingtimes" Type="Double" Nullable="false" />
+    <Property Name="Operatingtimeinserted" Type="Time" Nullable="false" />
+    <Property Name="OperatingShift" Type="Int32" Nullable="false" />
+    <Property Name="OperatingDate" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="operating_time_report_pdf">
+    <Key>
+      <PropertyRef Name="OperatingID" />
+    </Key>
+    <Property Name="OperatingID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Operatingtimes" Type="Double" Nullable="false" />
+    <Property Name="Operatingtimeinserted" Type="Time" />
+    <Property Name="OperatingShift" Type="Int32" Nullable="false" />
+    <Property Name="OperatingDate" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="MachineID" Type="Int32" />
+    <Property Name="MonthNum" Type="Int32" />
+    <Property Name="WeekNum" Type="Int32" />
+    <Property Name="YearNum" Type="Int32" />
+  </EntityType>
+  <EntityType Name="operationlog">
+    <Key>
+      <PropertyRef Name="idoperationlog" />
+    </Key>
+    <Property Name="idoperationlog" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="OpMsg" Type="String" MaxLength="16777215" Unicode="false" FixedLength="false" />
+    <Property Name="OpDate" Type="DateTime" />
+    <Property Name="OpTime" Type="Time" />
+    <Property Name="OpDateTime" Type="DateTime" />
+    <Property Name="OpReason" Type="String" MaxLength="256" Unicode="false" FixedLength="false" />
+    <Property Name="MachineID" Type="Int32" />
+  </EntityType>
+  <EntityType Name="parameters_master">
+    <Key>
+      <PropertyRef Name="ParameterID" />
+    </Key>
+    <Property Name="ParameterID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="SetupTime" Type="Double" Nullable="false" />
+    <Property Name="OperatingTime" Type="Double" Nullable="false" />
+    <Property Name="PowerOnTime" Type="Double" Nullable="false" />
+    <Property Name="PartsCount" Type="Double" />
+    <Property Name="InsertedOn" Type="DateTime" />
+    <Property Name="MachineID" Type="Int32" />
+    <Property Name="Shift" Type="Int32" />
+    <Property Name="CorrectedDate" Type="DateTime" />
+  </EntityType>
+  <EntityType Name="person">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Email" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Mobile" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="program_master">
+    <Key>
+      <PropertyRef Name="ProgramID" />
+    </Key>
+    <Property Name="ProgramID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="EmployeeCode" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="ComponentDescription" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="ComponentCode" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="OperationDescription" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="WorkOrderNo1" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="WorkOrderNo2" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="WorkOrderNo3" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="MachineID" Type="Int32" Nullable="false" />
+    <Property Name="InsertedOn" Type="DateTime" Nullable="false" />
+    <Property Name="ProgramDate" Type="DateTime" Nullable="false" />
+    <Property Name="ProgramTime" Type="Time" Nullable="false" />
+    <Property Name="ProgramDateTime" Type="DateTime" Nullable="false" />
+    <Property Name="OpnCode1" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="PartsProduced1" Type="Int32" Nullable="false" />
+    <Property Name="PartsAccepted1" Type="Int32" Nullable="false" />
+    <Property Name="OpnCode2" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="PartsProduced2" Type="Int32" />
+    <Property Name="PartsAccepted2" Type="Int32" />
+    <Property Name="OpnCode3" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="PartsProduced3" Type="Int32" />
+    <Property Name="PartsAccepted3" Type="Int32" />
+    <Property Name="Shift" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="PartsRejected1" Type="Int32" />
+    <Property Name="PartsRejected2" Type="Int32" />
+    <Property Name="PartsRejected3" Type="Int32" />
+    <Property Name="CorrectedDate" Type="DateTime" />
+  </EntityType>
+  <EntityType Name="program_temp">
+    <Key>
+      <PropertyRef Name="ProgramID" />
+    </Key>
+    <Property Name="ProgramID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="ProgramData" Type="String" Nullable="false" MaxLength="16777215" Unicode="false" FixedLength="false" />
+    <Property Name="ProgramDateTime" Type="DateTime" Nullable="false" />
+    <Property Name="MachineID" Type="Int32" />
+  </EntityType>
+  <EntityType Name="recipientmailid">
+    <Key>
+      <PropertyRef Name="RE_ID" />
+    </Key>
+    <Property Name="RE_ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="MailID" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="AutoEmailType" Type="Int32" Nullable="false" />
+    <Property Name="DisplayName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="RecipientType" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="IsDeleted" Type="Int32" Nullable="false" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" />
+    <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+    <Property Name="ModifiedOn" Type="DateTime" />
+    <Property Name="ModifiedBy" Type="Int32" />
+    <NavigationProperty Name="tblemailreporttype" Relationship="mazakdaqModel.AutoEmailType" FromRole="recipientmailid" ToRole="tblemailreporttype" />
+  </EntityType>
+  <EntityType Name="role_master">
+    <Key>
+      <PropertyRef Name="RoleID" />
+    </Key>
+    <Property Name="RoleID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="RoleName" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="RoleDescription" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="shift_master">
+    <Key>
+      <PropertyRef Name="ShiftID" />
+    </Key>
+    <Property Name="ShiftID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="ShiftName" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="StartTime" Type="Time" Nullable="false" />
+    <Property Name="EndTime" Type="Time" Nullable="false" />
+    <Property Name="InsertedOn" Type="DateTime" Nullable="false" />
+    <Property Name="InsertedBy" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="ModifiedOn" Type="DateTime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="IsDeleted" Type="Int32" Nullable="false" />
+    <Property Name="Duration" Type="Int32" />
+  </EntityType>
+  <EntityType Name="tblactivitylog">
+    <Key>
+      <PropertyRef Name="TrackID" />
+      <PropertyRef Name="UserName" />
+      <PropertyRef Name="UserID" />
+      <PropertyRef Name="IpAddress" />
+      <PropertyRef Name="ClientSystemName" />
+      <PropertyRef Name="CompleteModificationDetails" />
+      <PropertyRef Name="Controller" />
+      <PropertyRef Name="Action" />
+      <PropertyRef Name="Idoperationlog" />
+      <PropertyRef Name="OpTime" />
+      <PropertyRef Name="OpDate" />
+      <PropertyRef Name="OpDateTime" />
+    </Key>
+    <Property Name="TrackID" Type="Int32" Nullable="false" />
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="IpAddress" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="ClientSystemName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="CompleteModificationDetails" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="Controller" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+    <Property Name="Action" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="Idoperationlog" Type="Int32" Nullable="false" />
+    <Property Name="OpTime" Type="String" Nullable="false" MaxLength="65535" Unicode="false" FixedLength="false" />
+    <Property Name="OpDate" Type="DateTime" Nullable="false" />
+    <Property Name="OpDateTime" Type="DateTime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblbreakdown">
+    <Key>
+      <PropertyRef Name="BreakdownID" />
+    </Key>
+    <Property Name="BreakdownID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="StartTime" Type="DateTime" />
+    <Property Name="EndTime" Type="DateTime" />
+    <Property Name="BreakDownCode" Type="Int32" />
+    <Property Name="MachineID" Type="Int32" />
+    <Property Name="CorrectedDate" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="tbldailyprodstatu">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="MachineID" Type="Int32" />
+    <Property Name="StartTime" Type="DateTime" />
+    <Property Name="EndTime" Type="DateTime" />
+    <Property Name="Duration" Type="Int32" />
+    <Property Name="Status" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+    <Property Name="IsDeleted" Type="Int32" />
+    <Property Name="InsertedOn" Type="DateTime" />
+    <Property Name="ModifiedOn" Type="DateTime" />
+    <Property Name="CorrectedDate" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+    <Property Name="ColorCode" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="tbldailyprodstatushi">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="MachineID" Type="Int32" Nullable="false" />
+    <Property Name="StartTime" Type="DateTime" Nullable="false" />
+    <Property Name="EndTime" Type="DateTime" Nullable="false" />
+    <Property Name="Duration" Type="Int32" />
+    <Property Name="Status" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+    <Property Name="IsDeleted" Type="Int32" />
+    <Property Name="InsertedOn" Type="DateTime" />
+    <Property Name="ModifiedOn" Type="DateTime" />
+    <Property Name="CorrectedDate" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+    <Property Name="ColorCode" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="tbldaytiming">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="StartTime" Type="Time" Nullable="false" />
+    <Property Name="EndTime" Type="Time" Nullable="false" />
+    <Property Name="IsDeleted" Type="Int32" Nullable="false" />
+    <Property Name="CreatedOn" Type="DateTime" />
+    <Property Name="CreatedBy" Type="Int32" />
+    <Property Name="ModifiedOn" Type="DateTime" />
+    <Property Name="ModifiedBy" Type="Int32" />
+  </EntityType>
+  <EntityType Name="tbldowntimecategory">
+    <Key>
+      <PropertyRef Name="DTC_ID" />
+    </Key>
+    <Property Name="DTC_ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="DTCategory" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="DTCategoryDesc" Type="String" Nullable="false" MaxLength="60" Unicode="false" FixedLength="false" />
+    <Property Name="IsDeleted" Type="Int32" Nullable="false" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" />
+    <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+    <Property Name="ModifiedOn" Type="DateTime" />
+    <Property Name="ModifiedBy" Type="Int32" />
+    <NavigationProperty Name="tbldowntimedetails" Relationship="mazakdaqModel.DTCategoryID" FromRole="tbldowntimecategory" ToRole="tbldowntimedetails" />
+  </EntityType>
+  <EntityType Name="tbldowntimedetail">
+    <Key>
+      <PropertyRef Name="DT_ID" />
+    </Key>
+    <Property Name="DT_ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="DTCategoryID" Type="Int32" Nullable="false" />
+    <Property Name="DTReason" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="DTDesc" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="IsDeleted" Type="Int32" Nullable="false" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" />
+    <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+    <Property Name="ModifiedOn" Type="DateTime" />
+    <Property Name="ModifiedBy" Type="Int32" />
+    <NavigationProperty Name="tbldowntimecategory" Relationship="mazakdaqModel.DTCategoryID" FromRole="tbldowntimedetails" ToRole="tbldowntimecategory" />
+  </EntityType>
+  <EntityType Name="tblemailreporttype">
+    <Key>
+      <PropertyRef Name="ERTID" />
+    </Key>
+    <Property Name="ERTID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="ReportType" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="ReportDesc" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="IsDeleted" Type="Int32" Nullable="false" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" />
+    <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+    <Property Name="ModifiedOn" Type="DateTime" />
+    <Property Name="ModifiedBy" Type="Int32" />
+    <NavigationProperty Name="recipientmailids" Relationship="mazakdaqModel.AutoEmailType" FromRole="tblemailreporttype" ToRole="recipientmailid" />
+    <NavigationProperty Name="tblsendermailids" Relationship="mazakdaqModel.ERTID" FromRole="tblemailreporttype" ToRole="tblsendermailid" />
+  </EntityType>
+  <EntityType Name="tblhmiscreen">
+    <Key>
+      <PropertyRef Name="HMIID" />
+    </Key>
+    <Property Name="HMIID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="MachineID" Type="Int32" Nullable="false" />
+    <Property Name="OperatiorID" Type="Int32" Nullable="false" />
+    <Property Name="Shift" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+    <Property Name="Date" Type="DateTime" />
+    <Property Name="Time" Type="Time" />
+    <Property Name="Project" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+    <Property Name="PartNo" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+    <Property Name="OperationNo" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+    <Property Name="Rej_Qty" Type="Int32" />
+    <Property Name="Work_Order_No" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+    <Property Name="Target_Qty" Type="Int32" />
+    <Property Name="Delivered_Qty" Type="Int32" />
+    <Property Name="Status" Type="Int32" />
+    <Property Name="CorrectedDate" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+    <Property Name="Prod_FAI" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="tbllossofentry">
+    <Key>
+      <PropertyRef Name="LossID" />
+    </Key>
+    <Property Name="LossID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="MessageCode" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
+    <Property Name="StartDateTime" Type="DateTime" />
+    <Property Name="EndDateTime" Type="DateTime" />
+    <Property Name="EntryTime" Type="DateTime" />
+    <Property Name="CorrectedDate" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="tblmachine_master">
+    <Key>
+      <PropertyRef Name="MachineID" />
+    </Key>
+    <Property Name="MachineID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="MachineInvNo" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+    <Property Name="IPAddress" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+    <Property Name="MachineType" Type="Int32" />
+    <Property Name="ControllerType" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+    <Property Name="IsDeleted" Type="Int32" />
+    <Property Name="CreatedOn" Type="DateTime" />
+    <Property Name="CreatedBy" Type="Int32" />
+    <Property Name="ModifiedOn" Type="DateTime" />
+    <Property Name="ModifiedBy" Type="Int32" />
+  </EntityType>
+  <EntityType Name="tblmachinedetail">
+    <Key>
+      <PropertyRef Name="MachineID" />
+      <PropertyRef Name="MachineInvNo" />
+      <PropertyRef Name="IPAddress" />
+      <PropertyRef Name="MachineType" />
+      <PropertyRef Name="ControllerType" />
+      <PropertyRef Name="InsertedOn" />
+      <PropertyRef Name="InsertedBy" />
+      <PropertyRef Name="IsParameters" />
+    </Key>
+    <Property Name="MachineID" Type="Int32" Nullable="false" />
+    <Property Name="MachineInvNo" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="IPAddress" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="MachineType" Type="Int32" Nullable="false" />
+    <Property Name="ControllerType" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="InsertedOn" Type="DateTime" Nullable="false" />
+    <Property Name="InsertedBy" Type="Int32" Nullable="false" />
+    <Property Name="ModifiedOn" Type="DateTime" />
+    <Property Name="ModifiedBy" Type="Int32" />
+    <Property Name="IsDeleted" Type="Int32" />
+    <Property Name="MachineModel" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="MachineMake" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="ModelType" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="MachineDispName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="IsParameters" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblmodulehelper">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="IsAll" />
+      <PropertyRef Name="IsAdded" />
+      <PropertyRef Name="IsEdited" />
+      <PropertyRef Name="IsRemoved" />
+      <PropertyRef Name="IsReadonly" />
+      <PropertyRef Name="IsHidden" />
+      <PropertyRef Name="IsDeleted" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="ModuleID" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="RoleID" Type="Int32" />
+    <Property Name="IsAll" Type="Boolean" Nullable="false" />
+    <Property Name="IsAdded" Type="Boolean" Nullable="false" />
+    <Property Name="IsEdited" Type="Boolean" Nullable="false" />
+    <Property Name="IsRemoved" Type="Boolean" Nullable="false" />
+    <Property Name="IsReadonly" Type="Boolean" Nullable="false" />
+    <Property Name="IsHidden" Type="Boolean" Nullable="false" />
+    <Property Name="IsDeleted" Type="Int16" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblmodulemaster">
+    <Key>
+      <PropertyRef Name="ModuleID" />
+    </Key>
+    <Property Name="ModuleID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="ModuleName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="IsDeleted" Type="Int32" Nullable="false" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" />
+    <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+    <Property Name="ModifiedOn" Type="DateTime" />
+    <Property Name="ModifiedBy" Type="Int32" />
+    <NavigationProperty Name="tblroleplaymasters" Relationship="mazakdaqModel.ModuleID" FromRole="tblmodulemaster" ToRole="tblroleplaymaster" />
+  </EntityType>
+  <EntityType Name="tblpart">
+    <Key>
+      <PropertyRef Name="PartID" />
+    </Key>
+    <Property Name="PartID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="PartNo" Type="Int32" Nullable="false" />
+    <Property Name="PartDesc" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="PartName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="IdleCycleTime" Type="Int32" Nullable="false" />
+    <Property Name="UnitDesc" Type="Int32" Nullable="false" />
+    <Property Name="IsDeleted" Type="Int32" Nullable="false" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" />
+    <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+    <Property Name="ModifiedOn" Type="DateTime" />
+    <Property Name="ModifiedBy" Type="Int32" />
+    <NavigationProperty Name="tblunit" Relationship="mazakdaqModel.U_ID" FromRole="tblparts" ToRole="tblunit" />
+  </EntityType>
+  <EntityType Name="tblplannedbreak">
+    <Key>
+      <PropertyRef Name="BreakID" />
+    </Key>
+    <Property Name="BreakID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="BreakReason" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+    <Property Name="StartTime" Type="Time" />
+    <Property Name="EndTime" Type="Time" />
+    <Property Name="BreakDuration" Type="Int32" />
+    <Property Name="ShiftID" Type="Int32" />
+    <Property Name="IsDeleted" Type="Int32" />
+    <Property Name="CreatedOn" Type="DateTime" />
+    <Property Name="CreatedBy" Type="Int32" />
+    <Property Name="ModifiedOn" Type="DateTime" />
+    <Property Name="ModifiedBy" Type="Int32" />
+  </EntityType>
+  <EntityType Name="tblpriorityalarm">
+    <Key>
+      <PropertyRef Name="AlarmID" />
+      <PropertyRef Name="AlarmNumber" />
+      <PropertyRef Name="AlarmDesc" />
+      <PropertyRef Name="AxisNo" />
+      <PropertyRef Name="PriorityNumber" />
+      <PropertyRef Name="IsDeleted" />
+      <PropertyRef Name="CreatedOn" />
+      <PropertyRef Name="CreatedBy" />
+    </Key>
+    <Property Name="AlarmID" Type="Int32" Nullable="false" />
+    <Property Name="AlarmNumber" Type="Int32" Nullable="false" />
+    <Property Name="AlarmDesc" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="AxisNo" Type="Int32" Nullable="false" />
+    <Property Name="AlarmGroup" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="PriorityNumber" Type="Int32" Nullable="false" />
+    <Property Name="IsDeleted" Type="Int32" Nullable="false" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" />
+    <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+    <Property Name="ModifiedOn" Type="DateTime" />
+    <Property Name="ModifiedBy" Type="Int32" />
+  </EntityType>
+  <EntityType Name="tblroleplaymaster">
+    <Key>
+      <PropertyRef Name="RolePlayID" />
+    </Key>
+    <Property Name="RolePlayID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="ModuleID" Type="Int32" Nullable="false" />
+    <Property Name="IsAdded" Type="Int32" Nullable="false" />
+    <Property Name="IsEdited" Type="Int32" Nullable="false" />
+    <Property Name="IsRemoved" Type="Int32" Nullable="false" />
+    <Property Name="IsHidden" Type="Int32" Nullable="false" />
+    <Property Name="IsReadOnly" Type="Int32" Nullable="false" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" />
+    <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+    <Property Name="ModifiedOn" Type="DateTime" />
+    <Property Name="ModifiedBy" Type="Int32" />
+    <Property Name="IsDeleted" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="tblmodulemaster" Relationship="mazakdaqModel.ModuleID" FromRole="tblroleplaymaster" ToRole="tblmodulemaster" />
+  </EntityType>
+  <EntityType Name="tblrole">
+    <Key>
+      <PropertyRef Name="Role_ID" />
+    </Key>
+    <Property Name="Role_ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="RoleDesc" Type="String" Nullable="false" MaxLength="60" Unicode="false" FixedLength="false" />
+    <Property Name="RoleType" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="IsDeleted" Type="Int32" Nullable="false" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" />
+    <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+    <Property Name="ModifiedOn" Type="DateTime" />
+    <Property Name="ModifiedBy" Type="Int32" />
+    <NavigationProperty Name="tblusers" Relationship="mazakdaqModel.PrimaryRole" FromRole="tblroles" ToRole="tblusers" />
+    <NavigationProperty Name="tblusers1" Relationship="mazakdaqModel.SecondaryRole" FromRole="tblroles" ToRole="tblusers" />
+  </EntityType>
+  <EntityType Name="tblrparamapping">
+    <Key>
+      <PropertyRef Name="RPID" />
+      <PropertyRef Name="ParameterNo" />
+      <PropertyRef Name="IsDeleted" />
+      <PropertyRef Name="CreatedOn" />
+      <PropertyRef Name="CreatedBy" />
+    </Key>
+    <Property Name="RPID" Type="Int32" Nullable="false" />
+    <Property Name="ParameterNo" Type="Int32" Nullable="false" />
+    <Property Name="ParameterDetails" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="ParameterDesc" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="IsDeleted" Type="Int32" Nullable="false" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" />
+    <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+    <Property Name="ModifiedOn" Type="DateTime" />
+    <Property Name="ModifiedBy" Type="Int32" />
+  </EntityType>
+  <EntityType Name="tblsendermailid">
+    <Key>
+      <PropertyRef Name="SE_ID" />
+    </Key>
+    <Property Name="SE_ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="PrimaryMailID" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="DisplayName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="AutoEmailType" Type="Int32" Nullable="false" />
+    <Property Name="IsDeleted" Type="Int32" Nullable="false" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" />
+    <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+    <Property Name="ModifiedOn" Type="DateTime" />
+    <Property Name="ModifiedBy" Type="Int32" />
+    <NavigationProperty Name="tblemailreporttype" Relationship="mazakdaqModel.ERTID" FromRole="tblsendermailid" ToRole="tblemailreporttype" />
+  </EntityType>
+  <EntityType Name="tblshift_breaks">
+    <Key>
+      <PropertyRef Name="BreakID" />
+    </Key>
+    <Property Name="BreakID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="BreakReason" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+    <Property Name="StartTime" Type="Time" />
+    <Property Name="EndTime" Type="Time" />
+    <Property Name="BreakDuration" Type="Int32" />
+    <Property Name="ShiftID" Type="Int32" />
+    <Property Name="IsDeleted" Type="Int32" />
+    <Property Name="CreatedOn" Type="DateTime" />
+    <Property Name="CreatedBy" Type="Int32" />
+    <Property Name="ModifiedOn" Type="DateTime" />
+    <Property Name="ModifiedBy" Type="Int32" />
+  </EntityType>
+  <EntityType Name="tblshift_mstr">
+    <Key>
+      <PropertyRef Name="ShiftID" />
+    </Key>
+    <Property Name="ShiftID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="ShiftName" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+    <Property Name="StartTime" Type="Time" />
+    <Property Name="EndTime" Type="Time" />
+    <Property Name="IsDeleted" Type="Int32" />
+    <Property Name="CreatedOn" Type="DateTime" />
+    <Property Name="CreatedBy" Type="Int32" />
+    <Property Name="ModifiedOn" Type="DateTime" />
+    <Property Name="ModifiedBy" Type="Int32" />
+    <Property Name="Duration" Type="Int32" />
+  </EntityType>
+  <EntityType Name="tblunit">
+    <Key>
+      <PropertyRef Name="U_ID" />
+    </Key>
+    <Property Name="U_ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Unit" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="UnitDesc" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="IsDeleted" Type="Int32" Nullable="false" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" />
+    <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+    <Property Name="ModifiedOn" Type="DateTime" />
+    <Property Name="ModifiedBy" Type="Int32" />
+    <NavigationProperty Name="tblparts" Relationship="mazakdaqModel.U_ID" FromRole="tblunit" ToRole="tblparts" />
+  </EntityType>
+  <EntityType Name="tbluser">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
+    <Property Name="PrimaryRole" Type="Int32" Nullable="false" />
+    <Property Name="SecondaryRole" Type="Int32" Nullable="false" />
+    <Property Name="DisplayName" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
+    <Property Name="IsDeleted" Type="Int32" Nullable="false" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" />
+    <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+    <Property Name="ModifiedOn" Type="DateTime" />
+    <Property Name="ModifiedBy" Type="Int32" />
+    <NavigationProperty Name="tblrole" Relationship="mazakdaqModel.PrimaryRole" FromRole="tblusers" ToRole="tblroles" />
+    <NavigationProperty Name="tblrole1" Relationship="mazakdaqModel.SecondaryRole" FromRole="tblusers" ToRole="tblroles" />
+  </EntityType>
+  <EntityType Name="user_master">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="FirstName" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="MiddleName" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="LastName" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="InsertedOn" Type="DateTime" />
+    <Property Name="InsertedBy" Type="Int32" />
+    <Property Name="ModifiedOn" Type="DateTime" />
+    <Property Name="ModifiedBy" Type="DateTime" />
+    <Property Name="EmailID" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="IsDeleted" Type="Int32" Nullable="false" />
+    <Property Name="RoleID" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="parametermaster_view">
+    <Key>
+      <PropertyRef Name="ParameterID" />
+      <PropertyRef Name="SetupTime" />
+      <PropertyRef Name="OperatingTime" />
+      <PropertyRef Name="PowerOnTime" />
+    </Key>
+    <Property Name="ParameterID" Type="Int32" Nullable="false" />
+    <Property Name="SetupTime" Type="Double" Nullable="false" />
+    <Property Name="OperatingTime" Type="Double" Nullable="false" />
+    <Property Name="PowerOnTime" Type="Double" Nullable="false" />
+    <Property Name="PartsCount" Type="Double" />
+    <Property Name="InsertedOn" Type="DateTime" />
+    <Property Name="MachineID" Type="Int32" />
+    <Property Name="Shift" Type="Int32" />
+    <Property Name="CorrectedDate" Type="DateTime" />
+    <Property Name="InsertedOnTime" Type="Time" />
+  </EntityType>
+  <EntityType Name="query1">
+    <Key>
+      <PropertyRef Name="ParameterID" />
+    </Key>
+    <Property Name="CuttingTimeCol" Type="Double" />
+    <Property Name="OperatingTimeCol" Type="Double" />
+    <Property Name="PowerOnTimeCol" Type="Double" />
+    <Property Name="ParameterID" Type="Int32" Nullable="false" />
+    <Property Name="CorrectedDate" Type="DateTime" />
+    <Property Name="Shift" Type="Int32" />
+    <Property Name="MachineID" Type="Int32" />
+  </EntityType>
+  <EntityType Name="query2">
+    <Key>
+      <PropertyRef Name="ParameterID" />
+    </Key>
+    <Property Name="CuttingTimeCol" Type="Double" />
+    <Property Name="OperatingTimeCol" Type="Double" />
+    <Property Name="PowerOnTimeCol" Type="Double" />
+    <Property Name="ParameterID" Type="Int32" Nullable="false" />
+    <Property Name="CorrectedDate" Type="DateTime" />
+    <Property Name="Shift" Type="Int32" />
+    <Property Name="MachineID" Type="Int32" />
+  </EntityType>
+  <EntityType Name="view1">
+    <Key>
+      <PropertyRef Name="ParameterID" />
+      <PropertyRef Name="SetupTime" />
+      <PropertyRef Name="OperatingTime" />
+      <PropertyRef Name="PowerOnTime" />
+    </Key>
+    <Property Name="ParameterID" Type="Int32" Nullable="false" />
+    <Property Name="SetupTime" Type="Double" Nullable="false" />
+    <Property Name="OperatingTime" Type="Double" Nullable="false" />
+    <Property Name="PowerOnTime" Type="Double" Nullable="false" />
+    <Property Name="PartsCount" Type="Double" />
+    <Property Name="InsertedOn" Type="DateTime" />
+    <Property Name="MachineID" Type="Int32" />
+    <Property Name="Shift" Type="Int32" />
+    <Property Name="InsertedOnDate" Type="DateTime" />
+    <Property Name="InsertedOnTime" Type="Time" />
+  </EntityType>
+  <Association Name="AutoEmailType">
+    <End Role="tblemailreporttype" Type="mazakdaqModel.tblemailreporttype" Multiplicity="1" />
+    <End Role="recipientmailid" Type="mazakdaqModel.recipientmailid" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblemailreporttype">
+        <PropertyRef Name="ERTID" />
+      </Principal>
+      <Dependent Role="recipientmailid">
+        <PropertyRef Name="AutoEmailType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DTCategoryID">
+    <End Role="tbldowntimecategory" Type="mazakdaqModel.tbldowntimecategory" Multiplicity="1" />
+    <End Role="tbldowntimedetails" Type="mazakdaqModel.tbldowntimedetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbldowntimecategory">
+        <PropertyRef Name="DTC_ID" />
+      </Principal>
+      <Dependent Role="tbldowntimedetails">
+        <PropertyRef Name="DTCategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ERTID">
+    <End Role="tblemailreporttype" Type="mazakdaqModel.tblemailreporttype" Multiplicity="1" />
+    <End Role="tblsendermailid" Type="mazakdaqModel.tblsendermailid" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblemailreporttype">
+        <PropertyRef Name="ERTID" />
+      </Principal>
+      <Dependent Role="tblsendermailid">
+        <PropertyRef Name="AutoEmailType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ModuleID">
+    <End Role="tblmodulemaster" Type="mazakdaqModel.tblmodulemaster" Multiplicity="1" />
+    <End Role="tblroleplaymaster" Type="mazakdaqModel.tblroleplaymaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblmodulemaster">
+        <PropertyRef Name="ModuleID" />
+      </Principal>
+      <Dependent Role="tblroleplaymaster">
+        <PropertyRef Name="ModuleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="U_ID">
+    <End Role="tblunit" Type="mazakdaqModel.tblunit" Multiplicity="1" />
+    <End Role="tblparts" Type="mazakdaqModel.tblpart" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblunit">
+        <PropertyRef Name="U_ID" />
+      </Principal>
+      <Dependent Role="tblparts">
+        <PropertyRef Name="UnitDesc" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PrimaryRole">
+    <End Role="tblroles" Type="mazakdaqModel.tblrole" Multiplicity="1" />
+    <End Role="tblusers" Type="mazakdaqModel.tbluser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblroles">
+        <PropertyRef Name="Role_ID" />
+      </Principal>
+      <Dependent Role="tblusers">
+        <PropertyRef Name="PrimaryRole" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SecondaryRole">
+    <End Role="tblroles" Type="mazakdaqModel.tblrole" Multiplicity="1" />
+    <End Role="tblusers" Type="mazakdaqModel.tbluser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblroles">
+        <PropertyRef Name="Role_ID" />
+      </Principal>
+      <Dependent Role="tblusers">
+        <PropertyRef Name="SecondaryRole" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

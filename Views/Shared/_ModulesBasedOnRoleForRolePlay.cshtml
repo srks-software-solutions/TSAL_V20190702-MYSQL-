@@ -1,0 +1,59 @@
+﻿@model IList<Tata.Models.tblmodulehelper>
+
+<table class="table">
+
+    @for (int i = 0; i < Model.Count; i++)
+    {
+        if (i == 0)
+        {
+        <tr>
+            <td style="font-size: 150%" colspan="2">Select Role</td>
+            <td colspan="2">
+                @Html.DropDownList("RoleID1", (SelectList)ViewData["RoleID1"], "--Select Role--", new { @id = "RoleID1", @class = "dropdown form-control red dropdown-toggle", @name = "RoleID1", @required = "required", @style = "data-toggle:dropdown; aria-expanded:false" })
+                @Html.ValidationMessageFor(item => item[i].RoleID)
+                @Html.TextBoxFor(item => item[i].RoleID, new { @id = "RoleID1", @style = "display:none", @name = "RoleID1" })
+            </td>
+            <td></td>
+        </tr>
+        <tr>
+            <td style="text-align: center; font-size: 95%">Sl.No.</td>
+            <th style="text-align: center; font-size: 95%">Module</th>
+            <th style="text-align: center; font-size: 95%">IsAll</th>
+            <th style="text-align: center; font-size: 95%">IsAdd</th>
+            <th style="text-align: center; font-size: 95%">IsEdit</th>
+            <th style="text-align: center; font-size: 95%">IsRead</th>
+            <th style="text-align: center; font-size: 95%">IsHide</th>
+            <th style="text-align: center; font-size: 95%">IsRemoved</th>
+
+        </tr>
+        }
+        <tr id="input">
+            <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 16px">
+                @i+1
+            </td>
+            <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 16px">
+                @Html.DisplayFor(item => item[i].ModuleID, new { @class = "form-control", @readonly = "readonly" })
+            </td>
+            <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 16px">
+                @Html.CheckBoxFor(item => item[i].IsAll, new { @checked = "checked", @id = "Test" + slno, @name = "Test" + slno, @class = "class-on-my-checkboxes checkAll" })
+            </td>
+            <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 16px">
+                @Html.CheckBoxFor(item => item[i].IsAdded, new { @checked = "checked", @class = "checkbox", @id = "Test" + slno, @name = "Test" + slno })
+            </td>
+            <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 16px">
+                @Html.CheckBoxFor(item => item[i].IsEdited, new { @checked = "checked", @class = "checkbox", @id = "Test" + slno, @name = "Test" + slno })
+            </td>
+            <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 16px">
+                @Html.CheckBoxFor(item => item[i].IsReadonly, new { @checked = "checked", @class = "checkbox", @id = "Test" + slno, @name = "Test" + slno })
+            </td>
+            <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 16px">
+                @Html.CheckBoxFor(item => item[i].IsHidden, new { @checked = "checked", @class = "checkbox", @id = "Test" + slno, @name = "Test" + slno })
+            </td>
+            <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 16px">
+                @Html.CheckBoxFor(item => item[i].IsRemoved, new { @checked = "checked", @class = "checkbox", @id = "Test" + slno, @name = "Test" + slno })
+            </td>
+            @Html.Partial("_ModulesBasedOnRoleForRolePlay", Model)
+        </tr>
+        @Html.HiddenFor(item => item[i].ModuleID);
+    }
+</table>

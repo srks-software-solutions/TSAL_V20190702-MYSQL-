@@ -1,0 +1,220 @@
+﻿@model Tata.Models.tblmachinedetail
+@{
+    ViewBag.Title = "Edit";
+}
+<style>
+    .fields {
+        width: 79.5%;
+        white-space: nowrap;
+        padding-top: 1%;
+    }
+
+    .first {
+        display: inline-block;
+        width: 10%;
+        float: none;
+        padding-left: 0px;
+        padding-right: -2px;
+        margin-right: -2px;
+        white-space: nowrap;
+    }
+
+    .second {
+        display: inline-block;
+        padding-right: 0px;
+        white-space: normal;
+    }
+    .pad {
+        padding-left:9%;
+    }
+</style>
+
+@{
+    List<SelectListItem> PCB = new List<SelectListItem>();
+
+    PCB.Add(new SelectListItem
+    {
+        Text = "With PCB",
+        Value = "1",
+    });
+    PCB.Add(new SelectListItem
+    {
+        Text = "WithOut PCB",
+        Value = "0"
+    });
+   
+}  
+@{
+    List<SelectListItem> WCType = new List<SelectListItem>();
+
+    WCType.Add(new SelectListItem
+    {
+        Text = "Normal",
+        Value = "0",
+    });
+    WCType.Add(new SelectListItem
+    {
+        Text = "Manual",
+        Value = "1"
+    });
+    WCType.Add(new SelectListItem
+    {
+        Text = "Special",
+        Value = "1"
+    });
+   
+} 
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)  
+    <div class="wrp clearfix">
+        <div class="fluid">
+            <div class="widget grid12">
+                <div class="widget-header">
+                    <div class="widget-title">
+                        Editing MachineDetails
+                    </div>
+                </div>
+                <!-- /widget-header -->
+
+                <div class="widget-content pad20f">
+
+                                        <div class="fields">
+                        <label for="input-1" class="stacked-label first" style="resize: horizontal; width: 25%; color:blue;font-style:oblique">Plant Name</label>
+                        <span></span>
+                        @*@Html.DropDownList("Plant", null, "--Select Plant--", new { @id = "Plant", @class = "second", @name = "Plant", @required = "required", @style = "aria-expanded:false;font-size:75%;width:25%", @value = ViewData["Plant"] , @disabled="disabled"})  *@ 
+                        @Html.DropDownListFor(model => model.PlantID, new SelectList(ViewBag.Plant, "Value", "Text", Model.PlantID), "-Select-", new { @id = "Plant", @class = "second", @name = "Plant", @required = "required", @style = "aria-expanded:false;font-size:75%;width:25%", @disabled = "disabled" })
+                        @*@Html.DropDownListFor(model => model[r].Prod_FAI, new SelectList(ViewBag.Prod_FAI, "Value", "Text", Model[r].Prod_FAI), "-Select-")*@ 
+                        @Html.ValidationMessageFor(model => model.PlantID)
+                        &nbsp&nbsp&nbsp&nbsp
+                        <label for="input-1" class="first stacked-label" style="resize: horizontal; width: 25%; color:blue;font-style:oblique">Shop Name</label>
+                        <span></span>
+                        @*@Html.DropDownList("Shop", null, "--Select Shop--", new { @id = "Shop", @class = "second pad", @name = "Shop", @required = "required", @style = "aria-expanded:false;font-size:75%;width:25%", @value = ViewData["Shop"] , @disabled="disabled"})*@
+                        @Html.DropDownListFor(model => model.ShopID, new SelectList(ViewBag.Shop, "Value", "Text", Model.ShopID), "-Select-", new { @id = "Shop", @class = "second pad", @name = "Shop", @required = "required", @style = "aria-expanded:false;font-size:75%;width:25%", @disabled = "disabled" })
+                        @Html.ValidationMessageFor(model => model.ShopID)
+                    </div>
+
+                    <div class="fields">
+                        <label for="input-1" class="stacked-label first" style="resize: horizontal; width: 25%; color:blue;font-style:oblique">Cell Name</label>
+                        <span></span>
+                        @*@Html.DropDownList("Cell", null, "--Select Cell--", new { @id = "Cell", @class = "second", @name = "Cell", @required = "required", @style = "aria-expanded:false;font-size:75%;width:25%", @value = ViewData["Cell"] , @disabled="disabled"})*@  
+                        @Html.DropDownListFor(model => model.CellID, new SelectList(ViewBag.Cell, "Value", "Text", Model.CellID), "-Select-", new { @id = "Cell", @class = "second", @name = "Cell", @required = "required", @style = "aria-expanded:false;font-size:75%;width:25%", @disabled = "disabled" })
+                        @Html.ValidationMessageFor(model => model.CellID)
+                        &nbsp&nbsp&nbsp&nbsp
+                        <label for="input-1" class="first stacked-label" style="resize: horizontal; width: 25%; color:blue;font-style:oblique">MachineInvNo</label>
+                        <span></span>
+                        @*@Html.TextBoxFor(model => model.MachineInvNo, new { @class = "second", @style = "font-size:75%;width:25%", @placeholder = "MachineInvNo" })*@
+                        @Html.DropDownListFor(model => model.MachineInvNo, new SelectList(ViewBag.WC, "Value", "Text", Model.MachineInvNo), "-Select-", new { @class = "second", @style = "font-size:75%;width:25%", @placeholder = "MachineInvNo" })
+                        @Html.ValidationMessageFor(model => model.MachineInvNo)
+                    </div>
+
+                    <div class="fields">
+                        <label for="input-1" class="stacked-label first" style="resize: horizontal; width: 25%; color:blue;font-style:oblique">IPAddress</label>
+                        <span></span>
+                         @Html.TextBoxFor(model => model.IPAddress, new { @class = "second", @style = "font-size:75%;width:25%", @placeholder = "IPAddress", @readonly = "readonly" })
+                        @Html.ValidationMessageFor(model => model.IPAddress)
+                        &nbsp&nbsp&nbsp&nbsp
+                        <label for="input-1" class="first stacked-label" style="resize: horizontal; width: 25%; color:blue;font-style:oblique">MachineModel</label>
+                        <span></span>
+                        @Html.TextBoxFor(model => model.MachineModel, new { @class = "second", @style = "font-size:75%;width:25%", @placeholder = "MachineModel" })
+                        @Html.ValidationMessageFor(model => model.MachineModel)
+                    </div>
+
+                    <div class="fields">
+                        <label for="input-1" class="stacked-label first" style="resize: horizontal; width: 25%; color:blue;font-style:oblique">ControllerType</label>
+                        <span></span>
+                         @Html.TextBoxFor(model => model.ControllerType, new { @class = "second", @style = "font-size:75%;width:25%", @placeholder = "ControllerType" })
+                        @Html.ValidationMessageFor(model => model.ControllerType)
+                        &nbsp&nbsp&nbsp&nbsp
+                        <label for="input-1" class="first stacked-label" style="resize: horizontal; width: 25%; color:blue;font-style:oblique">MachineDispName</label>
+                        <span></span>
+                        @Html.TextBoxFor(model => model.MachineDispName, new { @class = "second", @style = "font-size:75%;width:25%", @placeholder = "MachineDispName" })
+                        @Html.ValidationMessageFor(model => model.MachineDispName)
+                    </div>
+                  
+                   @* <div class="fields">
+                        <label for="input-1" class="stacked-label first" style="resize: horizontal; width: 25%; color:blue;font-style:oblique">MachineMake</label>
+                        <span></span>
+                        <input type="checkbox" , class="HiddenDDLID" id= '@Model.is' />
+                        &nbsp&nbsp&nbsp&nbsp
+                        <label for="input-1" class="first stacked-label" style="resize: horizontal; width: 25%; color:blue;font-style:oblique">WithPCB</label>
+                        <span></span>
+                        @Html.TextBoxFor(model => model.IsPCB, new { @class = "second", @style = "font-size:75%;width:25%", @placeholder = "IsPCB" })
+                        @Html.DropDownListFor(model => model.IsPCB, PCB, new { @id = "IsPCB", @name = "IsPCB", @class = "second pad", @style = "font-size:75%;width:25%",@required = "required", @value = ViewData["ispcb"] })
+                        @Html.ValidationMessageFor(model => model.IsPCB)
+                    </div>*@
+
+                     <div class="fields">
+                        <label for="input-1" class="stacked-label first" style="resize: horizontal; width: 25%; color:blue;font-style:oblique">MachineMake</label>
+                        <span></span>
+                         @Html.TextBoxFor(model => model.MachineMake, new { @class = "second", @style = "font-size:75%;width:25%", @placeholder = "MachineMake", @readonly = "readonly" })
+                        @Html.ValidationMessageFor(model => model.MachineMake)
+                        &nbsp&nbsp&nbsp&nbsp
+                        <label for="input-1" class="first stacked-label" style="resize: horizontal; width: 25%; color:blue;font-style:oblique">WithPCB</label>
+                        <span></span>
+                        @Html.DropDownListFor(model => model.IsPCB, PCB, new { @id = "IsPCB", @name = "IsPCB", @class = "second pad", @style = "font-size:75%;width:25%", @required = "required", @value = ViewData["ispcb"], @disabled = "disabled" })
+                        @Html.ValidationMessageFor(model => model.IsPCB)
+                    </div>
+
+                    <div style="width: 3%; display: inline-block; height: inherit"></div>
+                    @Html.ActionLink(" Back ", "Index", new { }, new { @class = "btn stacked-input fa fa-reply fa-1x", @style = "text-decoration:none;display:inline-block;color:black" })
+                    <div style="width: 20%; display: inline-block; height: inherit"></div>
+                    <input type="submit" value="Update" class="btn btn-lavender inverse" style="width: 30%; display: inline-block; height: inherit; margin-top: 2%; color: white; background-color: grey; font-size: 1.1vw" />
+
+                </div>
+                <!-- /widget-content -->
+            </div>
+            <!-- /widget -->
+        </div>
+    </div>
+    
+     @Html.HiddenFor(model => Model.PlantID)
+    @Html.HiddenFor(model => Model.ShopID)
+    @Html.HiddenFor(model => Model.CellID)
+  
+    @Html.HiddenFor(model => Model.InsertedBy)
+    @Html.HiddenFor(model => Model.InsertedOn)
+    @Html.HiddenFor(model => Model.IsDeleted)
+    @Html.HiddenFor(model => Model.MachineID)    
+    @Html.HiddenFor(model => Model.MachineType)
+    @Html.HiddenFor(model => Model.MachineModel)
+    @Html.HiddenFor(model => Model.MachineDispName)
+    @Html.HiddenFor(model => Model.IsParameters)
+    @Html.HiddenFor(model => Model.IsLevel)
+    @Html.HiddenFor(model => Model.IsParameters)
+    @Html.HiddenFor(model => Model.IsPCB)
+
+
+}
+
+<script src="~/Scripts/jquery-2.1.4.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $("#Plant").change(function (evt) {
+            $("#Shop").empty();
+            var selectedID = $("#Plant option:selected").val();
+            $.getJSON("/Cell/GetShop", { PlantID: selectedID }, function (data) {
+                $.each(data, function (index, item) {
+                    $("#Shop").append("<option value='" + item.Value + "'>" + item.Text + "</option>");
+                });
+            });
+        });
+    });
+</script>
+
+<script>
+    $(document).ready(function () {
+        $("#Shop").change(function (evt) {
+            $("#Cell").empty();
+            var selectedID = $("#Shop option:selected").val();
+            $.getJSON("/Cell/GetCell", { ShopID: selectedID }, function (data) {
+                $.each(data, function (index, item) {
+                    $("#Cell").append("<option value='" + item.Value + "'>" + item.Text + "</option>");
+                });
+            });
+        });
+    });
+</script>

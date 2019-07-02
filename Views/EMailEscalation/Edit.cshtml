@@ -1,0 +1,274 @@
+﻿@model Tata.Models.tblemailescalation
+@{
+    ViewBag.Title = "Edit";
+}
+
+<style>
+    input {
+        font-style: oblique;
+        color: blue;
+    }
+</style>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)  
+    <div class="wrp clearfix">@*style="background-color:red" box outside create role*@
+        <div class="fluid">
+            <div class="widget col-md- grid12">
+
+                <div class="widget-header" style="background-color: red">
+                    <div class="widget-title">
+                        <span style="font-style: oblique; font-size: 100%">Edit EMail-Escalation Details</span>
+                    </div>
+                </div>
+                <!-- /widget-header -->
+
+                <div class="widget-content pad20f">
+
+                    <label for="input-1" class="stacked-label" style="resize: horizontal; margin-left: 2%; width: 20%; color: blue; font-style: oblique">Enter Email Escalation Name</label>
+                    @Html.TextBoxFor(model => model.EMailEscalationName, new { @id = "EMailEscalationName", @class = "stacked-label", @name = "EMailEscalationName", @style = "margin-left: 2%;width:20%" , @required = "required", @placeholder = "Enter EMailEscalationName" })
+                    <br />
+
+                    <label for="input-1" class="stacked-label" style="resize: horizontal;  padding-top: 2%; margin-left: 2%; width: 20%; color: blue; font-style: oblique">Reason Level 1</label>
+                    <label for="input-1" class="stacked-label" style="resize: horizontal; margin-left: 2%; width: 20%; color: blue; font-style: oblique">Reason Level 2</label>
+                    <label for="input-1" class="stacked-label" style="resize: horizontal; margin-left: 2%; width: 20%; color: blue; font-style: oblique">Reason Level 3</label>
+                    <br />
+                    @*@Html.DropDownList("RL1", null, "--Reason Level_1--", new { @id = "RL1", @class = "form-control", @name = "RL1", @required = "required", @style = "aria-expanded:false;width:89.7%", @value = ViewData["RL1"] })*@
+                    @Html.DropDownListFor(model => model.ReasonLevel1, ViewBag.RL1 as IEnumerable<SelectListItem>,"--Select Reason Level_1--", new { @id = "RL1", @class = "stacked-label", @name = "RL1", @required = "required", @style = "margin-left: 2%;aria-expanded:false;width:20%" })
+                    @Html.ValidationMessageFor(model => model.ReasonLevel1)
+
+                    @*<label for="input-1" class="stacked-label" style="resize: horizontal; padding-top: 2%; width: 20%; color: blue; font-style: oblique">Reason Level 2</label>*@
+                    @*@Html.DropDownList("RL2", null, "--Reason Level_2--", new { @id = "RL2", @class = "form-control", @name = "RL2", @required = "required", @style = "aria-expanded:false;width:89.7%", @value = ViewData["RL2"] })*@
+                    @Html.DropDownListFor(model => model.ReasonLevel2, ViewBag.RL2 as IEnumerable<SelectListItem>,"--Select Reason Level_2--", new { @id = "RL2", @class = "stacked-label", @name = "RL2", @style = "margin-left: 2%;aria-expanded:false;width:20%" })
+                    @Html.ValidationMessageFor(model => model.ReasonLevel2)
+
+                    @*<label for="input-1" class="stacked-label" style="resize: horizontal; width: 20%; color: blue; font-style: oblique">Reason Level 3</label>*@
+                    @Html.DropDownListFor(model => model.ReasonLevel3, ViewBag.RL3 as IEnumerable<SelectListItem>,"--Select Reason Level_3--", new { @id = "RL3", @class = "stacked-label", @name = "RL3", @style = "margin-left: 2%;aria-expanded:false;width:20%" })
+                    @Html.ValidationMessageFor(model => model.ReasonLevel3)
+
+                    <br />
+                    <label for="input-1" class="stacked-label" style="resize: horizontal; width: 20%; padding-top: 2%; margin-left: 2%; color: blue; font-style: oblique">Plant Name</label>
+                    <label for="input-1" class="stacked-label" style="resize: horizontal; padding-top: 2%; margin-left: 2%; width: 20%; color: blue; font-style: oblique">Shop Name</label>
+                    <label for="input-1" class="stacked-label" style="resize: horizontal; width: 20%; margin-left: 2%; color: blue; font-style: oblique">Cell Name</label>
+                    <label for="input-1" class="stacked-label" style="resize: horizontal; padding-top: 2%; margin-left: 2%; width: 20%; color: blue; font-style: oblique">WorkCenter Name</label>
+
+                    @*@Html.DropDownList("Plant", null, "--Select Plant--", new { @id = "Plant", @class = "stacked-label", @name = "Plant", @required = "required", @style = "margin-left: 2%;aria-expanded:false;width:20%", @value = ViewData["Plant"] })*@
+                    @Html.DropDownListFor(model => model.PlantID, ViewBag.Plant as IEnumerable<SelectListItem>,"--Select Plant--", new { @id = "PlantID", @class = "stacked-label", @name = "PlantID", @required = "required", @style = "margin-left: 2%;aria-expanded:false;width:20%" })
+                    @Html.ValidationMessageFor(model => model.PlantID)
+
+                    @Html.DropDownListFor(model => model.ShopID, ViewBag.Shop as IEnumerable<SelectListItem>,"--Select Shop--", new { @id = "ShopID", @class = "stacked-label", @name = "ShopID", @style = "margin-left: 2%;aria-expanded:false;width:20%" })
+                    @*@Html.DropDownList("Shop", null, "--Select Shop--", new { @id = "Shop", @class = "stacked-label", @name = "Shop", @style = "margin-left: 2%;aria-expanded:false;width:20%", @value = ViewData["Shop"] })*@
+                    @Html.ValidationMessageFor(model => model.ShopID)
+
+                    @Html.DropDownListFor(model => model.CellID, ViewBag.Cell as IEnumerable<SelectListItem>,"--Select Cell--", new { @id = "CellID", @class = "stacked-label", @name = "CellID", @style = "margin-left: 2%;aria-expanded:false;width:20%" })
+                    @*@Html.DropDownList("Cell", null, "--Select Cell--", new { @id = "Cell", @class = "stacked-label", @name = "Cell", @style = "margin-left: 2%;aria-expanded:false;width:20%", @value = ViewData["Cell"] })*@
+                    @Html.ValidationMessageFor(model => model.CellID)
+
+                    @Html.DropDownListFor(model => model.WorkCenterID, ViewBag.WorkCenter as IEnumerable<SelectListItem>,"--Select WorkCenter--", new { @id = "WorkCenterID", @class = "stacked-label", @name = "WorkCenterID", @style = "margin-left: 2%;aria-expanded:false;width:20%" })
+                    @*@Html.DropDownList("WorkCenter", null, "--Select WC--", new { @id = "WorkCenter", @class = "stacked-label", @name = "WorkCenter", @style = "margin-left: 2%;aria-expanded:false;width:20%", @value = ViewData["WorkCenter"] })*@
+                    @Html.ValidationMessageFor(model => model.WorkCenterID)
+
+                    <label for="input-1" class="stacked-label" style="resize: horizontal; margin-left: 2%; padding-top: 2%; width: 20%; color: blue; font-style: oblique">Hours</label>
+                    <label for="input-1" class="stacked-label" style="resize: horizontal; margin-left: 2%; width: 20%; color: blue; font-style: oblique">Minutes </label>
+                    <br />
+                    @Html.TextBoxFor(model => model.Hours, new { @id = "Hours", @class = "stacked-label j_int", @name = "Hours", style = "margin-left: 2%;width:20%", @placeholder = "Enter Hours" })
+                    @Html.TextBoxFor(model => model.Minutes, new { @id = "Minutes", @class = "stacked-label j_int", @name = "Minutes", style = "margin-left: 2%;width:20%", @placeholder = "Enter Minutes", @required = "required" })
+
+                    <br />
+                    <label for="input-1" class="stacked-label" style="resize: horizontal; margin-left: 2%; padding-top: 2%; width: 20%; color: blue; font-style: oblique;">TO List</label>
+                    @Html.TextAreaFor(model => model.ToList, new { @id = "ToList", @class = "form-control MailList", @name = "ToList", style = "margin-left: 2%;width:89.7%;font-size:large", @placeholder = "Enter ToList", @required = "required" })
+
+                    <label for="input-1" class="stacked-label" style="resize: horizontal; margin-left: 2%; width: 20%; color: blue; font-style: oblique">CC List </label>
+                    @Html.TextAreaFor(model => model.CcList, new { @id = "CcList", @class = "form-control MailList ", @name = "CcList", style = "margin-left: 2%;width:89.7%;font-size:large", @placeholder = "Enter CcList" })
+
+                    <div style="width: 3%; display: inline-block; height: inherit"></div>
+                    @Html.ActionLink(" Back ", "Index", new { }, new { @class = "btn stacked-input fa fa-reply fa-1x", @style = "text-decoration:none;display:inline-block;color:black" })
+                    <div style="width: 20%; display: inline-block; height: inherit"></div>
+                    <input type="submit" value="Update" class="btn orange btn-lg" style="width: 30%; display: inline-block; height: inherit; margin-top: 2%; background-color: orange; color: black; font-size: 95%" />
+
+                </div>
+                <!-- /widget-content -->
+            </div>
+        </div>
+        <!-- /widget -->
+    </div>
+    <!-- /Class-fluid-->
+    @Html.HiddenFor(Model => Model.EMailEscalationID)
+    @Html.HiddenFor(Model => Model.CreatedBy) 
+    @Html.HiddenFor(Model => Model.CreatedOn)
+    @Html.HiddenFor(Model => Model.IsDeleted)
+    
+    <div id="dialog" title="Basic dialog" style ="width:300px">
+        <p> @Html.Raw(@Session["Error"])</p>
+    </div>
+}
+<script src="~/js/jquery-2.1.4.min.js"></script>
+<script src="~/js/jValidations.js"></script>
+
+@*Uncomment following lines, If you wants to use CDN jquery-ui.css and jquery-ui.js
+   <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">  
+ <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script> *@
+
+<link href="~/css/jquery-ui.css" rel="stylesheet" />
+<script src="~/js/jquery-ui.js"></script>
+
+<script>
+    $(function () {
+        var a = '@Session["Error"]';
+        if (($.trim(a)).length > 0) {
+            $("#dialog").dialog({
+                height: 180,
+                width:300
+            });
+           
+        }
+    });
+  </script>
+
+<script>
+    setTimeout(function () {
+        $('#ErrorBlock').fadeOut('slow');
+    }, 15000); // <-- time in milliseconds
+</script>
+
+<script>
+    $(document).ready(function () {
+        $("#RL1").change(function (evt) {
+            $("#RL2").empty();
+            $("#RL3").empty();
+            var selectedID = $("#RL1 option:selected").val();
+            $.getJSON("/EMailEscalation/GetRL2", { RL1ID: selectedID }, function (data) {
+                $.each(data, function (index, item) {
+                    $("#RL2").append("<option value='" + item.Value + "'>" + item.Text + "</option>");
+                });
+                $("#RL2").prepend("<option value='' selected='selected'></option>");
+            });
+        });
+    });
+
+    $(document).ready(function () {
+        $("#RL2").change(function (evt) {
+            $("#RL3").empty();
+            var selectedID = $("#RL2 option:selected").val();
+            $.getJSON("/EMailEscalation/GetRL3", { RL2ID: selectedID }, function (data) {
+                $.each(data, function (index, item) {
+                    $("#RL3").append("<option value='" + item.Value + "'>" + item.Text + "</option>");
+                });
+                $("#RL3").prepend("<option value='' selected='selected'></option>");
+            });
+        });
+    });
+
+    ////Little Initialization
+    //$("#PlantID").on("focusin", function () {
+    //$("#RL1").prepend("<option value='' selected='selected'></option>");
+    //$("#PlantID").prepend("<option value='' selected='selected'></option>");
+    //});
+
+        $("#PlantID").on("change", function () {
+            $("#ShopID").empty();
+            $("#CellID").empty();
+            $("#WorkCenterID").empty();
+        var selectedID = $("#PlantID option:selected").val();
+        $.getJSON("/EMailEscalation/GetShop", { PlantID: selectedID }, function (data) {
+            $.each(data, function (index, item) {
+                $("#ShopID").append("<option value='" + item.Value + "'>" + item.Text + "</option>");
+                //$("#CellID").append("<option value='" + item.Value + "'>" + item.Text + "</option>");
+            });
+            $("#ShopID").prepend("<option value='' selected='selected'></option>");
+            $("#WorkCenterID").prepend("<option value='' selected='selected'></option>");
+        });
+    });
+
+        $("#ShopID").on("change", function () {
+            $("#CellID").empty();
+            $("#WorkCenterID").empty();
+        var selectedID = $("#ShopID option:selected").val();
+        $.getJSON("/EMailEscalation/GetCell", { ShopID: selectedID }, function (data) {
+            $.each(data, function (index, item) {
+                $("#CellID").append("<option value='" + item.Value + "'>" + item.Text + "</option>");
+            });
+            $("#CellID").prepend("<option value='' selected='selected'></option>");
+        });
+
+        $.getJSON("/EMailEscalation/GetWC_Shop", { ShopID: selectedID }, function (data) {
+            $.each(data, function (index, item) {
+                $("#WorkCenterID").append("<option value='" + item.Value + "'>" + item.Text + "</option>");
+            });
+            $("#WorkCenterID").prepend("<option value='' selected='selected'></option>");
+        });
+
+    });
+
+        $("#CellID").on("change", function () {
+            $("#WorkCenterID").empty();
+        var selectedID = $("#CellID option:selected").val();
+        $.getJSON("/EMailEscalation/GetWC_Cell", { CellID: selectedID }, function (data) {
+            $.each(data, function (index, item) {
+                $("#WorkCenterID").append("<option value='" + item.Value + "'>" + item.Text + "</option>");
+            });
+            $("#WorkCenterID").prepend("<option value='' selected='selected'></option>");
+        });
+    });
+</script>
+
+@*MailList*@
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $(".MailList").autocomplete({
+            source: function (req, resp) {
+                $.ajax({
+                    url: "/EMailEscalation/GetMailIDs",
+                    type: "POST",
+                    dataType: "json",
+                    data: { Prefix: GetCurrentSearchTerm(req.term), AllVal: req.term },
+                    success: function (data) {
+                        resp($.map(data, function (item) {
+                            return { label: item.EmailID, value: item.EmailID };
+                        }))
+                    }
+                })
+            },
+
+            select: function (event, ui) {
+                var LastValue = splitCurrentText(this.value);
+                LastValue.pop();
+                LastValue.push(ui.item.value);
+                LastValue.push("");
+                this.value = LastValue.join(",");
+                return false;
+            },
+            focus: function () {
+                return false;
+            }
+        });
+        function splitCurrentText(LastTerm) {
+            return LastTerm.split(/,\s*/);
+        }
+
+        function GetCurrentSearchTerm(LastTerm) {
+            return splitCurrentText(LastTerm).pop();
+        }
+
+    });
+</script>
+
+<script>
+    $("#Hours").focusout(function (e) {
+        var Hval = $(this).val();
+        if (Hval >= 24) {
+            alert("Hours Value Cannot be Greater than or equal to 24");
+            $(this).val('');
+        }
+    });
+    $("#Minutes").focusout(function (e) {
+        var Mval = $(this).val();
+        if (Mval >= 60) {
+            alert("Minutes Value Cannot be Greater than or equal to 60");
+            $(this).val('');
+        }
+    });
+</script>

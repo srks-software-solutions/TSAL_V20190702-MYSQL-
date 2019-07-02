@@ -1,0 +1,93 @@
+﻿@model Tata.Models.tbluser
+@{
+    ViewBag.Title = "Create";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)  
+    <div class="wrp clearfix">@*style="background-color:red" box outside create role*@
+        <div class="fluid">
+            <div class="widget col-md- grid12">
+                <div class="widget-header" style="background-color: red">
+                    <div class="widget-title">
+                        <span style="font-style: oblique; font-size: 100%">Editing User </span>
+                    </div>
+                </div>
+                <!-- /widget-header -->
+
+                <div class="widget-content pad20f">
+
+                    <label for="input-1" class="stacked-label" style="resize: horizontal; width: 20%; color: blue; font-style: oblique">User Name</label>
+                    @Html.TextBoxFor(model => model.UserName, new { @id = "UserName", @class = "form-control", @name = "UserName ", style = "width:89.7%", @placeholder = "User Name", @required = "required" })
+                    @Html.ValidationMessageFor(model => model.UserName)
+
+
+                    <label for="input-2" class="stacked-label" style="resize: horizontal; width: 20%; color: blue; font-style: oblique">Password</label>
+                    @Html.PasswordFor(model => model.Password, new { @id = "Password", @class = "form-control", @name = "Password ", style = "width:89.7%", @placeholder = "Password ", @required = "required" })
+                    @Html.ValidationMessageFor(model => model.Password)
+
+                    <label for="input-2" class="stacked-label" style="resize: horizontal; width: 20%; color: blue; font-style: oblique">DisplayName</label>
+                    @Html.TextBoxFor(model => model.DisplayName, new { @id = "DisplayName", @class = "form-control", style = "width:89.7%", @name = "DisplayName", @placeholder = "DisplayName", @required = "required" })
+                    @Html.ValidationMessageFor(model => model.DisplayName)
+
+
+                    <label for="input-2" class="stacked-label" style="resize: horizontal; width: 20%; color: blue; font-style: oblique">PrimaryRole</label>
+                    @Html.DropDownList("PrimaryRole",null, "--Select Primary Role--", new { @id = "RoleID1", @class = "dropdown form-control red dropdown-toggle", style = "width:89.7%", @name = "RoleID", @required = "required", @value=ViewData["PrimaryRole"] })
+                     @*@Html.DropDownList("Unit",null, "--Select Unit--", new { @id = "Unit", @class = "form-control", @name = "Unit", @required = "required", @style = "aria-expanded:false;width:89.7%", @value=ViewData["Unit"]})*@
+                    <p></p>
+
+                    <label for="input-2" class="stacked-label" style="resize: horizontal; width: 20%; color: blue; font-style: oblique">Secondary Role</label>
+                    @Html.DropDownList("SecondaryRole",null, "--Select Secondry Role--", new { @id = "RoleID2", @class = "dropdown form-control red dropdown-toggle", style = "width:89.7%", @name = "RoleID", @value=ViewData["PrimaryRole"] })
+                     <p></p>
+                     <div id="machine">
+                    <label for="input-2" class="stacked-label" style="resize: horizontal; width: 20%; color: blue; font-style: oblique">Machine</label>
+                    @Html.DropDownList("MachineID", null, "--Select Machine--", new { @id = "machine1", @class = "dropdown form-control red dropdown-toggle", style = "width:89.7%", @name = "MachineID", @value=ViewData["MachineID"] })
+
+                     <p></p>
+                   
+                    </div>
+                     <div style="width: 3%; display: inline-block; height: inherit"></div>
+@Html.ActionLink(" Back ", "Index", new { }, new { @class = "btn stacked-input fa fa-reply fa-1x", @style = "text-decoration:none;display:inline-block;color:black" })
+ <div style="width: 20%; display: inline-block; height: inherit"></div>
+<input type="submit" value="Update" class="btn btn-lavender inverse" style="width: 30%; display: inline-block; height: inherit;margin-top:2%;color:white;background-color:grey;font-size:1.1vw"/>
+ @Html.HiddenFor(model => model.UserID)
+               
+                     </div>
+                <!-- /widget-content -->
+            </div>
+            <!-- /widget -->
+        </div>
+        <!-- /Class-fluid-->
+    </div>
+ 
+}
+
+
+<script src="~/js/jquery-2.1.4.min.js"></script>
+<script type="text/jscript">
+    $(document).ready(function () {
+        //debugger;
+        if ($('#RoleID1 option:selected').text() != "operator") {
+            $("#machine").css('display', 'None');
+            $("#machine1").prop("required", false);
+        }
+        else {
+            $("#machine").css('display', 'block');
+            $("#machine1").prop("required", true);
+        }
+       
+        $("#RoleID1").change(function () {
+           // alert("j")
+            if ($('#RoleID1 option:selected').text() != "operator") {
+                $("#machine").css('display', 'None');
+                $("#machine1").prop("required", false);
+            }
+            else {
+                $("#machine").css('display', 'block');
+                $("#machine1").prop("required", true);
+            }
+        });
+    });
+</script>

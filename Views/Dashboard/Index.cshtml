@@ -1,0 +1,129 @@
+﻿@{
+    ViewBag.Title = "Index";
+    //Session["Monster"] = "#000000";
+    //string r = Convert.ToString(Session["Monster"]).Substring(1, 2);
+    //string g = Convert.ToString(Session["Monster"]).Substring(3, 2);
+    //string b = Convert.ToString(Session["Monster"]).Substring(5, 2);
+
+    //string FinalColor = null;
+    //FinalColor += (Convert.ToInt32(r, 16) + 20).ToString("X");
+    //FinalColor += (Convert.ToInt32(g, 16) + 20).ToString("X");
+    //FinalColor += (Convert.ToInt32(b, 16) + 20).ToString("X");
+
+    //Session["Angel"] = "#"+FinalColor;
+
+}
+<style>
+    div.parent {
+        border: 2px solid red;
+        width: 100%;
+        color: blue;
+        border: none;
+        height: 25vh;
+    }
+
+    button.child {
+        width: 20%;
+        height: 90%;
+        float: left;
+        -webkit-text-size-adjust: 100%;
+        font-size: 1vw;
+        color: blue;
+        display: inline;
+        text-align: center;
+        background-color: #66A523;
+        padding-left: 10px;
+        margin-left: 3.2vw;
+        border-radius: 10px;
+        font-family: Calibri;
+        font-style: oblique;
+    }
+
+    a {
+        color: white;
+        text-decoration: none;
+    }
+</style>
+
+<p style="font-size: 3vw; text-align: center; color: black; font-family: Calibri; text-decoration: underline; padding-top: 30px;"><b>UNIT WORKS</b></p>
+<p style="height: 1%; margin-top: 5vh;"></p>
+@if (ViewBag.roleid == 1 || ViewBag.roleid == 2 || ViewBag.roleid == 5)
+{
+@* <div style="background-color:@Session["Monster"]">Blah Original</div>
+    <div style="background-color:@Session["Angel"]">Blah Modified</div>*@
+    <div class="parent">
+        <button class="child" >
+            <a href="~/MachineStatus2/Index" style="text-decoration: none;">
+                <p>
+                    <img src="~/icons/user84.png" />
+                </p>
+                Machine Status</a>
+        </button>
+        <button class="child" >
+            <a href="~/HMIScree/Index" style="text-decoration: none;">
+                <p>
+                    <img src="~/icons/responsive12.png" />
+                </p>
+                PartEntry Screen</a>
+        </button>
+        <button class="child" >
+            <a href="~/Report/OEEReport" style="text-decoration: none;">
+                <p>
+                    <img src="~/icons/newspaper2.png" />
+                </p>
+                Reports</a>
+        </button>
+        <button class="child" >
+            <a href="~/RolePlay/Index" style="text-decoration: none;">
+                <p>
+                    <img src="~/icons/working2.png" />
+                </p>
+                Roles Configuration</a>
+        </button>
+    </div>
+
+    <div class="parent">
+        <button class="child" >
+            <a href="~/MachineDetails/Index" style="text-decoration: none;">
+                <p>
+                    <img src="~/icons/robot25.png" />
+                </p>
+                Machine Configuration</a>
+        </button>
+        <button class="child" >
+            <a href="~/MailIDs/Index" style="text-decoration: none;">
+                <p>
+                    <img src="~/icons/laptop88.png" />
+                </p>
+                Email Configuration</a>
+
+        </button>
+        <button class="child" >
+            <a href="~/IdleCodes/Index" style="text-decoration: none;">
+                <p>
+                    <img src="~/icons/alarm25.png" />
+                </p>
+                Losses & Breakdown Configuration</a>
+        </button>
+        <button class="child" >
+            <a href="~/ShiftMaster/Index" style="text-decoration: none;">
+                <p>
+                    <img src="~/icons/three115.png" />
+                </p>
+                General Configuration</a>
+        </button>
+    </div>
+}
+
+
+<script src="~/js/jquery-2.1.4.min.js"></script>
+
+@*<script>
+    var $j = jQuery.noConflict();
+    $j(function () {
+        //$(".child")
+        $(".child").each(function (e) { 
+           $(this).hide().fadeIn("slow");
+        })
+    });
+</script>*@

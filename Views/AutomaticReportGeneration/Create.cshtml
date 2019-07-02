@@ -1,0 +1,206 @@
+﻿@model Tata.Models.tbl_autoreportsetting
+@{
+    ViewBag.Title = "Create";
+}
+
+<style>
+    input {
+        font-style: oblique;
+        color: blue;
+    }
+</style>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)  
+    <div class="wrp clearfix">@*style="background-color:red" box outside create role*@
+        <div class="fluid">
+            <div class="widget col-md- grid12">
+
+                <div class="widget-header" style="background-color: red">
+                    <div class="widget-title">
+                        <span style="font-style: oblique; font-size: 100%">Create Automatic Report Generation Setting</span>
+                    </div>
+                </div>
+                <!-- /widget-header -->
+
+                <div class="widget-content pad20f">
+                    <label for="input-1" class="stacked-label" style="resize: horizontal; padding-top: 2%; margin-left: 2%; width: 20%; color: blue; font-style: oblique">Report</label>
+                    <label for="input-1" class="stacked-label" style="resize: horizontal; margin-left: 2%; width: 20%; color: blue; font-style: oblique">Based On</label>
+                    <label for="input-1" class="stacked-label" style="resize: horizontal; margin-left: 2%; width: 20%; color: blue; font-style: oblique">Time</label>
+                    <br />
+                    @Html.DropDownListFor(model => model.ReportID, ViewBag.RL1 as IEnumerable<SelectListItem>, "--Select Report--", new { @id = "RL1", @class = "stacked-label", @name = "RL1", @required = "required", @style = "margin-left: 2%;aria-expanded:false;width:20%" })
+                    @Html.ValidationMessageFor(model => model.ReportID)
+
+                    @Html.DropDownListFor(model => model.BasedOn, ViewBag.RL2 as IEnumerable<SelectListItem>, "--Select Based On--", new { @id = "RL2", @class = "stacked-label", @name = "RL2", @required = "required", @style = "margin-left: 2%;aria-expanded:false;width:20%" })
+                    @Html.ValidationMessageFor(model => model.BasedOn)
+
+                    @Html.DropDownListFor(model => model.AutoReportTimeID, ViewBag.RL3 as IEnumerable<SelectListItem>, "--Select Report Time--", new { @id = "RL3", @class = "stacked-label", @name = "RL3", @required = "required", @style = "margin-left: 2%;aria-expanded:false;width:20%" })
+                    @Html.ValidationMessageFor(model => model.AutoReportTimeID)
+                    <br />
+
+                    <label for="input-1" class="stacked-label Plant" style="resize: horizontal; padding-top: 2%; margin-left: 2%; width: 20%; color: blue; font-style: oblique">Plant Name</label>
+                    <label for="input-1" class="stacked-label Shop" style="resize: horizontal; margin-left: 2%; width: 20%; color: blue; font-style: oblique">Shop Name</label>
+                    <label for="input-1" class="stacked-label Cell" style="resize: horizontal; margin-left: 2%; width: 20%; color: blue; font-style: oblique">Cell Name</label>
+                    <label for="input-1" class="stacked-label WC" style="resize: horizontal; margin-left: 2%; width: 20%; color: blue; font-style: oblique">MachineInvNo</label>
+                    <br />
+
+                    @Html.DropDownListFor(model => model.PlantID, ViewBag.Plant as IEnumerable<SelectListItem>, "--Select Plant--", new { @id = "PlantID", @class = "stacked-label Plant", @name = "PlantID", @required = "required", @style = "margin-left: 2%;aria-expanded:false;width:20%" })
+                    @Html.ValidationMessageFor(model => model.PlantID)
+
+                    @Html.DropDownListFor(model => model.ShopID, ViewBag.Shop as IEnumerable<SelectListItem>, "--Select Shop--", new { @id = "ShopID", @class = "stacked-label Shop", @name = "ShopID", @required = "required", @style = "margin-left: 2%;aria-expanded:false;width:20%" })
+                    @Html.ValidationMessageFor(model => model.ShopID)
+
+                    @Html.DropDownListFor(model => model.CellID, ViewBag.Cell as IEnumerable<SelectListItem>, "--Select Cell--", new { @id = "CellID", @class = "stacked-label Cell", @name = "CellID", @style = "margin-left: 2%;aria-expanded:false;width:20%" })
+                    @Html.ValidationMessageFor(model => model.CellID)
+
+                    @Html.DropDownListFor(model => model.MachineID, ViewBag.WorkCenter as IEnumerable<SelectListItem>, "--Select WorkCenter--", new { @id = "WorkCenterID", @class = "stacked-label WC", @name = "WorkCenterID", @style = "margin-left: 2%;aria-expanded:false;width:20%" })
+                    @Html.ValidationMessageFor(model => model.MachineID)
+
+                    <br />
+                    <label for="input-1" class="stacked-label" style="resize: horizontal; margin-left: 2%; padding-top: 2%; width: 20%; color: blue; font-style: oblique;">TO List</label>
+                    @Html.TextAreaFor(model => model.ToMailList, new { @id = "ToList", @class = "form-control MailList", @name = "ToList", style = "margin-left: 2%;width:89.7%;font-size:large", @placeholder = "Enter ToList", @required = "required" })
+
+                    <label for="input-1" class="stacked-label" style="resize: horizontal; margin-left: 2%; width: 20%; color: blue; font-style: oblique">CC List </label>
+                    @Html.TextAreaFor(model => model.CCMailList, new { @id = "CcList", @class = "form-control MailList ", @name = "CcList", style = "margin-left: 2%;width:89.7%;font-size:large", @placeholder = "Enter CcList" })
+
+                    <div style="width: 3%; display: inline-block; height: inherit"></div>
+                    @Html.ActionLink(" Back ", "Index", new { }, new { @class = "btn stacked-input fa fa-reply fa-1x", @style = "text-decoration:none;display:inline-block;color:black" })
+                    <div style="width: 20%; display: inline-block; height: inherit"></div>
+                    <input type="submit" value="Create" class="btn orange btn-lg" style="width: 30%; display: inline-block; height: inherit; margin-top: 2%; background-color: orange; color: black; font-size: 95%" />
+
+                </div>
+                <!-- /widget-content -->
+            </div>
+        </div>
+        <!-- /widget -->
+    </div>
+    
+    <div id="dialog" title="Error Notification" style="width: 300px">
+        <p>@Html.Raw(@Session["Error"])</p>
+    </div>
+    
+}
+<script src="~/js/jquery-2.1.4.min.js"></script>
+<script src="~/js/jValidations.js"></script>
+
+@*Uncomment following lines, If you wants to use CDN jquery-ui.css and jquery-ui.js
+   <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">  
+ <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script> *@
+
+<link href="~/css/jquery-ui.css" rel="stylesheet" />
+<script src="~/js/jquery-ui.js"></script>
+
+<script>
+    $(function () {
+        var a = '@Session["Error"]';
+        if (($.trim(a)).length > 0) {
+            $("#dialog").dialog({
+                height: 180,
+                width: 300
+            });
+
+        }
+    });
+</script>
+
+<script>
+    setTimeout(function () {
+        $('#ErrorBlock').fadeOut('slow');
+    }, 15000); // <-- time in milliseconds
+</script>
+
+@*MailList*@
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $(".MailList").autocomplete({
+            source: function (req, resp) {
+                $.ajax({
+                    url: "/AutomaticReportGeneration/GetMailIDs",
+                    type: "POST",
+                    dataType: "json",
+                    data: { Prefix: GetCurrentSearchTerm(req.term), AllVal: req.term },
+                    success: function (data) {
+                        resp($.map(data, function (item) {
+                            return { label: item.EmailID, value: item.EmailID };
+                        }))
+                    }
+                })
+            },
+
+            select: function (event, ui) {
+                var LastValue = splitCurrentText(this.value);
+                LastValue.pop();
+                LastValue.push(ui.item.value);
+                LastValue.push("");
+                this.value = LastValue.join(",");
+                return false;
+            },
+            focus: function () {
+                return false;
+            }
+        });
+        function splitCurrentText(LastTerm) {
+            return LastTerm.split(/,\s*/);
+        }
+
+        function GetCurrentSearchTerm(LastTerm) {
+            return splitCurrentText(LastTerm).pop();
+        }
+    });
+</script>
+
+<script>
+ $("#PlantID").on("change", function () {
+        $("#ShopID").empty();
+        $("#CellID").empty();
+        $("#WorkCenterID").empty();
+        var selectedID = $("#PlantID option:selected").val();
+        $.getJSON("/EMailEscalation/GetShop", { PlantID: selectedID }, function (data) {
+            $.each(data, function (index, item) {
+                $("#ShopID").append("<option value='" + item.Value + "'>" + item.Text + "</option>");
+                //$("#CellID").append("<option value='" + item.Value + "'>" + item.Text + "</option>");
+            });
+            $("#ShopID").prepend("<option value='' selected='selected'></option>");
+            $("#WorkCenterID").prepend("<option value='' selected='selected'></option>");
+        });
+    });
+
+    $("#ShopID").on("change", function () {
+        $("#CellID").empty();
+        $("#WorkCenterID").empty();
+        var selectedID = $("#ShopID option:selected").val();
+        $.getJSON("/EMailEscalation/GetCell", { ShopID: selectedID }, function (data) {
+            $.each(data, function (index, item) {
+                $("#CellID").append("<option value='" + item.Value + "'>" + item.Text + "</option>");
+            });
+            $("#CellID").prepend("<option value='' selected='selected'></option>");
+        });
+
+        $.getJSON("/EMailEscalation/GetWC_Shop", { ShopID: selectedID }, function (data) {
+            $.each(data, function (index, item) {
+                $("#WorkCenterID").append("<option value='" + item.Value + "'>" + item.Text + "</option>");
+            });
+            $("#WorkCenterID").prepend("<option value='' selected='selected'></option>");
+        });
+
+    });
+
+    $("#CellID").on("change", function () {
+        $("#WorkCenterID").empty();
+        var selectedID = $("#CellID option:selected").val();
+        $.getJSON("/EMailEscalation/GetWC_Cell", { CellID: selectedID }, function (data) {
+            $.each(data, function (index, item) {
+                $("#WorkCenterID").append("<option value='" + item.Value + "'>" + item.Text + "</option>");
+            });
+            $("#WorkCenterID").prepend("<option value='' selected='selected'></option>");
+        });
+    });
+</script>
+
+@*Hierarchy Based on "BasedOn"*@
+<script>
+
+</script>

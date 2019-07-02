@@ -1,0 +1,59 @@
+﻿@model Tata.Models.tbldaytiming
+
+@{
+    ViewBag.Title = "Create";
+}
+
+
+<link href="~/DT!/CSS/bootstrap-combined.min.css" rel="stylesheet" />
+<link href="~/DT!/CSS/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+<script src="~/DT!/Script/jquery-1.10.2.min.js"></script>
+<script src="~/DT!/Script/bootstrap.min.js"></script>
+<script src="~/DT!/Script/bootstrap-datetimepicker.pt-BR.js"></script>
+<script src="~/DT!/Script/bootstrap-datetimepicker.min.js"></script>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)  
+    <div class="wrp clearfix">
+        <div class="fluid">
+            <div class="widget grid12">
+                <div class="widget-header">
+                    <div class="widget-title">
+                        Create Day Start Time
+                    </div>
+                </div>
+                <!-- /widget-header -->
+
+                <div class="widget-content pad20f">
+
+                    <label for="input-1" class="stacked-label" style="resize: horizontal; width: 20%">Start Time</label>
+                    @Html.TextBoxFor(model => model.StartTime, new { @id = "DateTimePicker", @class = "form-control timepicker", @name = "StartTime", style = "width:89.7%", @placeholder = "Enter StartTime", @required = "required", @readonly = "readonly" })
+                    @Html.ValidationMessageFor(model => model.StartTime)
+
+                    <label for="input-1" class="stacked-label" style="resize: horizontal; width: 20%">End Time</label>
+                    @Html.TextBoxFor(model => model.EndTime, new { @id = "DateTimePicker", @class = "form-control timepicker", @name = "EndTime", style = "width:89.7%", @placeholder = "Enter EndTime", @required = "required", @readonly = "readonly"  })
+                    @Html.ValidationMessageFor(model => model.EndTime)
+
+                   <div style="width: 3%; display: inline-block; height: inherit"></div>
+                    @Html.ActionLink(" Back ", "Index", new { }, new { @class = "btn stacked-input fa fa-reply fa-1x", @style = "text-decoration:none;display:inline-block;color:black" })
+                    <div style="width: 20%; display: inline-block; height: inherit"></div>
+                    <input type="submit" value="Create" class="btn orange btn-lg" style="width: 30%; display: inline-block; height: inherit;margin-top:2%;background-color:orange;color:black;font-size:95%"/>
+</div>
+                <!-- /widget-content -->
+            </div>
+            <!-- /widget -->
+        </div>
+    </div>
+  
+    @Html.HiddenFor(Model => Model.CreatedBy)
+    @Html.HiddenFor(Model => Model.CreatedOn)
+    @Html.HiddenFor(Model => Model.IsDeleted)
+    @Html.HiddenFor(Model => Model.ID)   
+}
+<script>
+    $(document).ready(function () {
+        $('input.timepicker').timepicker({});
+    });
+</script>

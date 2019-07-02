@@ -1,0 +1,65 @@
+﻿@model Tata.Models.message_code_master
+@{
+    ViewBag.Title = "Edit";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)  
+    <div class="wrp clearfix">@*style="background-color:red" box outside create role*@
+        <div class="fluid">
+            <div class="widget col-md- grid12">
+                <div class="widget-header">
+                    <div class="widget-title">
+                        Edit IdleCode
+                    </div>
+                </div>
+                <!-- /widget-header -->
+                <div class="widget-content pad20f">
+
+                    <label for="input-1" class="stacked-label" style="resize: horizontal; width: 20%; color: blue; font-style: oblique">MessageCode</label>
+                    @Html.TextBoxFor(model => model.MessageCode, new { @id = "MessageCode", @class = "form-control", @name = "MessageCode", style = "width:89.7%", @placeholder = "Enter MessageCode", @required = "required" })
+                     @if (ViewBag.BDCode != null)
+                    {
+                        <div id="MCodeError" style="width: 20%; display: block; height: inherit; color: red">@ViewBag.BDCode</div>
+                    }
+
+                    <label for="input-2" class="stacked-label" style="resize: horizontal; width: 20%; color: blue; font-style: oblique">MessageDescription</label>
+                    @Html.TextBoxFor(model => model.MessageDescription, new { @id = "MessageDescription", @class = "form-control", @name = "MessageDescription", style = "width:89.7%", @placeholder = "Enter Message Description", @required = "required" })
+
+                    <label for="input-2" class="stacked-label" style="resize: horizontal; width: 20%; color: blue; font-style: oblique">MessageType</label>
+                    @Html.DropDownList("MessageType", null, "--Select MessageType--", new { @id = "BreakDownCode", @class = "form-control", @name = "BreakDownCode", @required = "required",@style="aria-expanded:false;width:89.7%" })
+                                @Html.ValidationMessageFor(model => model.MessageType)
+
+                    <div style="width: 3%; display: inline-block; height: inherit"></div>
+                    @Html.ActionLink(" Back ", "Index", new { }, new { @class = "btn stacked-input fa fa-reply fa-1x", @style = "text-decoration:none;display:inline-block;color:black" })
+                    <div style="width: 20%; display: inline-block; height: inherit"></div>
+                    <input type="submit" value="Update" class="btn orange btn-lg" style="width: 30%; display: inline-block; height: inherit; margin-top: 2%; background-color: orange; color: black; font-size: 95%" />
+
+                </div>
+                <!-- /widget-content -->
+            </div>
+            <!-- /widget -->
+        </div>
+        <!-- /Class-fluid-->
+    </div>
+            
+    @Html.HiddenFor(Model => Model.MessageMCode)
+    @Html.HiddenFor(Model => Model.ModifiedBy)
+    @Html.HiddenFor(Model => Model.ModifiedOn)
+    @Html.HiddenFor(Model => Model.InsertedOn)
+    @Html.HiddenFor(Model => Model.InsertedBy)
+    @Html.HiddenFor(Model => Model.IsDeleted)
+    @Html.HiddenFor(Model => Model.MessageCodeID)
+    @Html.HiddenFor(Model => Model.ReportDispName)
+    @Html.HiddenFor(Model => Model.ColourCode)
+    
+}
+
+<style>
+    input {
+        font-style: oblique;
+        color: blue;
+    }
+</style>

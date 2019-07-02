@@ -1,0 +1,48 @@
+﻿@model Tata.Models.tblmachineallocation
+@{
+    ViewBag.Title = "Create";
+}
+
+@using (Html.BeginForm("Create", "MachineAllocation"))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)  
+<div class="wrp clearfix" >@*style="background-color:red" box outside create role*@
+    <div class="fluid">
+        <div class="widget col-md- grid12">
+            <div class="widget-header" style="background-color:red">
+                <div class="widget-title"  >
+                    Create User
+                </div>
+            </div>
+            <!-- /widget-header -->
+
+            <div class="widget-content pad20f">
+
+                 <label for="input-1" class="stacked-label" style="resize: horizontal; width: 20%; color:blue;font-style:oblique">User</label>
+                 @Html.DropDownList("UserID", (SelectList)ViewData["UserID"], "--Select User--", new { @id = "RoleID1", @class = "dropdown form-control red dropdown-toggle", style = "width:89.7%",@name = "RoleID", })
+                  @Html.ValidationMessageFor(model => model.UserID)
+                
+                <br />   
+
+                 <label for="input-2" class="stacked-label" style="resize: horizontal; width: 20%; color:blue;font-style:oblique">Machine</label>
+                  @Html.DropDownList("MachineID", (SelectList)ViewData["MachineID"], "--Select Machine--", new { @id = "RoleID1", @class = "dropdown form-control red dropdown-toggle", style = "width:89.7%",@name = "RoleID", })
+                  @Html.ValidationMessageFor(model => model.MachineID)
+                      <br />
+                 <label for="input-2" class="stacked-label" style="resize: horizontal; width: 20%; color:blue;font-style:oblique">Shift</label>
+                 @Html.DropDownList("ShiftID", (SelectList)ViewData["ShiftID"], "--Select Shift--", new { @id = "RoleID1", @class = "dropdown form-control red dropdown-toggle", style = "width:89.7%",@name = "RoleID", })
+                  @Html.ValidationMessageFor(model => model.ShiftID)
+
+                 <div style="width: 3%; display: inline-block; height: inherit"></div>
+                    @Html.ActionLink(" Back ", "Index", new { }, new { @class = "btn stacked-input fa fa-reply fa-1x", @style = "text-decoration:none;display:inline-block;color:black" })
+                    <div style="width: 20%; display: inline-block; height: inherit"></div>
+                    <input type="submit" value="Create" class="btn orange btn-lg" style="width: 30%; display: inline-block; height: inherit;margin-top:2%;background-color:orange;color:black;font-size:95%"/>
+
+            </div>
+            <!-- /widget-content -->
+        </div>
+        <!-- /widget -->
+    </div> <!-- /Class-fluid-->
+</div>
+ 
+}

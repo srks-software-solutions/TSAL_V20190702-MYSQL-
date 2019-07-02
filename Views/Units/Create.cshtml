@@ -1,0 +1,81 @@
+﻿@model Tata.Models.tblunit
+@{
+    ViewBag.Title = "Create";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)  
+<div class="wrp clearfix">
+    <div class="fluid">
+        <div class="widget grid12">
+            <div class="widget-header">
+                <div class="widget-title">
+                    Create TimeUnit
+                </div>
+            </div>
+            <!-- /widget-header -->
+
+            <div class="widget-content pad20f">
+
+                 <label for="input-1" class="stacked-label" style="resize: horizontal">Time Unit</label>
+                <div>
+                    @Html.TextBoxFor(model => model.Unit, new { @id = "Unit", @class = "form-control text", @name = "Unit", @maxlength = 10, @style = "width:60%;display:inline",@placeholder = "Enter Unit Name", @required = "required" ,autofocus="autofocus"})
+                            @Html.ValidationMessageFor(model => model.Unit)
+                      <span style="display:inline"></span>
+               </div>
+                
+                    <label for="input-2" class="stacked-label" style="resize: horizontal">Time Unit Description</label>
+                 <div>
+                       @Html.TextBoxFor(model => model.UnitDesc, new { @id = "UnitDesc", @class = "form-control text", @maxlength = 30, @name = "UnitDesc", @style = "width:60%;display:inline", @placeholder = "Enter Unit Description", @required = "required" })  
+                            @Html.ValidationMessageFor(model => model.UnitDesc)
+                     <span style="display:inline"></span>
+               </div>
+                   <div style="width: 3%; display: inline-block; height: inherit"></div>
+                    @Html.ActionLink(" Back ", "Index", new { }, new { @class = "btn stacked-input fa fa-reply fa-1x", @style = "text-decoration:none;display:inline-block;color:black" })
+                    <div style="width: 20%; display: inline-block; height: inherit"></div>
+                    <input type="submit" value="Create" class="btn orange btn-lg" style="width: 30%; display: inline-block; height: inherit;margin-top:2%;background-color:orange;color:black;font-size:95%"/>
+
+            </div>
+            <!-- /widget-content -->
+        </div>
+        <!-- /widget -->
+    </div>
+</div>
+  
+    @Html.HiddenFor(Model => Model.CreatedBy)
+    @Html.HiddenFor(Model => Model.CreatedOn)
+    @Html.HiddenFor(Model => Model.IsDeleted)
+    @Html.HiddenFor(Model => Model.U_ID)    
+}
+<script src="~/js/jquery-2.1.4.min.js"></script>
+<script>
+    $('.text').keypress(function (e) {
+        var regex = new RegExp("^[a-zA-Z]$");
+        var str = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+        var len = $(this).attr('maxlength');
+        if (!regex.test(str)) {
+            $(event.target).next("span").html("Alphabet's Only").show().fadeOut(2000);
+            e.preventDefault();
+           
+            return false;
+        }
+        return true;
+    });
+  
+</script>
+<script>
+    $(document).ready(function () {
+        $('input').keyup(function (e) {
+            var len = $(this).attr("maxlength");
+            if (this.value.length == $(this).attr("maxlength")) {
+                e.preventDefault();
+                $(event.target).next("span").html("Maximum " + len + " Characters only").show().fadeOut(2000);
+                return false;
+            }
+            return true;
+        });
+    });
+</script>
+

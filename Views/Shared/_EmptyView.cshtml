@@ -1,0 +1,164 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real Time Status-Plant TATA</title>
+
+    <link rel="apple-touch-icon" sizes="144x144" href="~/Images/apple-touch-icon-ipad-retina.png" />
+    <link rel="apple-touch-icon" sizes="114x114" href="~/Images/apple-touch-icon-iphone-retina.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="~/Images/apple-touch-icon-ipad.png" />
+    <link rel="apple-touch-icon" sizes="57x57" href="~/Images/apple-touch-icon-iphone.png" />
+    <link rel="shortcut icon" type="image/x-icon" href="~/Images/120px-Tata_logoicon.ico" />
+
+    <!-- bootstrap -->
+    <link href="~/css/bootstrap/bootstrap.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="~/css/font-awesome-4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/css/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" href="~/css/toastr.css">
+
+    <link href="~/css/style.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="~/css/pe-icon-7-filled.css">
+    <link rel="stylesheet" type="text/css" href="~/css/pe-icon-7-stroke.css">
+    <script>
+        function startTime() {
+            var today = new Date();
+            var h = today.getHours();
+            var m = today.getMinutes();
+            var s = today.getSeconds();
+            m = checkTime(m);
+            s = checkTime(s);
+            document.getElementById('txt').innerHTML = h + ":" + m + ":" + s;
+            var t = setTimeout(function () { startTime() }, 500);
+        }
+
+        function checkTime(i) {
+            if (i < 10) { i = "0" + i };  // add zero in front of numbers < 10
+            return i;
+        }
+</script>
+</head>
+<body>
+
+
+    <div id="loading">
+        <div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+
+    <div id="wrapper" style="width: 100%;">
+        <div id="top">
+            @if (ViewBag.roleid == 3)
+                {
+                var a = ViewBag.roleid;
+                var j = a;
+            <div class="main-logo">
+                <a href="~/Dashboard/Index" onclick="return true;">
+                    <img src="~/Images/120px-Tata_logo.png" style="width:35%;height:35%" /></a>
+                @*<p style="color:green;font-size:100%;">@Html.ActionLink("Tata", "Index", "Dashboard", new { @Styles="font-size:70%"})</p>*@
+            </div>
+            }
+            @* <div class="profile-nav">
+                <ul>
+                    <li>
+                        @Html.ActionLink("Dashboard", "Index", "Dashboard")
+                    </li>
+                </ul>
+            </div>*@
+            <div class="m-nav"><i class="fa fa-bars"></i></div>
+        </div>
+        <div id="top">
+            <div class="profile-nav" style="float: left;display:inline">
+                <ul>
+                    <li>
+                        @*@Html.ActionLink(" Back", "Index", "Dashboard", new { @class="fa fa-reply",@style="color:white;"})*@
+                    </li>
+                </ul>
+            </div>
+           
+             <div class="profile-nav" style="width:70%;float:left;padding-left:25%;display:inline;color:white;text-align:center;font-size:200%;">
+               
+                      @*DownCode Entry Window*@
+                 Choose Work Order or ReWork Order
+                
+            </div>
+             <div class="profile-nav" style="float: right;display:inline">
+                <ul>
+                    <li id="txt" style="color:white">
+                       
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- /top -->
+        <!-- /sidebar -->
+        <div id="content" style="width: 100%; position: relative; padding: 0px; margin: 0px">
+            @RenderBody()
+        </div>
+        <!-- /content -->
+        <footer class="footer">
+            <a href="http://www.srkssolutions.com/">2016 © SRKS Software Solutions</a>
+        </footer>
+    </div>
+    <!-- /wrapper -->
+
+</body>
+</html>
+
+<script src="~/js/jquery-2.1.4.min.js"></script>
+<script type="text/javascript" src="~/js/prefixfree.min.js"></script>
+<script type="text/javascript" src="~/js/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="~/js/jquery-ui.js"></script>
+<script type="text/javascript" src="~/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="~/js/excanvas.min.js"></script>
+<script type="text/javascript" src="~/js/jquery.flot.js"></script>
+<script type="text/javascript" src="~/js/jquery.flot.resize.js"></script>
+<script type="text/javascript" src="~/js/jquery.sparkline.min.js"></script>
+<script type="text/javascript" src="~/js/jquery.hashchange.min.js"></script>
+<script type="text/javascript" src="~/js/jquery.easytabs.min.js"></script>
+<script type="text/javascript" src="~/js/toastr.min.js"></script>
+@*turnoff autocomplete in all input fields*@
+<script>
+    $(document).ready(function () {
+        $(document).on('focus', ':input', function () {
+            $(this).attr('autocomplete', 'off');
+        });
+    });
+</script>
+<!--to open page in full screen-->
+   @* <script>
+    window.open("Index.cshtml", "", "fullscreen=yes");
+    self.close();
+</script>*@
+<script>
+    $(window).load(function () {
+
+        //for dummy loading screen
+        $('#loading').fadeOut(1000);
+
+        //for dropdown collapse
+        $('.collapsible > a').click(function () {
+            $(this).parent().toggleClass('open');
+            if ($(this).parent().siblings().hasClass('open')) {
+                $(this).parent().siblings().removeClass('open');
+            }
+            return false;
+        });
+    });
+</script>
+<style>
+    label {
+        color: blue;
+        font-style: oblique;
+    }
+</style>
+<style>
+    span {
+        color: red;
+        font-size: 120%;
+    }
+</style>

@@ -1,0 +1,153 @@
+﻿@model IEnumerable<Tata.Models.tblhmiscreen>
+@{
+    ViewBag.Title = "WorkInProgressList";
+
+    var slno = 1;
+    if (ViewBag.roleid == 3)
+    {
+        Layout = "~/Views/Shared/Layoutmimics.cshtml";
+    }
+    int mcid = Convert.ToInt32(ViewBag.mcnid);
+    int opid = Convert.ToInt32(ViewBag.opid);
+    int roleid = Convert.ToInt32(Session["RoleID"]);
+    string date = ViewBag.coretddt;
+
+}
+
+@*<script src="~/js/jquery-2.1.4.min.js"></script>
+<script>setTimeout(function () { window.location.reload(); }, 60000)</script>*@
+
+@*<h2></h2> induces gap between button and container top*@
+@*<div style="width: 2%; display: inline-block; height: inherit"></div>*@
+
+@*@Html.ActionLink("Back To HMIScreen", "Index", new { }, new { @class = "btn orange btn-lg ", @style = "color:black;width:20%;height:70%;backgroundcolor:red;font-size:90%" })*@
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)  
+
+    <div class="wrp clearfix">
+        <div class="fluid">
+            <div style="width: 100%">
+                @Html.ActionLink("Back To HMIScreen", "Index", new { }, new { @class = "btn orange btn-lg ", @style = "margin-left:2%;color:black;width:15vw;height:70%;backgroundcolor:red;font-size:1vw" })
+                <div style="margin-left: 15vw; display: inline"></div>
+                 @{  if (roleid == 3)
+        { <span style="font-size: 1.5vw; color: orange">@ViewBag.macDispName</span>}
+        else{ <span style="font-size: 1.5vw; color: black">@ViewBag.macDispName</span>
+        }
+    }
+            </div>
+
+            <div class="widget grid12">
+                <div class="widget-header">
+                    <div class="widget-title" style="font-size: 125%">
+                        Work In Progress List
+                    </div>
+                </div>
+                <!-- /widget-header -->
+
+                <div class="widget-content pad20f">
+                    <div class="widget__content table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr class="text-centre" style="background-color: orange">
+                                    <th style="text-align: center; font-size: 95%">Sl.No.</th>
+                                    <th style="text-align: center; font-size: 95%">Machine InvNo</th>
+                                    <th style="text-align: center; font-size: 95%">Machine Name</th>
+                                    <th style="text-align: center; font-size: 95%">WO/RWO</th>
+                                    <th style="text-align: center; font-size: 95%">Project</th>
+                                    <th style="text-align: center; font-size: 95%">PartNo</th>
+                                    <th style="text-align: center; font-size: 95%">WO No.</th>
+                                    <th style="text-align: center; font-size: 95%">OP No.</th>
+                                    <th style="text-align: center; font-size: 95%">Target</th>
+                                    <th style="text-align: center; font-size: 95%">Delivered</th>
+                                    <th style="text-align: center; font-size: 95%">Rejected</th>
+                                    @if (roleid != 2)
+                                    {
+                                        <th style="text-align: center; font-size: 95%">Resume</th>
+                                    }
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="spacer"></tr>
+                                <tr class="spacer"></tr>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                            @slno
+                                        </td>
+
+                                        <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                            @Html.DisplayFor(modelItem => item.tblmachinedetail.MachineInvNo)
+                                        </td>
+                                        <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                            @Html.DisplayFor(modelItem => item.tblmachinedetail.MachineDispName)
+                                        </td>
+                                        <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                            @*@Html.DisplayFor(modelItem => item.Rej_Qty)*@
+                                            @{
+                                    int isworkorder = item.isWorkOrder;
+                                    if (isworkorder == 0)
+                                    {
+                                                <div>WorkOrder</div>
+                                    }
+                                    else
+                                    {
+                                                <div>Re-WorkOrder</div>
+                                    }
+                                            }
+                                        </td>
+                                        <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                            @Html.DisplayFor(modelItem => item.Project)
+                                        </td>
+                                        <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                            @Html.DisplayFor(modelItem => item.PartNo)
+                                        </td>
+                                        <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                            @Html.DisplayFor(modelItem => item.Work_Order_No)
+                                        </td>
+
+                                        <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                            @Html.DisplayFor(modelItem => item.OperationNo)
+                                        </td>
+
+
+                                        <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                            @Html.DisplayFor(modelItem => item.Target_Qty)
+                                        </td>
+
+                                        <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                            @Html.DisplayFor(modelItem => item.Delivered_Qty)
+                                        </td>
+
+                                        <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                            @Html.DisplayFor(modelItem => item.Rej_Qty)
+                                        </td>
+                                        @if (roleid != 2)
+                                        {
+                                            <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                                @Html.ActionLink(" ", "Index", new { id = item.HMIID }, new { @class = " red btn-lg fa fa-arrow-circle-right fa-2x", @style = "color:white;text-decoration:none" })
+                                            </td>
+                                        }
+                                    </tr>
+                                        slno = slno + 1;
+                                }
+                                <tr class="spacer"></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+                <!-- /widget-content -->
+
+            </div>
+            <!-- /widget -->
+        </div>
+    </div>    
+}
+
+

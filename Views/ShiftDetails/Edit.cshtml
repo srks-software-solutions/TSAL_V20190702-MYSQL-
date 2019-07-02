@@ -1,0 +1,401 @@
+﻿@*@model Tata.Models.tblshiftdetail*@
+@model IList<Tata.Models.tblshiftdetail>
+
+@{
+    ViewBag.Title = "Edit";
+}
+<style>
+    input {
+        font-style: oblique;
+        color: blue;
+    }
+</style>
+<script src="~/js/jquery-2.1.4.min.js"></script>
+<script src="~/Content1/jquery.datetimepicker.js" type="text/javascript"></script>
+@{
+    List<SelectListItem> NextDay = new List<SelectListItem>();
+
+    NextDay.Add(new SelectListItem
+    {
+        Text = "NO",
+        Value = "0",
+    });
+    NextDay.Add(new SelectListItem
+    {
+        Text = "YES",
+        Value = "1",
+    });
+   
+}
+
+@{
+    List<SelectListItem> IsGShift = new List<SelectListItem>();
+
+    IsGShift.Add(new SelectListItem
+    {
+        Text = "NO",
+        Value = "0",
+    });
+    IsGShift.Add(new SelectListItem
+    {
+        Text = "YES",
+        Value = "1",
+    });
+}
+@using (Html.BeginForm("Edit", "ShiftDetails", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)  
+    <div class="wrp clearfix">@*style="background-color:red" box outside create role*@
+        <div class="fluid">
+            <div class="widget col-md- grid12">
+                <div class="widget-header" style="background-color: red">
+                    <div class="widget-title">
+                        <span style="font-style: oblique; font-size: 100%">Editing Shift Detail</span>
+                    </div>
+                </div>
+                <!-- /widget-header -->
+
+                <div class="widget-content pad20f">
+                    <label for="input-2" class="stacked-label" style="resize: horizontal; width: 40%">Shift Method Name</label>
+                    @Html.DropDownList("ShiftMethod", null, "--Select ShiftMethod--", new { @id = "ShiftMethod", @class = "form-control", @name = "ShiftMethod", @required = "required", @style = "aria-expanded:false;width:89.7%", @value = ViewData["ShiftMethod"] })
+                    @Html.ValidationMessageFor(model => model[0].ShiftMethodID)
+                </div>
+
+                @*to take count of model*@
+                <input type ="hidden" id="modelcount" name="modelcount" value =" @Model.Count;" />
+
+               @* <div class="widget-content pad20f" id="shift1">
+                    <label for="input-1" class="stacked-label" style="resize: horizontal; padding-top: 2%; width: 20%; color: blue; font-style: oblique">ShiftDetailsName</label>
+                    @Html.TextBoxFor(model => model[0].ShiftDetailsName, new { @id = "ShiftDetailsName", @class = "form-control", @name = "ShiftDetailsName", style = "width:89.7%", @placeholder = "Enter ShiftDetails Name", @required = "required" })
+
+                    <label for="input-1" class="stacked-label" style="resize: horizontal; width: 20%; color: blue; font-style: oblique">ShiftDetails Description</label>
+                    @Html.TextBoxFor(model => model[0].ShiftDetailsDesc, new { @id = "ShiftDetailsDesc", @class = "form-control", @name = "ShiftDetailsDesc", style = "width:89.7%", @placeholder = "Enter ShiftDetails Description", @required = "required" })
+
+                    <label for="input-1" class="stacked-label" style="resize: horizontal; width: 20%; color: blue; font-style: oblique">Does Shift Span to Next Day</label>
+                    @Html.DropDownListFor(model => model[0].NextDay, NextDay, new { @id = "NextDay", @name = "NextDay", @class = "second pad", @style = "font-size:75%;width:25%", @required = "required", @value = ViewData["NextDay"] })
+
+                    <label for="input-1" class="stacked-label" style="resize: horizontal; width: 20%; color: blue; font-style: oblique">ShiftStart Time</label>
+                    @Html.TextBoxFor(model => model[0].ShiftStartTime, new { @id = "ShiftStartTime", @class = "form-control fdate", @name = "ShiftStartTime", style = "width:89.7%", @placeholder = "Enter ShiftStart Time", @required = "required" })
+
+                    <label for="input-1" class="stacked-label" style="resize: horizontal; width: 20%; color: blue; font-style: oblique">ShiftEndTime</label>
+                    @Html.TextBoxFor(model => model[0].ShiftEndTime, new { @id = "ShiftEndTime", @class = "form-control fdate", @name = "ShiftEndTime", style = "width:89.7%", @placeholder = "Enter ShiftEnd Time", @required = "required" })
+
+                </div>*@
+
+                 <div class="widget-content pad20f" id="shift1">
+                    <label for="input-1" class="stacked-label first" style="resize: horizontal; padding-top: 2%; width: 20%; color: blue; font-style: oblique">ShiftDetailsName</label>
+                    @Html.TextBoxFor(model => model[0].ShiftDetailsName, new { @id = "ShiftDetailsName", @name = "ShiftDetailsName", @class = "second", @style = "font-size:75%;width:25%", @placeholder = "Enter ShiftDetails Name", @required = "required" })
+
+                    <label for="input-1" class="stacked-label first" style="resize: horizontal; width: 20%; color: blue; font-style: oblique">ShiftDetails Description</label>
+                    @Html.TextBoxFor(model => model[0].ShiftDetailsDesc, new { @id = "ShiftDetailsDesc", @name = "ShiftDetailsDesc", @class = "second", @style = "font-size:75%;width:25%", @placeholder = "Enter ShiftDetails Description", @required = "required" })
+
+                    <label for="input-1" class="stacked-label first" style="resize: horizontal; width: 20%; color: blue; font-style: oblique">Does Shift Span to Next Day</label>
+                    @Html.DropDownListFor(model => model[0].NextDay, NextDay, new { @id = "NextDay", @name = "NextDay", @class = "second", @style = "font-size:75%;width:25%", @required = "required", @value = ViewData["NextDay"] })
+
+                    <label for="input-1" class="stacked-label first" style="resize: horizontal; width: 20%; color: blue; font-style: oblique">Is it General Shift</label>
+                    @Html.DropDownListFor(model => model[0].IsGShift, IsGShift, new { @id = "IsGShift", @name = "IsGShift", @class = "second", @style = "font-size:75%;width:25%", @required = "required", @value = ViewData["IsGShift"] })
+
+                    <label for="input-1" class="stacked-label first" style="resize: horizontal; padding-top: 2%; width: 20%; color: blue; font-style: oblique">ShiftStart Time</label>
+                    @Html.TextBoxFor(model => model[0].ShiftStartTime, new { @id = "ShiftStartTime", @name = "ShiftStartTime", @class = "second fdate f1", @style = "font-size:75%;width:25%", @placeholder = "Enter ShiftStart Time", @required = "required" , @readonly = "readonly" })
+
+                    <label for="input-1" class="stacked-label first" style="resize: horizontal; padding-top: 2%; width: 20%; color: blue; font-style: oblique">ShiftEndTime</label>
+                    @Html.TextBoxFor(model => model[0].ShiftEndTime, new { @id = "ShiftEndTime", @name = "ShiftEndTime", @class = "second fdate t1", @style = "font-size:75%;width:25%", @placeholder = "Enter ShiftEnd Time", @required = "required", @readonly = "readonly"  })
+
+                    <hr />
+                </div>
+
+
+
+
+               @if (Model.Count >= 2)
+               {
+                 @*<div class="widget-content pad20f" id="shift2">
+                    <label for="input-1" class="stacked-label" style="resize: horizontal; padding-top: 2%; width: 20%; color: blue; font-style: oblique">ShiftDetailsName</label>
+                    @Html.TextBoxFor(model => model[1].ShiftDetailsName, new { @id = "ShiftDetailsName", @class = "form-control", @name = "ShiftDetailsName", style = "width:89.7%", @placeholder = "Enter ShiftDetails Name", })
+
+                    <label for="input-1" class="stacked-label" style="resize: horizontal; width: 20%; color: blue; font-style: oblique">ShiftDetails Description</label>
+                    @Html.TextBoxFor(model => model[1].ShiftDetailsDesc, new { @id = "ShiftDetailsDesc", @class = "form-control", @name = "ShiftDetailsDesc", style = "width:89.7%", @placeholder = "Enter ShiftDetails Description", })
+
+                    <label for="input-1" class="stacked-label" style="resize: horizontal; width: 20%; color: blue; font-style: oblique">Does Shift Span to Next Day</label>
+                    @Html.DropDownListFor(model => model[1].NextDay, NextDay, new { @id = "NextDay", @name = "NextDay", @class = "second pad", @style = "font-size:75%;width:25%", @required = "required", @value = ViewData["NextDay"] })
+
+                    <label for="input-1" class="stacked-label" style="resize: horizontal; width: 20%; color: blue; font-style: oblique">ShiftStart Time</label>
+                    @Html.TextBoxFor(model => model[1].ShiftStartTime, new { @id = "ShiftStartTime", @class = "form-control fdate", @name = "ShiftStartTime", style = "width:89.7%", @placeholder = "Enter ShiftStart Time", })
+
+                    <label for="input-1" class="stacked-label" style="resize: horizontal; width: 20%; color: blue; font-style: oblique">ShiftEndTime</label>
+                    @Html.TextBoxFor(model => model[1].ShiftEndTime, new { @id = "ShiftEndTime", @class = "form-control fdate", @name = "ShiftEndTime", style = "width:89.7%", @placeholder = "Enter ShiftEnd Time", })
+
+                </div>*@
+                   
+                    <div class="widget-content pad20f" id="shift2">
+                    <label for="input-1" class="stacked-label first" style="resize: horizontal; padding-top: 2%; width: 20%; color: blue; font-style: oblique">ShiftDetailsName</label>
+                    @Html.TextBoxFor(model => model[1].ShiftDetailsName, new { @id = "ShiftDetailsName", @class = "second", @name = "ShiftDetailsName", @style = "font-size:75%;width:25%", @placeholder = "Enter ShiftDetails Name", })
+
+                    <label for="input-1" class="stacked-label first" style="resize: horizontal; width: 20%; color: blue; font-style: oblique">ShiftDetails Description</label>
+                    @Html.TextBoxFor(model => model[1].ShiftDetailsDesc, new { @id = "ShiftDetailsDesc", @class = "second", @name = "ShiftDetailsDesc", @style = "font-size:75%;width:25%", @placeholder = "Enter ShiftDetails Description", })
+
+                    <label for="input-1" class="stacked-label first" style="resize: horizontal; width: 20%; color: blue; font-style: oblique">Does Shift Span to Next Day</label>
+                    @Html.DropDownListFor(model => model[1].NextDay, NextDay, new { @id = "NextDay", @name = "NextDay", @class = "second pad", @style = "font-size:75%;width:25%", @required = "required", @value = ViewData["NextDay"] })
+
+                    <label for="input-1" class="stacked-label first" style="resize: horizontal; width: 20%; color: blue; font-style: oblique">Is it General Shift</label>
+                    @Html.DropDownListFor(model => model[1].IsGShift, IsGShift, new { @id = "IsGShift", @name = "IsGShift", @class = "second pad", @style = "font-size:75%;width:25%", @required = "required", @value = ViewData["IsGShift"] })
+
+                    <label for="input-1" class="stacked-label first" style="resize: horizontal; width: 20%; padding-top: 2%; color: blue; font-style: oblique">ShiftStart Time</label>
+                    @Html.TextBoxFor(model => model[1].ShiftStartTime, new { @id = "ShiftStartTime", @class = "second fdate f2", @name = "ShiftStartTime", @style = "font-size:75%;width:25%", @placeholder = "Enter ShiftStart Time",  @readonly = "readonly" })
+
+                    <label for="input-1" class="stacked-label first" style="resize: horizontal; width: 20%; padding-top: 2%; color: blue; font-style: oblique">ShiftEndTime</label>
+                    @Html.TextBoxFor(model => model[1].ShiftEndTime, new { @id = "ShiftEndTime", @class = "second fdate t2", @name = "ShiftEndTime", @style = "font-size:75%;width:25%", @placeholder = "Enter ShiftEnd Time", @readonly = "readonly" })
+
+                    <hr />
+                </div>
+                    
+                    
+                    
+               }
+                 @if (Model.Count >= 3)
+                 {
+                @*<div class="widget-content pad20f" id="shift3">
+                    <label for="input-1" class="stacked-label" style="resize: horizontal; padding-top: 2%; width: 20%; color: blue; font-style: oblique">ShiftDetailsName</label>
+                    @Html.TextBoxFor(model => model[2].ShiftDetailsName, new { @id = "ShiftDetailsName", @class = "form-control", @name = "ShiftDetailsName", style = "width:89.7%", @placeholder = "Enter ShiftDetails Name", })
+
+                    <label for="input-1" class="stacked-label" style="resize: horizontal; width: 20%; color: blue; font-style: oblique">ShiftDetails Description</label>
+                    @Html.TextBoxFor(model => model[2].ShiftDetailsDesc, new { @id = "ShiftDetailsDesc", @class = "form-control", @name = "ShiftDetailsDesc", style = "width:89.7%", @placeholder = "Enter ShiftDetails Description", })
+
+                    <label for="input-1" class="stacked-label" style="resize: horizontal; width: 20%; color: blue; font-style: oblique">Does Shift Span to Next Day</label>
+                    @Html.DropDownListFor(model => model[2].NextDay, NextDay, new { @id = "NextDay", @name = "NextDay", @class = "second pad", @style = "font-size:75%;width:25%", @value = ViewData["NextDay"] })
+
+                    <label for="input-1" class="stacked-label" style="resize: horizontal; width: 20%; color: blue; font-style: oblique">ShiftStart Time</label>
+                    @Html.TextBoxFor(model => model[2].ShiftStartTime, new { @id = "ShiftStartTime", @class = "form-control fdate", @name = "ShiftStartTime", style = "width:89.7%", @placeholder = "Enter ShiftStart Time" })
+
+                    <label for="input-1" class="stacked-label" style="resize: horizontal; width: 20%; color: blue; font-style: oblique">ShiftEndTime</label>
+                    @Html.TextBoxFor(model => model[2].ShiftEndTime, new { @id = "ShiftEndTime", @class = "form-control fdate", @name = "ShiftEndTime", style = "width:89.7%", @placeholder = "Enter ShiftEnd Time", })
+
+                </div>*@
+                     
+                     <div class="widget-content pad20f" id="shift3">
+                    <label for="input-1" class="stacked-label" style="resize: horizontal; padding-top: 2%; width: 20%; color: blue; font-style: oblique">ShiftDetailsName</label>
+                    @Html.TextBoxFor(model => model[2].ShiftDetailsName, new { @id = "ShiftDetailsName", @class = "second", @name = "ShiftDetailsName", style = "font-size:75%;width:25%", @placeholder = "Enter ShiftDetails Name", })
+
+                    <label for="input-1" class="stacked-label" style="resize: horizontal; width: 20%; color: blue; font-style: oblique">ShiftDetails Description</label>
+                    @Html.TextBoxFor(model => model[2].ShiftDetailsDesc, new { @id = "ShiftDetailsDesc", @class = "second", @name = "ShiftDetailsDesc", style = "font-size:75%;width:25%", @placeholder = "Enter ShiftDetails Description", })
+
+                    <label for="input-1" class="stacked-label" style="resize: horizontal; width: 20%; color: blue; font-style: oblique">Does Shift Span to Next Day</label>
+                    @Html.DropDownListFor(model => model[2].NextDay, NextDay, new { @id = "NextDay", @name = "NextDay", @class = "second pad", @style = "font-size:75%;width:25%", @value = ViewData["NextDay"] })
+
+                    <label for="input-1" class="stacked-label first" style="resize: horizontal; width: 20%; color: blue; font-style: oblique">Is it General Shift</label>
+                    @Html.DropDownListFor(model => model[2].IsGShift, IsGShift, new { @id = "IsGShift", @name = "IsGShift", @style = "font-size:75%;width:25%", @required = "required", @value = ViewData["IsGShift"] })
+
+                    <label for="input-1" class="stacked-label" style="resize: horizontal; width: 20%; padding-top: 2%; color: blue; font-style: oblique">ShiftStart Time</label>
+                    @Html.TextBoxFor(model => model[2].ShiftStartTime, new { @id = "ShiftStartTime", @class = "second fdate f3", @name = "ShiftStartTime", style = "font-size:75%;width:25%", @placeholder = "Enter ShiftStart Time" , @readonly = "readonly"  })
+
+                    <label for="input-1" class="stacked-label" style="resize: horizontal; width: 20%; padding-top: 2%; color: blue; font-style: oblique">ShiftEndTime</label>
+                    @Html.TextBoxFor(model => model[2].ShiftEndTime, new { @id = "ShiftEndTime", @class = "second fdate t3", @name = "ShiftEndTime", style = "font-size:75%;width:25%", @placeholder = "Enter ShiftEnd Time" , @readonly = "readonly" })
+                    <hr />
+                </div>
+                 }
+                 @if (Model.Count == 4)
+                 {
+                 @* <div class="widget-content pad20f" id="shift4">
+                    <label for="input-1" class="stacked-label" style="resize: horizontal; padding-top: 2%; width: 20%; color: blue; font-style: oblique">ShiftDetailsName</label>
+                    @Html.TextBoxFor(model => model[3].ShiftDetailsName, new { @id = "ShiftDetailsName", @class = "form-control", @name = "ShiftDetailsName", style = "width:89.7%", @placeholder = "Enter ShiftDetails Name" })
+
+                    <label for="input-1" class="stacked-label" style="resize: horizontal; width: 20%; color: blue; font-style: oblique">ShiftDetails Description</label>
+                    @Html.TextBoxFor(model => model[3].ShiftDetailsDesc, new { @id = "ShiftDetailsDesc", @class = "form-control", @name = "ShiftDetailsDesc", style = "width:89.7%", @placeholder = "Enter ShiftDetails Description" })
+
+                    <label for="input-1" class="stacked-label" style="resize: horizontal; width: 20%; color: blue; font-style: oblique">Does Shift Span to Next Day</label>
+                    @Html.DropDownListFor(model => model[3].NextDay, NextDay, new { @id = "NextDay", @name = "NextDay", @class = "second pad", @style = "font-size:75%;width:25%", @value = ViewData["NextDay"] })
+
+                    <label for="input-1" class="stacked-label" style="resize: horizontal; width: 20%; color: blue; font-style: oblique">ShiftStart Time</label>
+                    @Html.TextBoxFor(model => model[3].ShiftStartTime, new { @id = "ShiftStartTime", @class = "form-control fdate", @name = "ShiftStartTime", style = "width:89.7%", @placeholder = "Enter ShiftStart Time", })
+
+                    <label for="input-1" class="stacked-label" style="resize: horizontal; width: 20%; color: blue; font-style: oblique">ShiftEndTime</label>
+                    @Html.TextBoxFor(model => model[3].ShiftEndTime, new { @id = "ShiftEndTime", @class = "form-control fdate", @name = "ShiftEndTime", style = "width:89.7%", @placeholder = "Enter ShiftEnd Time", })
+
+                </div>*@
+
+                <div class="widget-content pad20f" id="shift4">
+                    <label for="input-1" class="stacked-label" style="resize: horizontal; padding-top: 2%; width: 20%; color: blue; font-style: oblique">ShiftDetailsName</label>
+                    @Html.TextBoxFor(model => model[3].ShiftDetailsName, new { @id = "ShiftDetailsName", @class = "second", @name = "ShiftDetailsName", style = "font-size:75%;width:25%", @placeholder = "Enter ShiftDetails Name" })
+
+                    <label for="input-1" class="stacked-label" style="resize: horizontal; width: 20%; color: blue; font-style: oblique">ShiftDetails Description</label>
+                    @Html.TextBoxFor(model => model[3].ShiftDetailsDesc, new { @id = "ShiftDetailsDesc", @class = "second", @name = "ShiftDetailsDesc", style = "font-size:75%;width:25%", @placeholder = "Enter ShiftDetails Description" })
+
+                    <label for="input-1" class="stacked-label" style="resize: horizontal; width: 20%; color: blue; font-style: oblique">Does Shift Span to Next Day</label>
+                    @Html.DropDownListFor(model => model[3].NextDay, NextDay, new { @id = "NextDay", @name = "NextDay", @class = "second pad", @style = "font-size:75%;width:25%", @value = ViewData["NextDay"] })
+
+                    <label for="input-1" class="stacked-label first" style="resize: horizontal; width: 20%; color: blue; font-style: oblique">Is it General Shift</label>
+                    @Html.DropDownListFor(model => model[1].IsGShift, IsGShift, new { @id = "IsGShift", @name = "IsGShift", @style = "font-size:75%;width:25%", @required = "required", @value = ViewData["IsGShift"] })
+
+                    <label for="input-1" class="stacked-label" style="resize: horizontal; width: 20%; padding-top: 2%; color: blue; font-style: oblique">ShiftStart Time</label>
+                    @Html.TextBoxFor(model => model[3].ShiftStartTime, new { @id = "ShiftStartTime", @class = "second fdate f4", @name = "ShiftStartTime", style = "font-size:75%;width:25%", @placeholder = "Enter ShiftStart Time",  @readonly = "readonly" })
+
+                    <label for="input-1" class="stacked-label" style="resize: horizontal; width: 20%; padding-top: 2%; color: blue; font-style: oblique">ShiftEndTime</label>
+                    @Html.TextBoxFor(model => model[3].ShiftEndTime, new { @id = "ShiftEndTime", @class = "second fdate t4", @name = "ShiftEndTime", style = "font-size:75%;width:25%", @placeholder = "Enter ShiftEnd Time", @readonly = "readonly"  })
+
+                </div>
+                 }
+
+                <div class="widget-content pad20f">
+                    <div style="width: 3%; display: inline-block; height: inherit"></div>
+                    @Html.ActionLink(" Back ", "Index", new { }, new { @class = "btn stacked-input fa fa-reply fa-1x", @style = "text-decoration:none;display:inline-block;color:black" })
+                    <div style="width: 20%; display: inline-block; height: inherit"></div>
+                    <input type="submit" value="Update" id="submitsrks" class="btn orange btn-lg" style="width: 30%; display: inline-block; height: inherit; margin-top: 2%; background-color: orange; color: black; font-size: 95%" />
+                </div>
+
+                <!-- /widget-content -->
+            </div>
+            <!-- /widget -->
+        </div>
+        <!-- /Class-fluid-->
+    </div>
+    
+                 if (Model.Count == 1)
+                 {
+    @Html.HiddenFor(m => m[0].ShiftDetailsID)
+    @Html.HiddenFor(m => m[0].CreatedBy)
+    @Html.HiddenFor(m => m[0].CreatedOn)
+
+                 }
+                 else if (Model.Count == 2)
+                 {
+    @Html.HiddenFor(m => m[0].ShiftDetailsID)
+    @Html.HiddenFor(m => m[1].ShiftDetailsID)
+    @Html.HiddenFor(m => m[0].CreatedBy)
+    @Html.HiddenFor(m => m[0].CreatedOn)
+    @Html.HiddenFor(m => m[1].CreatedBy)
+    @Html.HiddenFor(m => m[1].CreatedOn)
+                 }
+                 else if (Model.Count == 3)
+                 {
+    @Html.HiddenFor(m => m[0].ShiftDetailsID)
+    @Html.HiddenFor(m => m[1].ShiftDetailsID)
+    @Html.HiddenFor(m => m[2].ShiftDetailsID)
+    @Html.HiddenFor(m => m[0].CreatedBy)
+    @Html.HiddenFor(m => m[0].CreatedOn)
+    @Html.HiddenFor(m => m[1].CreatedBy)
+    @Html.HiddenFor(m => m[1].CreatedOn)
+    @Html.HiddenFor(m => m[2].CreatedBy)
+    @Html.HiddenFor(m => m[2].CreatedOn)
+                 }
+                 else if (Model.Count == 4)
+                 {
+    @Html.HiddenFor(m => m[0].ShiftDetailsID)
+    @Html.HiddenFor(m => m[1].ShiftDetailsID)
+    @Html.HiddenFor(m => m[2].ShiftDetailsID)
+    @Html.HiddenFor(m => m[3].ShiftDetailsID)
+    @Html.HiddenFor(m => m[0].CreatedBy)
+    @Html.HiddenFor(m => m[0].CreatedOn)
+    @Html.HiddenFor(m => m[1].CreatedBy)
+    @Html.HiddenFor(m => m[1].CreatedOn)
+    @Html.HiddenFor(m => m[2].CreatedBy)
+    @Html.HiddenFor(m => m[2].CreatedOn)
+    @Html.HiddenFor(m => m[3].CreatedBy)
+    @Html.HiddenFor(m => m[3].CreatedOn)
+                 }
+}
+
+<script type="text/javascript">
+    var j = jQuery.noConflict();
+    j(document).ready(function () {
+        j(".fdate").datetimepicker({
+            datepicker: false,
+            format: 'H:i'
+        });
+    });
+</script>
+
+<script>
+    $(".fdate").keypress(function (event) { event.preventDefault(); });
+</script>
+
+<script>
+    $(document).ready(function () {
+        var modelcount = $("#modelcount").val;
+        //alert(modelcount);
+        if (modelcount == 1) {
+            $("#shift1").show();
+            $("#shift2").hide();
+            $("#shift3").hide();
+            $("#shift4").hide();
+        }
+        else if (modelcount == 2) {
+            $("#shift1").show();
+            $("#shift2").show();
+            $("#shift3").hide();
+            $("#shift4").hide();
+            //adding required field to elements in shift2
+
+            //$("#shift2 > .form-control").attr("required", required); //didnot work
+            $("#shift2 > .form-control").prop("required", true);
+            $("#shift3 > .form-control").prop("required", false);
+            $("#shift4 > .form-control").prop("required", false);
+        }
+        else if (modelcount == 3) {
+            $("#shift1").show();
+
+            $("#shift2").show();
+            $("#shift3").show();
+            $("#shift4").hide();
+            $("#shift2 > .form-control").prop("required", true);
+            $("#shift3 > .form-control").prop("required", true);
+            $("#shift4 > .form-control").prop("required", false);
+        }
+        else if (modelcount == 4) {
+            $("#shift1").show();
+            $("#shift2").show();
+            $("#shift3").show();
+            $("#shift4").show();
+            $("#shift2 > .form-control").prop("required", true);
+            $("#shift3 > .form-control").prop("required", true);
+            $("#shift4 > .form-control").prop("required", true);
+        }
+    });
+
+    $(document).ready(function () {
+        $("#ShiftMethod").change(function (evt) {
+            var selectedID = $("#ShiftMethod option:selected").val();
+            $.getJSON("/ShiftDetails/GetShifts", { shiftsCount: selectedID }, function (data) {
+                var NumberOfShifts = data;
+               // alert(NumberOfShifts)
+                //based on this data hide or show those 4 Shifts.
+                if (NumberOfShifts == 1) {
+                    $("#shift1").show();
+                    $("#shift2").hide();
+                    $("#shift3").hide();
+                    $("#shift4").hide();
+                }
+                else if (NumberOfShifts == 2) {
+                    $("#shift1").show();
+                    $("#shift2").show();
+                    $("#shift3").hide();
+                    $("#shift4").hide();
+                    //adding required field to elements in shift2
+
+                    //$("#shift2 > .form-control").attr("required", required); //didnot work
+                    $("#shift2 > .form-control").prop("required", true);
+                    $("#shift3 > .form-control").prop("required", false);
+                    $("#shift4 > .form-control").prop("required", false);
+                }
+                else if (NumberOfShifts == 3) {
+                    $("#shift1").show();
+                    $("#shift2").show();
+                    $("#shift3").show();
+                    $("#shift4").hide();
+                    $("#shift2 > .form-control").prop("required", true);
+                    $("#shift3 > .form-control").prop("required", true);
+                    $("#shift4 > .form-control").prop("required", false);
+                }
+                else if (NumberOfShifts == 4) {
+                    $("#shift1").show();
+                    $("#shift2").show();
+                    $("#shift3").show();
+                    $("#shift4").show();
+                    $("#shift2 > .form-control").prop("required", true);
+                    $("#shift3 > .form-control").prop("required", true);
+                    $("#shift4 > .form-control").prop("required", true);
+                }
+            });
+        });
+    });
+</script>

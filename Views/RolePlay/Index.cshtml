@@ -1,0 +1,154 @@
+﻿@model IEnumerable<Tata.Models.tblroleplaymaster>
+@{
+    ViewBag.Title = "Daily Plan";
+    int slno = 1;
+    string tru = "True";
+    string fls = "False";
+}
+<h2></h2>@* induces gap between button and container top*@
+<div style="width: 2%; display: inline-block; height: inherit"></div>
+
+@using (Html.BeginForm("Edit", "RolePlay", FormMethod.Get))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+   
+        @Html.ActionLink("Create Role-Play", "Create", new { }, new { @class = "btn btn-info orange btl-lg inverse", @style = "color:black;width:4vw;height:6vh;backgroundcolor:red: font-size:3em; display:inline;margin-left:0.5vw" })
+   
+        @Html.DropDownList("RoleID1", (SelectList)ViewData["RoleID1"], "--Select Role for Update--", new { @id = "RoleID1", @class = "btn btn-block orange dropdown-toggle ", @name = "RoleID1", @style = "width:20%;display:inline;float:right", @required = "required" })
+        <div style="width: 2%; display: inline-block;"></div>
+        <input type="submit" value="Update Role-Play" style="float: right; display: inline; width: 20%; text-align: center;" class="btn btn-info orange btl-md inverse" />
+    
+}
+
+<div class="wrp clearfix">
+    <div class="fluid">
+        <div class="widget grid12">
+            <div class="widget-header">
+                <div class="widget-title" style="font-size: 125%">
+                    Role Play
+                </div>
+            </div>
+            <!-- /widget-header -->
+
+            <div class="widget-content pad20f">
+                <div class="widget__content table-responsive table-hover">
+                    <table class="table">
+                        <thead>
+                            <tr class="text-centre">
+                                <th style="text-align: center; font-size: 95%">Sl.No.</th>
+                                <th style="text-align: center; font-size: 95%">Role</th>
+                                <th style="text-align: center; font-size: 95%">Module</th>
+                                <th style="text-align: center; font-size: 95%">Permission All</th>
+                                <th style="text-align: center; font-size: 95%">Permission  ToAdd</th>
+                                <th style="text-align: center; font-size: 95%">Permission  ToEdit</th>
+                                <th style="text-align: center; font-size: 95%">Permission  ToRead</th>
+                                <th style="text-align: center; font-size: 95%">Visibility</th>
+                                <th style="text-align: center; font-size: 95%">Is Removed</th>
+                                @*<th style="text-align:center;font-size:65%"">Edit</th>*@
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="spacer"></tr>
+                            <tr class="spacer"></tr>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 95%">
+                                        @slno
+                                    </td>
+                                    <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 95%">
+                                        @Html.DisplayFor(modelItem => item.tblrole.RoleType)
+                                    </td>
+                                    <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 95%">
+                                        @Html.DisplayFor(modelItem => item.tblmodulemaster.ModuleName)
+                                    </td>
+                                    @*<td style="width: auto; text-align: center; font-family: Helvetica; font-size: 100%">
+                                    @Html.CheckBoxFor(modelItem => item.IsAll, new { @class = "btn-lg", @Styles = "100%",@readonly="readonly"})
+                                    </td>*@
+                                    <td style="width: auto; text-align: center; font-family: Helvetica;">
+                                        @if (item.IsAll == true)
+                                        {
+                                            <p class="true">@tru</p>
+                                        }
+                                        else
+                                        {
+                                            <p class="false">@fls</p>
+                                        }</td>
+                                    <td style="width: auto; text-align: center; font-family: Helvetica;">
+                                        @* @Html.DisplayFor(modelItem => item.IsAdded, new { @class = "btn-lg", @Styles = "100%" })*@
+                                        @if (item.IsAdded == true)
+                                        {
+                                            <p class="true">@tru</p>
+                                        }
+                                        else
+                                        {
+                                            <p class="false">@fls</p>
+                                        }
+                                    </td>
+                                    <td style="width: auto; text-align: center; font-family: Helvetica;">
+
+                                        @if (item.IsEdited == true)
+                                        {
+                                            <p class="true">@tru</p>
+                                        }
+                                        else
+                                        {
+                                            <p class="false">@fls</p>
+                                        }
+                                    </td>
+                                    <td style="width: auto; text-align: center; font-family: Helvetica;">
+                                        @*@Html.DisplayFor(modelItem => item.IsReadonly)*@
+                                        @if (item.IsReadOnly == true)
+                                        {
+                                            <p class="true">@tru</p>
+                                        }
+                                        else
+                                        {
+                                            <p class="false">@fls</p>
+                                        }
+                                    </td>
+                                    <td style="width: auto; text-align: center; font-family: Helvetica;">
+
+                                        @if (item.IsHidden == true)
+                                        {
+                                            <p class="true">@tru</p>
+                                        }
+                                        else
+                                        {
+                                            <p class="false">@fls</p>
+                                        }
+                                    </td>
+                                    <td style="width: auto; text-align: center; font-family: Helvetica;">
+
+                                        @if (item.IsRemoved == true)
+                                        {
+                                            <p class="true">@tru</p>
+                                        }
+                                        else
+                                        {
+                                            <p class="false">@fls</p>
+                                        }
+                                    </td>
+                                </tr>
+                                        slno = slno + 1;
+                            }
+                            <tr class="spacer"></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!-- /widget-content -->
+        </div>
+        <!-- /widget -->
+    </div>
+</div>
+<style>
+    .true {
+        color: orange;
+    }
+
+    .false {
+        color: green;
+    }
+</style>

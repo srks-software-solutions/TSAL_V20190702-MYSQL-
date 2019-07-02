@@ -1,0 +1,48 @@
+﻿@model Tata.Models.tblmachineallocation
+@{
+    ViewBag.Title = "BrakDownEntry";
+}
+@using (Html.BeginForm())
+{
+                   
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)  
+    <div class="wrp clearfix">
+        <div class="fluid">
+            <div class="widget grid12">
+                <div class="widget-header">
+                    <div class="widget-title">
+                        Machine Allocation Details
+                    </div>
+                </div>
+                <!-- /widget-header -->
+
+                <div class="widget-content pad20f">
+                    <label for="input-1" class="stacked-label" disabled="disabled" style="resize: horizontal; width: 20%; display: inline">User</label>
+                    @Html.DropDownList("UserID", null, "--Select User--", new { @id = "BreakDownCode", @class = "form-control", @name = "BreakDownCode", @required = "required", style = "width:89.7%" })
+                    @Html.ValidationMessageFor(model => model.UserID)
+                    <br />
+                    <label for="input-1" class="stacked-label" disabled="disabled" style="resize: horizontal; width: 20%; display: inline">Machine</label>
+                    @Html.DropDownList("MachineID", null, "--Select Machine--", new { @id = "BreakDownCode", @class = "form-control", @name = "BreakDownCode", @required = "required", style = "width:89.7%" })
+                    @Html.ValidationMessageFor(model => model.MachineID)
+                    <br />
+                    <label for="input-1" class="stacked-label" disabled="disabled" style="resize: horizontal; width: 20%; display: inline">Shift</label>
+                    @Html.DropDownList("ShiftID", null, "--Select Shift--", new { @id = "BreakDownCode", @class = "form-control", @name = "BreakDownCode", @required = "required", style = "width:89.7%" })
+                    @Html.ValidationMessageFor(model => model.ShiftID)
+
+                    <div style="width: 3%; display: inline-block; height: inherit"></div>
+                    @Html.ActionLink(" Back ", "Index", new { }, new { @class = "btn stacked-input fa fa-reply fa-1x", @style = "text-decoration:none;display:inline-block;color:black" })
+                    <div style="width: 20%; display: inline-block; height: inherit"></div>
+                    <input type="submit" value="Update" class="btn btn-lavender inverse" style="width: 30%; display: inline-block; height: inherit;margin-top:2%;color:white;background-color:grey;font-size:1.1vw"/>
+                </div>
+            </div>
+        </div>
+    </div>
+    @Html.HiddenFor(model => model.ID)
+    @Html.HiddenFor(model => model.IsDeleted)
+    @Html.HiddenFor(model => model.CorrectedDate)
+}
+
+
+
+

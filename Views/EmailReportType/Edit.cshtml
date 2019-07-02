@@ -1,0 +1,49 @@
+﻿@model Tata.Models.tblemailreporttype
+@{
+    ViewBag.Title = "Edit";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)  
+<div class="wrp clearfix">
+    <div class="fluid">
+        <div class="widget grid12">
+            <div class="widget-header">
+                <div class="widget-title">
+                    Editing EmailReportType
+                </div>
+            </div>
+            <!-- /widget-header -->
+
+            <div class="widget-content pad20f">
+
+                 <label for="input-1" class="stacked-label" style="resize: horizontal; width: 20%">Report Type</label>
+                    @Html.TextBoxFor(model => model.ReportType, new { @id = "ReportType", @class = "form-control", @name = "ReportType",  style = "width:89.7%",@placeholder = "Enter Report Type", @required = "required" })
+                            @Html.ValidationMessageFor(model => model.ReportType)
+
+                    
+
+                 <label for="input-2" class="stacked-label" style="resize: horizontal; width: 20%">Report Description</label>
+                   @Html.TextBoxFor(model => model.ReportDesc, new { @id = "ReportDesc", @class = "form-control", @name = "ReportDesc", style = "width:89.7%", @placeholder = "Enter Report Description", @required = "required" })  
+                            @Html.ValidationMessageFor(model => model.ReportDesc)
+
+                 
+                   <div style="width: 3%; display: inline-block; height: inherit"></div>
+@Html.ActionLink(" Back ", "Index", new { }, new { @class = "btn stacked-input fa fa-reply fa-1x", @style = "text-decoration:none;display:inline-block;color:black" })
+ <div style="width: 20%; display: inline-block; height: inherit"></div>
+<input type="submit" value="Update" class="btn btn-lavender inverse" style="width: 30%; display: inline-block; height: inherit;margin-top:2%;color:white;background-color:grey;font-size:1.1vw"/>
+
+            </div>
+            <!-- /widget-content -->
+        </div>
+        <!-- /widget -->
+    </div>
+</div>
+  
+    @Html.HiddenFor(Model => Model.CreatedBy)
+    @Html.HiddenFor(Model => Model.CreatedOn)
+    @Html.HiddenFor(Model => Model.IsDeleted)
+    @Html.HiddenFor(Model => Model.ERTID)    
+}

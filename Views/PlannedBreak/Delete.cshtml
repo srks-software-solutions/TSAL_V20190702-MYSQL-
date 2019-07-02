@@ -1,0 +1,103 @@
+﻿@model TATA.Models.tblPlannedBreak
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>tblPlannedBreak</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.BreakID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.BreakID)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.BreakReason)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.BreakReason)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.StartTime)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.StartTime)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.EndTime)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.EndTime)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.BreakDuration)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.BreakDuration)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ShiftID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ShiftID)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.IsDeleted)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.IsDeleted)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.CreatedOn)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CreatedOn)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.CreatedBy)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CreatedBy)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ModifiedOn)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ModifiedOn)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ModifiedBy)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ModifiedBy)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.LineID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.LineID)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

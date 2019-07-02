@@ -1,0 +1,157 @@
+﻿@model IEnumerable<Tata.Models.tblmasterparts_st_sw>
+@{
+    ViewBag.Title = "Index";
+    var slno = 1;
+}
+
+        <h2></h2>@* induces gap between button and container top*@
+            <div style="width: 2%; display: inline-block; height: inherit"></div>
+     @if (ViewBag.roleid == 1 || ViewBag.roleid == 2)
+     {
+            @Html.ActionLink("Create New Parts Standard Time & Weight", "Create", new { }, new { @class = "btn orange btn-lg", @style = "color:black;width:35%;height:70%;backgroundcolor:red;font-size:90%" })
+            <div style="width:5%;display:inline"></div>
+            @Html.ActionLink("Import Data From Excel", "ImportMasterPartsstsw", new { }, new { @class = "btn orange btn-lg ", @style = "color:black;width:20%;height:70%;backgroundcolor:red;font-size:90%;display:inline" }) 
+          <div style="width:5%;display:inline"></div>
+            @Html.ActionLink("Export Data To Excel", "ExportMasterPartsSTDWeightTime", new { }, new { @class = "btn orange btn-lg ", @style = "color:black;width:20%;height:70%;backgroundcolor:red;font-size:90%;display:inline" }) 
+     
+     }
+<div class="wrp clearfix">
+    <div class="fluid">
+        <div class="widget grid12">
+            <div class="widget-header">
+                <div class="widget-title" style="font-size:125%">
+                    Parts Standard Time & Weight
+                </div>
+            </div>
+            <!-- /widget-header -->
+
+            <div class="widget-content pad20f">
+                <div class="widget__content table-responsive table-hover">
+                    <div  id="repeatedParts">
+                    @if (Session["PartNo"] != null)
+                    {
+                    <pre>
+<span style="font-family:Calibri">@Session["PartNo"]</span>
+                    </pre>
+                    }
+                        </div>
+                <table class="table table-condensed table-striped table-hover"  id="jqueryTable">
+                    <thead>
+                        <tr class="text-centre" style="background-color:orange">
+                            <th style="text-align:center;font-size:95%">Sl.No.</th>
+                            <th style="text-align:center;font-size:95%"">Part No</th>
+                            <th style="text-align:center;font-size:95%"">Op No</th>
+                            <th style="text-align:center;font-size:95%"">Std Setup Time / Unit</th>
+                             <th style="text-align:center;font-size:95%"">Std Cutting Time / Unit</th>
+                             <th style="text-align:center;font-size:95%"">Std ChangeOver Time / Unit</th>
+                              <th style="text-align:center;font-size:95%"">I/P Weight / Unit</th>
+                             <th style="text-align:center;font-size:95%"">O/P Weight / Unit</th>
+                            <th style="text-align:center;font-size:95%"">Material Removed Qty / Unit</th>
+                                  @if (ViewBag.roleid == 1 || ViewBag.roleid == 2)
+                                  {
+                                     <th style="text-align:center;font-size:95%"">Edit</th>
+                                     <th style="text-align:center;font-size:95%"">Delete</th>
+                                  }
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="spacer"></tr>
+                        <tr class="spacer"></tr>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                    @slno
+                                </td>
+                                <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                     @Html.DisplayFor(modelItem => item.PartNo)
+                                </td>
+
+                                <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                    @Html.DisplayFor(modelItem => item.OpNo)
+                                </td>
+
+                                <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                     @Html.DisplayFor(modelItem => item.StdSetupTime) / @Html.DisplayFor(modelItem => item.StdSetupTimeUnit)
+                                </td>
+
+                                <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                    @Html.DisplayFor(modelItem => item.StdCuttingTime) /  @Html.DisplayFor(modelItem => item.StdCuttingTimeUnit)
+                                </td>
+
+                                <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                    @Html.DisplayFor(modelItem => item.StdChangeoverTime) /  @Html.DisplayFor(modelItem => item.StdChangeoverTimeUnit)
+                                </td>
+
+                                 <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                    @Html.DisplayFor(modelItem => item.InputWeight) / @Html.DisplayFor(modelItem => item.InputWeightUnit)
+                                </td>
+                                <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                    @Html.DisplayFor(modelItem => item.OutputWeight) / @Html.DisplayFor(modelItem => item.OutputWeightUnit)
+                                </td>
+                                 <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                    @Html.DisplayFor(modelItem => item.MaterialRemovedQty) /@Html.DisplayFor(modelItem => item.MaterialRemovedQtyUnit)
+                                </td>
+
+                                   @if (ViewBag.roleid == 1 || ViewBag.roleid == 2)
+                                   {
+                                <td style="width: auto; text-align: center; font-family: Helvetica" data-toggle="tooltip" title="Edit">
+                                    @Html.ActionLink(" ", "Edit", new { id = item.PARTSSTSWID }, new { @class = " blue  btn-lg fa fa-edit", @style = "color:white;text-decoration:none" })
+                                </td>
+                                <td style="width: auto; text-align: center; font-family: Helvetica" data-toggle="tooltip" title="Delete">
+                                   @{var id = item.PARTSSTSWID;
+                                     @Html.ActionLink(" ", "Delete", new { id = item.PARTSSTSWID }, new { @id = id, @class = "DeleteModel red btn-lg fa fa-trash", @style = "color:white;text-decoration:none" })
+                                   }
+                                </td>
+                                   }
+                            </tr>
+                                   slno = slno + 1;
+                        }
+                        <tr class="spacer"></tr>
+                    </tbody>
+                </table>
+            </div>
+              
+
+            </div>
+            <!-- /widget-content -->
+
+        </div>
+        <!-- /widget -->
+    </div>
+    <div id="dialog-confirm" title=" Delete Confirmation ?" style="height: 5%;">
+        <p> 
+        </p>
+    </div>
+</div>
+
+<script src="~/js/jquery-2.1.4.min.js"></script>
+<script>
+    setTimeout(function () {
+        $('#repeatedParts').fadeOut('slow');
+    }, 30000); // <-- time in milliseconds
+</script>
+
+
+<script>
+    //This model window is from https://jqueryui.com/dialog/#modal-confirmation 
+    $(".DeleteModel").on("click", (function (e) {
+        var MyHref = $(this).prop('href');
+        e.preventDefault();
+        $("#dialog-confirm").dialog({
+            resizable: true,
+            height: 50,
+            width: 400,
+            modal: true,
+            buttons: {
+                "Delete Parts W&T": function () {
+                    window.location.href = MyHref;
+                },
+                Cancel: function () {
+                    $(this).dialog("close");
+                    //We were getting method a hidden field value as null so
+                }
+            }
+        });
+    }));
+</script>

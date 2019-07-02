@@ -1,0 +1,54 @@
+﻿@model Tata.Models.tblsendermailid
+@{
+    ViewBag.Title = "Edit";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)  
+<div class="wrp clearfix">
+    <div class="fluid">
+        <div class="widget grid12">
+            <div class="widget-header">
+                <div class="widget-title">
+                    Editing SenderMailID
+                </div>
+            </div>
+            <!-- /widget-header -->
+
+            <div class="widget-content pad20f">
+
+                 <label for="input-1" class="stacked-label" style="resize: horizontal; width: 20%">Enter PrimaryMailID</label>
+                    @Html.TextBoxFor(model => model.PrimaryMailID, new { @id = "PrimaryMailID", @class = "form-control", @name = "PrimaryMailID",  style = "width:89.7%",@placeholder = "Enter Primary MailID", @required = "required" })
+                            @Html.ValidationMessageFor(model => model.PrimaryMailID)
+
+                    <label for="input-2" class="stacked-label" style="resize: horizontal; width: 20%">Enter Password</label>
+                   @Html.TextBoxFor(model => model.Password, new { @id = "Password", @class = "form-control", @name = "Password", style = "width:89.7%", @placeholder = "Enter Password", @required = "required" })  
+                            @Html.ValidationMessageFor(model => model.Password)
+                 <label for="input-2" class="stacked-label" style="resize: horizontal; width: 20%">Display Name</label>
+                   @Html.TextBoxFor(model => model.DisplayName, new { @id = "DisplayName", @class = "form-control", @name = "DisplayName", style = "width:89.7%", @placeholder = "Enter Display Name", @required = "required" })  
+                            @Html.ValidationMessageFor(model => model.DisplayName)
+                 
+                  <label for="input-2" class="stacked-label" style="resize: horizontal; width: 20%">Auto EmailReportType</label>
+                   @Html.DropDownList("AutoEmailType",null, "--Select Report Type--", new { @id = "AutoEmailType", @class = "form-control", @name = "AutoEmailType", @required = "required", @style = "aria-expanded:false;width:89.7%"  })
+                    @Html.ValidationMessageFor(model => model.AutoEmailType)	
+
+
+                   <div style="width: 3%; display: inline-block; height: inherit"></div>
+@Html.ActionLink(" Back ", "Index", new { }, new { @class = "btn stacked-input fa fa-reply fa-1x", @style = "text-decoration:none;display:inline-block;color:black" })
+ <div style="width: 20%; display: inline-block; height: inherit"></div>
+<input type="submit" value="Update" class="btn btn-lavender inverse" style="width: 30%; display: inline-block; height: inherit;margin-top:2%;color:white;background-color:grey;font-size:1.1vw"/>
+
+            </div>
+            <!-- /widget-content -->
+        </div>
+        <!-- /widget -->
+    </div>
+</div>
+  
+    @Html.HiddenFor(Model => Model.CreatedBy)
+    @Html.HiddenFor(Model => Model.CreatedOn)
+    @Html.HiddenFor(Model => Model.IsDeleted)
+    @Html.HiddenFor(Model => Model.SE_ID)    
+}

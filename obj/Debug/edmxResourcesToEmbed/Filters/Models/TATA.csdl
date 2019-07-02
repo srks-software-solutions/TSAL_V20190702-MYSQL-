@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MachineStatusModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="MachineStatusEntities" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="Employees" EntityType="MachineStatusModel.Employee" />
+    <EntitySet Name="tblDayTimings" EntityType="MachineStatusModel.tblDayTiming" />
+    <EntitySet Name="tblHMIScreens" EntityType="MachineStatusModel.tblHMIScreen" />
+    <EntitySet Name="tblProductionStatus" EntityType="MachineStatusModel.tblProductionStatu" />
+    <EntitySet Name="tblShift_Breaks" EntityType="MachineStatusModel.tblShift_Breaks" />
+    <EntitySet Name="tblShift_Mstr" EntityType="MachineStatusModel.tblShift_Mstr" />
+    <EntitySet Name="tblUsers" EntityType="MachineStatusModel.tblUser" />
+    <EntitySet Name="Timesheets" EntityType="MachineStatusModel.Timesheet" />
+    <EntitySet Name="tblPlannedBreaks" EntityType="MachineStatusModel.tblPlannedBreak" />
+  </EntityContainer>
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="EmployeeId" />
+      <PropertyRef Name="EmployeeName" />
+    </Key>
+    <Property Name="EmployeeId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="EmployeeName" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="tblDayTiming">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="StartTime" Type="Time" Nullable="false" Precision="7" />
+    <Property Name="EndTime" Type="Time" Nullable="false" Precision="7" />
+    <Property Name="IsDeleted" Type="Int16" Nullable="false" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+    <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedBy" Type="Int32" />
+    <Property Name="LineID" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblHMIScreen">
+    <Key>
+      <PropertyRef Name="HMIID" />
+    </Key>
+    <Property Name="HMIID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="OperatiorID" Type="Int32" />
+    <Property Name="Shift" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="Date" Type="DateTime" Precision="0" />
+    <Property Name="Time" Type="Time" Precision="7" />
+    <Property Name="Project" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="PartNo" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="OperationNo" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Rej_Qty" Type="Int32" />
+    <Property Name="Prod_FAI" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Work_Order_No" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Target_Qty" Type="Int32" />
+    <Property Name="Delivered_Qty" Type="Int32" />
+    <Property Name="Status" Type="Int32" />
+  </EntityType>
+  <EntityType Name="tblProductionStatu">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="MachineID" Type="Int32" Nullable="false" />
+    <Property Name="StartTime" Type="Time" Nullable="false" Precision="7" />
+    <Property Name="EndTime" Type="Time" Nullable="false" Precision="7" />
+    <Property Name="Duration" Type="Int32" Nullable="false" />
+    <Property Name="Status" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="IsDeleted" Type="Int16" Nullable="false" />
+    <Property Name="InsertedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+    <Property Name="CorrectedDate" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="ColorCode" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="tblShift_Breaks">
+    <Key>
+      <PropertyRef Name="BreakID" />
+    </Key>
+    <Property Name="BreakID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="BreakReason" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="StartTime" Type="Time" Nullable="false" Precision="7" />
+    <Property Name="EndTime" Type="Time" Nullable="false" Precision="7" />
+    <Property Name="BreakDuration" Type="Int32" Nullable="false" />
+    <Property Name="ShiftID" Type="Int32" Nullable="false" />
+    <Property Name="IsDeleted" Type="Int16" Nullable="false" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+    <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedBy" Type="Int32" />
+    <Property Name="LineID" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblShift_Mstr">
+    <Key>
+      <PropertyRef Name="ShiftID" />
+    </Key>
+    <Property Name="ShiftID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="ShiftName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="StartTime" Type="Time" Nullable="false" Precision="7" />
+    <Property Name="EndTime" Type="Time" Nullable="false" Precision="7" />
+    <Property Name="IsDeleted" Type="Int16" Nullable="false" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+    <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedBy" Type="Int32" />
+    <Property Name="LineID" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblUser">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="PrimaryRole" Type="Int32" Nullable="false" />
+    <Property Name="SecondaryRole" Type="Int32" />
+    <Property Name="DisplayName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="IsDeleted" Type="Int32" Nullable="false" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+    <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedBy" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Timesheet">
+    <Key>
+      <PropertyRef Name="TimesheetId" />
+      <PropertyRef Name="EmployeeId" />
+    </Key>
+    <Property Name="TimesheetId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="TimesheetIn" Type="DateTime" Precision="3" />
+    <Property Name="TimesheetOut" Type="DateTime" Precision="3" />
+    <Property Name="EmployeeId" Type="Int32" Nullable="false" />
+    <Property Name="TimesheetText" Type="String" MaxLength="2000" Unicode="true" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="tblPlannedBreak">
+    <Key>
+      <PropertyRef Name="BreakID" />
+    </Key>
+    <Property Type="Int32" Name="BreakID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="BreakReason" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="Time" Name="StartTime" Nullable="false" Precision="7" />
+    <Property Type="Time" Name="EndTime" Nullable="false" Precision="7" />
+    <Property Type="Int32" Name="BreakDuration" Nullable="false" />
+    <Property Type="Int32" Name="ShiftID" Nullable="false" />
+    <Property Type="Int16" Name="IsDeleted" Nullable="false" />
+    <Property Type="DateTime" Name="CreatedOn" Nullable="false" Precision="3" />
+    <Property Type="Int32" Name="CreatedBy" Nullable="false" />
+    <Property Type="DateTime" Name="ModifiedOn" Precision="3" />
+    <Property Type="Int32" Name="ModifiedBy" />
+    <Property Type="Int32" Name="LineID" Nullable="false" />
+  </EntityType>
+</Schema>

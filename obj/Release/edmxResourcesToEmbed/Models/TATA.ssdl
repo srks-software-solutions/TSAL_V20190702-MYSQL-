@@ -1,0 +1,3291 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="mazakdaqModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.6" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="alarm_history_master">
+    <Key>
+      <PropertyRef Name="AlarmID" />
+    </Key>
+    <Property Name="AlarmID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AlarmMessage" Type="mediumtext" Nullable="false" />
+    <Property Name="AlarmDate" Type="date" Nullable="false" />
+    <Property Name="AlarmTime" Type="time" Precision="0" Nullable="false" />
+    <Property Name="AlarmDateTime" Type="datetime" Precision="0" Nullable="false" />
+    <Property Name="InsertedOn" Type="datetime" Precision="0" />
+    <Property Name="MachineID" Type="int" />
+    <Property Name="Shift" Type="varchar" MaxLength="4" />
+    <Property Name="CorrectedDate" Type="date" />
+    <Property Name="ErrorNum" Type="varchar" MaxLength="45" />
+    <Property Name="Status" Type="varchar" MaxLength="45" />
+    <Property Name="DetailCode1" Type="varchar" MaxLength="45" />
+    <Property Name="DetailCode2" Type="varchar" MaxLength="45" />
+    <Property Name="DetailCode3" Type="varchar" MaxLength="45" />
+    <Property Name="InterferedPart" Type="varchar" MaxLength="45" />
+    <Property Name="SystemHead" Type="varchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="alarm_master">
+    <Key>
+      <PropertyRef Name="AlarmID" />
+    </Key>
+    <Property Name="AlarmID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AlarmNo" Type="varchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="alarm_report">
+    <Key>
+      <PropertyRef Name="reportid" />
+    </Key>
+    <Property Name="reportid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="slno" Type="int" />
+    <Property Name="alarmno" Type="varchar" MaxLength="10" />
+    <Property Name="alarmdescn" Type="mediumtext" />
+    <Property Name="alarmdatetime" Type="datetime" Precision="0" />
+  </EntityType>
+  <EntityType Name="automaticjobcard">
+    <Key>
+      <PropertyRef Name="JobcardID" />
+    </Key>
+    <Property Name="JobcardID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="slno" Type="int" />
+    <Property Name="EmpNo" Type="varchar" MaxLength="25" />
+    <Property Name="OpnIdleCode" Type="varchar" MaxLength="25" />
+    <Property Name="Workorderno" Type="varchar" MaxLength="25" />
+    <Property Name="Compcode" Type="varchar" MaxLength="25" />
+    <Property Name="Qtyprod" Type="int" />
+    <Property Name="QtyAccp" Type="int" />
+    <Property Name="QtyRej" Type="int" />
+    <Property Name="Fromtime" Type="time" Precision="0" />
+    <Property Name="Totime" Type="time" Precision="0" />
+    <Property Name="Totalhours" Type="varchar" MaxLength="45" />
+    <Property Name="MachineInvNumber" Type="varchar" MaxLength="45" />
+    <Property Name="Shift" Type="varchar" MaxLength="45" />
+    <Property Name="JobCardDate" Type="varchar" MaxLength="45" />
+    <Property Name="Fromdatetime" Type="datetime" Precision="0" />
+    <Property Name="MachineId" Type="int" />
+    <Property Name="MessageType" Type="varchar" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="books">
+    <Key>
+      <PropertyRef Name="BID" />
+    </Key>
+    <Property Name="BID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BookName" Type="varchar" MaxLength="45" Nullable="false" />
+  </EntityType>
+  <EntityType Name="code_master">
+    <Key>
+      <PropertyRef Name="CodeID" />
+    </Key>
+    <Property Name="CodeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Code" Type="int" />
+    <Property Name="MCode" Type="varchar" MaxLength="20" />
+    <Property Name="CodeDescription" Type="varchar" MaxLength="50" />
+    <Property Name="CodeType" Type="varchar" MaxLength="20" />
+    <Property Name="InsertedOn" Type="datetime" Precision="0" />
+    <Property Name="InsertedBy" Type="varchar" MaxLength="45" />
+    <Property Name="ModifiedOn" Type="datetime" Precision="0" />
+    <Property Name="ModifiedBy" Type="varchar" MaxLength="45" />
+    <Property Name="IsDeleted" Type="int" />
+  </EntityType>
+  <EntityType Name="cutting_time_report">
+    <Key>
+      <PropertyRef Name="CuttingID" />
+    </Key>
+    <Property Name="CuttingID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Cuttingtimes" Type="double" Nullable="false" />
+    <Property Name="Cuttingtimeinserted" Type="time" Precision="0" Nullable="false" />
+    <Property Name="CuttingShift" Type="int" Nullable="false" />
+    <Property Name="CuttingDate" Type="varchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="cutting_time_report_pdf">
+    <Key>
+      <PropertyRef Name="CuttingID" />
+    </Key>
+    <Property Name="CuttingID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Cuttingtimes" Type="double" Nullable="false" />
+    <Property Name="Cuttingtimeinserted" Type="time" Precision="0" />
+    <Property Name="CuttingShift" Type="int" Nullable="false" />
+    <Property Name="CuttingDate" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="MachineID" Type="int" />
+    <Property Name="MonthNum" Type="int" />
+    <Property Name="WeekNum" Type="int" />
+    <Property Name="YearNum" Type="int" />
+  </EntityType>
+  <EntityType Name="day_st_end_time">
+    <Key>
+      <PropertyRef Name="DayID" />
+    </Key>
+    <Property Name="DayID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DayStart" Type="time" Precision="0" Nullable="false" />
+    <Property Name="DayEnd" Type="time" Precision="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="frommail">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FromEmailAdd" Type="varchar" MaxLength="45" Nullable="false" />
+    <Property Name="Password" Type="varchar" MaxLength="45" />
+    <Property Name="IsDeleted" Type="int" Nullable="false" />
+    <Property Name="username" Type="varchar" MaxLength="45" />
+    <Property Name="domain" Type="varchar" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="handle_no_ping">
+    <Key>
+      <PropertyRef Name="NoPingID" />
+    </Key>
+    <Property Name="NoPingID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MachineID" Type="int" />
+    <Property Name="StartTime" Type="datetime" Precision="0" />
+    <Property Name="CreatedOn" Type="datetime" Precision="0" />
+  </EntityType>
+  <EntityType Name="jobcard_details">
+    <Key>
+      <PropertyRef Name="JobcardID" />
+    </Key>
+    <Property Name="JobcardID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="slno" Type="int" />
+    <Property Name="EmpNo" Type="varchar" MaxLength="25" />
+    <Property Name="OpnIdleCode" Type="varchar" MaxLength="25" />
+    <Property Name="Workorderno" Type="varchar" MaxLength="25" />
+    <Property Name="Compcode" Type="varchar" MaxLength="25" />
+    <Property Name="Qtyprod" Type="int" />
+    <Property Name="QtyAccp" Type="int" />
+    <Property Name="QtyRej" Type="int" />
+    <Property Name="Fromtime" Type="time" Precision="0" />
+    <Property Name="Totime" Type="time" Precision="0" />
+    <Property Name="Totalhours" Type="varchar" MaxLength="45" />
+    <Property Name="MachineInvNumber" Type="varchar" MaxLength="45" />
+    <Property Name="Shift" Type="varchar" MaxLength="45" />
+    <Property Name="JobCardDate" Type="varchar" MaxLength="45" />
+    <Property Name="Fromdatetime" Type="datetime" Precision="0" />
+  </EntityType>
+  <EntityType Name="machine_master">
+    <Key>
+      <PropertyRef Name="MachineID" />
+    </Key>
+    <Property Name="MachineID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MachineInvNo" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="IPAddress" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="MachineType" Type="int" />
+    <Property Name="ControllerType" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="InsertedOn" Type="datetime" Precision="0" Nullable="false" />
+    <Property Name="InsertedBy" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="ModifiedOn" Type="datetime" Precision="0" />
+    <Property Name="ModifiedBy" Type="varchar" MaxLength="20" />
+    <Property Name="IsDeleted" Type="int" Nullable="false" />
+    <Property Name="MachineModel" Type="varchar" MaxLength="45" />
+    <Property Name="MachineMake" Type="varchar" MaxLength="45" />
+    <Property Name="ModelType" Type="varchar" MaxLength="45" />
+    <Property Name="MachineDispName" Type="varchar" MaxLength="45" />
+    <Property Name="ProgramNum" Type="int" />
+    <Property Name="IsParameters" Type="tinyint" />
+  </EntityType>
+  <EntityType Name="mailmaster">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EmailID" Type="varchar" MaxLength="45" Nullable="false" />
+    <Property Name="TOAdd" Type="int" Nullable="false" />
+    <Property Name="CCAdd" Type="int" Nullable="false" />
+    <Property Name="IsDeleted" Type="int" Nullable="false" />
+    <Property Name="BCCAdd" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="mailmasterprogesc">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EmailID" Type="varchar" MaxLength="45" Nullable="false" />
+    <Property Name="TOAdd" Type="int" Nullable="false" />
+    <Property Name="CCAdd" Type="int" Nullable="false" />
+    <Property Name="IsDeleted" Type="int" Nullable="false" />
+    <Property Name="BCCAdd" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="main_time_rep">
+    <Key>
+      <PropertyRef Name="MainTimeRepID" />
+    </Key>
+    <Property Name="MainTimeRepID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CuttingTime" Type="double" Nullable="false" />
+    <Property Name="OperatingTime" Type="double" Nullable="false" />
+    <Property Name="PowerOnTime" Type="double" Nullable="false" />
+    <Property Name="CorrectedDate" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Shift" Type="int" Nullable="false" />
+    <Property Name="MachineID" Type="int" Nullable="false" />
+    <Property Name="MonthNum" Type="int" />
+    <Property Name="WeekNum" Type="int" />
+    <Property Name="YearNum" Type="int" />
+    <Property Name="MonthName" Type="varchar" MaxLength="20" />
+    <Property Name="WeekRange" Type="varchar" MaxLength="45" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'def.mazakdaq.main_time_view' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="main_time_view">
+    <Key>
+      <PropertyRef Name="CuttingTime" />
+      <PropertyRef Name="OperatingTime" />
+      <PropertyRef Name="PowerOnTime" />
+      <PropertyRef Name="CorrectedDate" />
+      <PropertyRef Name="Shift" />
+      <PropertyRef Name="MachineID" />
+    </Key>
+    <Property Name="CuttingTime" Type="tinyint" Nullable="false" />
+    <Property Name="OperatingTime" Type="tinyint" Nullable="false" />
+    <Property Name="PowerOnTime" Type="tinyint" Nullable="false" />
+    <Property Name="CorrectedDate" Type="tinyint" Nullable="false" />
+    <Property Name="Shift" Type="tinyint" Nullable="false" />
+    <Property Name="MachineID" Type="tinyint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="message_code_master">
+    <Key>
+      <PropertyRef Name="MessageCodeID" />
+    </Key>
+    <Property Name="MessageCodeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MessageCode" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="MessageMCode" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="MessageDescription" Type="varchar" MaxLength="128" Nullable="false" />
+    <Property Name="MessageType" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="InsertedOn" Type="datetime" Precision="0" Nullable="false" />
+    <Property Name="InsertedBy" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="ModifiedOn" Type="datetime" Precision="0" />
+    <Property Name="ModifiedBy" Type="varchar" MaxLength="20" />
+    <Property Name="IsDeleted" Type="int" Nullable="false" />
+    <Property Name="ReportDispName" Type="varchar" MaxLength="100" />
+    <Property Name="ColourCode" Type="varchar" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="message_history_master">
+    <Key>
+      <PropertyRef Name="MessageID" />
+    </Key>
+    <Property Name="MessageID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Meassage" Type="mediumtext" Nullable="false" />
+    <Property Name="MessageDate" Type="date" Nullable="false" />
+    <Property Name="MessageTime" Type="time" Precision="0" Nullable="false" />
+    <Property Name="MessageDateTime" Type="datetime" Precision="0" Nullable="false" />
+    <Property Name="MessageNo" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="MessageCode" Type="varchar" MaxLength="10" />
+    <Property Name="MessageType" Type="varchar" MaxLength="10" />
+    <Property Name="MessageShift" Type="varchar" MaxLength="10" />
+    <Property Name="MachineID" Type="int" />
+    <Property Name="InsertedOn" Type="datetime" Precision="0" />
+    <Property Name="CorrectedDate" Type="date" />
+  </EntityType>
+  <EntityType Name="opcuttimereport">
+    <Key>
+      <PropertyRef Name="idOpCutTimeReport" />
+    </Key>
+    <Property Name="idOpCutTimeReport" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Operatingtimes" Type="double" Nullable="false" />
+    <Property Name="Cuttingtimes" Type="double" Nullable="false" />
+    <Property Name="PowerOnTime" Type="double" Nullable="false" />
+    <Property Name="Timeinserted" Type="time" Precision="0" Nullable="false" />
+    <Property Name="Shift" Type="int" Nullable="false" />
+    <Property Name="ReportDate" Type="varchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="opcuttimereport_pdf">
+    <Key>
+      <PropertyRef Name="idOpCutTimeReport_pdf" />
+    </Key>
+    <Property Name="idOpCutTimeReport_pdf" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Operatingtimes" Type="double" Nullable="false" />
+    <Property Name="Cuttingtimes" Type="double" Nullable="false" />
+    <Property Name="Shift" Type="int" Nullable="false" />
+    <Property Name="ReportDate" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="PowerOnTime" Type="double" Nullable="false" />
+  </EntityType>
+  <EntityType Name="operating_time_report">
+    <Key>
+      <PropertyRef Name="OperatingID" />
+    </Key>
+    <Property Name="OperatingID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Operatingtimes" Type="double" Nullable="false" />
+    <Property Name="Operatingtimeinserted" Type="time" Precision="0" Nullable="false" />
+    <Property Name="OperatingShift" Type="int" Nullable="false" />
+    <Property Name="OperatingDate" Type="varchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="operating_time_report_pdf">
+    <Key>
+      <PropertyRef Name="OperatingID" />
+    </Key>
+    <Property Name="OperatingID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Operatingtimes" Type="double" Nullable="false" />
+    <Property Name="Operatingtimeinserted" Type="time" Precision="0" />
+    <Property Name="OperatingShift" Type="int" Nullable="false" />
+    <Property Name="OperatingDate" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="MachineID" Type="int" />
+    <Property Name="MonthNum" Type="int" />
+    <Property Name="WeekNum" Type="int" />
+    <Property Name="YearNum" Type="int" />
+  </EntityType>
+  <EntityType Name="operationlog">
+    <Key>
+      <PropertyRef Name="idoperationlog" />
+    </Key>
+    <Property Name="idoperationlog" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OpMsg" Type="mediumtext" />
+    <Property Name="OpDate" Type="date" />
+    <Property Name="OpTime" Type="time" Precision="0" />
+    <Property Name="OpDateTime" Type="datetime" Precision="0" />
+    <Property Name="OpReason" Type="varchar" MaxLength="256" />
+    <Property Name="MachineID" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'def.mazakdaq.parametermaster_view' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="parametermaster_view">
+    <Key>
+      <PropertyRef Name="ParameterID" />
+      <PropertyRef Name="SetupTime" />
+      <PropertyRef Name="OperatingTime" />
+      <PropertyRef Name="PowerOnTime" />
+      <PropertyRef Name="PartsCount" />
+      <PropertyRef Name="InsertedOn" />
+      <PropertyRef Name="MachineID" />
+      <PropertyRef Name="Shift" />
+      <PropertyRef Name="CorrectedDate" />
+      <PropertyRef Name="InsertedOnTime" />
+    </Key>
+    <Property Name="ParameterID" Type="tinyint" Nullable="false" />
+    <Property Name="SetupTime" Type="tinyint" Nullable="false" />
+    <Property Name="OperatingTime" Type="tinyint" Nullable="false" />
+    <Property Name="PowerOnTime" Type="tinyint" Nullable="false" />
+    <Property Name="PartsCount" Type="tinyint" Nullable="false" />
+    <Property Name="InsertedOn" Type="tinyint" Nullable="false" />
+    <Property Name="MachineID" Type="tinyint" Nullable="false" />
+    <Property Name="Shift" Type="tinyint" Nullable="false" />
+    <Property Name="CorrectedDate" Type="tinyint" Nullable="false" />
+    <Property Name="InsertedOnTime" Type="tinyint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="parameters">
+    <Key>
+      <PropertyRef Name="ParameterID" />
+    </Key>
+    <Property Name="ParameterID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ParameterType" Type="varchar" MaxLength="45" />
+    <Property Name="Description" Type="varchar" MaxLength="100" />
+    <Property Name="IsDeleted" Type="int" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime" Precision="0" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="ModifiedOn" Type="datetime" Precision="0" />
+    <Property Name="ModifiedBy" Type="int" />
+  </EntityType>
+  <EntityType Name="parameters_master">
+    <Key>
+      <PropertyRef Name="ParameterID" />
+    </Key>
+    <Property Name="ParameterID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SetupTime" Type="varchar" MaxLength="45" Nullable="false" />
+    <Property Name="OperatingTime" Type="varchar" MaxLength="45" Nullable="false" />
+    <Property Name="PowerOnTime" Type="varchar" MaxLength="45" Nullable="false" />
+    <Property Name="PartsCount" Type="double" />
+    <Property Name="InsertedOn" Type="datetime" Precision="0" />
+    <Property Name="MachineID" Type="int" />
+    <Property Name="Shift" Type="int" />
+    <Property Name="CorrectedDate" Type="date" />
+    <Property Name="AutoCutTime" Type="varchar" MaxLength="45" />
+    <Property Name="Total_CutTime" Type="varchar" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="pcb">
+    <Key>
+      <PropertyRef Name="PCBID" />
+    </Key>
+    <Property Name="PCBID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PCBNo" Type="int" />
+    <Property Name="PCBIPAddress" Type="varchar" MaxLength="30" />
+    <Property Name="PCBMACAddress" Type="varchar" MaxLength="45" />
+    <Property Name="MachineID" Type="int" />
+    <Property Name="IsDeleted" Type="int" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime" Precision="0" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="ModifiedOn" Type="datetime" Precision="0" />
+    <Property Name="ModifiedBy" Type="int" />
+  </EntityType>
+  <EntityType Name="pcb_details">
+    <Key>
+      <PropertyRef Name="PCBID" />
+    </Key>
+    <Property Name="PCBID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PCBNo" Type="int" />
+    <Property Name="PCBIPAddress" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="PCBMACAddress" Type="varchar" MaxLength="45" />
+    <Property Name="MachineID" Type="int" />
+    <Property Name="IsDeleted" Type="int" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime" Precision="0" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="ModifiedOn" Type="datetime" Precision="0" />
+    <Property Name="ModifiedBy" Type="int" />
+  </EntityType>
+  <EntityType Name="pcb_parameters">
+    <Key>
+      <PropertyRef Name="ParameterID" />
+    </Key>
+    <Property Name="ParameterID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ParameterType" Type="varchar" MaxLength="45" />
+    <Property Name="Description" Type="varchar" MaxLength="100" />
+    <Property Name="IsDeleted" Type="int" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime" Precision="0" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="ModifiedOn" Type="datetime" Precision="0" />
+    <Property Name="ModifiedBy" Type="int" />
+    <Property Name="PinNumber" Type="int" Nullable="false" />
+    <Property Name="LogFile" Type="varchar" MaxLength="45" />
+    <Property Name="MachineID" Type="int" Nullable="false" />
+    <Property Name="HighValue" Type="int" Nullable="false" />
+    <Property Name="ColorCode" Type="varchar" MaxLength="45" />
+    <Property Name="IsPulse" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="pcbdaq">
+    <Key>
+      <PropertyRef Name="PCBDAQID" />
+    </Key>
+    <Property Name="PCBDAQID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PCBIPAddress" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="PinNumber" Type="int" Nullable="false" />
+    <Property Name="ParamValue" Type="int" />
+    <Property Name="PCBDateTime" Type="datetime" Precision="0" />
+    <Property Name="IsDeleted" Type="int" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime" Precision="0" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="ModifiedOn" Type="datetime" Precision="0" />
+    <Property Name="ModifiedBy" Type="int" />
+  </EntityType>
+  <EntityType Name="pcbdaqin_tbl">
+    <Key>
+      <PropertyRef Name="DAQINID" />
+    </Key>
+    <Property Name="DAQINID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PCBIPAddress" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="ParamPIN" Type="int" Nullable="false" />
+    <Property Name="ParamValue" Type="int" />
+    <Property Name="CreatedOn" Type="datetime" Precision="0" />
+    <Property Name="CreatedBy" Type="int" />
+  </EntityType>
+  <EntityType Name="pcbdps_master">
+    <Key>
+      <PropertyRef Name="PcbDpsMasterID" />
+    </Key>
+    <Property Name="PcbDpsMasterID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Pin17" Type="int" />
+    <Property Name="Pin18" Type="int" />
+    <Property Name="Pin19" Type="int" />
+    <Property Name="Pin20" Type="int" />
+    <Property Name="Pin22" Type="int" />
+    <Property Name="Pin23" Type="int" />
+    <Property Name="Pin24" Type="int" />
+    <Property Name="Pin25" Type="int" />
+    <Property Name="Pin26" Type="int" />
+    <Property Name="MachineID" Type="int" />
+    <Property Name="ColorValue" Type="varchar" MaxLength="45" />
+    <Property Name="CreatedOn" Type="datetime" Precision="0" />
+    <Property Name="IsDeleted" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'def.mazakdaq.person' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="person">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" />
+    <Property Name="Email" Type="varchar" MaxLength="50" />
+    <Property Name="Mobile" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="program_master">
+    <Key>
+      <PropertyRef Name="ProgramID" />
+    </Key>
+    <Property Name="ProgramID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EmployeeCode" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="ComponentDescription" Type="varchar" MaxLength="50" />
+    <Property Name="ComponentCode" Type="varchar" MaxLength="20" />
+    <Property Name="OperationDescription" Type="varchar" MaxLength="20" />
+    <Property Name="WorkOrderNo1" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="WorkOrderNo2" Type="varchar" MaxLength="20" />
+    <Property Name="WorkOrderNo3" Type="varchar" MaxLength="20" />
+    <Property Name="MachineID" Type="int" Nullable="false" />
+    <Property Name="InsertedOn" Type="datetime" Precision="0" Nullable="false" />
+    <Property Name="ProgramDate" Type="date" Nullable="false" />
+    <Property Name="ProgramTime" Type="time" Precision="0" Nullable="false" />
+    <Property Name="ProgramDateTime" Type="datetime" Precision="0" Nullable="false" />
+    <Property Name="OpnCode1" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="PartsProduced1" Type="int" Nullable="false" />
+    <Property Name="PartsAccepted1" Type="int" Nullable="false" />
+    <Property Name="OpnCode2" Type="varchar" MaxLength="10" />
+    <Property Name="PartsProduced2" Type="int" />
+    <Property Name="PartsAccepted2" Type="int" />
+    <Property Name="OpnCode3" Type="varchar" MaxLength="10" />
+    <Property Name="PartsProduced3" Type="int" />
+    <Property Name="PartsAccepted3" Type="int" />
+    <Property Name="Shift" Type="varchar" MaxLength="10" />
+    <Property Name="PartsRejected1" Type="int" />
+    <Property Name="PartsRejected2" Type="int" />
+    <Property Name="PartsRejected3" Type="int" />
+    <Property Name="CorrectedDate" Type="date" />
+  </EntityType>
+  <EntityType Name="program_temp">
+    <Key>
+      <PropertyRef Name="ProgramID" />
+    </Key>
+    <Property Name="ProgramID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProgramData" Type="mediumtext" Nullable="false" />
+    <Property Name="ProgramDateTime" Type="datetime" Precision="0" Nullable="false" />
+    <Property Name="MachineID" Type="int" />
+  </EntityType>
+  <EntityType Name="recipientmailid">
+    <Key>
+      <PropertyRef Name="RE_ID" />
+    </Key>
+    <Property Name="RE_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MailID" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="AutoEmailType" Type="int" Nullable="false" />
+    <Property Name="DisplayName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="RecipientType" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="IsDeleted" Type="int" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime" Precision="0" Nullable="false" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="ModifiedOn" Type="datetime" Precision="0" />
+    <Property Name="ModifiedBy" Type="int" />
+  </EntityType>
+  <EntityType Name="role_master">
+    <Key>
+      <PropertyRef Name="RoleID" />
+    </Key>
+    <Property Name="RoleID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RoleName" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="RoleDescription" Type="varchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="shift_master">
+    <Key>
+      <PropertyRef Name="ShiftID" />
+    </Key>
+    <Property Name="ShiftID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ShiftName" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="StartTime" Type="time" Precision="0" Nullable="false" />
+    <Property Name="EndTime" Type="time" Precision="0" Nullable="false" />
+    <Property Name="InsertedOn" Type="datetime" Precision="0" Nullable="false" />
+    <Property Name="InsertedBy" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="ModifiedOn" Type="datetime" Precision="0" />
+    <Property Name="ModifiedBy" Type="varchar" MaxLength="20" />
+    <Property Name="IsDeleted" Type="int" Nullable="false" />
+    <Property Name="Duration" Type="int" />
+  </EntityType>
+  <EntityType Name="tbl_autoreport_log">
+    <Key>
+      <PropertyRef Name="AutoReportLogID" />
+    </Key>
+    <Property Name="AutoReportLogID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CorrectedDate" Type="date" />
+    <Property Name="AutoReportID" Type="int" />
+    <Property Name="InsertedOn" Type="datetime" Precision="0" />
+    <Property Name="ExcelCreated" Type="int" />
+    <Property Name="MailSent" Type="int" />
+    <Property Name="CompletedOn" Type="datetime" Precision="0" />
+    <Property Name="ExcelCreatedTime" Type="datetime" Precision="0" />
+  </EntityType>
+  <EntityType Name="tbl_autoreportbasedon">
+    <Key>
+      <PropertyRef Name="BasedOnID" />
+    </Key>
+    <Property Name="BasedOnID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BasedOn" Type="varchar" MaxLength="45" />
+    <Property Name="Desc" Type="varchar" MaxLength="100" />
+    <Property Name="CreatedOn" Type="datetime" Precision="0" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="ModifiedOn" Type="datetime" Precision="0" />
+    <Property Name="ModifiedBy" Type="int" />
+    <Property Name="IsDeleted" Type="int" />
+  </EntityType>
+  <EntityType Name="tbl_autoreportsetting">
+    <Key>
+      <PropertyRef Name="AutoReportID" />
+    </Key>
+    <Property Name="AutoReportID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ReportID" Type="int" />
+    <Property Name="BasedOn" Type="int" />
+    <Property Name="AutoReportTimeID" Type="int" />
+    <Property Name="ToMailList" Type="mediumtext" />
+    <Property Name="CCMailList" Type="mediumtext" />
+    <Property Name="CreatedOn" Type="datetime" Precision="0" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="ModifiedOn" Type="datetime" Precision="0" />
+    <Property Name="ModifiedBy" Type="int" />
+    <Property Name="IsDeleted" Type="int" />
+    <Property Name="PlantID" Type="int" />
+    <Property Name="ShopID" Type="int" />
+    <Property Name="CellID" Type="int" />
+    <Property Name="MachineID" Type="int" />
+    <Property Name="NextRunDate" Type="datetime" Precision="0" />
+  </EntityType>
+  <EntityType Name="tbl_autoreporttime">
+    <Key>
+      <PropertyRef Name="AutoReportTimeID" />
+    </Key>
+    <Property Name="AutoReportTimeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AutoReportTime" Type="varchar" MaxLength="45" />
+    <Property Name="Description" Type="varchar" MaxLength="45" />
+    <Property Name="CreatedOn" Type="datetime" Precision="0" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="ModifiedOn" Type="datetime" Precision="0" />
+    <Property Name="ModifiedBy" Type="int" />
+    <Property Name="IsDeleted" Type="int" />
+  </EntityType>
+  <EntityType Name="tbl_multiwoselection">
+    <Key>
+      <PropertyRef Name="MultiWOID" />
+    </Key>
+    <Property Name="MultiWOID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="WorkOrder" Type="varchar" MaxLength="45" />
+    <Property Name="PartNo" Type="varchar" MaxLength="45" />
+    <Property Name="OperationNo" Type="varchar" MaxLength="45" />
+    <Property Name="TargetQty" Type="int" />
+    <Property Name="DeliveredQty" Type="int" />
+    <Property Name="HMIID" Type="int" />
+    <Property Name="CreatedOn" Type="datetime" Precision="0" />
+    <Property Name="IsCompleted" Type="int" />
+    <Property Name="ProcessQty" Type="int" />
+    <Property Name="DDLWorkCentre" Type="varchar" MaxLength="45" />
+    <Property Name="IsSubmit" Type="int" Nullable="false" />
+    <Property Name="ScrapQty" Type="int" Nullable="false" />
+    <Property Name="SplitWO" Type="varchar" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="tbl_reportmaster">
+    <Key>
+      <PropertyRef Name="ReportID" />
+    </Key>
+    <Property Name="ReportID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ReportName" Type="varchar" MaxLength="100" />
+    <Property Name="ReportDescription" Type="varchar" MaxLength="100" />
+    <Property Name="ReportDispName" Type="varchar" MaxLength="50" />
+    <Property Name="ReportTemplatePath" Type="varchar" MaxLength="100" />
+    <Property Name="CreatedOn" Type="datetime" Precision="0" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="ModifiedOn" Type="datetime" Precision="0" />
+    <Property Name="ModifiedBy" Type="int" />
+    <Property Name="IsDeleted" Type="int" />
+  </EntityType>
+  <EntityType Name="tblactivitylog">
+    <Key>
+      <PropertyRef Name="TrackID" />
+    </Key>
+    <Property Name="TrackID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="IpAddress" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ClientSystemName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CompleteModificationDetails" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Controller" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="Action" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Idoperationlog" Type="int" Nullable="false" />
+    <Property Name="OpTime" Type="text" Nullable="false" />
+    <Property Name="OpDate" Type="date" Nullable="false" />
+    <Property Name="OpDateTime" Type="datetime" Precision="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblapp_paths">
+    <Key>
+      <PropertyRef Name="AppPathsID" />
+    </Key>
+    <Property Name="AppPathsID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AppName" Type="varchar" MaxLength="145" />
+    <Property Name="AppPath" Type="varchar" MaxLength="245" />
+    <Property Name="IsDeleted" Type="int" Nullable="false" />
+    <Property Name="InsertedOn" Type="datetime" Precision="0" />
+  </EntityType>
+  <EntityType Name="tblbreakdown">
+    <Key>
+      <PropertyRef Name="BreakdownID" />
+    </Key>
+    <Property Name="BreakdownID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StartTime" Type="datetime" Precision="0" />
+    <Property Name="EndTime" Type="datetime" Precision="0" />
+    <Property Name="BreakDownCode" Type="int" />
+    <Property Name="MachineID" Type="int" Nullable="false" />
+    <Property Name="CorrectedDate" Type="varchar" MaxLength="45" />
+    <Property Name="Shift" Type="varchar" MaxLength="45" />
+    <Property Name="MessageDesc" Type="varchar" MaxLength="45" />
+    <Property Name="MessageCode" Type="varchar" MaxLength="45" />
+    <Property Name="DoneWithRow" Type="int" />
+  </EntityType>
+  <EntityType Name="tblbreakdowncodes">
+    <Key>
+      <PropertyRef Name="BreakDownCodeID" />
+    </Key>
+    <Property Name="BreakDownCodeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BreakDownCode" Type="varchar" MaxLength="25" />
+    <Property Name="BreakDownCodeDesc" Type="varchar" MaxLength="45" />
+    <Property Name="MessageType" Type="varchar" MaxLength="45" />
+    <Property Name="BreakDownCodesLevel" Type="int" Nullable="false" />
+    <Property Name="BreakDownCodesLevel1ID" Type="int" />
+    <Property Name="BreakDownCodesLevel2ID" Type="int" />
+    <Property Name="IsDeleted" Type="int" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime" Precision="0" Nullable="false" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="ModifiedOn" Type="datetime" Precision="0" />
+    <Property Name="ModifiedBy" Type="int" />
+    <Property Name="ContributeTo" Type="varchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="tblcell">
+    <Key>
+      <PropertyRef Name="CellID" />
+    </Key>
+    <Property Name="CellID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CellName" Type="varchar" MaxLength="60" Nullable="false" />
+    <Property Name="CellDesc" Type="varchar" MaxLength="60" Nullable="false" />
+    <Property Name="PlantID" Type="int" />
+    <Property Name="ShopID" Type="int" Nullable="false" />
+    <Property Name="IsDeleted" Type="int" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime" Precision="0" Nullable="false" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="ModifiedOn" Type="datetime" Precision="0" />
+    <Property Name="ModifiedBy" Type="int" />
+  </EntityType>
+  <EntityType Name="tblcustomer">
+    <Key>
+      <PropertyRef Name="CID" />
+    </Key>
+    <Property Name="CID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CustomerName" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="CustomerShortName" Type="varchar" MaxLength="20" />
+    <Property Name="AddressLine1" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="AddressLine2" Type="varchar" MaxLength="50" />
+    <Property Name="Landline1" Type="int" Nullable="false" />
+    <Property Name="Landline2" Type="int" />
+    <Property Name="EmailID1" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="EmailID2" Type="varchar" MaxLength="30" />
+    <Property Name="Fax" Type="int" />
+    <Property Name="Logo" Type="blob" Nullable="false" />
+    <Property Name="Website" Type="varchar" MaxLength="30" />
+    <Property Name="CPName" Type="varchar" MaxLength="30" />
+    <Property Name="CPDesignation" Type="varchar" MaxLength="30" />
+    <Property Name="CPDepartment" Type="varchar" MaxLength="20" />
+    <Property Name="CPEmailID" Type="varchar" MaxLength="50" />
+    <Property Name="CPMobileNO" Type="int" />
+    <Property Name="IsDeleted" Type="int" />
+    <Property Name="CreatedOn" Type="datetime" Precision="0" Nullable="false" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="ModifiedOn" Type="datetime" Precision="0" />
+    <Property Name="ModifiedBy" Type="int" />
+  </EntityType>
+  <EntityType Name="tbldailyprodstatus">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MachineID" Type="int" />
+    <Property Name="StartTime" Type="datetime" Precision="0" />
+    <Property Name="EndTime" Type="datetime" Precision="0" />
+    <Property Name="Duration" Type="int" />
+    <Property Name="Status" Type="varchar" MaxLength="45" />
+    <Property Name="IsDeleted" Type="int" />
+    <Property Name="InsertedOn" Type="datetime" Precision="0" />
+    <Property Name="ModifiedOn" Type="datetime" Precision="0" />
+    <Property Name="CorrectedDate" Type="varchar" MaxLength="45" />
+    <Property Name="ColorCode" Type="varchar" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="tbldailyprodstatushis">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MachineID" Type="int" Nullable="false" />
+    <Property Name="StartTime" Type="datetime" Precision="0" Nullable="false" />
+    <Property Name="EndTime" Type="datetime" Precision="0" Nullable="false" />
+    <Property Name="Duration" Type="int" />
+    <Property Name="Status" Type="varchar" MaxLength="45" />
+    <Property Name="IsDeleted" Type="int" />
+    <Property Name="InsertedOn" Type="datetime" Precision="0" />
+    <Property Name="ModifiedOn" Type="datetime" Precision="0" />
+    <Property Name="CorrectedDate" Type="varchar" MaxLength="45" />
+    <Property Name="ColorCode" Type="varchar" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="tbldaytiming">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StartTime" Type="time" Precision="0" Nullable="false" />
+    <Property Name="EndTime" Type="time" Precision="0" Nullable="false" />
+    <Property Name="IsDeleted" Type="int" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime" Precision="0" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="ModifiedOn" Type="datetime" Precision="0" />
+    <Property Name="ModifiedBy" Type="int" />
+  </EntityType>
+  <EntityType Name="tblddl">
+    <Key>
+      <PropertyRef Name="DDLID" />
+    </Key>
+    <Property Name="DDLID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="WorkCenter" Type="varchar" MaxLength="45" />
+    <Property Name="WorkOrder" Type="varchar" MaxLength="100" />
+    <Property Name="OperationNo" Type="varchar" MaxLength="45" />
+    <Property Name="OperationDesc" Type="varchar" MaxLength="200" />
+    <Property Name="MaterialDesc" Type="varchar" MaxLength="200" />
+    <Property Name="PartName" Type="varchar" MaxLength="100" />
+    <Property Name="TargetQty" Type="varchar" MaxLength="45" />
+    <Property Name="Type" Type="varchar" MaxLength="45" />
+    <Property Name="Project" Type="varchar" MaxLength="45" />
+    <Property Name="MADDate" Type="varchar" MaxLength="45" />
+    <Property Name="MADDateInd" Type="varchar" MaxLength="45" />
+    <Property Name="PreOpnEndDate" Type="varchar" MaxLength="45" />
+    <Property Name="DaysAgeing" Type="varchar" MaxLength="45" />
+    <Property Name="OperationsOnHold" Type="varchar" MaxLength="45" />
+    <Property Name="ReasonForHold" Type="varchar" MaxLength="200" />
+    <Property Name="DueDate" Type="varchar" MaxLength="45" />
+    <Property Name="FlagRushInd" Type="varchar" MaxLength="45" />
+    <Property Name="SplitWO" Type="varchar" MaxLength="45" />
+    <Property Name="IsCompleted" Type="int" Nullable="false" />
+    <Property Name="IsDeleted" Type="int" Nullable="false" />
+    <Property Name="DeliveredQty" Type="int" Nullable="false" />
+    <Property Name="ScrapQty" Type="int" Nullable="false" />
+    <Property Name="InsertedOn" Type="datetime" Precision="0" />
+    <Property Name="CorrectedDate" Type="varchar" MaxLength="25" />
+  </EntityType>
+  <EntityType Name="tbldowntimecategory">
+    <Key>
+      <PropertyRef Name="DTC_ID" />
+    </Key>
+    <Property Name="DTC_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DTCategory" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="DTCategoryDesc" Type="varchar" MaxLength="60" Nullable="false" />
+    <Property Name="IsDeleted" Type="int" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime" Precision="0" Nullable="false" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="ModifiedOn" Type="datetime" Precision="0" />
+    <Property Name="ModifiedBy" Type="int" />
+  </EntityType>
+  <EntityType Name="tbldowntimedetails">
+    <Key>
+      <PropertyRef Name="DT_ID" />
+    </Key>
+    <Property Name="DT_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DTCategoryID" Type="int" Nullable="false" />
+    <Property Name="DTReason" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="DTDesc" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="IsDeleted" Type="int" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime" Precision="0" Nullable="false" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="ModifiedOn" Type="datetime" Precision="0" />
+    <Property Name="ModifiedBy" Type="int" />
+  </EntityType>
+  <EntityType Name="tblemailescalation">
+    <Key>
+      <PropertyRef Name="EMailEscalationID" />
+    </Key>
+    <Property Name="EMailEscalationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EMailEscalationName" Type="varchar" MaxLength="200" />
+    <Property Name="MessageType" Type="varchar" MaxLength="45" />
+    <Property Name="ReasonLevel1" Type="int" />
+    <Property Name="ReasonLevel2" Type="int" />
+    <Property Name="ReasonLevel3" Type="int" />
+    <Property Name="PlantID" Type="int" />
+    <Property Name="ShopID" Type="int" />
+    <Property Name="CellID" Type="int" />
+    <Property Name="WorkCenterID" Type="int" />
+    <Property Name="Hours" Type="int" Nullable="false" />
+    <Property Name="Minutes" Type="int" Nullable="false" />
+    <Property Name="ToList" Type="mediumtext" />
+    <Property Name="CcList" Type="mediumtext" />
+    <Property Name="IsDeleted" Type="int" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime" Precision="0" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="ModifiedOn" Type="datetime" Precision="0" />
+    <Property Name="ModifiedBy" Type="int" />
+    <Property Name="DeletedDate" Type="datetime" Precision="0" />
+  </EntityType>
+  <EntityType Name="tblemailreporttype">
+    <Key>
+      <PropertyRef Name="ERTID" />
+    </Key>
+    <Property Name="ERTID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ReportType" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ReportDesc" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="IsDeleted" Type="int" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime" Precision="0" Nullable="false" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="ModifiedOn" Type="datetime" Precision="0" />
+    <Property Name="ModifiedBy" Type="int" />
+  </EntityType>
+  <EntityType Name="tblendcodes">
+    <Key>
+      <PropertyRef Name="EndCodeID" />
+    </Key>
+    <Property Name="EndCodeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EndCode" Type="varchar" MaxLength="11" />
+    <Property Name="EndCodeSDesc" Type="varchar" MaxLength="45" />
+    <Property Name="EndCodeLDesc" Type="varchar" MaxLength="200" />
+    <Property Name="IsDeleted" Type="int" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime" Precision="0" Nullable="false" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="ModifiedOn" Type="datetime" Precision="0" />
+    <Property Name="ModifiedBy" Type="int" />
+  </EntityType>
+  <EntityType Name="tblescalationlog">
+    <Key>
+      <PropertyRef Name="ELID" />
+    </Key>
+    <Property Name="ELID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EscalationID" Type="int" />
+    <Property Name="LossCodeID" Type="int" />
+    <Property Name="IsIdle" Type="int" Nullable="false" />
+    <Property Name="EscalationSentOn" Type="datetime" Precision="0" />
+    <Property Name="CorrectedDate" Type="varchar" MaxLength="20" />
+    <Property Name="IsDeleted" Type="int" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime" Precision="0" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="ModifiedOn" Type="datetime" Precision="0" />
+    <Property Name="ModifiedBy" Type="int" />
+    <Property Name="WCID" Type="int" />
+  </EntityType>
+  <EntityType Name="tblgenericworkcodes">
+    <Key>
+      <PropertyRef Name="GenericWorkID" />
+    </Key>
+    <Property Name="GenericWorkID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GenericWorkCode" Type="varchar" MaxLength="50" />
+    <Property Name="GenericWorkDesc" Type="varchar" MaxLength="45" />
+    <Property Name="MessageType" Type="varchar" MaxLength="45" />
+    <Property Name="GWCodesLevel" Type="int" Nullable="false" />
+    <Property Name="GWCodesLevel1ID" Type="int" />
+    <Property Name="GWCodesLevel2ID" Type="int" />
+    <Property Name="IsDeleted" Type="int" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime" Precision="0" Nullable="false" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="ModifiedOn" Type="datetime" Precision="0" />
+    <Property Name="ModifiedBy" Type="int" />
+    <Property Name="EndCode" Type="int" />
+    <Property Name="DeletedDate" Type="datetime" Precision="0" />
+  </EntityType>
+  <EntityType Name="tblgenericworkentry">
+    <Key>
+      <PropertyRef Name="GWEntryID" />
+    </Key>
+    <Property Name="GWEntryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GWCodeID" Type="int" Nullable="false" />
+    <Property Name="StartDateTime" Type="datetime" Precision="0" />
+    <Property Name="EndDateTime" Type="datetime" Precision="0" />
+    <Property Name="CorrectedDate" Type="varchar" MaxLength="45" />
+    <Property Name="MachineID" Type="int" Nullable="false" />
+    <Property Name="Shift" Type="varchar" MaxLength="45" />
+    <Property Name="GWCodeDesc" Type="varchar" MaxLength="45" />
+    <Property Name="GWCode" Type="varchar" MaxLength="45" />
+    <Property Name="DoneWithRow" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblhmiscreen">
+    <Key>
+      <PropertyRef Name="HMIID" />
+    </Key>
+    <Property Name="HMIID" Type="int" Nullable="false" />
+    <Property Name="MachineID" Type="int" Nullable="false" />
+    <Property Name="OperatiorID" Type="int" Nullable="false" />
+    <Property Name="Shift" Type="varchar" MaxLength="45" />
+    <Property Name="Date" Type="datetime" Precision="0" />
+    <Property Name="Time" Type="datetime" Precision="0" />
+    <Property Name="Project" Type="varchar" MaxLength="45" />
+    <Property Name="PartNo" Type="varchar" MaxLength="45" />
+    <Property Name="OperationNo" Type="varchar" MaxLength="45" />
+    <Property Name="Rej_Qty" Type="int" />
+    <Property Name="Work_Order_No" Type="varchar" MaxLength="45" />
+    <Property Name="Target_Qty" Type="int" />
+    <Property Name="Delivered_Qty" Type="int" />
+    <Property Name="Status" Type="int" />
+    <Property Name="CorrectedDate" Type="varchar" MaxLength="45" />
+    <Property Name="Prod_FAI" Type="varchar" MaxLength="45" />
+    <Property Name="isUpdate" Type="int" Nullable="false" />
+    <Property Name="DoneWithRow" Type="int" Nullable="false" />
+    <Property Name="isWorkInProgress" Type="int" Nullable="false" />
+    <Property Name="isWorkOrder" Type="int" Nullable="false" />
+    <Property Name="OperatorDet" Type="varchar" MaxLength="45" />
+    <Property Name="PEStartTime" Type="datetime" Precision="0" />
+    <Property Name="ProcessQty" Type="int" Nullable="false" />
+    <Property Name="DDLWokrCentre" Type="varchar" MaxLength="45" />
+    <Property Name="IsMultiWO" Type="int" Nullable="false" />
+    <Property Name="IsHold" Type="int" Nullable="false" />
+    <Property Name="SplitWO" Type="varchar" MaxLength="10" />
+    <Property Name="HMIMonth" Type="int" />
+    <Property Name="HMIYear" Type="int" />
+    <Property Name="HMIWeekNumber" Type="int" />
+    <Property Name="HMIQuarter" Type="int" />
+  </EntityType>
+  <EntityType Name="tblholdcodes">
+    <Key>
+      <PropertyRef Name="HoldCodeID" />
+    </Key>
+    <Property Name="HoldCodeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="HoldCode" Type="varchar" MaxLength="100" />
+    <Property Name="HoldCodeDesc" Type="varchar" MaxLength="100" />
+    <Property Name="MessageType" Type="varchar" MaxLength="45" />
+    <Property Name="HoldCodesLevel" Type="int" Nullable="false" />
+    <Property Name="HoldCodesLevel1ID" Type="int" />
+    <Property Name="HoldCodesLevel2ID" Type="int" />
+    <Property Name="ContributeTo" Type="varchar" MaxLength="10" />
+    <Property Name="IsDeleted" Type="int" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime" Precision="0" Nullable="false" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="ModifiedOn" Type="datetime" Precision="0" />
+    <Property Name="ModifiedBy" Type="int" />
+    <Property Name="EndCode" Type="int" />
+    <Property Name="DeletedDate" Type="datetime" Precision="0" />
+  </EntityType>
+  <EntityType Name="tbllivedailyprodstatus">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MachineID" Type="int" />
+    <Property Name="StartTime" Type="datetime" Precision="0" />
+    <Property Name="EndTime" Type="datetime" Precision="0" />
+    <Property Name="Duration" Type="int" />
+    <Property Name="Status" Type="varchar" MaxLength="45" />
+    <Property Name="IsDeleted" Type="int" />
+    <Property Name="InsertedOn" Type="datetime" Precision="0" />
+    <Property Name="ModifiedOn" Type="datetime" Precision="0" />
+    <Property Name="CorrectedDate" Type="varchar" MaxLength="45" />
+    <Property Name="ColorCode" Type="varchar" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="tbllivehmiscreen">
+    <Key>
+      <PropertyRef Name="HMIID" />
+    </Key>
+    <Property Name="HMIID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MachineID" Type="int" Nullable="false" />
+    <Property Name="OperatiorID" Type="int" Nullable="false" />
+    <Property Name="Shift" Type="varchar" MaxLength="45" />
+    <Property Name="Date" Type="datetime" Precision="0" />
+    <Property Name="Time" Type="datetime" Precision="0" />
+    <Property Name="Project" Type="varchar" MaxLength="45" />
+    <Property Name="PartNo" Type="varchar" MaxLength="45" />
+    <Property Name="OperationNo" Type="varchar" MaxLength="45" />
+    <Property Name="Rej_Qty" Type="int" />
+    <Property Name="Work_Order_No" Type="varchar" MaxLength="45" />
+    <Property Name="Target_Qty" Type="int" />
+    <Property Name="Delivered_Qty" Type="int" />
+    <Property Name="Status" Type="int" />
+    <Property Name="CorrectedDate" Type="varchar" MaxLength="45" />
+    <Property Name="Prod_FAI" Type="varchar" MaxLength="45" />
+    <Property Name="isUpdate" Type="int" Nullable="false" />
+    <Property Name="DoneWithRow" Type="int" Nullable="false" />
+    <Property Name="isWorkInProgress" Type="int" Nullable="false" />
+    <Property Name="isWorkOrder" Type="int" Nullable="false" />
+    <Property Name="OperatorDet" Type="varchar" MaxLength="45" />
+    <Property Name="PEStartTime" Type="datetime" Precision="0" />
+    <Property Name="ProcessQty" Type="int" Nullable="false" />
+    <Property Name="DDLWokrCentre" Type="varchar" MaxLength="45" />
+    <Property Name="IsMultiWO" Type="int" Nullable="false" />
+    <Property Name="IsHold" Type="int" Nullable="false" />
+    <Property Name="SplitWO" Type="varchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="tbllivehmiscreenrep">
+    <Key>
+      <PropertyRef Name="HMIID" />
+    </Key>
+    <Property Name="HMIID" Type="int" Nullable="false" />
+    <Property Name="MachineID" Type="int" Nullable="false" />
+    <Property Name="OperatiorID" Type="int" Nullable="false" />
+    <Property Name="Shift" Type="varchar" MaxLength="45" />
+    <Property Name="Date" Type="datetime" Precision="0" />
+    <Property Name="Time" Type="datetime" Precision="0" />
+    <Property Name="Project" Type="varchar" MaxLength="45" />
+    <Property Name="PartNo" Type="varchar" MaxLength="45" />
+    <Property Name="OperationNo" Type="varchar" MaxLength="45" />
+    <Property Name="Rej_Qty" Type="int" />
+    <Property Name="Work_Order_No" Type="varchar" MaxLength="45" />
+    <Property Name="Target_Qty" Type="int" />
+    <Property Name="Delivered_Qty" Type="int" />
+    <Property Name="Status" Type="int" />
+    <Property Name="CorrectedDate" Type="varchar" MaxLength="45" />
+    <Property Name="Prod_FAI" Type="varchar" MaxLength="45" />
+    <Property Name="isUpdate" Type="int" Nullable="false" />
+    <Property Name="DoneWithRow" Type="int" Nullable="false" />
+    <Property Name="isWorkInProgress" Type="int" Nullable="false" />
+    <Property Name="isWorkOrder" Type="int" Nullable="false" />
+    <Property Name="OperatorDet" Type="varchar" MaxLength="45" />
+    <Property Name="PEStartTime" Type="datetime" Precision="0" />
+    <Property Name="ProcessQty" Type="int" Nullable="false" />
+    <Property Name="DDLWokrCentre" Type="varchar" MaxLength="45" />
+    <Property Name="IsMultiWO" Type="int" Nullable="false" />
+    <Property Name="IsHold" Type="int" Nullable="false" />
+    <Property Name="SplitWO" Type="varchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="tbllivelossofentry">
+    <Key>
+      <PropertyRef Name="LossID" />
+    </Key>
+    <Property Name="LossID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MessageCodeID" Type="int" Nullable="false" />
+    <Property Name="StartDateTime" Type="datetime" Precision="0" />
+    <Property Name="EndDateTime" Type="datetime" Precision="0" />
+    <Property Name="EntryTime" Type="datetime" Precision="0" />
+    <Property Name="CorrectedDate" Type="varchar" MaxLength="45" />
+    <Property Name="MachineID" Type="int" Nullable="false" />
+    <Property Name="Shift" Type="varchar" MaxLength="45" />
+    <Property Name="MessageDesc" Type="varchar" MaxLength="45" />
+    <Property Name="MessageCode" Type="varchar" MaxLength="45" />
+    <Property Name="IsUpdate" Type="int" Nullable="false" />
+    <Property Name="DoneWithRow" Type="int" Nullable="false" />
+    <Property Name="IsStart" Type="int" />
+    <Property Name="IsScreen" Type="int" />
+    <Property Name="ForRefresh" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbllivelossofentryrep">
+    <Key>
+      <PropertyRef Name="LossID" />
+    </Key>
+    <Property Name="LossID" Type="int" Nullable="false" />
+    <Property Name="MessageCodeID" Type="int" Nullable="false" />
+    <Property Name="StartDateTime" Type="datetime" Precision="0" />
+    <Property Name="EndDateTime" Type="datetime" Precision="0" />
+    <Property Name="EntryTime" Type="datetime" Precision="0" />
+    <Property Name="CorrectedDate" Type="varchar" MaxLength="45" />
+    <Property Name="MachineID" Type="int" Nullable="false" />
+    <Property Name="Shift" Type="varchar" MaxLength="45" />
+    <Property Name="MessageDesc" Type="varchar" MaxLength="45" />
+    <Property Name="MessageCode" Type="varchar" MaxLength="45" />
+    <Property Name="IsUpdate" Type="int" Nullable="false" />
+    <Property Name="DoneWithRow" Type="int" Nullable="false" />
+    <Property Name="IsStart" Type="int" />
+    <Property Name="IsScreen" Type="int" />
+    <Property Name="ForRefresh" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbllivemanuallossofentry">
+    <Key>
+      <PropertyRef Name="MLossID" />
+    </Key>
+    <Property Name="MLossID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MessageCodeID" Type="int" Nullable="false" />
+    <Property Name="StartDateTime" Type="datetime" Precision="0" />
+    <Property Name="CorrectedDate" Type="varchar" MaxLength="45" />
+    <Property Name="MachineID" Type="int" Nullable="false" />
+    <Property Name="Shift" Type="varchar" MaxLength="45" />
+    <Property Name="MessageDesc" Type="varchar" MaxLength="145" />
+    <Property Name="MessageCode" Type="varchar" MaxLength="145" />
+    <Property Name="HMIID" Type="int" />
+    <Property Name="PartNo" Type="varchar" MaxLength="45" />
+    <Property Name="OpNo" Type="int" />
+    <Property Name="WONo" Type="varchar" MaxLength="45" />
+    <Property Name="EndDateTime" Type="datetime" Precision="0" />
+    <Property Name="EndHMIID" Type="int" />
+    <Property Name="DeletedDate" Type="datetime" Precision="0" />
+  </EntityType>
+  <EntityType Name="tbllivemanuallossofentryrep">
+    <Key>
+      <PropertyRef Name="MLossID" />
+    </Key>
+    <Property Name="MLossID" Type="int" Nullable="false" />
+    <Property Name="MessageCodeID" Type="int" Nullable="false" />
+    <Property Name="StartDateTime" Type="datetime" Precision="0" />
+    <Property Name="CorrectedDate" Type="varchar" MaxLength="45" />
+    <Property Name="MachineID" Type="int" Nullable="false" />
+    <Property Name="Shift" Type="varchar" MaxLength="45" />
+    <Property Name="MessageDesc" Type="varchar" MaxLength="145" />
+    <Property Name="MessageCode" Type="varchar" MaxLength="145" />
+    <Property Name="HMIID" Type="int" />
+    <Property Name="PartNo" Type="varchar" MaxLength="45" />
+    <Property Name="OpNo" Type="int" />
+    <Property Name="WONo" Type="varchar" MaxLength="45" />
+    <Property Name="EndDateTime" Type="datetime" Precision="0" />
+    <Property Name="EndHMIID" Type="int" />
+    <Property Name="DeletedDate" Type="datetime" Precision="0" />
+  </EntityType>
+  <EntityType Name="tbllivemode">
+    <Key>
+      <PropertyRef Name="ModeID" />
+    </Key>
+    <Property Name="ModeID" Type="int" Nullable="false" />
+    <Property Name="MachineID" Type="int" Nullable="false" />
+    <Property Name="Mode" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="InsertedOn" Type="datetime" Precision="0" Nullable="false" />
+    <Property Name="InsertedBy" Type="int" Nullable="false" />
+    <Property Name="ModifiedOn" Type="datetime" Precision="0" />
+    <Property Name="ModifiedBy" Type="int" />
+    <Property Name="CorrectedDate" Type="varchar" MaxLength="15" />
+    <Property Name="IsDeleted" Type="int" Nullable="false" />
+    <Property Name="StartTime" Type="datetime" Precision="0" />
+    <Property Name="EndTime" Type="datetime" Precision="0" />
+    <Property Name="ColorCode" Type="varchar" MaxLength="45" />
+    <Property Name="IsCompleted" Type="int" Nullable="false" />
+    <Property Name="DurationInSec" Type="int" />
+  </EntityType>
+  <EntityType Name="tbllivemodedb">
+    <Key>
+      <PropertyRef Name="ModeID" />
+    </Key>
+    <Property Name="ModeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MachineID" Type="int" Nullable="false" />
+    <Property Name="Mode" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="InsertedOn" Type="datetime" Precision="0" Nullable="false" />
+    <Property Name="InsertedBy" Type="int" Nullable="false" />
+    <Property Name="ModifiedOn" Type="datetime" Precision="0" />
+    <Property Name="ModifiedBy" Type="int" />
+    <Property Name="CorrectedDate" Type="varchar" MaxLength="15" />
+    <Property Name="IsDeleted" Type="int" Nullable="false" />
+    <Property Name="StartTime" Type="datetime" Precision="0" />
+    <Property Name="EndTime" Type="datetime" Precision="0" />
+    <Property Name="ColorCode" Type="varchar" MaxLength="45" />
+    <Property Name="IsCompleted" Type="int" Nullable="false" />
+    <Property Name="DurationInSec" Type="int" />
+  </EntityType>
+  <EntityType Name="tbllivemultiwoselection">
+    <Key>
+      <PropertyRef Name="MultiWOID" />
+    </Key>
+    <Property Name="MultiWOID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="WorkOrder" Type="varchar" MaxLength="45" />
+    <Property Name="PartNo" Type="varchar" MaxLength="45" />
+    <Property Name="OperationNo" Type="varchar" MaxLength="45" />
+    <Property Name="TargetQty" Type="int" />
+    <Property Name="DeliveredQty" Type="int" />
+    <Property Name="HMIID" Type="int" />
+    <Property Name="CreatedOn" Type="datetime" Precision="0" />
+    <Property Name="IsCompleted" Type="int" />
+    <Property Name="ProcessQty" Type="int" />
+    <Property Name="DDLWorkCentre" Type="varchar" MaxLength="45" />
+    <Property Name="IsSubmit" Type="int" Nullable="false" />
+    <Property Name="ScrapQty" Type="int" Nullable="false" />
+    <Property Name="SplitWO" Type="varchar" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="tbllossescodes">
+    <Key>
+      <PropertyRef Name="LossCodeID" />
+    </Key>
+    <Property Name="LossCodeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LossCode" Type="varchar" MaxLength="50" />
+    <Property Name="LossCodeDesc" Type="varchar" MaxLength="150" />
+    <Property Name="MessageType" Type="varchar" MaxLength="45" />
+    <Property Name="LossCodesLevel" Type="int" Nullable="false" />
+    <Property Name="LossCodesLevel1ID" Type="int" />
+    <Property Name="LossCodesLevel2ID" Type="int" />
+    <Property Name="ContributeTo" Type="varchar" MaxLength="10" />
+    <Property Name="IsDeleted" Type="int" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime" Precision="0" Nullable="false" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="ModifiedOn" Type="datetime" Precision="0" />
+    <Property Name="ModifiedBy" Type="int" />
+    <Property Name="EndCode" Type="int" />
+    <Property Name="DeletedDate" Type="datetime" Precision="0" />
+  </EntityType>
+  <EntityType Name="tbllossofentry">
+    <Key>
+      <PropertyRef Name="LossID" />
+    </Key>
+    <Property Name="LossID" Type="int" Nullable="false" />
+    <Property Name="MessageCodeID" Type="int" Nullable="false" />
+    <Property Name="StartDateTime" Type="datetime" Precision="0" />
+    <Property Name="EndDateTime" Type="datetime" Precision="0" />
+    <Property Name="EntryTime" Type="datetime" Precision="0" />
+    <Property Name="CorrectedDate" Type="varchar" MaxLength="45" />
+    <Property Name="MachineID" Type="int" Nullable="false" />
+    <Property Name="Shift" Type="varchar" MaxLength="45" />
+    <Property Name="MessageDesc" Type="varchar" MaxLength="45" />
+    <Property Name="MessageCode" Type="varchar" MaxLength="45" />
+    <Property Name="IsUpdate" Type="int" Nullable="false" />
+    <Property Name="DoneWithRow" Type="int" Nullable="false" />
+    <Property Name="IsStart" Type="int" />
+    <Property Name="IsScreen" Type="int" />
+    <Property Name="ForRefresh" Type="int" Nullable="false" />
+    <Property Name="LossMonth" Type="int" />
+    <Property Name="LossYear" Type="int" />
+    <Property Name="LossWeekNumber" Type="int" />
+    <Property Name="LossQuarter" Type="int" />
+  </EntityType>
+  <EntityType Name="tblmachine_master">
+    <Key>
+      <PropertyRef Name="MachineID" />
+    </Key>
+    <Property Name="MachineID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MachineInvNo" Type="varchar" MaxLength="45" />
+    <Property Name="IPAddress" Type="varchar" MaxLength="45" />
+    <Property Name="MachineType" Type="int" />
+    <Property Name="ControllerType" Type="varchar" MaxLength="45" />
+    <Property Name="IsDeleted" Type="int" />
+    <Property Name="CreatedOn" Type="datetime" Precision="0" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="ModifiedOn" Type="datetime" Precision="0" />
+    <Property Name="ModifiedBy" Type="int" />
+  </EntityType>
+  <EntityType Name="tblmachineallocation">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="MachineID" Type="int" />
+    <Property Name="ShiftID" Type="int" />
+    <Property Name="CorrectedDate" Type="varchar" MaxLength="45" />
+    <Property Name="IsDeleted" Type="int" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="CreatedOn" Type="datetime" Precision="0" />
+    <Property Name="ModifiedBy" Type="int" />
+    <Property Name="ModifiedOn" Type="datetime" Precision="0" />
+  </EntityType>
+  <EntityType Name="tblmachinecategory">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="category" Type="varchar" MaxLength="45" Nullable="false" />
+    <Property Name="IsDeleted" Type="int" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime" Precision="0" Nullable="false" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="ModifiedOn" Type="datetime" Precision="0" />
+    <Property Name="ModifiedBy" Type="int" />
+  </EntityType>
+  <EntityType Name="tblmachinedetails">
+    <Key>
+      <PropertyRef Name="MachineID" />
+    </Key>
+    <Property Name="MachineID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MachineInvNo" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="IPAddress" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="MachineType" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ControllerType" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="InsertedOn" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="InsertedBy" Type="int" Nullable="false" />
+    <Property Name="ModifiedOn" Type="datetime" Precision="0" />
+    <Property Name="ModifiedBy" Type="int" />
+    <Property Name="IsDeleted" Type="int" />
+    <Property Name="MachineModel" Type="varchar" MaxLength="50" />
+    <Property Name="MachineMake" Type="varchar" MaxLength="50" />
+    <Property Name="ModelType" Type="varchar" MaxLength="50" />
+    <Property Name="MachineDispName" Type="varchar" MaxLength="200" />
+    <Property Name="IsParameters" Type="int" Nullable="false" />
+    <Property Name="ShopNo" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="IsPCB" Type="int" />
+    <Property Name="IsLevel" Type="int" />
+    <Property Name="PlantID" Type="int" />
+    <Property Name="ShopID" Type="int" />
+    <Property Name="CellID" Type="int" />
+    <Property Name="DeletedDate" Type="varchar" MaxLength="45" />
+    <Property Name="IsNormalWC" Type="int" Nullable="false" />
+    <Property Name="ManualWCID" Type="int" />
+  </EntityType>
+  <EntityType Name="tblmachinedetailsnew">
+    <Key>
+      <PropertyRef Name="MachineID" />
+    </Key>
+    <Property Name="MachineID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MachineInvNo" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="IPAddress" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="MachineType" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ControllerType" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="InsertedOn" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="InsertedBy" Type="int" Nullable="false" />
+    <Property Name="ModifiedOn" Type="datetime" Precision="0" />
+    <Property Name="ModifiedBy" Type="int" />
+    <Property Name="IsDeleted" Type="int" />
+    <Property Name="MachineModel" Type="varchar" MaxLength="50" />
+    <Property Name="MachineMake" Type="varchar" MaxLength="50" />
+    <Property Name="ModelType" Type="varchar" MaxLength="50" />
+    <Property Name="MachineDispName" Type="varchar" MaxLength="50" />
+    <Property Name="IsParameters" Type="int" Nullable="false" />
+    <Property Name="ShopNo" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="IsPCB" Type="int" />
+    <Property Name="IsLevel" Type="int" />
+    <Property Name="PlantID" Type="int" />
+    <Property Name="ShopID" Type="int" />
+    <Property Name="CellID" Type="int" />
+  </EntityType>
+  <EntityType Name="tblmailids">
+    <Key>
+      <PropertyRef Name="MailIDsID" />
+    </Key>
+    <Property Name="MailIDsID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="100" />
+    <Property Name="EmailID" Type="varchar" MaxLength="100" />
+    <Property Name="ContactNo" Type="varchar" MaxLength="15" />
+    <Property Name="IsDeleted" Type="int" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime" Precision="0" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="ModifiedOn" Type="datetime" Precision="0" />
+    <Property Name="ModifiedBy" Type="int" />
+  </EntityType>
+  <EntityType Name="tblmanuallossofentry">
+    <Key>
+      <PropertyRef Name="MLossID" />
+    </Key>
+    <Property Name="MLossID" Type="int" Nullable="false" />
+    <Property Name="MessageCodeID" Type="int" Nullable="false" />
+    <Property Name="StartDateTime" Type="datetime" Precision="0" />
+    <Property Name="CorrectedDate" Type="varchar" MaxLength="45" />
+    <Property Name="MachineID" Type="int" Nullable="false" />
+    <Property Name="Shift" Type="varchar" MaxLength="45" />
+    <Property Name="MessageDesc" Type="varchar" MaxLength="145" />
+    <Property Name="MessageCode" Type="varchar" MaxLength="145" />
+    <Property Name="HMIID" Type="int" />
+    <Property Name="PartNo" Type="varchar" MaxLength="45" />
+    <Property Name="OpNo" Type="int" />
+    <Property Name="WONo" Type="varchar" MaxLength="45" />
+    <Property Name="EndDateTime" Type="datetime" Precision="0" />
+    <Property Name="EndHMIID" Type="int" />
+    <Property Name="DeletedDate" Type="datetime" Precision="0" />
+    <Property Name="ManualLossMonth" Type="int" />
+    <Property Name="ManualLossYear" Type="int" />
+    <Property Name="ManualLossWeekNumber" Type="int" />
+    <Property Name="ManualLossQuarter" Type="int" />
+  </EntityType>
+  <EntityType Name="tblmasterparts_st_sw">
+    <Key>
+      <PropertyRef Name="PARTSSTSWID" />
+    </Key>
+    <Property Name="PARTSSTSWID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PartNo" Type="varchar" MaxLength="45" />
+    <Property Name="OpNo" Type="varchar" MaxLength="45" />
+    <Property Name="StdSetupTime" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="StdCuttingTime" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="StdChangeoverTime" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="InputWeight" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="OutputWeight" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="MaterialRemovedQty" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="IsDeleted" Type="int" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime" Precision="0" Nullable="false" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="ModifiedOn" Type="datetime" Precision="0" />
+    <Property Name="ModifiedBy" Type="int" />
+    <Property Name="StdSetupTimeUnit" Type="varchar" MaxLength="10" />
+    <Property Name="StdCuttingTimeUnit" Type="varchar" MaxLength="10" />
+    <Property Name="StdChangeoverTimeUnit" Type="varchar" MaxLength="10" />
+    <Property Name="InputWeightUnit" Type="varchar" MaxLength="10" />
+    <Property Name="OutputWeightUnit" Type="varchar" MaxLength="10" />
+    <Property Name="MaterialRemovedQtyUnit" Type="varchar" MaxLength="10" />
+    <Property Name="DeletedDate" Type="datetime" Precision="0" />
+  </EntityType>
+  <EntityType Name="tblmimics">
+    <Key>
+      <PropertyRef Name="mid" />
+    </Key>
+    <Property Name="mid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MachineOnTime" Type="varchar" MaxLength="45" Nullable="false" />
+    <Property Name="OperatingTime" Type="varchar" MaxLength="45" Nullable="false" />
+    <Property Name="SetupTime" Type="varchar" MaxLength="45" Nullable="false" />
+    <Property Name="IdleTime" Type="varchar" MaxLength="45" Nullable="false" />
+    <Property Name="MachineOffTime" Type="varchar" MaxLength="45" Nullable="false" />
+    <Property Name="BreakdownTime" Type="varchar" MaxLength="45" Nullable="false" />
+    <Property Name="MachineID" Type="int" Nullable="false" />
+    <Property Name="Shift" Type="varchar" MaxLength="45" />
+    <Property Name="CorrectedDate" Type="varchar" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="tblmode">
+    <Key>
+      <PropertyRef Name="ModeID" />
+    </Key>
+    <Property Name="ModeID" Type="int" Nullable="false" />
+    <Property Name="MachineID" Type="int" Nullable="false" />
+    <Property Name="Mode" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="InsertedOn" Type="datetime" Precision="0" Nullable="false" />
+    <Property Name="InsertedBy" Type="int" Nullable="false" />
+    <Property Name="ModifiedOn" Type="datetime" Precision="0" />
+    <Property Name="ModifiedBy" Type="int" />
+    <Property Name="CorrectedDate" Type="varchar" MaxLength="15" />
+    <Property Name="IsDeleted" Type="int" Nullable="false" />
+    <Property Name="StartTime" Type="datetime" Precision="0" />
+    <Property Name="EndTime" Type="datetime" Precision="0" />
+    <Property Name="ColorCode" Type="varchar" MaxLength="45" />
+    <Property Name="IsCompleted" Type="int" Nullable="false" />
+    <Property Name="DurationInSec" Type="int" />
+    <Property Name="ModeMonth" Type="int" />
+    <Property Name="ModeYear" Type="int" />
+    <Property Name="ModeWeekNumber" Type="int" />
+    <Property Name="ModeQuarter" Type="int" />
+  </EntityType>
+  <EntityType Name="tblmodulehelper">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ModuleID" Type="varchar" MaxLength="50" />
+    <Property Name="RoleID" Type="int" />
+    <Property Name="IsAll" Type="bit" Nullable="false" />
+    <Property Name="IsAdded" Type="bit" Nullable="false" />
+    <Property Name="IsEdited" Type="bit" Nullable="false" />
+    <Property Name="IsRemoved" Type="bit" Nullable="false" />
+    <Property Name="IsReadonly" Type="bit" Nullable="false" />
+    <Property Name="IsHidden" Type="bit" Nullable="false" />
+    <Property Name="IsDeleted" Type="smallint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblmodulemaster">
+    <Key>
+      <PropertyRef Name="ModuleID" />
+    </Key>
+    <Property Name="ModuleID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ModuleName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="IsDeleted" Type="int" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime" Precision="0" Nullable="false" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="ModifiedOn" Type="datetime" Precision="0" />
+    <Property Name="ModifiedBy" Type="int" />
+  </EntityType>
+  <EntityType Name="tblmultipleworkorder">
+    <Key>
+      <PropertyRef Name="MWOID" />
+    </Key>
+    <Property Name="MWOID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PlantID" Type="int" />
+    <Property Name="ShopID" Type="int" />
+    <Property Name="CellID" Type="int" />
+    <Property Name="WCID" Type="int" />
+    <Property Name="IsDeleted" Type="int" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime" Precision="0" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="ModifiedOn" Type="datetime" Precision="0" />
+    <Property Name="ModifiedBy" Type="int" />
+    <Property Name="MultipleWOName" Type="varchar" MaxLength="45" Nullable="false" />
+    <Property Name="MultipleWODesc" Type="varchar" MaxLength="200" />
+    <Property Name="IsEnabled" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblnetworkdetailsforddl">
+    <Key>
+      <PropertyRef Name="NPFDDLID" />
+    </Key>
+    <Property Name="NPFDDLID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Path" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="UserName" Type="varchar" MaxLength="100" />
+    <Property Name="Password" Type="varchar" MaxLength="100" />
+    <Property Name="DomainName" Type="varchar" MaxLength="100" />
+    <Property Name="IsDeleted" Type="int" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime" Precision="0" Nullable="false" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="ModifiedOn" Type="datetime" Precision="0" />
+    <Property Name="ModifiedBy" Type="int" />
+  </EntityType>
+  <EntityType Name="tbloeedashboardfinalvariables">
+    <Key>
+      <PropertyRef Name="OEEDashboardID" />
+    </Key>
+    <Property Name="OEEDashboardID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PlantID" Type="int" />
+    <Property Name="ShopID" Type="int" />
+    <Property Name="CellID" Type="int" />
+    <Property Name="WCID" Type="int" />
+    <Property Name="StartDate" Type="datetime" Precision="0" />
+    <Property Name="EndDate" Type="datetime" Precision="0" />
+    <Property Name="OEE" Type="double" />
+    <Property Name="Availability" Type="double" />
+    <Property Name="Performance" Type="double" />
+    <Property Name="Quality" Type="double" />
+    <Property Name="IsOverallPlantWise" Type="int" />
+    <Property Name="IsOverallShopWise" Type="int" />
+    <Property Name="IsOverallWCWise" Type="int" />
+    <Property Name="Loss1Name" Type="varchar" MaxLength="45" />
+    <Property Name="Loss1Value" Type="int" />
+    <Property Name="Loss2Name" Type="varchar" MaxLength="45" />
+    <Property Name="Loss2Value" Type="int" />
+    <Property Name="Loss3Name" Type="varchar" MaxLength="45" />
+    <Property Name="Loss3Value" Type="int" />
+    <Property Name="Loss4Name" Type="varchar" MaxLength="45" />
+    <Property Name="Loss4Value" Type="int" />
+    <Property Name="Loss5Name" Type="varchar" MaxLength="45" />
+    <Property Name="Loss5Value" Type="int" />
+    <Property Name="IPAddress" Type="varchar" MaxLength="65" />
+    <Property Name="CreatedOn" Type="datetime" Precision="0" Nullable="false" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="IsDeleted" Type="int" Nullable="false" />
+    <Property Name="IsOverallCellWise" Type="int" Nullable="false" />
+    <Property Name="IsToday" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbloeedashboardvariables">
+    <Key>
+      <PropertyRef Name="OEEVariablesID" />
+    </Key>
+    <Property Name="OEEVariablesID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PlantID" Type="int" />
+    <Property Name="ShopID" Type="int" />
+    <Property Name="CellID" Type="int" />
+    <Property Name="WCID" Type="int" />
+    <Property Name="StartDate" Type="datetime" Precision="0" />
+    <Property Name="EndDate" Type="datetime" Precision="0" />
+    <Property Name="MinorLosses" Type="double" />
+    <Property Name="Blue" Type="double" />
+    <Property Name="Green" Type="double" />
+    <Property Name="SettingTime" Type="double" />
+    <Property Name="ROALossess" Type="double" />
+    <Property Name="DownTimeBreakdown" Type="double" />
+    <Property Name="SummationOfSCTvsPP" Type="double" />
+    <Property Name="ScrapQtyTime" Type="double" />
+    <Property Name="ReWOTime" Type="double" />
+    <Property Name="Loss1Name" Type="varchar" MaxLength="45" />
+    <Property Name="Loss1Value" Type="int" />
+    <Property Name="Loss2Name" Type="varchar" MaxLength="45" />
+    <Property Name="Loss2Value" Type="int" />
+    <Property Name="Loss3Name" Type="varchar" MaxLength="45" />
+    <Property Name="Loss3Value" Type="int" />
+    <Property Name="Loss4Name" Type="varchar" MaxLength="45" />
+    <Property Name="Loss4Value" Type="int" />
+    <Property Name="Loss5Name" Type="varchar" MaxLength="45" />
+    <Property Name="Loss5Value" Type="int" />
+    <Property Name="CreatedOn" Type="datetime" Precision="0" Nullable="false" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="IsDeleted" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbloeedashboardvariablestoday">
+    <Key>
+      <PropertyRef Name="OEEVariablesID" />
+    </Key>
+    <Property Name="OEEVariablesID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PlantID" Type="int" />
+    <Property Name="ShopID" Type="int" />
+    <Property Name="CellID" Type="int" />
+    <Property Name="WCID" Type="int" />
+    <Property Name="StartDate" Type="datetime" Precision="0" />
+    <Property Name="EndDate" Type="datetime" Precision="0" />
+    <Property Name="MinorLosses" Type="double" />
+    <Property Name="Blue" Type="double" />
+    <Property Name="Green" Type="double" />
+    <Property Name="SettingTime" Type="double" />
+    <Property Name="ROALossess" Type="double" />
+    <Property Name="DownTimeBreakdown" Type="double" />
+    <Property Name="SummationOfSCTvsPP" Type="double" />
+    <Property Name="ScrapQtyTime" Type="double" />
+    <Property Name="ReWOTime" Type="double" />
+    <Property Name="Loss1Name" Type="varchar" MaxLength="45" />
+    <Property Name="Loss1Value" Type="int" />
+    <Property Name="Loss2Name" Type="varchar" MaxLength="45" />
+    <Property Name="Loss2Value" Type="int" />
+    <Property Name="Loss3Name" Type="varchar" MaxLength="45" />
+    <Property Name="Loss3Value" Type="int" />
+    <Property Name="Loss4Name" Type="varchar" MaxLength="45" />
+    <Property Name="Loss4Value" Type="int" />
+    <Property Name="Loss5Name" Type="varchar" MaxLength="45" />
+    <Property Name="Loss5Value" Type="int" />
+    <Property Name="CreatedOn" Type="datetime" Precision="0" Nullable="false" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="IsDeleted" Type="int" Nullable="false" />
+    <Property Name="IsToday" Type="int" Nullable="false" />
+    <Property Name="IPAddress" Type="varchar" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="tblparts">
+    <Key>
+      <PropertyRef Name="PartID" />
+    </Key>
+    <Property Name="PartID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PartNo" Type="int" Nullable="false" />
+    <Property Name="PartDesc" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="PartName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="IdleCycleTime" Type="int" Nullable="false" />
+    <Property Name="UnitDesc" Type="int" Nullable="false" />
+    <Property Name="IsDeleted" Type="int" Nullable="false" />
+    <Property Name="CreatedOn" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="ModifiedOn" Type="datetime" Precision="0" />
+    <Property Name="ModifiedBy" Type="int" />
+  </EntityType>
+  <EntityType Name="tblpartwisesp">
+    <Key>
+      <PropertyRef Name="PartId" />
+    </Key>
+    <Property Name="PartId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PartName" Type="varchar" MaxLength="45" Nullable="false" />
+    <Property Name="SurfaceArea" Type="double" Nullable="false" />
+    <Property Name="Perimeter" Type="double" Nullable="false" />
+    <Property Name="IsDeleted" Type="int" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime" Precision="0" Nullable="false" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="ModifiedOn" Type="datetime" Precision="0" />
+    <Property Name="ModifiedBy" Type="int" />
+  </EntityType>
+  <EntityType Name="tblpartwiseworkcenter">
+    <Key>
+      <PropertyRef Name="PartWiseWcId" />
+    </Key>
+    <Property Name="PartWiseWcId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="WorkCenterId" Type="int" Nullable="false" />
+    <Property Name="MeasuringUnitId" Type="int" Nullable="false" />
+    <Property Name="IsDeleted" Type="tinyint" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime" Precision="0" Nullable="false" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="ModifiedOn" Type="datetime" Precision="0" />
+    <Property Name="ModifiedBy" Type="int" />
+  </EntityType>
+  <EntityType Name="tblplannedbreak">
+    <Key>
+      <PropertyRef Name="BreakID" />
+    </Key>
+    <Property Name="BreakID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BreakReason" Type="varchar" MaxLength="45" />
+    <Property Name="StartTime" Type="time" Precision="0" />
+    <Property Name="EndTime" Type="time" Precision="0" />
+    <Property Name="BreakDuration" Type="int" />
+    <Property Name="ShiftID" Type="int" />
+    <Property Name="IsDeleted" Type="int" />
+    <Property Name="CreatedOn" Type="datetime" Precision="0" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="ModifiedOn" Type="datetime" Precision="0" />
+    <Property Name="ModifiedBy" Type="int" />
+  </EntityType>
+  <EntityType Name="tblplant">
+    <Key>
+      <PropertyRef Name="PlantID" />
+    </Key>
+    <Property Name="PlantID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PlantName" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="PlantDesc" Type="varchar" MaxLength="60" Nullable="false" />
+    <Property Name="IsDeleted" Type="int" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime" Precision="0" Nullable="false" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="ModifiedOn" Type="datetime" Precision="0" />
+    <Property Name="ModifiedBy" Type="int" />
+  </EntityType>
+  <EntityType Name="tblpriorityalarms">
+    <Key>
+      <PropertyRef Name="AlarmID" />
+    </Key>
+    <Property Name="AlarmID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AlarmNumber" Type="int" Nullable="false" />
+    <Property Name="AlarmDesc" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="AxisNo" Type="int" Nullable="false" />
+    <Property Name="AlarmGroup" Type="varchar" MaxLength="50" />
+    <Property Name="PriorityNumber" Type="int" Nullable="false" />
+    <Property Name="IsDeleted" Type="int" Nullable="false" />
+    <Property Name="CreatedOn" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="ModifiedOn" Type="datetime" Precision="0" />
+    <Property Name="ModifiedBy" Type="int" />
+    <Property Name="MachineID" Type="int" />
+    <Property Name="CorrectedDate" Type="varchar" MaxLength="45" />
+    <Property Name="isMailSent" Type="int" />
+  </EntityType>
+  <EntityType Name="tblreportholder">
+    <Key>
+      <PropertyRef Name="RHID" />
+    </Key>
+    <Property Name="RHID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FromDate" Type="datetime" Precision="0" />
+    <Property Name="ToDate" Type="datetime" Precision="0" />
+    <Property Name="Shift" Type="varchar" MaxLength="45" />
+    <Property Name="ShopNo" Type="varchar" MaxLength="100" />
+    <Property Name="WorkCenter" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="tblroleplaymaster">
+    <Key>
+      <PropertyRef Name="RolePlayID" />
+    </Key>
+    <Property Name="RolePlayID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ModuleID" Type="int" Nullable="false" />
+    <Property Name="IsAll" Type="bool" Nullable="false" />
+    <Property Name="IsAdded" Type="bool" Nullable="false" />
+    <Property Name="IsEdited" Type="bool" Nullable="false" />
+    <Property Name="IsRemoved" Type="bool" Nullable="false" />
+    <Property Name="IsHidden" Type="bool" Nullable="false" />
+    <Property Name="IsReadOnly" Type="bool" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime" Precision="0" Nullable="false" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="ModifiedOn" Type="datetime" Precision="0" />
+    <Property Name="ModifiedBy" Type="int" />
+    <Property Name="IsDeleted" Type="int" Nullable="false" />
+    <Property Name="RoleID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblroles">
+    <Key>
+      <PropertyRef Name="Role_ID" />
+    </Key>
+    <Property Name="Role_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RoleDesc" Type="varchar" MaxLength="60" Nullable="false" />
+    <Property Name="RoleType" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="IsDeleted" Type="int" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime" Precision="0" Nullable="false" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="ModifiedOn" Type="datetime" Precision="0" />
+    <Property Name="ModifiedBy" Type="int" />
+  </EntityType>
+  <EntityType Name="tblsendermailid">
+    <Key>
+      <PropertyRef Name="SE_ID" />
+    </Key>
+    <Property Name="SE_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PrimaryMailID" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="DisplayName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="AutoEmailType" Type="int" Nullable="false" />
+    <Property Name="IsDeleted" Type="int" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime" Precision="0" Nullable="false" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="ModifiedOn" Type="datetime" Precision="0" />
+    <Property Name="ModifiedBy" Type="int" />
+  </EntityType>
+  <EntityType Name="tblshift_breaks">
+    <Key>
+      <PropertyRef Name="BreakID" />
+    </Key>
+    <Property Name="BreakID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BreakReason" Type="varchar" MaxLength="45" />
+    <Property Name="StartTime" Type="time" Precision="0" />
+    <Property Name="EndTime" Type="time" Precision="0" />
+    <Property Name="BreakDuration" Type="int" />
+    <Property Name="ShiftID" Type="int" />
+    <Property Name="IsDeleted" Type="int" />
+    <Property Name="CreatedOn" Type="datetime" Precision="0" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="ModifiedOn" Type="datetime" Precision="0" />
+    <Property Name="ModifiedBy" Type="int" />
+  </EntityType>
+  <EntityType Name="tblshift_mstr">
+    <Key>
+      <PropertyRef Name="ShiftID" />
+    </Key>
+    <Property Name="ShiftID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ShiftName" Type="varchar" MaxLength="45" />
+    <Property Name="StartTime" Type="time" Precision="0" />
+    <Property Name="EndTime" Type="time" Precision="0" />
+    <Property Name="IsDeleted" Type="int" />
+    <Property Name="CreatedOn" Type="datetime" Precision="0" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="ModifiedOn" Type="datetime" Precision="0" />
+    <Property Name="ModifiedBy" Type="int" />
+    <Property Name="Duration" Type="int" />
+  </EntityType>
+  <EntityType Name="tblshiftdetails">
+    <Key>
+      <PropertyRef Name="ShiftDetailsID" />
+    </Key>
+    <Property Name="ShiftDetailsID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ShiftDetailsName" Type="varchar" MaxLength="30" />
+    <Property Name="ShiftDetailsDesc" Type="varchar" MaxLength="60" />
+    <Property Name="ShiftMethodID" Type="int" />
+    <Property Name="ShiftStartTime" Type="time" Precision="0" />
+    <Property Name="ShiftEndTime" Type="time" Precision="0" />
+    <Property Name="Duration" Type="int" />
+    <Property Name="NextDay" Type="int" />
+    <Property Name="IsDeleted" Type="int" />
+    <Property Name="CreatedOn" Type="datetime" Precision="0" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="ModifiedOn" Type="datetime" Precision="0" />
+    <Property Name="ModifiedBy" Type="int" />
+    <Property Name="IsShiftDetailsEdited" Type="int" />
+    <Property Name="ShiftDetailsEditedDate" Type="datetime" Precision="0" />
+    <Property Name="IsGShift" Type="int" />
+  </EntityType>
+  <EntityType Name="tblshiftdetails_machinewise">
+    <Key>
+      <PropertyRef Name="ShiftDetailsMacID" />
+    </Key>
+    <Property Name="ShiftDetailsMacID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MachineID" Type="int" Nullable="false" />
+    <Property Name="ShiftName" Type="varchar" MaxLength="30" />
+    <Property Name="StartTime" Type="datetime" Precision="0" />
+    <Property Name="EndTime" Type="datetime" Precision="0" />
+    <Property Name="CorrectedDate" Type="varchar" MaxLength="30" />
+    <Property Name="IsDeleted" Type="int" />
+    <Property Name="InsertedOn" Type="varchar" MaxLength="50" />
+    <Property Name="InsertedBy" Type="int" />
+    <Property Name="ShiftDetailsID" Type="int" />
+  </EntityType>
+  <EntityType Name="tblshiftmethod">
+    <Key>
+      <PropertyRef Name="ShiftMethodID" />
+    </Key>
+    <Property Name="ShiftMethodID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ShiftMethodName" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="ShiftMethodDesc" Type="varchar" MaxLength="60" Nullable="false" />
+    <Property Name="NoOfShifts" Type="int" Nullable="false" />
+    <Property Name="IsDeleted" Type="int" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime" Precision="0" Nullable="false" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="ModifiedOn" Type="datetime" Precision="0" />
+    <Property Name="ModifiedBy" Type="int" />
+    <Property Name="IsShiftMethodEdited" Type="int" />
+    <Property Name="EditedDate" Type="datetime" Precision="0" />
+  </EntityType>
+  <EntityType Name="tblshiftplanner">
+    <Key>
+      <PropertyRef Name="ShiftPlannerID" />
+    </Key>
+    <Property Name="ShiftPlannerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ShiftPlannerName" Type="varchar" MaxLength="45" Nullable="false" />
+    <Property Name="ShiftPlannerDesc" Type="varchar" MaxLength="100" />
+    <Property Name="ShiftMethodID" Type="int" Nullable="false" />
+    <Property Name="PlantID" Type="int" />
+    <Property Name="ShopID" Type="int" />
+    <Property Name="CellID" Type="int" />
+    <Property Name="MachineID" Type="int" />
+    <Property Name="StartDate" Type="date" Nullable="false" />
+    <Property Name="EndDate" Type="date" Nullable="false" />
+    <Property Name="IsPlanStopped" Type="int" />
+    <Property Name="PlanStoppedDate" Type="date" />
+    <Property Name="IsPlanRemoved" Type="int" />
+    <Property Name="IsDeleted" Type="int" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime" Precision="0" Nullable="false" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="ModifiedOn" Type="datetime" Precision="0" />
+    <Property Name="ModifiedBy" Type="int" />
+  </EntityType>
+  <EntityType Name="tblshop">
+    <Key>
+      <PropertyRef Name="ShopID" />
+    </Key>
+    <Property Name="ShopID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ShopName" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="ShopDesc" Type="varchar" MaxLength="60" Nullable="false" />
+    <Property Name="PlantID" Type="int" Nullable="false" />
+    <Property Name="IsDeleted" Type="int" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime" Precision="0" Nullable="false" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="ModifiedOn" Type="datetime" Precision="0" />
+    <Property Name="ModifiedBy" Type="int" />
+  </EntityType>
+  <EntityType Name="tbltosapfilepath">
+    <Key>
+      <PropertyRef Name="toSAPFilePathID" />
+    </Key>
+    <Property Name="toSAPFilePathID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PathName" Type="varchar" MaxLength="45" />
+    <Property Name="Path" Type="varchar" MaxLength="250" />
+    <Property Name="IsDeleted" Type="int" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime" Precision="0" />
+    <Property Name="ModifiedOn" Type="datetime" Precision="0" />
+    <Property Name="tbltosapfilepathcol" Type="varchar" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="tbltosapshopnames">
+    <Key>
+      <PropertyRef Name="toSAPShopNamesID" />
+    </Key>
+    <Property Name="toSAPShopNamesID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ShopId" Type="int" />
+    <Property Name="ShopName" Type="varchar" MaxLength="65" />
+    <Property Name="IsDeleted" Type="int" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime" Precision="0" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="ModifiedOn" Type="datetime" Precision="0" />
+    <Property Name="ModifiedBy" Type="int" />
+    <Property Name="isSetupShown" Type="int" />
+  </EntityType>
+  <EntityType Name="tblunit">
+    <Key>
+      <PropertyRef Name="U_ID" />
+    </Key>
+    <Property Name="U_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Unit" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="UnitDesc" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="IsDeleted" Type="int" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime" Precision="0" Nullable="false" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="ModifiedOn" Type="datetime" Precision="0" />
+    <Property Name="ModifiedBy" Type="int" />
+  </EntityType>
+  <EntityType Name="tblusers">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="varchar" MaxLength="45" Nullable="false" />
+    <Property Name="Password" Type="varchar" MaxLength="45" Nullable="false" />
+    <Property Name="PrimaryRole" Type="int" Nullable="false" />
+    <Property Name="SecondaryRole" Type="int" Nullable="false" />
+    <Property Name="DisplayName" Type="varchar" MaxLength="45" Nullable="false" />
+    <Property Name="IsDeleted" Type="int" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime" Precision="0" Nullable="false" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="ModifiedOn" Type="datetime" Precision="0" />
+    <Property Name="ModifiedBy" Type="int" />
+    <Property Name="MachineID" Type="int" />
+  </EntityType>
+  <EntityType Name="tblwolossess">
+    <Key>
+      <PropertyRef Name="WOLossesID" />
+    </Key>
+    <Property Name="WOLossesID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="HMIID" Type="int" />
+    <Property Name="LossID" Type="int" />
+    <Property Name="LossName" Type="varchar" MaxLength="145" />
+    <Property Name="LossDuration" Type="decimal" Precision="8" Scale="2" />
+    <Property Name="Level" Type="int" />
+    <Property Name="LossCodeLevel1ID" Type="int" />
+    <Property Name="LossCodeLevel1Name" Type="varchar" MaxLength="145" />
+    <Property Name="LossCodeLevel2ID" Type="int" />
+    <Property Name="LossCodeLevel2Name" Type="varchar" MaxLength="145" />
+    <Property Name="InsertedOn" Type="datetime" Precision="0" />
+    <Property Name="IsDeleted" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblworeport">
+    <Key>
+      <PropertyRef Name="WOReportID" />
+    </Key>
+    <Property Name="WOReportID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MachineID" Type="int" />
+    <Property Name="HMIID" Type="int" />
+    <Property Name="OperatorName" Type="varchar" MaxLength="45" />
+    <Property Name="Shift" Type="varchar" MaxLength="4" />
+    <Property Name="CorrectedDate" Type="varchar" MaxLength="45" />
+    <Property Name="PartNo" Type="varchar" MaxLength="45" />
+    <Property Name="WorkOrderNo" Type="varchar" MaxLength="45" />
+    <Property Name="OpNo" Type="varchar" MaxLength="6" />
+    <Property Name="TargetQty" Type="int" />
+    <Property Name="DeliveredQty" Type="int" />
+    <Property Name="IsPF" Type="int" />
+    <Property Name="IsHold" Type="int" />
+    <Property Name="CuttingTime" Type="decimal" Precision="8" Scale="2" />
+    <Property Name="SettingTime" Type="decimal" Precision="8" Scale="2" />
+    <Property Name="SelfInspection" Type="decimal" Precision="8" Scale="2" />
+    <Property Name="Idle" Type="decimal" Precision="8" Scale="2" />
+    <Property Name="Breakdown" Type="decimal" Precision="8" Scale="2" />
+    <Property Name="Type" Type="varchar" MaxLength="45" />
+    <Property Name="NCCuttingTimePerPart" Type="decimal" Precision="8" Scale="2" />
+    <Property Name="TotalNCCuttingTime" Type="decimal" Precision="8" Scale="2" />
+    <Property Name="WOEfficiency" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="RejectedQty" Type="int" />
+    <Property Name="RejectedReason" Type="varchar" MaxLength="245" />
+    <Property Name="Program" Type="varchar" MaxLength="45" />
+    <Property Name="MRWeight" Type="decimal" Precision="8" Scale="2" />
+    <Property Name="InsertedOn" Type="datetime" Precision="0" />
+    <Property Name="IsMultiWO" Type="int" Nullable="false" />
+    <Property Name="IsNormalWC" Type="int" />
+    <Property Name="HoldReason" Type="varchar" MaxLength="225" />
+    <Property Name="MinorLoss" Type="decimal" Precision="6" Scale="2" />
+    <Property Name="SplitWO" Type="varchar" MaxLength="10" />
+    <Property Name="Blue" Type="decimal" Precision="8" Scale="2" />
+    <Property Name="ScrapQtyTime" Type="decimal" Precision="8" Scale="2" />
+    <Property Name="ReWorkTime" Type="decimal" Precision="8" Scale="2" />
+    <Property Name="SummationOfSCTvsPP" Type="decimal" Precision="8" Scale="2" />
+    <Property Name="StartTime" Type="datetime" Precision="0" />
+    <Property Name="EndTime" Type="datetime" Precision="0" />
+  </EntityType>
+  <EntityType Name="user_master">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="FirstName" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="MiddleName" Type="varchar" MaxLength="20" />
+    <Property Name="LastName" Type="varchar" MaxLength="20" />
+    <Property Name="Password" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="InsertedOn" Type="datetime" Precision="0" />
+    <Property Name="InsertedBy" Type="int" />
+    <Property Name="ModifiedOn" Type="datetime" Precision="0" />
+    <Property Name="ModifiedBy" Type="datetime" Precision="0" />
+    <Property Name="EmailID" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="IsDeleted" Type="int" Nullable="false" />
+    <Property Name="RoleID" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="AutoEmailType">
+    <End Role="tblemailreporttype" Type="Self.tblemailreporttype" Multiplicity="1" />
+    <End Role="recipientmailid" Type="Self.recipientmailid" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblemailreporttype">
+        <PropertyRef Name="ERTID" />
+      </Principal>
+      <Dependent Role="recipientmailid">
+        <PropertyRef Name="AutoEmailType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AutoReportID">
+    <End Role="tbl_autoreportsetting" Type="Self.tbl_autoreportsetting" Multiplicity="0..1" />
+    <End Role="tbl_autoreport_log" Type="Self.tbl_autoreport_log" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_autoreportsetting">
+        <PropertyRef Name="AutoReportID" />
+      </Principal>
+      <Dependent Role="tbl_autoreport_log">
+        <PropertyRef Name="AutoReportID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="BasedOnID">
+    <End Role="tbl_autoreportbasedon" Type="Self.tbl_autoreportbasedon" Multiplicity="0..1" />
+    <End Role="tbl_autoreportsetting" Type="Self.tbl_autoreportsetting" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_autoreportbasedon">
+        <PropertyRef Name="BasedOnID" />
+      </Principal>
+      <Dependent Role="tbl_autoreportsetting">
+        <PropertyRef Name="BasedOn" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="BreakdowncodeId">
+    <End Role="tbllossescodes" Type="Self.tbllossescodes" Multiplicity="0..1" />
+    <End Role="tblbreakdown" Type="Self.tblbreakdown" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbllossescodes">
+        <PropertyRef Name="LossCodeID" />
+      </Principal>
+      <Dependent Role="tblbreakdown">
+        <PropertyRef Name="BreakDownCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CellIDFK">
+    <End Role="tblcell" Type="Self.tblcell" Multiplicity="0..1" />
+    <End Role="tblemailescalation" Type="Self.tblemailescalation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblcell">
+        <PropertyRef Name="CellID" />
+      </Principal>
+      <Dependent Role="tblemailescalation">
+        <PropertyRef Name="CellID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CellIDshiftplanner">
+    <End Role="tblcell" Type="Self.tblcell" Multiplicity="0..1" />
+    <End Role="tblshiftplanner" Type="Self.tblshiftplanner" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblcell">
+        <PropertyRef Name="CellID" />
+      </Principal>
+      <Dependent Role="tblshiftplanner">
+        <PropertyRef Name="CellID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CellIDtblmachinedetails">
+    <End Role="tblcell" Type="Self.tblcell" Multiplicity="0..1" />
+    <End Role="tblmachinedetails" Type="Self.tblmachinedetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblcell">
+        <PropertyRef Name="CellID" />
+      </Principal>
+      <Dependent Role="tblmachinedetails">
+        <PropertyRef Name="CellID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CellIDtblmachinedetailsnew">
+    <End Role="tblcell" Type="Self.tblcell" Multiplicity="0..1" />
+    <End Role="tblmachinedetailsnew" Type="Self.tblmachinedetailsnew" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblcell">
+        <PropertyRef Name="CellID" />
+      </Principal>
+      <Dependent Role="tblmachinedetailsnew">
+        <PropertyRef Name="CellID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CellIDtblMWO">
+    <End Role="tblcell" Type="Self.tblcell" Multiplicity="0..1" />
+    <End Role="tblmultipleworkorder" Type="Self.tblmultipleworkorder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblcell">
+        <PropertyRef Name="CellID" />
+      </Principal>
+      <Dependent Role="tblmultipleworkorder">
+        <PropertyRef Name="CellID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ERTID">
+    <End Role="tblemailreporttype" Type="Self.tblemailreporttype" Multiplicity="1" />
+    <End Role="tblsendermailid" Type="Self.tblsendermailid" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblemailreporttype">
+        <PropertyRef Name="ERTID" />
+      </Principal>
+      <Dependent Role="tblsendermailid">
+        <PropertyRef Name="AutoEmailType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="EscalationLossCodeID">
+    <End Role="tbllossescodes" Type="Self.tbllossescodes" Multiplicity="0..1" />
+    <End Role="tblescalationlog" Type="Self.tblescalationlog" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbllossescodes">
+        <PropertyRef Name="LossCodeID" />
+      </Principal>
+      <Dependent Role="tblescalationlog">
+        <PropertyRef Name="LossCodeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fkHMIID">
+    <End Role="tblhmiscreen" Type="Self.tblhmiscreen" Multiplicity="0..1" />
+    <End Role="tbl_multiwoselection" Type="Self.tbl_multiwoselection" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblhmiscreen">
+        <PropertyRef Name="HMIID" />
+      </Principal>
+      <Dependent Role="tbl_multiwoselection">
+        <PropertyRef Name="HMIID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fkwoliveHMIID">
+    <End Role="tbllivehmiscreen" Type="Self.tbllivehmiscreen" Multiplicity="0..1" />
+    <End Role="tbllivemultiwoselection" Type="Self.tbllivemultiwoselection" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbllivehmiscreen">
+        <PropertyRef Name="HMIID" />
+      </Principal>
+      <Dependent Role="tbllivemultiwoselection">
+        <PropertyRef Name="HMIID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="GenericWorkID">
+    <End Role="tblgenericworkcodes" Type="Self.tblgenericworkcodes" Multiplicity="1" />
+    <End Role="tblgenericworkentry" Type="Self.tblgenericworkentry" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblgenericworkcodes">
+        <PropertyRef Name="GenericWorkID" />
+      </Principal>
+      <Dependent Role="tblgenericworkentry">
+        <PropertyRef Name="GWCodeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="LossCodeID">
+    <End Role="tbllossescodes" Type="Self.tbllossescodes" Multiplicity="1" />
+    <End Role="tbllossofentry" Type="Self.tbllossofentry" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbllossescodes">
+        <PropertyRef Name="LossCodeID" />
+      </Principal>
+      <Dependent Role="tbllossofentry">
+        <PropertyRef Name="MessageCodeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="LossCodeIDLiveLoss">
+    <End Role="tbllossescodes" Type="Self.tbllossescodes" Multiplicity="1" />
+    <End Role="tbllivelossofentry" Type="Self.tbllivelossofentry" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbllossescodes">
+        <PropertyRef Name="LossCodeID" />
+      </Principal>
+      <Dependent Role="tbllivelossofentry">
+        <PropertyRef Name="MessageCodeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="LossCodeIDLiveLossRep">
+    <End Role="tbllossescodes" Type="Self.tbllossescodes" Multiplicity="1" />
+    <End Role="tbllivelossofentryrep" Type="Self.tbllivelossofentryrep" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbllossescodes">
+        <PropertyRef Name="LossCodeID" />
+      </Principal>
+      <Dependent Role="tbllivelossofentryrep">
+        <PropertyRef Name="MessageCodeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="MachineID">
+    <End Role="tblmachinedetails" Type="Self.tblmachinedetails" Multiplicity="1" />
+    <End Role="tblmimics" Type="Self.tblmimics" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblmachinedetails">
+        <PropertyRef Name="MachineID" />
+      </Principal>
+      <Dependent Role="tblmimics">
+        <PropertyRef Name="MachineID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="MachineID1">
+    <End Role="tblmachinedetails" Type="Self.tblmachinedetails" Multiplicity="0..1" />
+    <End Role="tbldailyprodstatus" Type="Self.tbldailyprodstatus" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblmachinedetails">
+        <PropertyRef Name="MachineID" />
+      </Principal>
+      <Dependent Role="tbldailyprodstatus">
+        <PropertyRef Name="MachineID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="MachineIDhmi">
+    <End Role="tblmachinedetails" Type="Self.tblmachinedetails" Multiplicity="1" />
+    <End Role="tblhmiscreen" Type="Self.tblhmiscreen" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblmachinedetails">
+        <PropertyRef Name="MachineID" />
+      </Principal>
+      <Dependent Role="tblhmiscreen">
+        <PropertyRef Name="MachineID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="MachineIDhmiLive">
+    <End Role="tblmachinedetails" Type="Self.tblmachinedetails" Multiplicity="1" />
+    <End Role="tbllivehmiscreen" Type="Self.tbllivehmiscreen" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblmachinedetails">
+        <PropertyRef Name="MachineID" />
+      </Principal>
+      <Dependent Role="tbllivehmiscreen">
+        <PropertyRef Name="MachineID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="MachineIDhmiLiveRep">
+    <End Role="tblmachinedetails" Type="Self.tblmachinedetails" Multiplicity="1" />
+    <End Role="tbllivehmiscreenrep" Type="Self.tbllivehmiscreenrep" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblmachinedetails">
+        <PropertyRef Name="MachineID" />
+      </Principal>
+      <Dependent Role="tbllivehmiscreenrep">
+        <PropertyRef Name="MachineID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="MachineIDLDPS">
+    <End Role="tblmachinedetails" Type="Self.tblmachinedetails" Multiplicity="0..1" />
+    <End Role="tbllivedailyprodstatus" Type="Self.tbllivedailyprodstatus" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblmachinedetails">
+        <PropertyRef Name="MachineID" />
+      </Principal>
+      <Dependent Role="tbllivedailyprodstatus">
+        <PropertyRef Name="MachineID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="MachineIDshiftplanner">
+    <End Role="tblmachinedetails" Type="Self.tblmachinedetails" Multiplicity="0..1" />
+    <End Role="tblshiftplanner" Type="Self.tblshiftplanner" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblmachinedetails">
+        <PropertyRef Name="MachineID" />
+      </Principal>
+      <Dependent Role="tblshiftplanner">
+        <PropertyRef Name="MachineID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="MachineIDShiftWise">
+    <End Role="tblmachinedetails" Type="Self.tblmachinedetails" Multiplicity="1" />
+    <End Role="tblshiftdetails_machinewise" Type="Self.tblshiftdetails_machinewise" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblmachinedetails">
+        <PropertyRef Name="MachineID" />
+      </Principal>
+      <Dependent Role="tblshiftdetails_machinewise">
+        <PropertyRef Name="MachineID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="machinery">
+    <End Role="tblmachinedetails" Type="Self.tblmachinedetails" Multiplicity="1" />
+    <End Role="tblmode" Type="Self.tblmode" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblmachinedetails">
+        <PropertyRef Name="MachineID" />
+      </Principal>
+      <Dependent Role="tblmode">
+        <PropertyRef Name="MachineID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="machineryDBLive">
+    <End Role="tblmachinedetails" Type="Self.tblmachinedetails" Multiplicity="1" />
+    <End Role="tbllivemodedb" Type="Self.tbllivemodedb" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblmachinedetails">
+        <PropertyRef Name="MachineID" />
+      </Principal>
+      <Dependent Role="tbllivemodedb">
+        <PropertyRef Name="MachineID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="machineryLive">
+    <End Role="tblmachinedetails" Type="Self.tblmachinedetails" Multiplicity="1" />
+    <End Role="tbllivemode" Type="Self.tbllivemode" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblmachinedetails">
+        <PropertyRef Name="MachineID" />
+      </Principal>
+      <Dependent Role="tbllivemode">
+        <PropertyRef Name="MachineID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="macid">
+    <End Role="tblmachinedetails" Type="Self.tblmachinedetails" Multiplicity="0..1" />
+    <End Role="tblmachineallocation" Type="Self.tblmachineallocation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblmachinedetails">
+        <PropertyRef Name="MachineID" />
+      </Principal>
+      <Dependent Role="tblmachineallocation">
+        <PropertyRef Name="MachineID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ManualLossCodeID">
+    <End Role="tbllossescodes" Type="Self.tbllossescodes" Multiplicity="1" />
+    <End Role="tblmanuallossofentry" Type="Self.tblmanuallossofentry" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbllossescodes">
+        <PropertyRef Name="LossCodeID" />
+      </Principal>
+      <Dependent Role="tblmanuallossofentry">
+        <PropertyRef Name="MessageCodeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ManualLossCodeIDLive">
+    <End Role="tbllossescodes" Type="Self.tbllossescodes" Multiplicity="1" />
+    <End Role="tbllivemanuallossofentry" Type="Self.tbllivemanuallossofentry" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbllossescodes">
+        <PropertyRef Name="LossCodeID" />
+      </Principal>
+      <Dependent Role="tbllivemanuallossofentry">
+        <PropertyRef Name="MessageCodeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ManualLossCodeIDLiveRep">
+    <End Role="tbllossescodes" Type="Self.tbllossescodes" Multiplicity="1" />
+    <End Role="tbllivemanuallossofentryrep" Type="Self.tbllivemanuallossofentryrep" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbllossescodes">
+        <PropertyRef Name="LossCodeID" />
+      </Principal>
+      <Dependent Role="tbllivemanuallossofentryrep">
+        <PropertyRef Name="MessageCodeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Mid">
+    <End Role="tblmachinedetails" Type="Self.tblmachinedetails" Multiplicity="0..1" />
+    <End Role="tblusers" Type="Self.tblusers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblmachinedetails">
+        <PropertyRef Name="MachineID" />
+      </Principal>
+      <Dependent Role="tblusers">
+        <PropertyRef Name="MachineID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ModuleID">
+    <End Role="tblmodulemaster" Type="Self.tblmodulemaster" Multiplicity="1" />
+    <End Role="tblroleplaymaster" Type="Self.tblroleplaymaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblmodulemaster">
+        <PropertyRef Name="ModuleID" />
+      </Principal>
+      <Dependent Role="tblroleplaymaster">
+        <PropertyRef Name="ModuleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PlantID">
+    <End Role="tblplant" Type="Self.tblplant" Multiplicity="1" />
+    <End Role="tblshop" Type="Self.tblshop" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblplant">
+        <PropertyRef Name="PlantID" />
+      </Principal>
+      <Dependent Role="tblshop">
+        <PropertyRef Name="PlantID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PlantIDFK">
+    <End Role="tblplant" Type="Self.tblplant" Multiplicity="0..1" />
+    <End Role="tblemailescalation" Type="Self.tblemailescalation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblplant">
+        <PropertyRef Name="PlantID" />
+      </Principal>
+      <Dependent Role="tblemailescalation">
+        <PropertyRef Name="PlantID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PlantIDshiftplanner">
+    <End Role="tblplant" Type="Self.tblplant" Multiplicity="0..1" />
+    <End Role="tblshiftplanner" Type="Self.tblshiftplanner" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblplant">
+        <PropertyRef Name="PlantID" />
+      </Principal>
+      <Dependent Role="tblshiftplanner">
+        <PropertyRef Name="PlantID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PlantIDtblmachinedetails">
+    <End Role="tblplant" Type="Self.tblplant" Multiplicity="0..1" />
+    <End Role="tblmachinedetails" Type="Self.tblmachinedetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblplant">
+        <PropertyRef Name="PlantID" />
+      </Principal>
+      <Dependent Role="tblmachinedetails">
+        <PropertyRef Name="PlantID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PlantIDtblmachinedetailsnew">
+    <End Role="tblplant" Type="Self.tblplant" Multiplicity="0..1" />
+    <End Role="tblmachinedetailsnew" Type="Self.tblmachinedetailsnew" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblplant">
+        <PropertyRef Name="PlantID" />
+      </Principal>
+      <Dependent Role="tblmachinedetailsnew">
+        <PropertyRef Name="PlantID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PlantIDtblMWO">
+    <End Role="tblplant" Type="Self.tblplant" Multiplicity="0..1" />
+    <End Role="tblmultipleworkorder" Type="Self.tblmultipleworkorder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblplant">
+        <PropertyRef Name="PlantID" />
+      </Principal>
+      <Dependent Role="tblmultipleworkorder">
+        <PropertyRef Name="PlantID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PlantsId">
+    <End Role="tblplant" Type="Self.tblplant" Multiplicity="0..1" />
+    <End Role="tblcell" Type="Self.tblcell" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblplant">
+        <PropertyRef Name="PlantID" />
+      </Principal>
+      <Dependent Role="tblcell">
+        <PropertyRef Name="PlantID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PrimaryRole">
+    <End Role="tblroles" Type="Self.tblroles" Multiplicity="1" />
+    <End Role="tblusers" Type="Self.tblusers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblroles">
+        <PropertyRef Name="Role_ID" />
+      </Principal>
+      <Dependent Role="tblusers">
+        <PropertyRef Name="PrimaryRole" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ReasonLevel1FK">
+    <End Role="tbllossescodes" Type="Self.tbllossescodes" Multiplicity="0..1" />
+    <End Role="tblemailescalation" Type="Self.tblemailescalation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbllossescodes">
+        <PropertyRef Name="LossCodeID" />
+      </Principal>
+      <Dependent Role="tblemailescalation">
+        <PropertyRef Name="ReasonLevel1" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ReasonLevel2FK">
+    <End Role="tbllossescodes" Type="Self.tbllossescodes" Multiplicity="0..1" />
+    <End Role="tblemailescalation" Type="Self.tblemailescalation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbllossescodes">
+        <PropertyRef Name="LossCodeID" />
+      </Principal>
+      <Dependent Role="tblemailescalation">
+        <PropertyRef Name="ReasonLevel2" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ReasonLevel3FK">
+    <End Role="tbllossescodes" Type="Self.tbllossescodes" Multiplicity="0..1" />
+    <End Role="tblemailescalation" Type="Self.tblemailescalation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbllossescodes">
+        <PropertyRef Name="LossCodeID" />
+      </Principal>
+      <Dependent Role="tblemailescalation">
+        <PropertyRef Name="ReasonLevel3" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ReportCellID">
+    <End Role="tblcell" Type="Self.tblcell" Multiplicity="0..1" />
+    <End Role="tbl_autoreportsetting" Type="Self.tbl_autoreportsetting" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblcell">
+        <PropertyRef Name="CellID" />
+      </Principal>
+      <Dependent Role="tbl_autoreportsetting">
+        <PropertyRef Name="CellID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ReportID">
+    <End Role="tbl_reportmaster" Type="Self.tbl_reportmaster" Multiplicity="0..1" />
+    <End Role="tbl_autoreportsetting" Type="Self.tbl_autoreportsetting" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_reportmaster">
+        <PropertyRef Name="ReportID" />
+      </Principal>
+      <Dependent Role="tbl_autoreportsetting">
+        <PropertyRef Name="ReportID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ReportPlantID">
+    <End Role="tblplant" Type="Self.tblplant" Multiplicity="0..1" />
+    <End Role="tbl_autoreportsetting" Type="Self.tbl_autoreportsetting" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblplant">
+        <PropertyRef Name="PlantID" />
+      </Principal>
+      <Dependent Role="tbl_autoreportsetting">
+        <PropertyRef Name="PlantID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ReportShopID">
+    <End Role="tblshop" Type="Self.tblshop" Multiplicity="0..1" />
+    <End Role="tbl_autoreportsetting" Type="Self.tbl_autoreportsetting" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblshop">
+        <PropertyRef Name="ShopID" />
+      </Principal>
+      <Dependent Role="tbl_autoreportsetting">
+        <PropertyRef Name="ShopID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ReportTimeID">
+    <End Role="tbl_autoreporttime" Type="Self.tbl_autoreporttime" Multiplicity="0..1" />
+    <End Role="tbl_autoreportsetting" Type="Self.tbl_autoreportsetting" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_autoreporttime">
+        <PropertyRef Name="AutoReportTimeID" />
+      </Principal>
+      <Dependent Role="tbl_autoreportsetting">
+        <PropertyRef Name="AutoReportTimeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ReportWorkCentreID">
+    <End Role="tblmachinedetails" Type="Self.tblmachinedetails" Multiplicity="0..1" />
+    <End Role="tbl_autoreportsetting" Type="Self.tbl_autoreportsetting" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblmachinedetails">
+        <PropertyRef Name="MachineID" />
+      </Principal>
+      <Dependent Role="tbl_autoreportsetting">
+        <PropertyRef Name="MachineID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="RoleID">
+    <End Role="tblroles" Type="Self.tblroles" Multiplicity="1" />
+    <End Role="tblroleplaymaster" Type="Self.tblroleplaymaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblroles">
+        <PropertyRef Name="Role_ID" />
+      </Principal>
+      <Dependent Role="tblroleplaymaster">
+        <PropertyRef Name="RoleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SecondaryRole">
+    <End Role="tblroles" Type="Self.tblroles" Multiplicity="1" />
+    <End Role="tblusers" Type="Self.tblusers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblroles">
+        <PropertyRef Name="Role_ID" />
+      </Principal>
+      <Dependent Role="tblusers">
+        <PropertyRef Name="SecondaryRole" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="shiftbreak">
+    <End Role="tblshift_mstr" Type="Self.tblshift_mstr" Multiplicity="0..1" />
+    <End Role="tblplannedbreak" Type="Self.tblplannedbreak" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblshift_mstr">
+        <PropertyRef Name="ShiftID" />
+      </Principal>
+      <Dependent Role="tblplannedbreak">
+        <PropertyRef Name="ShiftID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="shiftid">
+    <End Role="tblshift_mstr" Type="Self.tblshift_mstr" Multiplicity="0..1" />
+    <End Role="tblmachineallocation" Type="Self.tblmachineallocation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblshift_mstr">
+        <PropertyRef Name="ShiftID" />
+      </Principal>
+      <Dependent Role="tblmachineallocation">
+        <PropertyRef Name="ShiftID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ShiftMethodIDshiftmethod">
+    <End Role="tblshiftmethod" Type="Self.tblshiftmethod" Multiplicity="0..1" />
+    <End Role="tblshiftdetails" Type="Self.tblshiftdetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblshiftmethod">
+        <PropertyRef Name="ShiftMethodID" />
+      </Principal>
+      <Dependent Role="tblshiftdetails">
+        <PropertyRef Name="ShiftMethodID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ShopId">
+    <End Role="tblshop" Type="Self.tblshop" Multiplicity="1" />
+    <End Role="tblcell" Type="Self.tblcell" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblshop">
+        <PropertyRef Name="ShopID" />
+      </Principal>
+      <Dependent Role="tblcell">
+        <PropertyRef Name="ShopID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ShopIDFK">
+    <End Role="tblshop" Type="Self.tblshop" Multiplicity="0..1" />
+    <End Role="tblemailescalation" Type="Self.tblemailescalation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblshop">
+        <PropertyRef Name="ShopID" />
+      </Principal>
+      <Dependent Role="tblemailescalation">
+        <PropertyRef Name="ShopID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ShopIDshiftplanner">
+    <End Role="tblshop" Type="Self.tblshop" Multiplicity="0..1" />
+    <End Role="tblshiftplanner" Type="Self.tblshiftplanner" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblshop">
+        <PropertyRef Name="ShopID" />
+      </Principal>
+      <Dependent Role="tblshiftplanner">
+        <PropertyRef Name="ShopID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ShopIDtblmachinedetails">
+    <End Role="tblshop" Type="Self.tblshop" Multiplicity="0..1" />
+    <End Role="tblmachinedetails" Type="Self.tblmachinedetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblshop">
+        <PropertyRef Name="ShopID" />
+      </Principal>
+      <Dependent Role="tblmachinedetails">
+        <PropertyRef Name="ShopID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ShopIDtblmachinedetailsnew">
+    <End Role="tblshop" Type="Self.tblshop" Multiplicity="0..1" />
+    <End Role="tblmachinedetailsnew" Type="Self.tblmachinedetailsnew" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblshop">
+        <PropertyRef Name="ShopID" />
+      </Principal>
+      <Dependent Role="tblmachinedetailsnew">
+        <PropertyRef Name="ShopID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ShopIdtblMWO">
+    <End Role="tblshop" Type="Self.tblshop" Multiplicity="0..1" />
+    <End Role="tblmultipleworkorder" Type="Self.tblmultipleworkorder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblshop">
+        <PropertyRef Name="ShopID" />
+      </Principal>
+      <Dependent Role="tblmultipleworkorder">
+        <PropertyRef Name="ShopID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="tbldowntimedetails_ibfk_1">
+    <End Role="tbldowntimecategory" Type="Self.tbldowntimecategory" Multiplicity="1" />
+    <End Role="tbldowntimedetails" Type="Self.tbldowntimedetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbldowntimecategory">
+        <PropertyRef Name="DTC_ID" />
+      </Principal>
+      <Dependent Role="tbldowntimedetails">
+        <PropertyRef Name="DTCategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="U_ID">
+    <End Role="tblunit" Type="Self.tblunit" Multiplicity="1" />
+    <End Role="tblparts" Type="Self.tblparts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblunit">
+        <PropertyRef Name="U_ID" />
+      </Principal>
+      <Dependent Role="tblparts">
+        <PropertyRef Name="UnitDesc" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="userid">
+    <End Role="tblusers" Type="Self.tblusers" Multiplicity="0..1" />
+    <End Role="tblmachineallocation" Type="Self.tblmachineallocation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblusers">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="tblmachineallocation">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="WCIDFK">
+    <End Role="tblmachinedetails" Type="Self.tblmachinedetails" Multiplicity="0..1" />
+    <End Role="tblemailescalation" Type="Self.tblemailescalation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblmachinedetails">
+        <PropertyRef Name="MachineID" />
+      </Principal>
+      <Dependent Role="tblemailescalation">
+        <PropertyRef Name="WorkCenterID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="WCIDtblMWO">
+    <End Role="tblmachinedetails" Type="Self.tblmachinedetails" Multiplicity="0..1" />
+    <End Role="tblmultipleworkorder" Type="Self.tblmultipleworkorder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblmachinedetails">
+        <PropertyRef Name="MachineID" />
+      </Principal>
+      <Dependent Role="tblmultipleworkorder">
+        <PropertyRef Name="WCID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="WorkCenterId">
+    <End Role="tblmachinedetails" Type="Self.tblmachinedetails" Multiplicity="1" />
+    <End Role="tblpartwiseworkcenter" Type="Self.tblpartwiseworkcenter" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblmachinedetails">
+        <PropertyRef Name="MachineID" />
+      </Principal>
+      <Dependent Role="tblpartwiseworkcenter">
+        <PropertyRef Name="WorkCenterId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="mazakdaqModelStoreContainer">
+    <EntitySet Name="alarm_history_master" EntityType="Self.alarm_history_master" Schema="mazakdaq" store:Type="Tables" />
+    <EntitySet Name="alarm_master" EntityType="Self.alarm_master" Schema="mazakdaq" store:Type="Tables" />
+    <EntitySet Name="alarm_report" EntityType="Self.alarm_report" Schema="mazakdaq" store:Type="Tables" />
+    <EntitySet Name="automaticjobcard" EntityType="Self.automaticjobcard" Schema="mazakdaq" store:Type="Tables" />
+    <EntitySet Name="books" EntityType="Self.books" Schema="mazakdaq" store:Type="Tables" />
+    <EntitySet Name="code_master" EntityType="Self.code_master" Schema="mazakdaq" store:Type="Tables" />
+    <EntitySet Name="cutting_time_report" EntityType="Self.cutting_time_report" Schema="mazakdaq" store:Type="Tables" />
+    <EntitySet Name="cutting_time_report_pdf" EntityType="Self.cutting_time_report_pdf" Schema="mazakdaq" store:Type="Tables" />
+    <EntitySet Name="day_st_end_time" EntityType="Self.day_st_end_time" Schema="mazakdaq" store:Type="Tables" />
+    <EntitySet Name="frommail" EntityType="Self.frommail" Schema="mazakdaq" store:Type="Tables" />
+    <EntitySet Name="handle_no_ping" EntityType="Self.handle_no_ping" Schema="mazakdaq" store:Type="Tables" />
+    <EntitySet Name="jobcard_details" EntityType="Self.jobcard_details" Schema="mazakdaq" store:Type="Tables" />
+    <EntitySet Name="machine_master" EntityType="Self.machine_master" Schema="mazakdaq" store:Type="Tables" />
+    <EntitySet Name="mailmaster" EntityType="Self.mailmaster" Schema="mazakdaq" store:Type="Tables" />
+    <EntitySet Name="mailmasterprogesc" EntityType="Self.mailmasterprogesc" Schema="mazakdaq" store:Type="Tables" />
+    <EntitySet Name="main_time_rep" EntityType="Self.main_time_rep" Schema="mazakdaq" store:Type="Tables" />
+    <EntitySet Name="message_code_master" EntityType="Self.message_code_master" Schema="mazakdaq" store:Type="Tables" />
+    <EntitySet Name="message_history_master" EntityType="Self.message_history_master" Schema="mazakdaq" store:Type="Tables" />
+    <EntitySet Name="opcuttimereport" EntityType="Self.opcuttimereport" Schema="mazakdaq" store:Type="Tables" />
+    <EntitySet Name="opcuttimereport_pdf" EntityType="Self.opcuttimereport_pdf" Schema="mazakdaq" store:Type="Tables" />
+    <EntitySet Name="operating_time_report" EntityType="Self.operating_time_report" Schema="mazakdaq" store:Type="Tables" />
+    <EntitySet Name="operating_time_report_pdf" EntityType="Self.operating_time_report_pdf" Schema="mazakdaq" store:Type="Tables" />
+    <EntitySet Name="operationlog" EntityType="Self.operationlog" Schema="mazakdaq" store:Type="Tables" />
+    <EntitySet Name="parameters" EntityType="Self.parameters" Schema="mazakdaq" store:Type="Tables" />
+    <EntitySet Name="parameters_master" EntityType="Self.parameters_master" Schema="mazakdaq" store:Type="Tables" />
+    <EntitySet Name="pcb" EntityType="Self.pcb" Schema="mazakdaq" store:Type="Tables" />
+    <EntitySet Name="pcb_details" EntityType="Self.pcb_details" Schema="mazakdaq" store:Type="Tables" />
+    <EntitySet Name="pcb_parameters" EntityType="Self.pcb_parameters" Schema="mazakdaq" store:Type="Tables" />
+    <EntitySet Name="pcbdaq" EntityType="Self.pcbdaq" Schema="mazakdaq" store:Type="Tables" />
+    <EntitySet Name="pcbdaqin_tbl" EntityType="Self.pcbdaqin_tbl" Schema="mazakdaq" store:Type="Tables" />
+    <EntitySet Name="pcbdps_master" EntityType="Self.pcbdps_master" Schema="mazakdaq" store:Type="Tables" />
+    <EntitySet Name="program_master" EntityType="Self.program_master" Schema="mazakdaq" store:Type="Tables" />
+    <EntitySet Name="program_temp" EntityType="Self.program_temp" Schema="mazakdaq" store:Type="Tables" />
+    <EntitySet Name="recipientmailid" EntityType="Self.recipientmailid" Schema="mazakdaq" store:Type="Tables" />
+    <EntitySet Name="role_master" EntityType="Self.role_master" Schema="mazakdaq" store:Type="Tables" />
+    <EntitySet Name="shift_master" EntityType="Self.shift_master" Schema="mazakdaq" store:Type="Tables" />
+    <EntitySet Name="tbl_autoreport_log" EntityType="Self.tbl_autoreport_log" Schema="mazakdaq" store:Type="Tables" />
+    <EntitySet Name="tbl_autoreportbasedon" EntityType="Self.tbl_autoreportbasedon" Schema="mazakdaq" store:Type="Tables" />
+    <EntitySet Name="tbl_autoreportsetting" EntityType="Self.tbl_autoreportsetting" Schema="mazakdaq" store:Type="Tables" />
+    <EntitySet Name="tbl_autoreporttime" EntityType="Self.tbl_autoreporttime" Schema="mazakdaq" store:Type="Tables" />
+    <EntitySet Name="tbl_multiwoselection" EntityType="Self.tbl_multiwoselection" Schema="mazakdaq" store:Type="Tables" />
+    <EntitySet Name="tbl_reportmaster" EntityType="Self.tbl_reportmaster" Schema="mazakdaq" store:Type="Tables" />
+    <EntitySet Name="tblactivitylog" EntityType="Self.tblactivitylog" Schema="mazakdaq" store:Type="Tables" />
+    <EntitySet Name="tblapp_paths" EntityType="Self.tblapp_paths" Schema="mazakdaq" store:Type="Tables" />
+    <EntitySet Name="tblbreakdown" EntityType="Self.tblbreakdown" Schema="mazakdaq" store:Type="Tables" />
+    <EntitySet Name="tblbreakdowncodes" EntityType="Self.tblbreakdowncodes" Schema="mazakdaq" store:Type="Tables" />
+    <EntitySet Name="tblcell" EntityType="Self.tblcell" Schema="mazakdaq" store:Type="Tables" />
+    <EntitySet Name="tblcustomer" EntityType="Self.tblcustomer" Schema="mazakdaq" store:Type="Tables" />
+    <EntitySet Name="tbldailyprodstatus" EntityType="Self.tbldailyprodstatus" Schema="mazakdaq" store:Type="Tables" />
+    <EntitySet Name="tbldailyprodstatushis" EntityType="Self.tbldailyprodstatushis" Schema="mazakdaq" store:Type="Tables" />
+    <EntitySet Name="tbldaytiming" EntityType="Self.tbldaytiming" Schema="mazakdaq" store:Type="Tables" />
+    <EntitySet Name="tblddl" EntityType="Self.tblddl" Schema="mazakdaq" store:Type="Tables" />
+    <EntitySet Name="tbldowntimecategory" EntityType="Self.tbldowntimecategory" Schema="mazakdaq" store:Type="Tables" />
+    <EntitySet Name="tbldowntimedetails" EntityType="Self.tbldowntimedetails" Schema="mazakdaq" store:Type="Tables" />
+    <EntitySet Name="tblemailescalation" EntityType="Self.tblemailescalation" Schema="mazakdaq" store:Type="Tables" />
+    <EntitySet Name="tblemailreporttype" EntityType="Self.tblemailreporttype" Schema="mazakdaq" store:Type="Tables" />
+    <EntitySet Name="tblendcodes" EntityType="Self.tblendcodes" Schema="mazakdaq" store:Type="Tables" />
+    <EntitySet Name="tblescalationlog" EntityType="Self.tblescalationlog" Schema="mazakdaq" store:Type="Tables" />
+    <EntitySet Name="tblgenericworkcodes" EntityType="Self.tblgenericworkcodes" Schema="mazakdaq" store:Type="Tables" />
+    <EntitySet Name="tblgenericworkentry" EntityType="Self.tblgenericworkentry" Schema="mazakdaq" store:Type="Tables" />
+    <EntitySet Name="tblhmiscreen" EntityType="Self.tblhmiscreen" Schema="mazakdaq" store:Type="Tables" />
+    <EntitySet Name="tblholdcodes" EntityType="Self.tblholdcodes" Schema="mazakdaq" store:Type="Tables" />
+    <EntitySet Name="tbllivedailyprodstatus" EntityType="Self.tbllivedailyprodstatus" Schema="mazakdaq" store:Type="Tables" />
+    <EntitySet Name="tbllivehmiscreen" EntityType="Self.tbllivehmiscreen" Schema="mazakdaq" store:Type="Tables" />
+    <EntitySet Name="tbllivehmiscreenrep" EntityType="Self.tbllivehmiscreenrep" Schema="mazakdaq" store:Type="Tables" />
+    <EntitySet Name="tbllivelossofentry" EntityType="Self.tbllivelossofentry" Schema="mazakdaq" store:Type="Tables" />
+    <EntitySet Name="tbllivelossofentryrep" EntityType="Self.tbllivelossofentryrep" Schema="mazakdaq" store:Type="Tables" />
+    <EntitySet Name="tbllivemanuallossofentry" EntityType="Self.tbllivemanuallossofentry" Schema="mazakdaq" store:Type="Tables" />
+    <EntitySet Name="tbllivemanuallossofentryrep" EntityType="Self.tbllivemanuallossofentryrep" Schema="mazakdaq" store:Type="Tables" />
+    <EntitySet Name="tbllivemode" EntityType="Self.tbllivemode" Schema="mazakdaq" store:Type="Tables" />
+    <EntitySet Name="tbllivemodedb" EntityType="Self.tbllivemodedb" Schema="mazakdaq" store:Type="Tables" />
+    <EntitySet Name="tbllivemultiwoselection" EntityType="Self.tbllivemultiwoselection" Schema="mazakdaq" store:Type="Tables" />
+    <EntitySet Name="tbllossescodes" EntityType="Self.tbllossescodes" Schema="mazakdaq" store:Type="Tables" />
+    <EntitySet Name="tbllossofentry" EntityType="Self.tbllossofentry" Schema="mazakdaq" store:Type="Tables" />
+    <EntitySet Name="tblmachine_master" EntityType="Self.tblmachine_master" Schema="mazakdaq" store:Type="Tables" />
+    <EntitySet Name="tblmachineallocation" EntityType="Self.tblmachineallocation" Schema="mazakdaq" store:Type="Tables" />
+    <EntitySet Name="tblmachinecategory" EntityType="Self.tblmachinecategory" Schema="mazakdaq" store:Type="Tables" />
+    <EntitySet Name="tblmachinedetails" EntityType="Self.tblmachinedetails" Schema="mazakdaq" store:Type="Tables" />
+    <EntitySet Name="tblmachinedetailsnew" EntityType="Self.tblmachinedetailsnew" Schema="mazakdaq" store:Type="Tables" />
+    <EntitySet Name="tblmailids" EntityType="Self.tblmailids" Schema="mazakdaq" store:Type="Tables" />
+    <EntitySet Name="tblmanuallossofentry" EntityType="Self.tblmanuallossofentry" Schema="mazakdaq" store:Type="Tables" />
+    <EntitySet Name="tblmasterparts_st_sw" EntityType="Self.tblmasterparts_st_sw" Schema="mazakdaq" store:Type="Tables" />
+    <EntitySet Name="tblmimics" EntityType="Self.tblmimics" Schema="mazakdaq" store:Type="Tables" />
+    <EntitySet Name="tblmode" EntityType="Self.tblmode" Schema="mazakdaq" store:Type="Tables" />
+    <EntitySet Name="tblmodulehelper" EntityType="Self.tblmodulehelper" Schema="mazakdaq" store:Type="Tables" />
+    <EntitySet Name="tblmodulemaster" EntityType="Self.tblmodulemaster" Schema="mazakdaq" store:Type="Tables" />
+    <EntitySet Name="tblmultipleworkorder" EntityType="Self.tblmultipleworkorder" Schema="mazakdaq" store:Type="Tables" />
+    <EntitySet Name="tblnetworkdetailsforddl" EntityType="Self.tblnetworkdetailsforddl" Schema="mazakdaq" store:Type="Tables" />
+    <EntitySet Name="tbloeedashboardfinalvariables" EntityType="Self.tbloeedashboardfinalvariables" Schema="mazakdaq" store:Type="Tables" />
+    <EntitySet Name="tbloeedashboardvariables" EntityType="Self.tbloeedashboardvariables" Schema="mazakdaq" store:Type="Tables" />
+    <EntitySet Name="tbloeedashboardvariablestoday" EntityType="Self.tbloeedashboardvariablestoday" Schema="mazakdaq" store:Type="Tables" />
+    <EntitySet Name="tblparts" EntityType="Self.tblparts" Schema="mazakdaq" store:Type="Tables" />
+    <EntitySet Name="tblpartwisesp" EntityType="Self.tblpartwisesp" Schema="mazakdaq" store:Type="Tables" />
+    <EntitySet Name="tblpartwiseworkcenter" EntityType="Self.tblpartwiseworkcenter" Schema="mazakdaq" store:Type="Tables" />
+    <EntitySet Name="tblplannedbreak" EntityType="Self.tblplannedbreak" Schema="mazakdaq" store:Type="Tables" />
+    <EntitySet Name="tblplant" EntityType="Self.tblplant" Schema="mazakdaq" store:Type="Tables" />
+    <EntitySet Name="tblpriorityalarms" EntityType="Self.tblpriorityalarms" Schema="mazakdaq" store:Type="Tables" />
+    <EntitySet Name="tblreportholder" EntityType="Self.tblreportholder" Schema="mazakdaq" store:Type="Tables" />
+    <EntitySet Name="tblroleplaymaster" EntityType="Self.tblroleplaymaster" Schema="mazakdaq" store:Type="Tables" />
+    <EntitySet Name="tblroles" EntityType="Self.tblroles" Schema="mazakdaq" store:Type="Tables" />
+    <EntitySet Name="tblsendermailid" EntityType="Self.tblsendermailid" Schema="mazakdaq" store:Type="Tables" />
+    <EntitySet Name="tblshift_breaks" EntityType="Self.tblshift_breaks" Schema="mazakdaq" store:Type="Tables" />
+    <EntitySet Name="tblshift_mstr" EntityType="Self.tblshift_mstr" Schema="mazakdaq" store:Type="Tables" />
+    <EntitySet Name="tblshiftdetails" EntityType="Self.tblshiftdetails" Schema="mazakdaq" store:Type="Tables" />
+    <EntitySet Name="tblshiftdetails_machinewise" EntityType="Self.tblshiftdetails_machinewise" Schema="mazakdaq" store:Type="Tables" />
+    <EntitySet Name="tblshiftmethod" EntityType="Self.tblshiftmethod" Schema="mazakdaq" store:Type="Tables" />
+    <EntitySet Name="tblshiftplanner" EntityType="Self.tblshiftplanner" Schema="mazakdaq" store:Type="Tables" />
+    <EntitySet Name="tblshop" EntityType="Self.tblshop" Schema="mazakdaq" store:Type="Tables" />
+    <EntitySet Name="tbltosapfilepath" EntityType="Self.tbltosapfilepath" Schema="mazakdaq" store:Type="Tables" />
+    <EntitySet Name="tbltosapshopnames" EntityType="Self.tbltosapshopnames" Schema="mazakdaq" store:Type="Tables" />
+    <EntitySet Name="tblunit" EntityType="Self.tblunit" Schema="mazakdaq" store:Type="Tables" />
+    <EntitySet Name="tblusers" EntityType="Self.tblusers" Schema="mazakdaq" store:Type="Tables" />
+    <EntitySet Name="tblwolossess" EntityType="Self.tblwolossess" Schema="mazakdaq" store:Type="Tables" />
+    <EntitySet Name="tblworeport" EntityType="Self.tblworeport" Schema="mazakdaq" store:Type="Tables" />
+    <EntitySet Name="user_master" EntityType="Self.user_master" Schema="mazakdaq" store:Type="Tables" />
+    <EntitySet Name="main_time_view" EntityType="Self.main_time_view" store:Type="Tables" store:Schema="mazakdaq">
+      <DefiningQuery>SELECT
+`main_time_view`.`CuttingTime`, 
+`main_time_view`.`OperatingTime`, 
+`main_time_view`.`PowerOnTime`, 
+`main_time_view`.`CorrectedDate`, 
+`main_time_view`.`Shift`, 
+`main_time_view`.`MachineID`
+FROM `main_time_view` AS `main_time_view`</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="parametermaster_view" EntityType="Self.parametermaster_view" store:Type="Tables" store:Schema="mazakdaq">
+      <DefiningQuery>SELECT
+`parametermaster_view`.`ParameterID`, 
+`parametermaster_view`.`SetupTime`, 
+`parametermaster_view`.`OperatingTime`, 
+`parametermaster_view`.`PowerOnTime`, 
+`parametermaster_view`.`PartsCount`, 
+`parametermaster_view`.`InsertedOn`, 
+`parametermaster_view`.`MachineID`, 
+`parametermaster_view`.`Shift`, 
+`parametermaster_view`.`CorrectedDate`, 
+`parametermaster_view`.`InsertedOnTime`
+FROM `parametermaster_view` AS `parametermaster_view`</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="person" EntityType="Self.person" store:Type="Tables" store:Schema="mazakdaq">
+      <DefiningQuery>SELECT
+`person`.`Id`, 
+`person`.`Name`, 
+`person`.`Email`, 
+`person`.`Mobile`
+FROM `person` AS `person`</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="AutoEmailType" Association="Self.AutoEmailType">
+      <End Role="tblemailreporttype" EntitySet="tblemailreporttype" />
+      <End Role="recipientmailid" EntitySet="recipientmailid" />
+    </AssociationSet>
+    <AssociationSet Name="AutoReportID" Association="Self.AutoReportID">
+      <End Role="tbl_autoreportsetting" EntitySet="tbl_autoreportsetting" />
+      <End Role="tbl_autoreport_log" EntitySet="tbl_autoreport_log" />
+    </AssociationSet>
+    <AssociationSet Name="BasedOnID" Association="Self.BasedOnID">
+      <End Role="tbl_autoreportbasedon" EntitySet="tbl_autoreportbasedon" />
+      <End Role="tbl_autoreportsetting" EntitySet="tbl_autoreportsetting" />
+    </AssociationSet>
+    <AssociationSet Name="BreakdowncodeId" Association="Self.BreakdowncodeId">
+      <End Role="tbllossescodes" EntitySet="tbllossescodes" />
+      <End Role="tblbreakdown" EntitySet="tblbreakdown" />
+    </AssociationSet>
+    <AssociationSet Name="CellIDFK" Association="Self.CellIDFK">
+      <End Role="tblcell" EntitySet="tblcell" />
+      <End Role="tblemailescalation" EntitySet="tblemailescalation" />
+    </AssociationSet>
+    <AssociationSet Name="CellIDshiftplanner" Association="Self.CellIDshiftplanner">
+      <End Role="tblcell" EntitySet="tblcell" />
+      <End Role="tblshiftplanner" EntitySet="tblshiftplanner" />
+    </AssociationSet>
+    <AssociationSet Name="CellIDtblmachinedetails" Association="Self.CellIDtblmachinedetails">
+      <End Role="tblcell" EntitySet="tblcell" />
+      <End Role="tblmachinedetails" EntitySet="tblmachinedetails" />
+    </AssociationSet>
+    <AssociationSet Name="CellIDtblmachinedetailsnew" Association="Self.CellIDtblmachinedetailsnew">
+      <End Role="tblcell" EntitySet="tblcell" />
+      <End Role="tblmachinedetailsnew" EntitySet="tblmachinedetailsnew" />
+    </AssociationSet>
+    <AssociationSet Name="CellIDtblMWO" Association="Self.CellIDtblMWO">
+      <End Role="tblcell" EntitySet="tblcell" />
+      <End Role="tblmultipleworkorder" EntitySet="tblmultipleworkorder" />
+    </AssociationSet>
+    <AssociationSet Name="ERTID" Association="Self.ERTID">
+      <End Role="tblemailreporttype" EntitySet="tblemailreporttype" />
+      <End Role="tblsendermailid" EntitySet="tblsendermailid" />
+    </AssociationSet>
+    <AssociationSet Name="EscalationLossCodeID" Association="Self.EscalationLossCodeID">
+      <End Role="tbllossescodes" EntitySet="tbllossescodes" />
+      <End Role="tblescalationlog" EntitySet="tblescalationlog" />
+    </AssociationSet>
+    <AssociationSet Name="fkHMIID" Association="Self.fkHMIID">
+      <End Role="tblhmiscreen" EntitySet="tblhmiscreen" />
+      <End Role="tbl_multiwoselection" EntitySet="tbl_multiwoselection" />
+    </AssociationSet>
+    <AssociationSet Name="fkwoliveHMIID" Association="Self.fkwoliveHMIID">
+      <End Role="tbllivehmiscreen" EntitySet="tbllivehmiscreen" />
+      <End Role="tbllivemultiwoselection" EntitySet="tbllivemultiwoselection" />
+    </AssociationSet>
+    <AssociationSet Name="GenericWorkID" Association="Self.GenericWorkID">
+      <End Role="tblgenericworkcodes" EntitySet="tblgenericworkcodes" />
+      <End Role="tblgenericworkentry" EntitySet="tblgenericworkentry" />
+    </AssociationSet>
+    <AssociationSet Name="LossCodeID" Association="Self.LossCodeID">
+      <End Role="tbllossescodes" EntitySet="tbllossescodes" />
+      <End Role="tbllossofentry" EntitySet="tbllossofentry" />
+    </AssociationSet>
+    <AssociationSet Name="LossCodeIDLiveLoss" Association="Self.LossCodeIDLiveLoss">
+      <End Role="tbllossescodes" EntitySet="tbllossescodes" />
+      <End Role="tbllivelossofentry" EntitySet="tbllivelossofentry" />
+    </AssociationSet>
+    <AssociationSet Name="LossCodeIDLiveLossRep" Association="Self.LossCodeIDLiveLossRep">
+      <End Role="tbllossescodes" EntitySet="tbllossescodes" />
+      <End Role="tbllivelossofentryrep" EntitySet="tbllivelossofentryrep" />
+    </AssociationSet>
+    <AssociationSet Name="MachineID" Association="Self.MachineID">
+      <End Role="tblmachinedetails" EntitySet="tblmachinedetails" />
+      <End Role="tblmimics" EntitySet="tblmimics" />
+    </AssociationSet>
+    <AssociationSet Name="MachineID1" Association="Self.MachineID1">
+      <End Role="tblmachinedetails" EntitySet="tblmachinedetails" />
+      <End Role="tbldailyprodstatus" EntitySet="tbldailyprodstatus" />
+    </AssociationSet>
+    <AssociationSet Name="MachineIDhmi" Association="Self.MachineIDhmi">
+      <End Role="tblmachinedetails" EntitySet="tblmachinedetails" />
+      <End Role="tblhmiscreen" EntitySet="tblhmiscreen" />
+    </AssociationSet>
+    <AssociationSet Name="MachineIDhmiLive" Association="Self.MachineIDhmiLive">
+      <End Role="tblmachinedetails" EntitySet="tblmachinedetails" />
+      <End Role="tbllivehmiscreen" EntitySet="tbllivehmiscreen" />
+    </AssociationSet>
+    <AssociationSet Name="MachineIDhmiLiveRep" Association="Self.MachineIDhmiLiveRep">
+      <End Role="tblmachinedetails" EntitySet="tblmachinedetails" />
+      <End Role="tbllivehmiscreenrep" EntitySet="tbllivehmiscreenrep" />
+    </AssociationSet>
+    <AssociationSet Name="MachineIDLDPS" Association="Self.MachineIDLDPS">
+      <End Role="tblmachinedetails" EntitySet="tblmachinedetails" />
+      <End Role="tbllivedailyprodstatus" EntitySet="tbllivedailyprodstatus" />
+    </AssociationSet>
+    <AssociationSet Name="MachineIDshiftplanner" Association="Self.MachineIDshiftplanner">
+      <End Role="tblmachinedetails" EntitySet="tblmachinedetails" />
+      <End Role="tblshiftplanner" EntitySet="tblshiftplanner" />
+    </AssociationSet>
+    <AssociationSet Name="MachineIDShiftWise" Association="Self.MachineIDShiftWise">
+      <End Role="tblmachinedetails" EntitySet="tblmachinedetails" />
+      <End Role="tblshiftdetails_machinewise" EntitySet="tblshiftdetails_machinewise" />
+    </AssociationSet>
+    <AssociationSet Name="machinery" Association="Self.machinery">
+      <End Role="tblmachinedetails" EntitySet="tblmachinedetails" />
+      <End Role="tblmode" EntitySet="tblmode" />
+    </AssociationSet>
+    <AssociationSet Name="machineryDBLive" Association="Self.machineryDBLive">
+      <End Role="tblmachinedetails" EntitySet="tblmachinedetails" />
+      <End Role="tbllivemodedb" EntitySet="tbllivemodedb" />
+    </AssociationSet>
+    <AssociationSet Name="machineryLive" Association="Self.machineryLive">
+      <End Role="tblmachinedetails" EntitySet="tblmachinedetails" />
+      <End Role="tbllivemode" EntitySet="tbllivemode" />
+    </AssociationSet>
+    <AssociationSet Name="macid" Association="Self.macid">
+      <End Role="tblmachinedetails" EntitySet="tblmachinedetails" />
+      <End Role="tblmachineallocation" EntitySet="tblmachineallocation" />
+    </AssociationSet>
+    <AssociationSet Name="ManualLossCodeID" Association="Self.ManualLossCodeID">
+      <End Role="tbllossescodes" EntitySet="tbllossescodes" />
+      <End Role="tblmanuallossofentry" EntitySet="tblmanuallossofentry" />
+    </AssociationSet>
+    <AssociationSet Name="ManualLossCodeIDLive" Association="Self.ManualLossCodeIDLive">
+      <End Role="tbllossescodes" EntitySet="tbllossescodes" />
+      <End Role="tbllivemanuallossofentry" EntitySet="tbllivemanuallossofentry" />
+    </AssociationSet>
+    <AssociationSet Name="ManualLossCodeIDLiveRep" Association="Self.ManualLossCodeIDLiveRep">
+      <End Role="tbllossescodes" EntitySet="tbllossescodes" />
+      <End Role="tbllivemanuallossofentryrep" EntitySet="tbllivemanuallossofentryrep" />
+    </AssociationSet>
+    <AssociationSet Name="Mid" Association="Self.Mid">
+      <End Role="tblmachinedetails" EntitySet="tblmachinedetails" />
+      <End Role="tblusers" EntitySet="tblusers" />
+    </AssociationSet>
+    <AssociationSet Name="ModuleID" Association="Self.ModuleID">
+      <End Role="tblmodulemaster" EntitySet="tblmodulemaster" />
+      <End Role="tblroleplaymaster" EntitySet="tblroleplaymaster" />
+    </AssociationSet>
+    <AssociationSet Name="PlantID" Association="Self.PlantID">
+      <End Role="tblplant" EntitySet="tblplant" />
+      <End Role="tblshop" EntitySet="tblshop" />
+    </AssociationSet>
+    <AssociationSet Name="PlantIDFK" Association="Self.PlantIDFK">
+      <End Role="tblplant" EntitySet="tblplant" />
+      <End Role="tblemailescalation" EntitySet="tblemailescalation" />
+    </AssociationSet>
+    <AssociationSet Name="PlantIDshiftplanner" Association="Self.PlantIDshiftplanner">
+      <End Role="tblplant" EntitySet="tblplant" />
+      <End Role="tblshiftplanner" EntitySet="tblshiftplanner" />
+    </AssociationSet>
+    <AssociationSet Name="PlantIDtblmachinedetails" Association="Self.PlantIDtblmachinedetails">
+      <End Role="tblplant" EntitySet="tblplant" />
+      <End Role="tblmachinedetails" EntitySet="tblmachinedetails" />
+    </AssociationSet>
+    <AssociationSet Name="PlantIDtblmachinedetailsnew" Association="Self.PlantIDtblmachinedetailsnew">
+      <End Role="tblplant" EntitySet="tblplant" />
+      <End Role="tblmachinedetailsnew" EntitySet="tblmachinedetailsnew" />
+    </AssociationSet>
+    <AssociationSet Name="PlantIDtblMWO" Association="Self.PlantIDtblMWO">
+      <End Role="tblplant" EntitySet="tblplant" />
+      <End Role="tblmultipleworkorder" EntitySet="tblmultipleworkorder" />
+    </AssociationSet>
+    <AssociationSet Name="PlantsId" Association="Self.PlantsId">
+      <End Role="tblplant" EntitySet="tblplant" />
+      <End Role="tblcell" EntitySet="tblcell" />
+    </AssociationSet>
+    <AssociationSet Name="PrimaryRole" Association="Self.PrimaryRole">
+      <End Role="tblroles" EntitySet="tblroles" />
+      <End Role="tblusers" EntitySet="tblusers" />
+    </AssociationSet>
+    <AssociationSet Name="ReasonLevel1FK" Association="Self.ReasonLevel1FK">
+      <End Role="tbllossescodes" EntitySet="tbllossescodes" />
+      <End Role="tblemailescalation" EntitySet="tblemailescalation" />
+    </AssociationSet>
+    <AssociationSet Name="ReasonLevel2FK" Association="Self.ReasonLevel2FK">
+      <End Role="tbllossescodes" EntitySet="tbllossescodes" />
+      <End Role="tblemailescalation" EntitySet="tblemailescalation" />
+    </AssociationSet>
+    <AssociationSet Name="ReasonLevel3FK" Association="Self.ReasonLevel3FK">
+      <End Role="tbllossescodes" EntitySet="tbllossescodes" />
+      <End Role="tblemailescalation" EntitySet="tblemailescalation" />
+    </AssociationSet>
+    <AssociationSet Name="ReportCellID" Association="Self.ReportCellID">
+      <End Role="tblcell" EntitySet="tblcell" />
+      <End Role="tbl_autoreportsetting" EntitySet="tbl_autoreportsetting" />
+    </AssociationSet>
+    <AssociationSet Name="ReportID" Association="Self.ReportID">
+      <End Role="tbl_reportmaster" EntitySet="tbl_reportmaster" />
+      <End Role="tbl_autoreportsetting" EntitySet="tbl_autoreportsetting" />
+    </AssociationSet>
+    <AssociationSet Name="ReportPlantID" Association="Self.ReportPlantID">
+      <End Role="tblplant" EntitySet="tblplant" />
+      <End Role="tbl_autoreportsetting" EntitySet="tbl_autoreportsetting" />
+    </AssociationSet>
+    <AssociationSet Name="ReportShopID" Association="Self.ReportShopID">
+      <End Role="tblshop" EntitySet="tblshop" />
+      <End Role="tbl_autoreportsetting" EntitySet="tbl_autoreportsetting" />
+    </AssociationSet>
+    <AssociationSet Name="ReportTimeID" Association="Self.ReportTimeID">
+      <End Role="tbl_autoreporttime" EntitySet="tbl_autoreporttime" />
+      <End Role="tbl_autoreportsetting" EntitySet="tbl_autoreportsetting" />
+    </AssociationSet>
+    <AssociationSet Name="ReportWorkCentreID" Association="Self.ReportWorkCentreID">
+      <End Role="tblmachinedetails" EntitySet="tblmachinedetails" />
+      <End Role="tbl_autoreportsetting" EntitySet="tbl_autoreportsetting" />
+    </AssociationSet>
+    <AssociationSet Name="RoleID" Association="Self.RoleID">
+      <End Role="tblroles" EntitySet="tblroles" />
+      <End Role="tblroleplaymaster" EntitySet="tblroleplaymaster" />
+    </AssociationSet>
+    <AssociationSet Name="SecondaryRole" Association="Self.SecondaryRole">
+      <End Role="tblroles" EntitySet="tblroles" />
+      <End Role="tblusers" EntitySet="tblusers" />
+    </AssociationSet>
+    <AssociationSet Name="shiftbreak" Association="Self.shiftbreak">
+      <End Role="tblshift_mstr" EntitySet="tblshift_mstr" />
+      <End Role="tblplannedbreak" EntitySet="tblplannedbreak" />
+    </AssociationSet>
+    <AssociationSet Name="shiftid" Association="Self.shiftid">
+      <End Role="tblshift_mstr" EntitySet="tblshift_mstr" />
+      <End Role="tblmachineallocation" EntitySet="tblmachineallocation" />
+    </AssociationSet>
+    <AssociationSet Name="ShiftMethodIDshiftmethod" Association="Self.ShiftMethodIDshiftmethod">
+      <End Role="tblshiftmethod" EntitySet="tblshiftmethod" />
+      <End Role="tblshiftdetails" EntitySet="tblshiftdetails" />
+    </AssociationSet>
+    <AssociationSet Name="ShopId" Association="Self.ShopId">
+      <End Role="tblshop" EntitySet="tblshop" />
+      <End Role="tblcell" EntitySet="tblcell" />
+    </AssociationSet>
+    <AssociationSet Name="ShopIDFK" Association="Self.ShopIDFK">
+      <End Role="tblshop" EntitySet="tblshop" />
+      <End Role="tblemailescalation" EntitySet="tblemailescalation" />
+    </AssociationSet>
+    <AssociationSet Name="ShopIDshiftplanner" Association="Self.ShopIDshiftplanner">
+      <End Role="tblshop" EntitySet="tblshop" />
+      <End Role="tblshiftplanner" EntitySet="tblshiftplanner" />
+    </AssociationSet>
+    <AssociationSet Name="ShopIDtblmachinedetails" Association="Self.ShopIDtblmachinedetails">
+      <End Role="tblshop" EntitySet="tblshop" />
+      <End Role="tblmachinedetails" EntitySet="tblmachinedetails" />
+    </AssociationSet>
+    <AssociationSet Name="ShopIDtblmachinedetailsnew" Association="Self.ShopIDtblmachinedetailsnew">
+      <End Role="tblshop" EntitySet="tblshop" />
+      <End Role="tblmachinedetailsnew" EntitySet="tblmachinedetailsnew" />
+    </AssociationSet>
+    <AssociationSet Name="ShopIdtblMWO" Association="Self.ShopIdtblMWO">
+      <End Role="tblshop" EntitySet="tblshop" />
+      <End Role="tblmultipleworkorder" EntitySet="tblmultipleworkorder" />
+    </AssociationSet>
+    <AssociationSet Name="tbldowntimedetails_ibfk_1" Association="Self.tbldowntimedetails_ibfk_1">
+      <End Role="tbldowntimecategory" EntitySet="tbldowntimecategory" />
+      <End Role="tbldowntimedetails" EntitySet="tbldowntimedetails" />
+    </AssociationSet>
+    <AssociationSet Name="U_ID" Association="Self.U_ID">
+      <End Role="tblunit" EntitySet="tblunit" />
+      <End Role="tblparts" EntitySet="tblparts" />
+    </AssociationSet>
+    <AssociationSet Name="userid" Association="Self.userid">
+      <End Role="tblusers" EntitySet="tblusers" />
+      <End Role="tblmachineallocation" EntitySet="tblmachineallocation" />
+    </AssociationSet>
+    <AssociationSet Name="WCIDFK" Association="Self.WCIDFK">
+      <End Role="tblmachinedetails" EntitySet="tblmachinedetails" />
+      <End Role="tblemailescalation" EntitySet="tblemailescalation" />
+    </AssociationSet>
+    <AssociationSet Name="WCIDtblMWO" Association="Self.WCIDtblMWO">
+      <End Role="tblmachinedetails" EntitySet="tblmachinedetails" />
+      <End Role="tblmultipleworkorder" EntitySet="tblmultipleworkorder" />
+    </AssociationSet>
+    <AssociationSet Name="WorkCenterId" Association="Self.WorkCenterId">
+      <End Role="tblmachinedetails" EntitySet="tblmachinedetails" />
+      <End Role="tblpartwiseworkcenter" EntitySet="tblpartwiseworkcenter" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

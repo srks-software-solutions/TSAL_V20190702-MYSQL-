@@ -1,0 +1,292 @@
+﻿@model List<Tata.Models.tbllivemultiwoselection>
+<link rel="shortcut icon" type="image/x-icon" href="~/Images/120px-Tata_logo.ico" />
+@{
+    ViewBag.Title = "UnitWorks - Multi WO Quantity Entry";
+    var slno = 1;
+    Layout = "~/Views/Shared/Layoutmimics.cshtml";
+}
+
+<style type="text/css">
+    th {
+        background-color: orange;
+    }
+</style>
+
+<script src="~/js/jquery-2.1.4.min.js"></script>
+
+<h2></h2>@* induces gap between button and container top*@
+<div style="width: 2%; display: inline-block; height: inherit"></div>
+
+@using (Html.BeginForm("MultiWOQtyEntry", "HMIScree", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)  
+
+    <div style="width: 100%">
+        @*@Html.ActionLink("Back To HMIScreen", "Index", new { }, new { @class = "btn orange btn-lg ", @style = "margin-left:2%;color:black;width:15vw;height:70%;backgroundcolor:red;font-size:1vw" })*@
+        <div style="margin-left: 40%; display: inline"></div>
+        <span style="font-size: 1.5vw; color: orange">@ViewBag.macDispName</span>
+
+    </div>
+    
+    <div class="wrp clearfix">
+        <div class="fluid">
+            <div class="widget grid12">
+                <div class="widget-header">
+                    <div class="widget-title" style="font-size: 125%">
+                        Enter MultiWO Details
+                    </div>
+                </div>
+                <!-- /widget-header -->
+
+                <div class="widget-content pad20f">
+                    <div class="widget__content table-responsive table-hover">
+                        <div id="ErrorBlock">
+                            @if (Session["Error"] != null)
+                            {
+                                <pre>
+<span style="font-family:Calibri">@Session["Error"]</span>
+                                </pre>
+                            }
+                            @{
+                            Session["Error"] = null;
+                            }
+                        </div>
+                        <table class="table">
+                            <thead>
+                                <tr class="text-centre" style="background-color: orange">
+                                    <th style="text-align: center; font-size: 95%">Sl.No.</th>
+                                    <th style="text-align: center; font-size: 95%">WorkOrder No</th>
+                                    <th style="text-align: center; font-size: 95%">Part No</th>
+                                    <th style="text-align: center; font-size: 95%">Operation No</th>
+                                    <th style="text-align: center; font-size: 95%">Target Qty</th>
+                                    <th style="text-align: center; font-size: 95%">Delivered Qty</th>
+                                    <th style="text-align: center; font-size: 95%">Processed Qty</th>
+                                    <th style="text-align: center; font-size: 95%">Split WO</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="spacer"></tr>
+                                <tr class="spacer"></tr>
+                                @for (int i = 0; i < Model.Count; i++)
+                                {
+                                    <tr>
+                                        <td class="hmiid" style="display: none">
+                                            @Model[i].MultiWOID
+                                        </td>
+                                        <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                            @slno
+                                        </td>
+                                        <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                            @Html.DisplayFor(model => Model[i].WorkOrder)
+                                        </td>
+                                        <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                            @Html.DisplayFor(modelItem => Model[i].PartNo)
+                                        </td>
+                                        <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                            @Html.DisplayFor(modelItem => Model[i].OperationNo)
+                                        </td>
+                                        <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                            @Html.TextBoxFor(modelItem => Model[i].TargetQty, new { @required = "required", @class = "TargetQty" })
+                                        </td>
+                                        <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                            @Html.TextBoxFor(modelItem => Model[i].DeliveredQty, new { @required = "required", @class = "DeliveredQty j_int j_length", @maxlength = 9 })
+                                        </td>
+                                        <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                            @Html.TextBoxFor(modelItem => Model[i].ProcessQty, new { @class = "ProcessedQty", @readonly = "readonly" })
+                                        </td>
+                                        <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                            @if ( Model[i].SplitWO == "Yes")
+                                            {
+                                                @Html.CheckBox("SplitWO", new { @class = "SplitWO" , @checked = "checked" })
+                                            }else
+                                            {
+                                                @Html.CheckBox("SplitWO", new { @class = "SplitWO" })
+                                            }
+                                        </td>
+                                        <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                            @Html.HiddenFor(model => Model[i].WorkOrder)
+                                            @Html.HiddenFor(modelItem => Model[i].PartNo)
+                                            @Html.HiddenFor(modelItem => Model[i].OperationNo)
+                                            @Html.HiddenFor(modelItem => Model[i].CreatedOn)
+                                            @Html.HiddenFor(modelItem => Model[i].DDLWorkCentre)
+                                            @Html.HiddenFor(modelItem => Model[i].HMIID)
+                                            @Html.HiddenFor(modelItem => Model[i].IsCompleted)
+                                            @Html.HiddenFor(modelItem => Model[i].MultiWOID)
+                                            @Html.HiddenFor(modelItem => Model[i].SplitWO)
+                                            @Html.HiddenFor(modelItem => Model[i].ProcessQty)
+                                        </td>
+
+                                        @*  @if (ViewBag.roleid == 1 || ViewBag.roleid ==2){
+                                <td style="width: auto; text-align: center; font-family: Helvetica" data-toggle="tooltip" title="Edit">
+                                    @Html.ActionLink(" ", "Edit", new { id = item.CellID }, new { @class = " blue  btn-lg fa fa-edit", @style = "color:white;text-decoration:none" })
+                                </td>
+                                <td style="width: auto; text-align: center; font-family: Helvetica" data-toggle="tooltip" title="Delete">
+                                    @Html.ActionLink(" ", "Delete", new { id = item.CellID }, new { @class = " red btn-lg fa fa-trash", @style = "color:white;text-decoration:none" })
+                                </td>
+                                   }*@
+                                    </tr>
+                                    slno = slno + 1;
+                                }
+                                <tr class="spacer"></tr>
+
+                                <tr>
+                                    <td>&nbsp</td>
+                                    <td>&nbsp</td>
+                                    <td>&nbsp</td>
+                                    <td style="width: auto; text-align: center; font-family: Helvetica" data-toggle="tooltip" title="Edit">
+                                        @Html.ActionLink(" Back ", "Index", new { }, new { @class = "btn btn-primary fa fa-reply fa-1x", @style = "text-decoration:none;display:inline-block;color:black;font-weight:500;font-size:large;" })
+                                    </td>
+                                    <td style="width: auto; text-align: center; font-family: Helvetica" data-toggle="tooltip" title="Edit">
+                                        <div class="btn btn-primary" id="submitDiv" style="font-size: larger; font: bolder; font-weight: 800">Submit</div>
+                                        <button type="submit" id="ValidSubmit" style="display: none"></button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+
+                </div>
+                <!-- /widget-content -->
+
+            </div>
+            <!-- /widget -->
+        </div>
+    </div>
+    
+    <div id="dialog-confirm" title=" Split WorkOrder Confirmation ?" style="height: 5%; color: blue">
+        <p>
+        </p>
+    </div>
+    
+}
+<script src="~/js/jquery-2.1.4.min.js"></script>
+<script src="~/js/jValidations.js"></script>
+<script src="~/Content1/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+<link href="~/css/jquery-ui.css" rel="stylesheet" />
+
+@*<script>
+    $(function (e) {
+        //DeliveredQty
+        $(".DeliveredQty").each(function(){
+            var Target = $(this).parent().siblings().find(".TargetQty").val();
+            //alert(Target)
+            var Processed = $(this).parent().siblings().find(".ProcessedQty").val();
+            //alert(Processed)
+            var Deliv = parseInt(Target) - parseInt(Processed);
+            //alert(Deliv)
+            $(this).val(Deliv)
+        })
+    });
+</script>*@
+
+<script>
+    setTimeout(function () {
+        $('#ErrorBlock').fadeOut('slow');
+    }, 15000); // <-- time in milliseconds
+</script>
+
+<script>
+    $("#submitDiv").click(function (e) {
+        var TargetQty = [];
+        $(".TargetQty").each(function () {
+            if ($(this).val().length > 0) {
+                TargetQty.push($(this).val());
+            }
+            else {
+                TargetQty.push(0);
+            }
+        }).get();
+        var DeliveredQty = [];
+        $(".DeliveredQty").each(function () {
+            if ($(this).val().length > 0) {
+                DeliveredQty.push($(this).val());
+            }
+            else {
+                DeliveredQty.push(0);
+            }
+        }).get();
+        var ProcessedQty = [];
+        $(".ProcessedQty").each(function () {
+            if ($(this).val().length > 0) {
+                ProcessedQty.push($(this).val());
+            }
+            else {
+                ProcessedQty.push(0);
+            }
+        }).get();
+        var Validity = "true";
+        var i = 0;
+        for (i = 0; i < TargetQty.length; i++) {
+            var TQty = parseInt(TargetQty[i]);
+            var DQty = parseInt(DeliveredQty[i].length > 0 ? DeliveredQty[i] : 0);
+            var PQty = parseInt(ProcessedQty[i]);
+            if (parseInt(TQty).toString().length > 0 && (parseInt(DQty).toString().length > 0) && (parseInt(PQty).toString().length > 0)) {
+                var temp = (parseInt(DQty) + parseInt(PQty));
+                if (parseInt(TQty) >= parseInt(temp)) {
+                    Validity = "true"
+                }
+                else {
+                    Validity = "false";
+                    break;
+                }
+            }
+            //alert(Validity)
+        }
+        if (Validity == "true") {
+            //alert("Valid")
+
+            //Show PopUp only if atleast on of them is checked
+
+            var oneofthemisChecked = 0;
+            if ($('input:checked').length > 0) {
+                oneofthemisChecked = 1;
+            } 
+            if (oneofthemisChecked == 1) {
+                $("#dialog-confirm").dialog({
+                    resizable: true,
+                    height: 50,
+                    modal: true,
+                    buttons: {
+                        "Yes": function () {
+                            $("#ValidSubmit").click();
+                        },
+                        Cancel: function () {
+                            $("#dialog-confirm").dialog("close");
+                        },
+                    }
+                })
+                .open();
+            } else {
+                $("#ValidSubmit").click();
+            }
+        }
+        else if (Validity == "false") {
+            //alert(i);
+            alert("Delivered Qty + Processed Qty cannot be greater than TargetQty")
+        }
+    });
+
+</script>
+
+@*AutoSave*@
+<script>
+    $(".SplitWO").on("change", function (e) {
+        //var selectedID = '@Session["hmiid"]';
+        var selectedID = $(this).parents('td:first').siblings("td.hmiid").html(); //Perfect
+        //alert(selectedID);
+        var Value = $(this).val();
+        //alert(Value);
+        if ($(this).is(":checked")) {
+            //alert("Checkbox is checked.");
+            Value = "Yes";
+        }
+        else if ($(this).is(":not(:checked)")) {
+            //alert("Checkbox is unchecked.");
+            Value = "No";
+        }
+        $.getJSON("/HMIScree/AutoSaveMultiWOSplitWO", { multiwoID: selectedID, SplitWO: Value }, function (data) {
+        });
+    });
+</script>

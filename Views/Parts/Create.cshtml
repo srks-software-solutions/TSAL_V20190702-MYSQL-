@@ -1,0 +1,54 @@
+﻿@model Tata.Models.tblpart
+@{
+    ViewBag.Title = "Create";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)  
+<div class="wrp clearfix">
+    <div class="fluid">
+        <div class="widget grid12">
+            <div class="widget-header">
+                <div class="widget-title">
+                    Create PartsDetails
+                </div>
+            </div>
+            <!-- /widget-header -->
+
+            <div class="widget-content pad20f">
+
+                 <label for="input-1" class="stacked-label" style="resize: horizontal; width: 40%">Part Number</label>
+                    @Html.TextBoxFor(model => model.PartNo, new { @id = "PartNo", @class = "form-control", @name = "PartNo",  style = "width:89.7%",@placeholder = "Enter Part Number", @required = "required" })
+                            @Html.ValidationMessageFor(model => model.PartNo)
+
+                    <label for="input-2" class="stacked-label" style="resize: horizontal; width: 40%">Part Name</label>
+                   @Html.TextBoxFor(model => model.PartName, new { @id = "PartName", @class = "form-control", @name = "PartName", style = "width:89.7%", @placeholder = "Enter Part Name", @required = "required" })  
+                            @Html.ValidationMessageFor(model => model.PartName)
+
+                <label for="input-2" class="stacked-label" style="resize: horizontal; width: 40%">Part Description</label>
+                   @Html.TextBoxFor(model => model.PartDesc, new { @id = "PartDesc", @class = "form-control", @name = "PartDesc", style = "width:89.7%", @placeholder = "Enter Part Description", @required = "required" })  
+                            @Html.ValidationMessageFor(model => model.PartDesc)
+
+                 <label for="input-2" class="stacked-label" style="resize: horizontal; width: 40%">Idle Cycle Time</label>
+                   @Html.TextBoxFor(model => model.IdleCycleTime, new { @id = "IdleCycleTime", @class = "form-control", @name = "IdleCycleTime", style = "width:89.7%", @placeholder = "Enter IdleCycleTime", @required = "required" })  
+                            @Html.ValidationMessageFor(model => model.IdleCycleTime)
+
+                 <label for="input-2" class="stacked-label" style="resize: horizontal; width: 40%">Unit</label>
+                    @Html.DropDownList("Unit",null, "--Select Unit--", new { @id = "Unit", @class = "form-control", @name = "Unit", @required = "required", @style = "aria-expanded:false;width:89.7%", @value=ViewData["Unit"]})
+                    @Html.ValidationMessageFor(model => model.UnitDesc)
+
+                    <div style="width: 3%; display: inline-block; height: inherit"></div>
+                    @Html.ActionLink(" Back ", "Index", new { }, new { @class = "btn stacked-input fa fa-reply fa-1x", @style = "text-decoration:none;display:inline-block;color:black" })
+                    <div style="width: 20%; display: inline-block; height: inherit"></div>
+                    <input type="submit" value="Create" class="btn orange btn-lg" style="width: 30%; display: inline-block; height: inherit;margin-top:2%;background-color:orange;color:black;font-size:95%"/>
+
+            </div>
+            <!-- /widget-content -->
+        </div>
+        <!-- /widget -->
+    </div>
+</div>
+  
+}

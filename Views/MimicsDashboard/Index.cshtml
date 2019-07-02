@@ -1,0 +1,195 @@
+﻿@model IEnumerable<Tata.Models.tblmimic>
+@{
+    
+    Layout = "~/Views/Shared/Layoutmimics.cshtml";
+    ViewBag.Title = "Index";
+    var slno = 1;
+    var slno1 = 1;
+    
+    //if (Session["Rotation"] == null)
+    //{
+    //    Session["Rotation"] = 1;
+    //}
+    //int RotationCount = Convert.ToInt32(Session["Rotation"]);
+    //RotationCount++;
+    //Session["Rotation"] = RotationCount;
+}
+
+<script src="~/js/jquery-2.1.4.min.js"></script>
+<script>setTimeout(function () { window.location.reload(); }, 60000 * 1)</script>@* Every One menuts it will update*@
+@*<script>setTimeout(function () { window.location.reload(); }, 1000)</script>*@
+@*<h2></h2> induces gap between button and container top*@
+@*<div style="width: 2%; display: inline-block; height: inherit"></div>*@
+
+<div class="wrp clearfix" style="margin-top:0px;padding-top:0px">
+  
+    <div class="fluid" style="margin-top:0px;padding-top:0px">
+        <div class="widget grid12" style="margin-top:0px;padding-top:0px">
+            <div id="top">
+                @* @if (ViewBag.roleid == 1 || ViewBag.roleid == 2 || ViewBag.roleid == 5)
+                {
+                    <a href="~/Dashboard/Index.cshtml">.
+                    <div class="main-logo">
+                            @Html.ActionLink("Dashboard", "Index","Dashboard", new { }, new { @class = "btn btn-lavender ", @style = "color:white;backgroundcolor:brown;font-size:90%" })
+                    </div>
+                        </a>
+                }*@
+                @if (ViewBag.roleid == 4 || ViewBag.roleid == 1 || ViewBag.roleid == 2 || ViewBag.roleid == 5)
+                {
+                    <a href="~/MachineStatus/Index.cshtml">.
+                    <div class="main-logo">
+                        @*<a href="~/MachineStatus/Index.cshtml">MachineStatus</a>*@
+                            @Html.ActionLink("Machine Status", "Index","MachineStatus", new { }, new { @class = "btn btn-lavender ", @style = "color:white;backgroundcolor:brown;font-size:90%" })
+                            @*<img src="~/Images/120px-Tata_logo.png" style="width: 35%; height: 35%" /></a>*@
+                        @*<p style="color:green;font-size:100%;">@Html.ActionLink("Tata", "Index", "Dashboard", new { @Styles="font-size:70%"})</p>*@
+                    </div>
+                        </a>
+                }
+                <div>
+                    <div style="color: white; display: inline; padding-left: 15%;font-size:2vw;text-align:center">
+                        Mimics DashBoard
+                    </div>
+                    <div style="color: white; display: inline; padding-left: 15%;text-align:center">
+                        @ViewBag.date @ViewBag.time
+                    </div>
+                    @*<div style="color: white; display: inline; padding-left: 15%;text-align:center">
+                        Shift: @ViewBag.shift
+                    </div>*@
+                </div>
+            </div>
+
+            @*<div class="widget-header">
+                <div class="widget-title" style="font-size: 125%">
+                    <i class="fa fa-pencil"></i>
+                    Mimics DashBoard
+                </div>
+            </div>
+            <!-- /widget-header -->*@
+
+            <div class="widget-content pad20f">
+                <div class="widget__content table-responsive table-hover">
+                    <table class="table">
+                        <thead>
+                            <tr class="text-centre" style="background-color: orange">
+                                <th style="text-align: center; font-size: 95%">Sl.No.</th>
+                                <th style="text-align: center; font-size: 95%">MachineCode</th>
+                                <th style="text-align: center; font-size: 95%">MachineDescription</th>
+                                <th style="text-align: center; font-size: 95%">Shop</th>
+                                <th style="text-align: center; font-size: 95%">Shift</th>
+                                <th style="text-align: center; font-size: 95%">PowerOnTime</th>
+                                <th style="text-align: center; font-size: 95%">OperatingTime</th>
+                                <th style="text-align: center; font-size: 95%">SetupTime</th>
+                                <th style="text-align: center; font-size: 95%">IdleTime</th>
+                                <th style="text-align: center; font-size: 95%">BreakdownTime</th>
+                                <th style="text-align: center; font-size: 95%">MachineOffTime</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="spacer"></tr>
+                            <tr class="spacer"></tr>
+                            @foreach (var item in Model)
+                            {
+                                //if (item.tblmachinedetail.MachineID == 1)
+                                //{
+                                <tr>
+                                    <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                        @slno
+                                    </td>
+                                    <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                        @Html.DisplayFor(modelItem => item.tblmachinedetail.MachineID)
+                                    </td>
+
+                                    <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                        @Html.DisplayFor(modelItem => item.tblmachinedetail.MachineDispName)
+                                    </td>
+                                    <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                        @Html.DisplayFor(modelItem => item.tblmachinedetail.ShopNo)
+                                    </td>
+                                    <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                        @Html.DisplayFor(modelItem => item.Shift)
+                                    </td>
+                                    <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                        @Html.DisplayFor(modelItem => item.MachineOnTime)
+                                    </td>
+
+                                    <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                        @Html.DisplayFor(modelItem => item.OperatingTime)
+                                    </td>
+                                    <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                        @Html.DisplayFor(modelItem => item.SetupTime)
+                                    </td>
+                                    <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                        @Html.DisplayFor(modelItem => item.IdleTime)
+                                    </td>
+
+                                    <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                        @Html.DisplayFor(modelItem => item.BreakdownTime)
+                                    </td>
+                                    <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                        @Html.DisplayFor(modelItem => item.MachineOffTime)
+                                    </td>
+
+                                </tr>
+                           
+                                    slno = slno + 1;
+                                }
+                            @*}*@
+                           @* @foreach (var item in Model)
+                            {
+                                if (item.tblmachinedetail.MachineID == 2)
+                                {
+                                <tr>
+                                    <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                        @slno
+                                    </td>
+                                    <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                        @Html.DisplayFor(modelItem => item.tblmachinedetail.MachineID)
+                                    </td>
+
+                                    <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                        @Html.DisplayFor(modelItem => item.tblmachinedetail.MachineDispName)
+                                    </td>
+                                    <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                        @Html.DisplayFor(modelItem => item.tblmachinedetail.ShopNo)
+                                    </td>
+                                    <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                        @Html.DisplayFor(modelItem => item.Shift)
+                                    </td>
+                                    <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                        @Html.DisplayFor(modelItem => item.MachineOnTime)
+                                    </td>
+
+                                    <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                        @Html.DisplayFor(modelItem => item.OperatingTime)
+                                    </td>
+                                    <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                        @Html.DisplayFor(modelItem => item.SetupTime)
+                                    </td>
+                                    <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                        @Html.DisplayFor(modelItem => item.IdleTime)
+                                    </td>
+
+                                    <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                        @Html.DisplayFor(modelItem => item.BreakdownTime)
+                                    </td>
+                                    <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                        @Html.DisplayFor(modelItem => item.MachineOffTime)
+                                    </td>
+
+                                </tr>
+                                    slno = slno + 1;
+                                }
+                            }*@
+                            <tr class="spacer"></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+            </div>
+            <!-- /widget-content -->
+
+        </div>
+        <!-- /widget -->
+    </div>
+</div>

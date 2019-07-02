@@ -1,0 +1,178 @@
+﻿@model IEnumerable<Tata.Models.tblmachinedetail>
+@{
+    ViewBag.Title = "Index";
+    int slno = 1;
+}
+
+<h2></h2>@* induces gap between button and container top*@
+<div style="width: 2%; display: inline-block; height: inherit"></div>
+@if (ViewBag.roleid == 1)
+{
+    @Html.ActionLink("Add new MachineDetails", "Create", new { }, new { @class = "btn orange btn-lg ", @style = "color:black;width:20%;height:70%;backgroundcolor:red;font-size:90%;display:inline" })
+    <div style="width: 5%; display: inline"></div>
+    @Html.ActionLink("Import Data From Excel", "ImportMachineDetails", new { }, new { @class = "btn orange btn-lg ", @style = "color:black;width:20%;height:70%;backgroundcolor:red;font-size:90%;display:inline" })
+}
+<div class="wrp clearfix">
+    <div class="fluid">
+        <div class="widget grid12">
+            <div class="widget-header">
+                <div class="widget-title" style="font-size: 125%">
+                    Machine Details
+                </div>
+            </div>
+            <!-- /widget-header -->
+
+            <div class="widget-content pad20f">
+                <div class="widget__content table-responsive">
+                    <div id="UploadErrors">
+                        @if (Session["PartNo"] != null)
+                        {
+                            <pre>
+<span style="font-family:Calibri">@Session["PartNo"]</span>
+                            </pre>
+                        }
+                    </div>
+                    <table class="table">
+                        <thead>
+                            <tr class="text-centre" style="background-color: orange">
+                                <th style="text-align: center; font-size: 95%">Sl.No.</th>
+                                <th style="text-align: center; font-size: 95%">Plant</th>
+                                <th style="text-align: center; font-size: 95%">Shop</th>
+                                <th style="text-align: center; font-size: 95%">Cell</th>
+                                <th style="text-align: center; font-size: 95%">MachineInvNo. </th>
+                                <th style="text-align: center; font-size: 95%">IP-Address </th>
+                                <th style="text-align: center; font-size: 95%">Machine Model</th>
+                                <th style="text-align: center; font-size: 95%">Machine Display Name</th>
+                                @if ( ViewBag.roleid == 2)
+                                {
+                                    <th style="text-align: center; font-size: 95%">Edit</th>
+                                }
+                                 @if (ViewBag.roleid == 1 )
+                                {
+                                    <th style="text-align: center; font-size: 95%">Edit</th>
+                                    <th style="text-align: center; font-size: 95%">Delete</th>
+                                }
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="spacer"></tr>
+                            <tr class="spacer"></tr>
+                            @{
+                                Session["PartNo"] = null;
+                            }
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                        @slno
+                                    </td>
+                                    @if (item.PlantID != null)
+                                    {
+                                        <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                            @Html.DisplayFor(modelItem => item.tblplant.PlantName)
+                                        </td>
+                                    }
+                                    else
+                                    {
+                                        <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">-
+                                        </td>
+                                    }
+                                    @if (item.ShopID != null)
+                                    {
+                                        <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                            @Html.DisplayFor(modelItem => item.tblshop.ShopName)
+                                        </td>
+                                    }
+                                    else
+                                    {
+                                        <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">-
+                                        </td>
+                                    }
+                                    @if (item.CellID != null)
+                                    {
+                                        <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                            @Html.DisplayFor(modelItem => item.tblcell.CellName)
+                                        </td>
+                                    }
+                                    else
+                                    {
+                                        <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">-
+                                        </td>
+                                    }
+                                    <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                        @Html.DisplayFor(modelItem => item.MachineInvNo)
+                                    </td>
+                                    <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                        @Html.DisplayFor(modelItem => item.IPAddress)
+                                    </td>
+
+                                    <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                        @Html.DisplayFor(modelItem => item.MachineModel)
+                                    </td>
+                                    <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                        @Html.DisplayFor(modelItem => item.MachineDispName)
+                                    </td>
+                                    @if (ViewBag.roleid == 2)
+                                    {
+                                        <td style="width: auto; text-align: center; font-family: Helvetica" data-toggle="tooltip" title="Edit">
+                                            @Html.ActionLink(" ", "Edit", new { id = item.MachineID }, new { @class = " blue  btn-lg fa fa-edit", @style = "color:white;text-decoration:none" })
+                                        </td>
+                                    }
+                                    @if (ViewBag.roleid == 1)
+                                    {
+                                        <td style="width: auto; text-align: center; font-family: Helvetica" data-toggle="tooltip" title="Edit">
+                                            @Html.ActionLink(" ", "Edit", new { id = item.MachineID }, new { @class = " blue  btn-lg fa fa-edit", @style = "color:white;text-decoration:none" })
+                                        </td>
+                                        <td style="width: auto; text-align: center; font-family: Helvetica" data-toggle="tooltip" title="Delete">
+                                             @{var id = item.MachineID;
+                                            @Html.ActionLink(" ", "Delete", new { id = item.MachineID }, new { @id = id, @class = " red btn-lg fa fa-trash DeleteModel", @style = "color:white;text-decoration:none" })
+                                            }
+                                        </td>
+                                    }
+                                </tr>
+                                    slno = slno + 1;
+                            }
+                            <tr class="spacer"></tr>
+                        </tbody>
+                    </table>
+                </div>
+               
+            </div>
+            <!-- /widget-content -->
+
+        </div>
+        <!-- /widget -->
+    </div>
+    <div id="dialog-confirm" title=" Delete Confirmation ?" style="height: 5%;">
+        <p> 
+        </p>
+    </div>
+</div>
+
+<script src="~/js/jquery-2.1.4.min.js"></script>
+<script>
+    setTimeout(function () {
+        $('#UploadErrors').fadeOut('slow');
+    }, 30000); // <-- time in milliseconds
+</script>
+
+<script>
+    //This model window is from https://jqueryui.com/dialog/#modal-confirmation 
+    $(".DeleteModel").on("click", (function (e) {
+        var MyHref = $(this).prop('href');
+        e.preventDefault();
+        $("#dialog-confirm").dialog({
+            resizable: true,
+            height: 50,
+            modal: true,
+            buttons: {
+                "Delete WorkCenter": function () {
+                    window.location.href = MyHref;
+                },
+                Cancel: function () {
+                    $(this).dialog("close");
+                }
+            }
+        });
+    }));
+</script>

@@ -1,0 +1,39 @@
+﻿@{
+    ViewBag.Title = "ChooseWorkOrder";
+    Layout = "~/Views/Shared/_EmptyView.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)  
+    <div class="wrp clearfix">
+        <div class="fluid">
+            <div class="widget grid12">
+                <div class="widget-header">
+                    <div class="widget-title">
+                        Choose WorkOrder
+                    </div>
+                </div>
+                <!-- /widget-header -->
+
+                <div class="widget-content pad20f">
+
+                    @*<label for="input" class="stacked-label" style="resize: horizontal; width: 30%; font-style: oblique; color: blue">Select Idle Code</label>*@
+                    
+                    <input type="submit" value="Work Order" class="btn btn-primary btn-lg" id="wo" name="wo" style="width:10% ;display:inline-block"/>
+                    <input type="submit" value="Rework Order" class="btn btn-primary btn-lg" id="reworkwo" name="reworkwo" style="width:10% ;display:inline-block ; margin-left:3%"/>
+                    <br />
+                  
+                    <div style="width: 3%; display: inline-block; height: inherit"></div>
+                    <div style="width: 10%; display: inline-block; height: inherit"></div>
+                    @*<input type="submit" value="Submit" class="btn orange btn-lg" style="width: 25%; display: inline-block; height: inherit; margin-top: 2%; background-color: orange; color: black; font-size: 95%" />*@
+
+                </div>
+                <!-- /widget-content -->
+            </div>
+            <!-- /widget -->
+        </div>
+    </div>
+  
+}
